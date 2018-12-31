@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   
-  <title>Hello_world</title>
-  <meta property="og:title" content="Hello_world" />
-  <meta name="twitter:title" content="Hello_world" />
+  <title>雑記</title>
+  <meta property="og:title" content="雑記" />
+  <meta name="twitter:title" content="雑記" />
   
 
   
@@ -17,7 +17,7 @@
 
   <meta name="author" content="getumen"/>
   <meta property="og:site_name" content="雑記" />
-  <meta property="og:url" content="http://localhost:1313/posts/hello_world/" />
+  <meta property="og:url" content="http://localhost:1313/posts/merpay_ml/" />
 
   
   <meta name="twitter:card" content="summary" />
@@ -58,12 +58,12 @@
 
 <article class="p-article">
   <header>
-    <h1>Hello_world</h1>
+    <h1></h1>
     <div>
       <div class="c-time">
         Posted on
-        <time datetime="2018-08-03T20:38:40&#43;09:00">
-          Aug 3, 2018
+        <time datetime="0001-01-01T00:00:00Z">
+          Jan 1, 0001
         </time>
       </div>
       
@@ -71,7 +71,141 @@
   </header>
   
   <section id="js-article" class="p-article__body">
-    <p>Hello, world!</p>
+    
+
+<h2 id="クックパッド-メルペイ-m3">クックパッド，メルペイ，M3</h2>
+
+<h1 id="画像検索">画像検索</h1>
+
+<h2 id="画像検索-1">画像検索</h2>
+
+<ul>
+<li>クエリが画像なので単語から文書検索のような転置インデックスはできない</li>
+<li>クエリ画像や検索対象画像を特徴量抽出機に入れて特徴ベクトルの近いものを取ってくる</li>
+<li>問題点：比較に時間がかかる</li>
+<li>ベクトルの近似最近傍探索を使うと早い</li>
+</ul>
+
+<h2 id="関連手法">関連手法</h2>
+
+<ul>
+<li>事前のラベル・タグ付け＋クエリに対するラベル・タグ予測による検索
+
+<ul>
+<li>問題：ラベル付，ラベル予測精度に対する問題
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="料理画像検索">料理画像検索</h2>
+
+<ul>
+<li>一般画像識別のためのプレトレインされたモデルからモデルを作成しても役に立たない</li>
+<li>大変特徴的な料理名から，より一般的な料理名のタグを画像につける
+例）スフレケーキトラベル付されている画像にケーキトラベル付</li>
+</ul>
+
+<h1 id="機械学習のパフォーマンス">機械学習のパフォーマンス</h1>
+
+<h2 id="推論のパフォーマンスについて">推論のパフォーマンスについて</h2>
+
+<p>チューニング対象
+- InceptionV3+Patch
+- 画像用</p>
+
+<h2 id="効果があったこと">効果があったこと</h2>
+
+<ul>
+<li>Tensorflowのバージョンアップ(推論時間2/3に改善 p2.xlarge</li>
+<li>tf.Sessionを極力使いまわす（5/13に改善</li>
+<li>CPUコア数を増やす（インスタンスをxlarge2,4,8と上げると線形に計算時間が減少（3/5くらい</li>
+</ul>
+
+<h2 id="効果がなかったこと">効果がなかったこと</h2>
+
+<ul>
+<li>JITコンパイル</li>
+<li>スレッドプールを変更</li>
+</ul>
+
+<h2 id="やらなかったこと">やらなかったこと</h2>
+
+<ul>
+<li>モデルアルゴリズムの変更</li>
+</ul>
+
+<h1 id="merpay">merpay</h1>
+
+<h1 id="信用スコアリング">信用スコアリング</h1>
+
+<h2 id="注力課題">注力課題</h2>
+
+<ul>
+<li>信用スコアリング</li>
+<li>不正検知</li>
+<li>レコメンド</li>
+</ul>
+
+<h2 id="信用スコアリングについて">信用スコアリングについて</h2>
+
+<p>信用スコアリング＝融資手法
+メルカリ月一払い
+購入後まとめて月イチで決済できる</p>
+
+<h2 id="問題設定">問題設定</h2>
+
+<p>目的変数＝払えるか
+説明変数＝ユーザの振る舞い
+ゴール＝収益を上げる（未返済のお客を減らすのでない
+モデルの評価関数＝AUC
+支払い可能性を正しくランキングできるかに徹する
+ビジネスゴール＝MLエンジニアのゴールになる</p>
+
+<h2 id="できなかったこと">できなかったこと</h2>
+
+<p>特徴量のドメイン知識（今のところ使えていない</p>
+
+<p>仮説
+- 銀行モデルの特徴量は経済状態を表す
+- メルカリない経済は小さい
+- 経済的な理由でない遅延が多い</p>
+
+<h2 id="今後の課題">今後の課題</h2>
+
+<ul>
+<li><p>信用リスクの定量化
+推定損失分布を作る</p></li>
+
+<li><p>テールリスクが大きいモデル</p></li>
+</ul>
+
+<h1 id="mlチームの開発フローを滑らかにした話">MLチームの開発フローを滑らかにした話</h1>
+
+<h2 id="sqlシンタックスチェック">SQLシンタックスチェック</h2>
+
+<ul>
+<li>SQLの書き方ルールを決める</li>
+</ul>
+
+<h2 id="cloud-composer">Cloud Composer</h2>
+
+<p>使ってみた</p>
+
+<h1 id="デリゲーションポーカーやってみた">デリゲーションポーカーやってみた</h1>
+
+<p>エンジニアのための組織論の内容</p>
+
+<h1 id="機械学習モデル開発を効率化した方法">機械学習モデル開発を効率化した方法</h1>
+
+<h2 id="データの特徴">データの特徴</h2>
+
+<p>データが少ない
+ユーザの興味は千差万別
+コンテンツのフォーマットは様々
+過去N年分のデータを使ってレコメンド
+リアルタイム性はあまり必要ない</p>
+
+<p>luigiのラップしたものを利用</p>
 
   </section>
   <footer>
@@ -92,11 +226,11 @@
       <div class="c-pagination__ctrl">
         <div class="c-pagination__newer">
           
+          <a href="http://localhost:1313/posts/hello_world/">Newer</a>
           
         </div>
         <div class="c-pagination__older">
           
-          <a href="http://localhost:1313/posts/merpay_ml/">Older</a>
           
         </div>
       </div>
