@@ -403,6 +403,46 @@ Webページの来訪者にどの広告を表示するか，どのデザイン�
 Gellyらはバンディット問題のアルゴリズムを囲碁の木探索に用いるMoGoを実装することに成功した．
 MoGoはKocsis and Szepesv´ariによる階層型のバンディットのためのUCT(Upper Confidence bound applied to Trees)戦略を用いた．これは２章のUCB(Upper Confidence Bound)アルゴリズムから導かれる．</li>
 </ul>
+
+<h2 id="確率的バンディット設定と敵対的バンディット設定-マルコフ性をもつバンディット設定">確率的バンディット設定と敵対的バンディット設定，マルコフ性をもつバンディット設定</h2>
+
+<p>報酬が支払われる過程に仮定されている性質によって，バンディット問題は３つの基盤となる定式化がある．その３種類とは確率的設定，敵対的設定，マルコフ性をもつ設定である．
+本稿では確率的設定と敵対的設定を取り上げる．マルコフ性を持つバンディット設定については Mahajan and TeneketzisやGittinsらを参照．</p>
+
+<h2 id="リグレット">リグレット</h2>
+
+<p>バンディット問題において，プレイヤーや予測者（バンディットアルゴリズムを実装した人）の振る舞いを解析するために，最適な戦略を取った人との性能の差を比較する．
+ここで，最適な戦略とは$n$ステップの間，一貫して最適なアームを引き続けることである．
+言い換えれば，最適な戦略を取らなかったことに対する予測者のRegret（後悔）を調査する．</p>
+
+<p>アーム数を$K\ge2$とする．
+各アーム$i=1\dots K$に紐付いた未知の報酬を$X_{i,1},X_{i,2},\dots$とする．
+予測者は各ステップ$t=1,2,\dots$でアーム$I_t$を選び，紐付いた報酬$X_{I_t,t}$を受け取る．
+nステップ後のリグレットは
+$$R_n=\max_{t=1,\dots,K}\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}$$
+期間nを前もって知らなくて良い場合，予測者はanytimeであるという．
+予測者がanytimeであるとき，アルゴリズムをいつでも停止することができる．</p>
+
+<p>一般に，報酬$X_{i,t}$と予測者の選択$I_t$がともに確率的であるため，以下の２種類の平均リグレットを考えられる．
+1. 期待リグレット(expected regret)
+  $$\mathbb{E}R_n=\mathbb{E}\left[\max_{i=1,\dots,K}\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}\right]$$
+2. 擬リグレット(Pseudo Regret)
+  $$\overline{R}_n=\max_{i=1,\dots,K}\mathbb{E}\left[\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}\right]$$
+両方の定義で，報酬と予測者の行動の両方について期待値を取っている．
+擬リグレットは期待値をとった最適な報酬と比較している．一方で，期待リグレットは実際の報酬に対して最適な行動を取ったときのリグレットの期待値である．
+このため，擬リグレットは常に期待リグレットより弱い．
+フォーマルに書くと$\overline{R}_n\le\mathbb{E}R_n$となる．</p>
+
+<p>本当に？</p>
+
+<p>$i=1,\dots,n$, $0\le\theta\le1$に対して，$$\theta x_i+(1-\theta)y_i\le\theta \max_jx_j+(1-\theta)\max_jy_j$$
+が成り立つ．左辺の最大値を考えると，$$\max_i\theta x_i+(1-\theta)y_i\le\theta \max_jx_j+(1-\theta)\max_jy_j$$
+が成り立つ．よって，$\max$は凸関数である．
+そこで，イェンゼンの不等式$f(\mathbb{E}[x])\le\mathbb{E}[f(x)]$($f$は凸関数)が成り立つ．</p>
+
+<p>以上より本当に擬リグレットは期待リグレットより弱かった．</p>
+
+<p>閑話休題</p>
         </div>
         <footer class="article-footer">
     <a data-url="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/" data-id="7c4acddada235bd59ac803158a619778" class="article-share-link">
