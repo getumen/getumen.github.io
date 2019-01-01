@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>雑記</title>
-    <link>https://getumen.github.io/</link>
-    <description>Recent content on 雑記</description>
+    <title>Bandit on 雑記</title>
+    <link>https://getumen.github.io/tags/bandit/</link>
+    <description>Recent content in Bandit on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 01 Jan 2019 00:01:00 +0900</lastBuildDate>
     
-	<atom:link href="https://getumen.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://getumen.github.io/tags/bandit/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -44,15 +44,6 @@
 このページでは概要の全訳と他の投稿のリンクを貼る．&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>https://getumen.github.io/about/</link>
-      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://getumen.github.io/about/</guid>
-      <description>自己紹介 現在都内IT企業にてデータエンジニアとして働いています． 機械学習やソフトウェアアーキテクチャに興味があります． 機械学習のモデルを作成するだけでなく，プロダクトとして設計開発運用できるようなシステムを作れるようになるため勉強しています． このブログを通して，機械学習の基礎やドメイン駆動設計，クリーンアーキテクチャなどについて学んだことを整理していけたらと思います．</description>
     </item>
     
   </channel>
