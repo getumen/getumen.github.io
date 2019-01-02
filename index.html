@@ -289,10 +289,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-02 21:34:59 &#43;0900 JST" itemprop="datePublished">2019-01-02</time>
             &middot;
-            2214
+            0
             words
             &middot;
-            5
+            0
             minute read
         </div>
         
@@ -336,7 +336,31 @@
 
         <div class="article-entry" itemprop="articleBody">
             <p>
-                導入 確率的バンディット問題の設定とは それぞれのアームを$i=1,\dots,K$とする． 対応する$[0,1]$上の未知の確率分布を$\nu_
+                <h1 id="導入">導入</h1>
+
+<h2 id="確率的バンディット問題の設定とは">確率的バンディット問題の設定とは</h2>
+
+<p>それぞれのアームを$i=1,\dots,K$とする．
+対応する$[0,1]$上の未知の確率分布を$\nu_i$とする．
+選択したアームに対応するが確率分布$\nu_i$には依存しない報酬を$X_{i,t}$とする．</p>
+
+<hr />
+
+<p><em>確率的バンディット問題</em><br />
+既知のパラメータ：アーム数$K$，取りうるラウンド数$n\ge K$<br />
+未知のパラメータ：$[0,1]$上の$K$個の確率分布$\nu_1,\nu_2,\dots,\nu_K$<br />
+各ラウンドに対して，<br />
+1. 予測者はアーム$I_t\in\{1,\dots,K\}$を選ぶ
+2. 与えられた選択$I_t$に対して，過去に依存しない報酬$X_{I_t,t}\sim\nu_{I_t}$が環境から支払われ，予測者に明らかになる．</p>
+
+<hr />
+
+<p>$i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）を$\mu_i$と記す．
+また，平均が最大のアームの平均値とそのアームのインデックスを$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*=\rm arg\max_{i=1,\dots,K}\mu_i$とする．
+擬リグレットは$$\overline{R}_n=n\mu^*-\sum_{t=1}^n\mathbb{E}[\mu_{I_t}]$$
+とかける．</p>
+
+<p></p>
             </p>
             <p class="article-more-link">
                 <a href="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/">
