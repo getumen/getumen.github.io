@@ -6,10 +6,19 @@
     <description>Recent content on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 01 Jan 2019 00:01:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 02 Jan 2019 21:34:59 +0900</lastBuildDate>
     
 	<atom:link href="https://getumen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)</title>
+      <link>https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/</link>
+      <pubDate>Wed, 02 Jan 2019 21:34:59 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/</guid>
+      <description>導入 確率的バンディット問題の設定とは それぞれのアームを$i=1,\dots,K$とする． 対応する$[0,1]$上の未知の確率分布を$\nu_</description>
+    </item>
     
     <item>
       <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (1)</title>
