@@ -6,10 +6,34 @@
     <description>Recent content in Regret Analysis of Stochastic and Nonstochastic Multi Armed Bandit Problems on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Wed, 02 Jan 2019 21:34:59 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jan 2019 00:19:02 +0900</lastBuildDate>
     
 	<atom:link href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)</title>
+      <link>https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/</link>
+      <pubDate>Thu, 03 Jan 2019 00:19:02 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/</guid>
+      <description>&lt;h1 id=&#34;２章-stochastic-bandits-fundamental-results&#34;&gt;２章 Stochastic Bandits: Fundamental Results&lt;/h1&gt;
+
+&lt;h2 id=&#34;確率的バンディット問題とは&#34;&gt;確率的バンディット問題とは&lt;/h2&gt;
+
+&lt;p&gt;各アームを$i=1,\dots,K$とし，アームに対応する未知の確率分布を$\nu_i$とする．
+各ステップ$t=1,2,\dots$で，予測者はアーム$I_{t}\in{1,\dots,K}$を選び，$\nu_{I_t}$から（過去とは独立に）報酬$X_{I_t,t}$を受け取る．
+アーム$i$の平均を$\mu_i$とし，アームの平均の最大値と，最大値を取るアームのインデックスをそれぞれ$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*\in\max_{i=1,\dots,K}\mu_i$とする．
+確率的設定では擬リグレットを主に考える．
+これは，確率的設定においては実際の報酬について最適な行動と比較するより，最適な行動の期待値と比較するほうが自然であるためだ．&lt;/p&gt;
+
+&lt;p&gt;以下のように擬リグレットを書き換えた定式化も用いる．
+最初から$s$ラウンドまでのプレイヤーに選ばれたアーム$i$の回数を$T_i(s)=\sum_{t=1}^s\mathbb{1}_{I_t=i}$とする．
+アーム$i$のsuboptimalityパラメータを$\Delta_i=\mu^*-\mu_i$とする．
+擬リグレットは$$\overline{R}_n=\left(\sum_{i=1}^K\mathbb{E}T_i(n)\right)\mu^*-\sum_{i=1}^K\mathbb{E}T_i(n)\mu_i=\sum_{i=1}^K\Delta_i\mathbb{E}T_i(n)$$と書くことができる．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)</title>
@@ -17,13 +41,13 @@
       <pubDate>Wed, 02 Jan 2019 21:34:59 +0900</pubDate>
       
       <guid>https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/</guid>
-      <description>&lt;h1 id=&#34;導入&#34;&gt;導入&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;１章-導入&#34;&gt;１章 導入&lt;/h1&gt;
 
 &lt;h2 id=&#34;確率的バンディット問題の設定とは&#34;&gt;確率的バンディット問題の設定とは&lt;/h2&gt;
 
 &lt;p&gt;それぞれのアームを$i=1,\dots,K$とする．
 対応する$[0,1]$上の未知の確率分布を$\nu_i$とする．
-選択したアームに対応するが確率分布$\nu_i$には依存しない報酬を$X_{i,t}$とする．&lt;/p&gt;
+選択したアームに対応するが確率分布$\nu_i$から独立にサンプリングされた報酬を$X_{i,t}$とする．&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -50,7 +74,7 @@
       <pubDate>Tue, 01 Jan 2019 00:01:00 +0900</pubDate>
       
       <guid>https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/</guid>
-      <description>&lt;h1 id=&#34;導入&#34;&gt;導入&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;１章-導入&#34;&gt;１章 導入&lt;/h1&gt;
 
 &lt;h2 id=&#34;マルチアームバンディット問題とは&#34;&gt;マルチアームバンディット問題とは&lt;/h2&gt;
 
