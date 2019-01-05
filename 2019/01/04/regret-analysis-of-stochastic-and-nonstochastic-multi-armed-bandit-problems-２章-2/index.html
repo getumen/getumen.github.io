@@ -433,7 +433,7 @@ $$T_i(t-1)&lt;\frac{\alpha\ln t}{\psi^*(\Delta_i/2)}\tag{2.7}$$</p>
 <p>$I_t=i$ならば，以下の３つの不等式のうち少なくとも１つは成り立つ．</p>
 </blockquote>
 
-<p>このあと，２つの式がどれも成り立たないと仮定しきたとき，アルゴリズムが矛盾するということが示されて，３つのうち少なくとも１つは成り立つことが示される．
+<p>このあと，３つの式がどれも成り立たないと仮定しきたとき，アルゴリズムが矛盾するということが示されて，３つのうち少なくとも１つは成り立つことが示される．
 しかし，これらの式がどこから降ってきたのかわからないので，考えてみる．</p>
 
 <p>アーム$i$が引かれたとき，次の３つの場合が考えられる．（信頼区間の上界と下界はUCBスコアを導入する際に導出してある．）</p>
@@ -490,7 +490,7 @@ $$\le\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+2\sum_{t=u+1}^{\infty}\frac{1}{t^{\a
 短冊を考えて
 $$\le\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+2\int_{t=u}^{\infty}\frac{1}{t^{\alpha-1}}dt$$
 積分を解いて
-$$\le\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+\frac{2}{-(\alpha-2)}\left[\frac{1}{t^{\alpha-2}}\right]_{u}^\infty=\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+\frac{2}{u^{\alpha-2}}$$</p>
+$$\le\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+\frac{2}{-(\alpha-2)}\left[\frac{1}{t^{\alpha-2}}\right]_{u}^\infty=\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+\frac{2}{u^{\alpha-2}(\alpha-2)}$$</p>
 
 <p>ここで，シンプルな計算によれば
 $$\frac{2}{u^{\alpha-2}(\alpha-2)}\le\frac{\alpha}{\Delta_i(\alpha-2)}$$
