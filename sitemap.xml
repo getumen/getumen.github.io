@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/</loc>
+    <lastmod>2019-01-04T20:51:04+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/</loc>
     <lastmod>2019-01-03T00:19:02+09:00</lastmod>
   </url>
@@ -29,7 +34,7 @@
   
   <url>
     <loc>https://getumen.github.io/tags/bandit/</loc>
-    <lastmod>2019-01-03T00:19:02+09:00</lastmod>
+    <lastmod>2019-01-04T20:51:04+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -40,37 +45,37 @@
   
   <url>
     <loc>https://getumen.github.io/categories/machine-learning/</loc>
-    <lastmod>2019-01-03T00:19:02+09:00</lastmod>
+    <lastmod>2019-01-04T20:51:04+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://getumen.github.io/post/</loc>
-    <lastmod>2019-01-03T00:19:02+09:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://getumen.github.io/tags/reading/</loc>
-    <lastmod>2019-01-03T00:19:02+09:00</lastmod>
+    <lastmod>2019-01-04T20:51:04+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems/</loc>
-    <lastmod>2019-01-03T00:19:02+09:00</lastmod>
+    <lastmod>2019-01-04T20:51:04+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://getumen.github.io/tags/</loc>
-    <lastmod>2019-01-03T00:19:02+09:00</lastmod>
+    <lastmod>2019-01-04T20:51:04+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</loc>
+    <lastmod>2019-01-04T20:51:04+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://getumen.github.io/</loc>
-    <lastmod>2019-01-03T00:19:02+09:00</lastmod>
+    <lastmod>2019-01-04T20:51:04+09:00</lastmod>
     <priority>0</priority>
   </url>
   

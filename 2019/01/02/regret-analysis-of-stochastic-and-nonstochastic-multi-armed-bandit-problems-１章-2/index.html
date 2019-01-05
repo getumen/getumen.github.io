@@ -21,29 +21,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)" />
-<meta property="og:description" content="１章 導入
-
-確率的バンディット問題の設定とは
-
-それぞれのアームを$i=1,\dots,K$とする．
-対応する$[0,1]$上の未知の確率分布を$\nu_i$とする．
-選択したアームに対応するが確率分布$\nu_i$から独立にサンプリングされた報酬を$X_{i,t}$とする．
-
-
-
-確率的バンディット問題
-既知のパラメータ：アーム数$K$，取りうるラウンド数$n\ge K$
-未知のパラメータ：$[0,1]$上の$K$個の確率分布$\nu_1,\nu_2,\dots,\nu_K$
-各ラウンドに対して，
-1. 予測者はアーム$I_t\in\{1,\dots,K\}$を選ぶ
-2. 与えられた選択$I_t$に対して，過去に依存しない報酬$X_{I_t,t}\sim\nu_{I_t}$が環境から支払われ，予測者に明らかになる．
-
-
-
-$i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）を$\mu_i$と記す．
-また，平均が最大のアームの平均値とそのアームのインデックスを$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*=\rm arg\max_{i=1,\dots,K}\mu_i$とする．
-擬リグレットは$$\overline{R}_n=n\mu^*-\sum_{t=1}^n\mathbb{E}[\mu_{I_t}]$$
-とかける．
+<meta property="og:description" content="今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．
 
 " />
 <meta property="og:type" content="article" />
@@ -68,29 +46,7 @@ $i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）
     
     
 <meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)">
-<meta itemprop="description" content="１章 導入
-
-確率的バンディット問題の設定とは
-
-それぞれのアームを$i=1,\dots,K$とする．
-対応する$[0,1]$上の未知の確率分布を$\nu_i$とする．
-選択したアームに対応するが確率分布$\nu_i$から独立にサンプリングされた報酬を$X_{i,t}$とする．
-
-
-
-確率的バンディット問題
-既知のパラメータ：アーム数$K$，取りうるラウンド数$n\ge K$
-未知のパラメータ：$[0,1]$上の$K$個の確率分布$\nu_1,\nu_2,\dots,\nu_K$
-各ラウンドに対して，
-1. 予測者はアーム$I_t\in\{1,\dots,K\}$を選ぶ
-2. 与えられた選択$I_t$に対して，過去に依存しない報酬$X_{I_t,t}\sim\nu_{I_t}$が環境から支払われ，予測者に明らかになる．
-
-
-
-$i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）を$\mu_i$と記す．
-また，平均が最大のアームの平均値とそのアームのインデックスを$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*=\rm arg\max_{i=1,\dots,K}\mu_i$とする．
-擬リグレットは$$\overline{R}_n=n\mu^*-\sum_{t=1}^n\mathbb{E}[\mu_{I_t}]$$
-とかける．
+<meta itemprop="description" content="今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．
 
 ">
 
@@ -101,33 +57,11 @@ $i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）
 
 
 
-<meta itemprop="keywords" content="bandit,reading,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
+<meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)"/>
-<meta name="twitter:description" content="１章 導入
-
-確率的バンディット問題の設定とは
-
-それぞれのアームを$i=1,\dots,K$とする．
-対応する$[0,1]$上の未知の確率分布を$\nu_i$とする．
-選択したアームに対応するが確率分布$\nu_i$から独立にサンプリングされた報酬を$X_{i,t}$とする．
-
-
-
-確率的バンディット問題
-既知のパラメータ：アーム数$K$，取りうるラウンド数$n\ge K$
-未知のパラメータ：$[0,1]$上の$K$個の確率分布$\nu_1,\nu_2,\dots,\nu_K$
-各ラウンドに対して，
-1. 予測者はアーム$I_t\in\{1,\dots,K\}$を選ぶ
-2. 与えられた選択$I_t$に対して，過去に依存しない報酬$X_{I_t,t}\sim\nu_{I_t}$が環境から支払われ，予測者に明らかになる．
-
-
-
-$i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）を$\mu_i$と記す．
-また，平均が最大のアームの平均値とそのアームのインデックスを$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*=\rm arg\max_{i=1,\dots,K}\mu_i$とする．
-擬リグレットは$$\overline{R}_n=n\mu^*-\sum_{t=1}^n\mathbb{E}[\mu_{I_t}]$$
-とかける．
+<meta name="twitter:description" content="今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．
 
 "/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
@@ -264,7 +198,7 @@ $i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        4
+        5
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -397,7 +331,7 @@ $i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/reading">reading</a>
+                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">読書</a>
                 &middot;
                 
                 
@@ -411,7 +345,11 @@ $i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="１章-導入">１章 導入</h1>
+            <p>今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．</p>
+
+<p></p>
+
+<h1 id="１章-導入">１章 導入</h1>
 
 <h2 id="確率的バンディット問題の設定とは">確率的バンディット問題の設定とは</h2>
 
@@ -434,8 +372,6 @@ $i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）
 また，平均が最大のアームの平均値とそのアームのインデックスを$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*=\rm arg\max_{i=1,\dots,K}\mu_i$とする．
 擬リグレットは$$\overline{R}_n=n\mu^*-\sum_{t=1}^n\mathbb{E}[\mu_{I_t}]$$
 とかける．</p>
-
-<p></p>
 
 <h2 id="敵対的バンディット問題の設定とは">敵対的バンディット問題の設定とは</h2>
 
@@ -639,6 +575,32 @@ Gittinsは効率的に計算できる貪欲法を提案した．</p>
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/tanzaku.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-01-04 20:51:04 &#43;0900 JST" itemprop="datePublished">2019-01-04</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" class="thumbnail">
                     
                         <span style="background-image:url(https://getumen.github.io/images/banners/kimochi_positive_woman.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)" class="thumbnail-image"></span>
@@ -759,7 +721,7 @@ Gittinsは効率的に計算できる貪欲法を提案した．</p>
                 <a class="category-list-link" href="https://getumen.github.io/categories/machine-learning">
                     machine-learning
                 </a>
-                <span class="category-list-count">4</span>
+                <span class="category-list-count">5</span>
             </li>
             
         </ul>
@@ -784,15 +746,7 @@ Gittinsは効率的に計算できる貪欲法を提案した．</p>
                 <a class="category-list-link" href="https://getumen.github.io/tags/bandit">
                     bandit
                 </a>
-                <span class="category-list-count">4</span>
-            </li>
-            
-            <li class="category-list-item">
-                
-                <a class="category-list-link" href="https://getumen.github.io/tags/reading">
-                    reading
-                </a>
-                <span class="category-list-count">4</span>
+                <span class="category-list-count">5</span>
             </li>
             
             <li class="category-list-item">
@@ -800,7 +754,15 @@ Gittinsは効率的に計算できる貪欲法を提案した．</p>
                 <a class="category-list-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">
                     regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems
                 </a>
-                <span class="category-list-count">4</span>
+                <span class="category-list-count">5</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">
+                    読書
+                </a>
+                <span class="category-list-count">5</span>
             </li>
             
         </ul>
@@ -823,10 +785,10 @@ Gittinsは効率的に計算できる貪欲法を提案した．</p>
         <a href="https://getumen.github.io/tags/bandit" style="font-size: 12px;">bandit</a>
         
         
-        <a href="https://getumen.github.io/tags/reading" style="font-size: 12px;">reading</a>
-        
-        
         <a href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems" style="font-size: 12px;">regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems</a>
+        
+        
+        <a href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8" style="font-size: 12px;">読書</a>
         
     </div>
 </div>

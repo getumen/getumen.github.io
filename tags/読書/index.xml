@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>雑記</title>
-    <link>https://getumen.github.io/</link>
-    <description>Recent content on 雑記</description>
+    <title>読書 on 雑記</title>
+    <link>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</link>
+    <description>Recent content in 読書 on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Fri, 04 Jan 2019 20:51:04 +0900</lastBuildDate>
     
-	<atom:link href="https://getumen.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -68,15 +68,6 @@
 このページでは概要の全訳と他の投稿のリンクを貼る．&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>https://getumen.github.io/about/</link>
-      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://getumen.github.io/about/</guid>
-      <description>自己紹介 現在都内IT企業にてデータエンジニアとして働いています． 機械学習やソフトウェアアーキテクチャに興味があります． このブログを通して，学</description>
     </item>
     
   </channel>
