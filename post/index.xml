@@ -6,10 +6,21 @@
     <description>Recent content in Posts on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 04 Jan 2019 20:51:04 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 05 Jan 2019 19:58:34 +0900</lastBuildDate>
     
 	<atom:link href="https://getumen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)</title>
+      <link>https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/</link>
+      <pubDate>Sat, 05 Jan 2019 19:58:34 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/</guid>
+      <description>&lt;p&gt;今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)</title>
