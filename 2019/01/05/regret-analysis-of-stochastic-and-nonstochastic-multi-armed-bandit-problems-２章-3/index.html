@@ -439,9 +439,17 @@ $$\mathbb{P}(T_2(n)&lt; f_n)=\mathcal{o}(1)$$
 $$\mathbb{E}T_2(n)\ge(1+\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)}{kl(\mu_2,\mu_1)}$$
 これを擬リグレットの定義に入れると題意を得る．</p>
 
-<hr />
-
 <p>最後の$n$回までにアーム２を引く回数の期待値の下界で$(1+\mathcal{o})$が出てくるのがどうやるのかわからなかった(´・ω・｀)</p>
+
+<p>手を動かしてみる．</p>
+
+<p>$\mathbb{P}(T_2(n)&lt; f_n)=\mathcal{o}(1)$であるから$\mathbb{P}(T_2(n)\ge f_n)=1-\mathcal{o}(1)$である．
+マルコフの不等式$\mathbb{P}(|X|\ge a)\le\frac{\mathbb{E}(|X|)}{a}$を使って，$\frac{\mathbb{E}T_2(n)}{f_n}\ge\mathbb{P}(T_2(n)\ge f_n)=1-\mathcal{o}(1)$
+となり，
+$$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)}{kl(\mu_2,\mu_1)}$$
+が得られる，</p>
+
+<hr />
         </div>
         <footer class="article-footer">
     <a data-url="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" data-id="9dea8f283c33bf6053d56698a837a03d" class="article-share-link">
