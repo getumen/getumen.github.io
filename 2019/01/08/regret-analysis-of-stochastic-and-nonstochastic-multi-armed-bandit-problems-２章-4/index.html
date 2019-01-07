@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja-jp">
 <head>
-    <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1) &middot; 雑記</title>
+    <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4) &middot; 雑記</title>
     <meta name="generator" content="Hugo 0.40.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
       <meta name="description" content="日々学んだことをメモします">
     
     
-    <link rel="canonical" href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/"/>
+    <link rel="canonical" href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/"/>
     <link rel="icon" href="https://getumen.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
@@ -20,20 +20,20 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" />
-<meta property="og:description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．
+    <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" />
+<meta property="og:description" content="今日読んだ部分ではUCBの定数部分の改善法について，研究を紹介しています．
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" />
+<meta property="og:url" content="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" />
 
-  <meta property="og:image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png" />
+  <meta property="og:image" content="https://getumen.github.io/images/banners/document_research.png" />
 
 
 
-<meta property="article:published_time" content="2019-01-03T00:19:02&#43;09:00"/>
+<meta property="article:published_time" content="2019-01-08T04:38:02&#43;09:00"/>
 
-<meta property="article:modified_time" content="2019-01-03T00:19:02&#43;09:00"/>
+<meta property="article:modified_time" content="2019-01-08T04:38:02&#43;09:00"/>
 
 
 
@@ -47,27 +47,27 @@
 
     
     
-<meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)">
-<meta itemprop="description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．
+<meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)">
+<meta itemprop="description" content="今日読んだ部分ではUCBの定数部分の改善法について，研究を紹介しています．
 
 ">
 
 
-<meta itemprop="datePublished" content="2019-01-03T00:19:02&#43;09:00" />
-<meta itemprop="dateModified" content="2019-01-03T00:19:02&#43;09:00" />
+<meta itemprop="datePublished" content="2019-01-08T04:38:02&#43;09:00" />
+<meta itemprop="dateModified" content="2019-01-08T04:38:02&#43;09:00" />
 <meta itemprop="wordCount" content="0">
 
-  <meta itemprop="image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png">
+  <meta itemprop="image" content="https://getumen.github.io/images/banners/document_research.png">
 
 
 
 <meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
 
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png"/>
+<meta name="twitter:image" content="https://getumen.github.io/images/banners/document_research.png"/>
 
-<meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)"/>
-<meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．
+<meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)"/>
+<meta name="twitter:description" content="今日読んだ部分ではUCBの定数部分の改善法について，研究を紹介しています．
 
 "/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
@@ -289,13 +289,13 @@
     <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
-            <img src="https://getumen.github.io/images/banners/kimochi_positive_woman.png" class="article-banner">
+            <img src="https://getumen.github.io/images/banners/document_research.png" class="article-banner">
         
 
         <header class="article-header">
-    <a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/">
+    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/">
     <h1 class="article-title" itemprop="name">
-        Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)
+        Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)
     </h1>
     </a>
     <div class="article-meta">
@@ -303,7 +303,7 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2019-01-03 00:19:02 &#43;0900 JST" itemprop="datePublished">2019-01-03</time>
+            <time datetime="2019-01-08 04:38:02 &#43;0900 JST" itemprop="datePublished">2019-01-08</time>
             &middot;
             0
             words
@@ -351,46 +351,44 @@
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <p>今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．</p>
+            <p>今日読んだ部分ではUCBの定数部分の改善法について，研究を紹介しています．</p>
 
 <p></p>
 
 <h1 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h1>
 
-<h2 id="確率的バンディット問題とは">確率的バンディット問題とは</h2>
+<h2 id="2-4-refinements-and-bibliographic-remarks">2.4 Refinements and Bibliographic Remarks</h2>
 
-<p>各アームを$i=1,\dots,K$とし，アームに対応する未知の確率分布を$\nu_i$とする．
-各ステップ$t=1,2,\dots$で，予測者はアーム$I_{t}\in{1,\dots,K}$を選び，$\nu_{I_t}$から（過去とは独立に）報酬$X_{I_t,t}$を受け取る．
-アーム$i$の平均を$\mu_i$とし，アームの平均の最大値と，最大値を取るアームのインデックスをそれぞれ$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*\in\rm arg\max_{i=1,\dots,K}\mu_i$とする．
-確率的設定では擬リグレットを主に考える．
-これは，確率的設定においては実際の報酬について最適な行動と比較するより，最適な行動の期待値と比較するほうが自然であるためだ．</p>
+<p>ここで，いくつかの細かな改善点を議論する．
+以下では有界な報酬を考える（2.4.7を除いて）</p>
 
-<p>以下のように擬リグレットを書き換えた定式化もリグレットとして用いる．
-最初から$s$ラウンドまでのプレイヤーに選ばれたアーム$i$の回数を$T_i(s)=\sum_{t=1}^s\mathbb{1}_{I_t=i}$とする．
-アーム$i$のsuboptimalityパラメータを$\Delta_i=\mu^*-\mu_i$とする．
-擬リグレットは$$\overline{R}_n=\left(\sum_{i=1}^K\mathbb{E}T_i(n)\right)\mu^*-\sum_{i=1}^K\mathbb{E}T_i(n)\mu_i=\sum_{i=1}^K\Delta_i\mathbb{E}T_i(n)$$と書くことができる．</p>
+<h3 id="2-4-1-improved-constants">2.4.1 Improved Constants</h3>
 
-<h2 id="2-1-optimism-in-face-of-uncertainty">2.1 Optimism in Face of Uncertainty</h2>
+<p>UCBの証明のリグレットバウンドは２つの方法で改善できる．
+１つは異なる時間ステップでのユニオンバウンドを“peeling” argumentに置き換えることだ．
+これにより，$\alpha&gt;1$に対して，ログオーダーのリグレットを達成できる．
+２つ目の改善はGarivier and Capp´eによって提案された式(2.5)–(2.7)を使うより曖昧な条件を使う方法だ．
+これにより，$\alpha$-UCBのリグレットのオーダが$\alpha&gt;1$に対して，$\frac{\alpha}{2}\ln n$となる．
+$\alpha$が位置に近い値より改善できないのは下界からわかる．</p>
 
-<p>確率的バンディット問題の難しさは探索と活用のジレンマにある．
-この問題に対して良い戦略は探索と活用を同時に行うことだ．</p>
+<h3 id="2-4-2-second-order-bounds">2.4.2 Second-Order Bounds</h3>
 
-<p>これを行うためのかんたんなヒューリスティックの原則は「不確かなときは楽観的に(optimism
-in face of uncertainty)」と呼ばれるものだ.
-このアイディアはとても汎用的で，不確かな環境の中で多くの連続した意思決定を行っていく問題に用いられる．
-予測者が環境から蓄積されたデータを持っていて，次にどのように行動するか決めなければならない場合を考える．
-はじめに，データに矛盾しない実際にあり得る環境の集合を構築する（一般に，concentration inequalitiesを用いて）．
-次に，この集合の中から最も好ましい環境を特定する．
-不確かなときは楽観的にの原則に基づき，最も好ましく，実現可能な環境の中で最適な決定を下す．
-今後見ていくように，この原則によりシンプルでありながら，確率的バンディット問題に対してほとんど最適なアルゴリズムを作ることができる．</p>
+<p>$\alpha$-UCBは最適なリグレットオーダであるが，式 (2.4)と定理2.2はギャップがある．
+これに対して，いくつかの改善法が提案されている．</p>
+
+<p>Audibertらによって提案されたUCB-Vはヘフディングの不等式の代わりにBernsteinの不等式を用いた．
+他のやり方ではL2ノルムで距離を図るのではなく，KLダイバージェンスで測る方法だ．
+Honda and Takemuraは漸近的な結果を示し，Garivier and Capp´eやMaillardらはKL-UCBという手法を示した．
+このリグレットは$\alpha&gt;1$にたいして，$$$\sum_{i:\Delta_i&gt;0}\frac{\Delta_i}{kl(\mu_i,\mu^*)}\alpha\ln n+\mathcal{O}(1)$$である．
+KL-UCBはベルヌーイ分布に対して最適であり，どんな報酬分布に対しても$\alpha$-UCBより優れている．</p>
         </div>
         <footer class="article-footer">
-    <a data-url="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" data-id="1ca9a44f5a21bb83a610281a6e26e58b" class="article-share-link">
+    <a data-url="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" data-id="c97e999dea6cfb53d0c512c084466d42" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
     
-    <a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/#disqus_thread" class="article-comment-link">
+    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/#disqus_thread" class="article-comment-link">
         Comments
     </a>
     
@@ -466,21 +464,14 @@ in face of uncertainty)」と呼ばれるものだ.
     
 <nav id="article-nav">
     
-    <a href="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Older
       </strong>
-      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)</div>
+      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)</div>
     </a>
     
 
-    
-    <a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Newer
-      </strong>
-      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)</div>
-    </a>
     
 </nav>
 
@@ -530,7 +521,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/document_research.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/document_research.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -556,7 +547,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/hikaku_ball_woman.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/hikaku_ball_woman.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -582,7 +573,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/tanzaku.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/tanzaku.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -608,7 +599,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/kimochi_positive_woman.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/kimochi_positive_woman.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -634,7 +625,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/money_slot_machine.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/money_slot_machine.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" class="thumbnail-image"></span>
                     
                     </a>
                 </div>

@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:updated_time" content="2019-01-05T19:58:34&#43;09:00"/>
+<meta property="og:updated_time" content="2019-01-08T04:38:02&#43;09:00"/>
 
 
 
@@ -184,7 +184,7 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        6
+        7
         <span>Posts</span>
       </div>
       <div class="article-info-block">
@@ -267,6 +267,164 @@
     <section id="main">
     
     
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" itemprop="url">
+            <img src="https://getumen.github.io/images/banners/document_research.png" class="article-banner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/">
+    <h1 class="article-title" itemprop="name">
+        Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2019-01-08 04:38:02 &#43;0900 JST" itemprop="datePublished">2019-01-08</time>
+            &middot;
+            0
+            words
+            &middot;
+            0
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">machine learning</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/bandit">bandit</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">読書</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                <p>今日読んだ部分ではUCBの定数部分の改善法について，研究を紹介しています．</p>
+
+<p></p>
+            </p>
+            <p class="article-more-link">
+                <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" data-id="c97e999dea6cfb53d0c512c084466d42" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
 
 <article class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
@@ -1240,6 +1398,32 @@
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/document_research.png)" alt="雑記" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-01-08 04:38:02 &#43;0900 JST" itemprop="datePublished">2019-01-08</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" class="thumbnail">
                     
                         <span style="background-image:url(https://getumen.github.io/images/banners/hikaku_ball_woman.png)" alt="雑記" class="thumbnail-image"></span>
@@ -1342,32 +1526,6 @@
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/" class="thumbnail">
-                    
-                        <span style="background-image:url(https://getumen.github.io/images/banners/man_vs_ai_igo.png)" alt="雑記" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
-                        machine learning
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (1)</a></p>
-                    <p class="item-date">
-                        <time datetime="2019-01-01 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-01-01</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1386,7 +1544,7 @@
                 <a class="category-list-link" href="https://getumen.github.io/categories/machine-learning">
                     machine-learning
                 </a>
-                <span class="category-list-count">6</span>
+                <span class="category-list-count">7</span>
             </li>
             
         </ul>
@@ -1411,7 +1569,7 @@
                 <a class="category-list-link" href="https://getumen.github.io/tags/bandit">
                     bandit
                 </a>
-                <span class="category-list-count">6</span>
+                <span class="category-list-count">7</span>
             </li>
             
             <li class="category-list-item">
@@ -1419,7 +1577,7 @@
                 <a class="category-list-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">
                     regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems
                 </a>
-                <span class="category-list-count">6</span>
+                <span class="category-list-count">7</span>
             </li>
             
             <li class="category-list-item">
@@ -1427,7 +1585,7 @@
                 <a class="category-list-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">
                     読書
                 </a>
-                <span class="category-list-count">6</span>
+                <span class="category-list-count">7</span>
             </li>
             
         </ul>
