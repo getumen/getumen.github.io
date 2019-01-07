@@ -27,6 +27,8 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" />
 
+  <meta property="og:image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png" />
+
 
 
 <meta property="article:published_time" content="2019-01-05T19:58:34&#43;09:00"/>
@@ -55,11 +57,15 @@
 <meta itemprop="dateModified" content="2019-01-05T19:58:34&#43;09:00" />
 <meta itemprop="wordCount" content="0">
 
+  <meta itemprop="image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png">
+
 
 
 <meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
 
-    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png"/>
+
 <meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)"/>
 <meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています
 
@@ -439,7 +445,7 @@ $$\mathbb{P}(T_2(n)&lt; f_n)=\mathcal{o}(1)$$
 $$\mathbb{E}T_2(n)\ge(1+\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)}{kl(\mu_2,\mu_1)}$$
 これを擬リグレットの定義に入れると題意を得る．</p>
 
-<p>最後の$n$回までにアーム２を引く回数の期待値の下界で$(1+\mathcal{o})$が出てくるのがどうやるのかわからなかった(´・ω・｀)</p>
+<p>最後の$n$回までにアーム２を引く回数の期待値の下界で$(1+\mathcal{o}(1))$が出てくるのがどうやるのかわからなかった(´・ω・｀)</p>
 
 <p>手を動かしてみる．</p>
 
@@ -447,7 +453,9 @@ $$\mathbb{E}T_2(n)\ge(1+\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)
 マルコフの不等式$\mathbb{P}(|X|\ge a)\le\frac{\mathbb{E}(|X|)}{a}$を使って，$\frac{\mathbb{E}T_2(n)}{f_n}\ge\mathbb{P}(T_2(n)\ge f_n)=1-\mathcal{o}(1)$
 となり，
 $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)}{kl(\mu_2,\mu_1)}$$
-が得られる，</p>
+が得られる．</p>
+
+<p>他の文献を見ても下界の定数部分のオーダは$1-\mathcal{o}(1)$となっているので，元論文のタイポかもしれない</p>
 
 <hr />
         </div>
