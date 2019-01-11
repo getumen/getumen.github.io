@@ -381,6 +381,48 @@ $\alpha$が位置に近い値より改善できないのは下界からわかる
 Honda and Takemuraは漸近的な結果を示し，Garivier and Capp´eやMaillardらはKL-UCBという手法を示した．
 このリグレットは$\alpha&gt;1$にたいして，$$$\sum_{i:\Delta_i&gt;0}\frac{\Delta_i}{kl(\mu_i,\mu^*)}\alpha\ln n+\mathcal{O}(1)$$である．
 KL-UCBはベルヌーイ分布に対して最適であり，どんな報酬分布に対しても$\alpha$-UCBより優れている．</p>
+
+<h3 id="2-4-3-distribution-free-bounds">2.4.3 Distribution-Free Bounds</h3>
+
+<p>$\Delta_i$が0に近い値をとるとき、式(2.4)は非常に大きな値になりうる。
+しかし、アーム$i$から引いたリグレットは$n\Delta_i$より大きくならない。
+こうした点から、$\alpha$-UCBのリグレットは$\sqrt{\alpha nK\ln n}$より小さいリグレットになる（数値の定数を除いて）。
+しかし、次の節で示すようにリグレットのminimaxな下界は$\sqrt{Kn}$である。
+Audibert and Bubeckはこの余分なログオーダを取り除く修正版の$\alpha$-UCBを提案した。
+$\Delta=\min_{i=i^*}\Delta_i$としたとき、MOSS (Minimax Optimal Strategy in the Stochastic case)は
+$$\min\left\{\sqrt{nK}, \frac{K}{\Delta}\ln\frac{n\Delta^2}{K}\right\}$$
+より小さなリグレットを達成する（数値の定数を除いて）。</p>
+
+<hr />
+
+<p><a href="https://en.wikipedia.org/wiki/Minimax_estimator">minimax最適</a>とは？</p>
+
+<p><em>問題設定</em></p>
+
+<p>条件付き確率分布$P(x|\theta)$からのノイズの乗ったデータ(?)または破損したデータ(?)$x\in\mathcal{X}$から決定的な（ベイズではない）パラメータ$\theta\in\Theta$を推定する問題を考える。ゴールは与えられたリスク関数$R(\theta, \delta)$を最小化するパラメータ$\theta$を推定する良い推定器$\delta(x)$を見つけることだ。
+ここで、リスク関数とは確率$P(x|\theta)$についての損失関数$L(\theta,\delta)$の期待値である。</p>
+
+<p><em>定義</em></p>
+
+<p>リスク関数$R(\theta,\delta)$に対して推定器$\delta^M:\mathcal{X}\mapsto\Theta$がminimaxであるとはその推定器が全ての推定器の中で最小のリスクをとるとるということである。つまり、$$\sup_{\theta\in\Theta}R(\theta,\delta^M)=\inf_{\delta}\sup_{\theta\in\Theta}R(\theta,\delta)$$
+を満たすということである。</p>
+
+<hr />
+
+<p>この結果の弱いところは最も小さなギャップ$\Delta$にのみ依存していることである．
+Auer and Ortnerはimproved UCBという$$\sum_{i:\Delta_i&gt;0}\frac{1}{\Delta_i}\ln(n\Delta_i^2)$$を達成する戦略を作った．
+これはいくつかの設定でMOSSより優れているが$\sqrt{nK}$のminimax最適なレートを達成していない．
+すべての場合でMOSSとimproved UCBより優れてたリグレットを達成できる手法があるかはopen problemだ．
+実現可能な予想としては
+$$\sum_{i:\Delta_i&gt;0}\frac{1}{\Delta_i}\ln\frac{n}{H}~with~\sum_{i:\Delta_i&gt;0}\frac{1}{\Delta_i^2}$$が達成できるとなっている．</p>
+
+<h3 id="2-4-4-high-probability-bounds">2.4.4 High Probability Bounds</h3>
+
+<p>擬リグレット$\overline{R}_n$は重要だが，$\hat{R}_n=n\mu^*-\sum_{t=1}^n\mu_{I_t}$を高確率で保証したい場合もある．
+$\hat{R}_n$のばらつきが$\sqrt{n}$のオーダであり，$\overline{R}_n$のオーダは$\ln n$であるため，$\sqrt{n}$が優位になると考えられるので$\hat{R}_n$を$\overline{R}_n$に近づけるのは難しいことだと考えれる．
+AudibertらはUCBの$\hat{R}_n$のconcentrationの性質を解析した．それによると$\hat{R}_n$はその期待値の周りに集中しているが，nについて多項式オーダで$\hat{R}_n$はオーダ$n$になる．
+Salomon and Audibertは常時停止可能なアルゴリズムは基本的に指数部に色々乗っている古典的なconcentration inequalityではこの多項式のconcentrationを改善できないことを証明した．
+このことはHigh Probability Boundsに関しては常時停止可能なアルゴリズムは停止時間を用いるアルゴリズムより弱いことを示している．</p>
         </div>
         <footer class="article-footer">
     <a data-url="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" data-id="c97e999dea6cfb53d0c512c084466d42" class="article-share-link">
