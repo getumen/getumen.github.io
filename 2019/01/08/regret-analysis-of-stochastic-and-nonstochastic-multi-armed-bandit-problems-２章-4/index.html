@@ -382,6 +382,17 @@ Honda and Takemuraは漸近的な結果を示し，Garivier and Capp´eやMailla
 このリグレットは$\alpha&gt;1$にたいして，$$$\sum_{i:\Delta_i&gt;0}\frac{\Delta_i}{kl(\mu_i,\mu^*)}\alpha\ln n+\mathcal{O}(1)$$である．
 KL-UCBはベルヌーイ分布に対して最適であり，どんな報酬分布に対しても$\alpha$-UCBより優れている．</p>
 
+<hr />
+
+<p>メモ</p>
+
+<p>機械学習プロフェッショナルシリーズのバンディット問題の本によると，
+KL-UCBは理論限界を達成できるもののKLダイバージェンスを含む式を$\mu^*$に関して解く必要があるけれど，閉形式で解けないためニュートン法を用いるなどの工夫が必要．
+しかし，バンディット問題はパフォーマンスが要求される環境で利用される場合があるため，そのような場合でも利用できる計算コストが低いかつ理論げんかいを達成できる戦略が必要．
+そこで，DMED(Deterministic Minimum Empirical Divergence)ポリシーという戦略が提案されている．</p>
+
+<hr />
+
 <h3 id="2-4-3-distribution-free-bounds">2.4.3 Distribution-Free Bounds</h3>
 
 <p>$\Delta_i$が0に近い値をとるとき、式(2.4)は非常に大きな値になりうる。
@@ -423,6 +434,35 @@ $\hat{R}_n$のばらつきが$\sqrt{n}$のオーダであり，$\overline{R}_n$�
 AudibertらはUCBの$\hat{R}_n$のconcentrationの性質を解析した．それによると$\hat{R}_n$はその期待値の周りに集中しているが，nについて多項式オーダで$\hat{R}_n$はオーダ$n$になる．
 Salomon and Audibertは常時停止可能なアルゴリズムは基本的に指数部に色々乗っている古典的なconcentration inequalityではこの多項式のconcentrationを改善できないことを証明した．
 このことはHigh Probability Boundsに関しては常時停止可能なアルゴリズムは停止時間を用いるアルゴリズムより弱いことを示している．</p>
+
+<h3 id="2-4-5-epsilon-greedy">2.4.5 $\epsilon$-Greedy</h3>
+
+<p>$\epsilon$-Greedyはシンプルな戦略である．
+パラメータ$0&lt;\epsilon&lt;1$を選び，$1-\epsilon$の確率で貪欲に経験的に最も高い報酬を得られるアームを引き，$\epsilon$の確率でランダムにアームを引く．
+Auerらは$\epsilon$をtに依存する関数$\epsilon_t=K/(d^2t)$としたとき，$0&lt; d&lt;\min_{i\not=i^*}\Delta_i$が与えられているもとで，擬リグレットは$(K\ln n)/d^2$のようになることを証明した．
+このアルゴリズムは実用上はうまく行くが，$\min_{i\not=i^*}\Delta_i$のタイトな下界を$d$として選ばないと，性能は劣化する．</p>
+
+<h3 id="2-4-6-thompson-sampling">2.4.6 Thompson Sampling</h3>
+
+<p>マルチアームバンディット問題に関する極めて初期の研究でThompsonは，ベルヌーイ分布の場合の戦略を提案した．
+トンプソンサンプリングと呼ばれる戦略は次のようなものだ．</p>
+
+<p>パラメータ$\mu_{i}\in[0,1]$の一様な事前分布を考える．$t$ラウンドでの$\mu_i$に対する事後分布を$\pi_{i,t}$とする．また，$\theta_{i,t}\sim\pi_{i,t}$とする．
+戦略は$I_t\in\rm arg\max_{i=1,d\dots,K}\theta_{i,t}$というものだ．</p>
+
+<p>Agrawal and Goyalはトンプソンサンプリングがログオーダのレートを達成することを示した．
+Kaufmannらは式(2.4)とちょうど同じ擬リグレットを達成できることを示した．</p>
+
+<h3 id="2-4-7-heavy-tailed-distributions">2.4.7 Heavy-Tailed Distributions</h3>
+
+<p>2.2節ではモーメント母関数を通してUCB戦略を得た．また，定理2.1で示されるバウンドは分布のテールが重くなると悪化することがわかる．
+特に，モーメント母関数が有限でない場合は結果が得られなくなる．</p>
+
+<p>しかし，Bubeckらは分布の分散が有限であるならば式(2.4)と同じ擬リグレットを得られる戦略が存在することを示した．
+より正確に言うと基本的な経験平均より洗練されたよりロバストな平均のエスティメータを使うことで，1でバウンドされた$1+\epsilon$のモーメントを持つ分布に対するUCB戦略を構築することができる．
+その時のリグレットは
+$$R_{n}\le\sum_{i:\Delta_i&gt;0}\left(8\left(\frac{4}{\Delta_i}\right)^{\frac{1}{\epsilon}}\ln n+5\Delta_i\right)$$
+をみたす．（論文ではリグレットで表記されているが，文脈的には魏リグレットでは？）</p>
         </div>
         <footer class="article-footer">
     <a data-url="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" data-id="c97e999dea6cfb53d0c512c084466d42" class="article-share-link">
