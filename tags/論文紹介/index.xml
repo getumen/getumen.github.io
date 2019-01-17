@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>論文紹介 on 雑記</title>
+    <link>https://getumen.github.io/tags/%E8%AB%96%E6%96%87%E7%B4%B9%E4%BB%8B/</link>
+    <description>Recent content in 論文紹介 on 雑記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 12 Jan 2019 17:12:28 +0900</lastBuildDate>
+    
+	<atom:link href="https://getumen.github.io/tags/%E8%AB%96%E6%96%87%E7%B4%B9%E4%BB%8B/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Model-Independent Online Learning for Influence Maximization</title>
+      <link>https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/</link>
+      <pubDate>Sat, 12 Jan 2019 17:12:28 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/</guid>
+      <description>&lt;p&gt;紹介する論文はSNSのようなソーシャルグラフにアクセスできる設定で，口コミマーケティングを効率的にする方法を提案している論文です．
+これまでの研究では，ソーシャルグラフで情報がどのように拡散するかをモデル化して，そのモデルが成り立つ場合にうまく行く方法が提案されていました．
+この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
