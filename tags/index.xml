@@ -6,7 +6,7 @@
     <description>Recent content in Tags on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 08 Jan 2019 04:38:02 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 12 Jan 2019 17:12:28 +0900</lastBuildDate>
     
 	<atom:link href="https://getumen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Bandit</title>
       <link>https://getumen.github.io/tags/bandit/</link>
-      <pubDate>Tue, 08 Jan 2019 04:38:02 +0900</pubDate>
+      <pubDate>Sat, 12 Jan 2019 17:12:28 +0900</pubDate>
       
       <guid>https://getumen.github.io/tags/bandit/</guid>
       <description></description>
@@ -32,9 +32,18 @@
     <item>
       <title>読書</title>
       <link>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</link>
-      <pubDate>Tue, 08 Jan 2019 04:38:02 +0900</pubDate>
+      <pubDate>Sat, 12 Jan 2019 17:12:28 +0900</pubDate>
       
       <guid>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>論文紹介</title>
+      <link>https://getumen.github.io/tags/%E8%AB%96%E6%96%87%E7%B4%B9%E4%BB%8B/</link>
+      <pubDate>Sat, 12 Jan 2019 17:12:28 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/%E8%AB%96%E6%96%87%E7%B4%B9%E4%BB%8B/</guid>
       <description></description>
     </item>
     

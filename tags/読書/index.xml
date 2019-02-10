@@ -6,10 +6,23 @@
     <description>Recent content in 読書 on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 08 Jan 2019 04:38:02 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 12 Jan 2019 17:12:28 +0900</lastBuildDate>
     
 	<atom:link href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Model-Independent Online Learning for Influence Maximization</title>
+      <link>https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/</link>
+      <pubDate>Sat, 12 Jan 2019 17:12:28 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/</guid>
+      <description>&lt;p&gt;紹介する論文はSNSのようなソーシャルグラフにアクセスできる設定で，口コミマーケティングを効率的にする方法を提案している論文です．
+これまでの研究では，ソーシャルグラフで情報がどのように拡散するかをモデル化して，そのモデルが成り立つ場合にうまく行く方法が提案されていました．
+この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)</title>
