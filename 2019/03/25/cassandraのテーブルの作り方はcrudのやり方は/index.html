@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+<head>
+    <title>Cassandraのテーブルの作り方は？CRUDのやり方は？ &middot; 雑記</title>
+    <meta name="generator" content="Hugo 0.54.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="getumen">
+    
+      <meta name="description" content="日々学んだことをメモします">
+    
+    
+    <link rel="canonical" href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E3%81%AFcrud%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%E3%81%AF/"/>
+    <link rel="icon" href="https://getumen.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
+    <link rel="stylesheet" href="https://getumen.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://getumen.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://getumen.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Cassandraのテーブルの作り方は？CRUDのやり方は？" />
+<meta property="og:description" content="概要
+
+Facebookが開発したNoSQLデータベースであるCassandraのテーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
+そして、実際に手を動かして動作を確認しました。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getumen.github.io/2019/03/25/cassandra%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E3%81%AFcrud%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%E3%81%AF/" />
+
+<meta property="og:image" content="https://getumen.github.io/images/banners/Cassandra_logo.png" />
+<meta property="article:published_time" content="2019-03-25T00:01:00&#43;09:00"/>
+<meta property="article:modified_time" content="2019-03-25T00:01:00&#43;09:00"/>
+
+    
+    
+<meta itemprop="name" content="Cassandraのテーブルの作り方は？CRUDのやり方は？">
+<meta itemprop="description" content="概要
+
+Facebookが開発したNoSQLデータベースであるCassandraのテーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
+そして、実際に手を動かして動作を確認しました。">
+
+
+<meta itemprop="datePublished" content="2019-03-25T00:01:00&#43;09:00" />
+<meta itemprop="dateModified" content="2019-03-25T00:01:00&#43;09:00" />
+<meta itemprop="wordCount" content="4251">
+
+  <meta itemprop="image" content="https://getumen.github.io/images/banners/Cassandra_logo.png">
+
+
+
+<meta itemprop="keywords" content="NoSQL,Cassandra," />
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://getumen.github.io/images/banners/Cassandra_logo.png"/>
+
+<meta name="twitter:title" content="Cassandraのテーブルの作り方は？CRUDのやり方は？"/>
+<meta name="twitter:description" content="概要
+
+Facebookが開発したNoSQLデータベースであるCassandraのテーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
+そして、実際に手を動かして動作を確認しました。"/>
+<meta name="twitter:site" content="@letitbe_or_not"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://getumen.github.io/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://getumen.github.io/images/getumen.png')"></i>
+          
+          <span class="site-title">雑記</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/categories/">Categories</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/about">About Me</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://getumen.github.io/images/getumen.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://getumen.github.io/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/categories/">Categories</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/about">About Me</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://getumen.github.io/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://getumen.github.io/images/getumen.png">
+      
+      <h2 id="name">getumen</h2>
+      <h3 id="title">データエンジニアをしながらデータサイエンスの勉強をしています</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Earth</span>
+      
+          <a id="follow" href="https://github.com/getumen">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        9
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          6
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/getumen" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/letitbe_or_not" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://getumen.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <img src="https://getumen.github.io/images/banners/Cassandra_logo.png" class="article-banner">
+        
+
+        <header class="article-header">
+    <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E3%81%AFcrud%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%E3%81%AF/">
+    <h1 class="article-title" itemprop="name">
+        Cassandraのテーブルの作り方は？CRUDのやり方は？
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2019-03-25 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-03-25</time>
+            &middot;
+            4251
+            words
+            &middot;
+            9
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/categories/cassandra">Cassandra</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/nosql">NoSQL</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/cassandra">Cassandra</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="概要">概要</h1>
+
+<p>Facebookが開発したNoSQLデータベースであるCassandraのテーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
+そして、実際に手を動かして動作を確認しました。</p>
+
+<h1 id="事前準備">事前準備</h1>
+
+<p>以下がすでにインストールされているとします。</p>
+
+<ul>
+<li>Docker</li>
+</ul>
+
+<h1 id="環境構築">環境構築</h1>
+
+<p>環境構築は<a href="https://hub.docker.com/_/cassandra">DockerHubのCassandraのページ</a>を参考にして行いました。</p>
+
+<p>Cassandraはネットワークを通じて他のノードと通信し、クラスタを作成します。
+まず、Dockerのネットワークを作成します。ネットワークの名前はなんでも良いのですが、<code>cassandra-nw</code>としました。</p>
+
+<pre><code>$ docker network create cassandra-nw
+</code></pre>
+
+<p>次に、Dockerのコンテナを削除してもデータが消えないようにローカルにデータを保存するディレクトリを作成します。</p>
+
+<pre><code class="language-bash">$ mkdir $HOME/cassandra
+$ mkdir $HOME/cassandra2
+</code></pre>
+
+<p>２つのノードを作成する予定なので、２つのディレクトリを作成しました。</p>
+
+<p>以下のコマンドを実行して、１つ目のCassandraのノードを作成します。</p>
+
+<pre><code class="language-bash">$ docker run --name cassandra1 --network cassandra-nw -v $HOME/cassandra:/var/lib/cassandra -p 9042:9042 cassandra:latest
+</code></pre>
+
+<p>次に、同じマシン上で２つ目のCassandraのノードを作成します。</p>
+
+<pre><code class="language-bash">$ docker run --name cassandra2 --network cassandra-nw -e CASSANDRA_SEEDS=cassandra1 -v $HOME/cassandra2:/var/lib/cassandra -p 9043:9042  cassandra:latest
+</code></pre>
+
+<p>２つ目のノードを作成する際、<code>CASSANDRA_SEEDS</code>という環境変数を用いてシードとなるノードを指定しました。シードノードは新しいノードをCassandraのリングに加える際、ノードのゴシッププロセスをブートストラップするために利用されるようです。各ノードとP2Pで通信し、シードノードが新しいノードの親となる訳ではないので、単一障害点を持たない分散DBとなっているようです。</p>
+
+<p>以上の操作で、２つのノードからなるCassandraクラスタを作成することができました。</p>
+
+<h1 id="入門-cliでテーブルを作る">入門 - CLIでテーブルを作る</h1>
+
+<p>ここでは、MySQLでDatabaseに相当するKeyspaceを作成し、テーブルを作成し、CRUD(Create, Read, Update, Delete)を行います。
+また、操作中に出てくる概念について調べてまとます。</p>
+
+<h2 id="cqlでクエリを叩く">CQLでクエリを叩く</h2>
+
+<p>Dockerを用いてcqlを起動するために、以下のコマンドを実行します。</p>
+
+<pre><code class="language-bash">$ docker run -it --network cassandra-nw --rm cassandra cqlsh cassandra1
+Connected to Test Cluster at cassandra1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh&gt;
+</code></pre>
+
+<p><code>cqlsh&gt;</code>と表示されていれば、CQLでクエリを実行する環境が作成できています。</p>
+
+<h2 id="keyspaceを作る">Keyspaceを作る</h2>
+
+<p>まず、<code>keyspace</code>という、MySQLなどで<code>database</code>に相当する概念を表示します。</p>
+
+<pre><code>cqlsh&gt; DESCRIBE keyspaces
+
+system_schema  system_auth  system  system_distributed  system_traces
+</code></pre>
+
+<p>次に、今回使用するKeyspaceを作成します。</p>
+
+<pre><code>cqlsh&gt; CREATE KEYSPACE test WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }; 
+
+cqlsh&gt; DESCRIBE keyspaces
+
+system_schema  system              test           system_auth
+system_distributed  system_traces
+</code></pre>
+
+<p><code>test</code>というKeyspaceを作成しました。
+ここで、<code>class</code>に<code>SimpleStrategy</code>を指定しました。
+他に指定できるものと、その意味は下のようになっています。</p>
+
+<table>
+<thead>
+<tr>
+<th>class</th>
+<th>意味</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>SimpleStrategy</td>
+<td>１つのデータセンターと１つのラックを使うときに指定する。<code>replication_factor</code>はクラスターの中にいくつRowをコピーするかを指定します。</td>
+</tr>
+
+<tr>
+<td>NetworkTopologyStrategy</td>
+<td>複数のデータセンターまたは複数のラックを使うときに指定します。<code>replication_factor</code>の代わりにデータセンター名とそのデータセンターのreplication_factorを指定します。</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><a href="https://docs.apigee.com/private-cloud/v4.17.09/about-cassandra-replication-factor-and-consistency-level">https://docs.apigee.com/private-cloud/v4.17.09/about-cassandra-replication-factor-and-consistency-level</a></p>
+</blockquote>
+
+<h2 id="tableを作る">Tableを作る</h2>
+
+<p>Keyspaceを作成することができたので、次にテーブルを作成します。
+Cassandraのデータの持ち方に強く依存しているため、このテーブル作成が難しいです。</p>
+
+<p>まず、フィードというテーブルを作成します。
+FacebookやTwitterのホーム画面に表示されるアレです。</p>
+
+<pre><code>cqlsh&gt; CREATE TABLE test.feed (
+    user_id  text,
+    timestamp    timestamp,
+    message text,
+    primary key((user_id), timestamp)
+) WITH CLUSTERING ORDER BY (timestamp DESC);
+
+cqlsh&gt; DESC test.feed;
+
+CREATE TABLE test.feed (
+    user_id text,
+    timestamp timestamp,
+    message text,
+    PRIMARY KEY (user_id, timestamp)
+) WITH CLUSTERING ORDER BY (timestamp DESC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99PERCENTILE';
+</code></pre>
+
+<p>色々と出てきました。順を追って見ていきます。</p>
+
+<ol>
+<li>Data Typeについて</li>
+<li>Primary KeyとClustering Orderについて</li>
+<li><code>DESC test.feed</code>でテーブル定義の<code>WITH</code>いかにある設定値について</li>
+</ol>
+
+<h3 id="cassandraのデータタイプ">Cassandraのデータタイプ</h3>
+
+<p>色々あります。文字列型の文字コードがUTF-8だったり、<code>list</code>, <code>set</code>, <code>map</code>などのコレクション型があるのが個人的に嬉しいです。
+<a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cql_data_types_c.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cql_data_types_c.html</a></p>
+
+<h3 id="primary-keyとclustering-keyについて">Primary KeyとClustering Keyについて</h3>
+
+<p>Cassandraでは<code>Map&lt;PartitionKey, SortedMap&lt;ColumnKey, Value&gt;&gt;</code>という形でデータを保持しています。
+上で作成したフィードテーブルでは、Primary Keyとして<code>((user_id), timestamp)</code>、Clustering Keyとして<code>timestamp DESC</code>を指定しました。
+これによりClustering Keyに指定されていない<code>user_id</code>はPartition Keyとして
+<code>Clustering Key</code>については少し特殊な持ち方をします。
+ColumnKeyとして指定されたキーはキー名ではなく、値がColumnKeyとなります。さらに、Clustering Keyの値はPartition KeyでもClustering Keyでもない他のカラム名のプレフィックスとなります。
+Clustering Keyをプレフィックスとしたカラム名をColumnKeyとしてColumnKeyによりソートするので、連続したColumnKeyとその値をスキャンすることでClusteringKeyによってソートされたRowをとるという操作を実現しています。</p>
+
+<p>フィードの例では<code>Clustering Key</code>の値が<code>timestampの値:message</code>というようにカラム名にクラスタキーの値が入ります。</p>
+
+<p>テーブル</p>
+
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>timestamp</th>
+<th>message</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>letitbe_or_not</td>
+<td>2019-03-25 00:00:000</td>
+<td>あ</td>
+</tr>
+
+<tr>
+<td>letitbe_or_not</td>
+<td>2019-03-25 00:01:000</td>
+<td>い</td>
+</tr>
+
+<tr>
+<td>letitbe_or_not</td>
+<td>2019-03-25 00:02:000</td>
+<td>う</td>
+</tr>
+
+<tr>
+<td>twitter</td>
+<td>2019-03-25 00:00:000</td>
+<td>Work, work, work, work, work, work</td>
+</tr>
+
+<tr>
+<td>twitter</td>
+<td>2019-03-25 00:01:000</td>
+<td>Hahahahahahahaha</td>
+</tr>
+
+<tr>
+<td>twitter</td>
+<td>2019-03-25 00:02:000</td>
+<td>Go to sleep</td>
+</tr>
+</tbody>
+</table>
+
+<p>Cassandraでの持ち方イメージ</p>
+
+<pre><code>{
+    'letitbe_or_not': {
+        '2019-03-25 00:00:00': '',
+        '2019-03-25 00:00:00:message': 'あ',
+        '2019-03-25 00:01:00': '',
+        '2019-03-25 00:01:00:message': 'い',
+        '2019-03-25 00:02:00': '',
+        '2019-03-25 00:02:00:message': 'う'
+    },
+    'twitter': {
+        '2019-03-25 00:00:00': '',
+        '2019-03-25 00:00:00:message': 'Work, work, work, work, work, work',
+        '2019-03-25 00:01:00': '',
+        '2019-03-25 00:01:00:message': 'Hahahahahahahaha',
+        '2019-03-25 00:02:00': '',
+        '2019-03-25 00:02:00:message': 'Go to sleep'
+    }
+}
+</code></pre>
+
+<p>Cassandraがどのようなデータの持ち方をするのかのイメージを持っていると投げたいクエリを実現するためにどのようなテーブルを作ればいいのかを考えるときに無限に役に立ちます。
+というのも、Cassandraは基本的に連続したColumnをスキャンすることしかできないからです(<code>IN</code>を除く)。<code>SELECT</code>クエリを投げる時はクエリにより読まれるColumnが連続しているかを考える必要があります。</p>
+
+<h3 id="desc-test-feed-でテーブル定義の-with-いかにある設定値について"><code>DESC test.feed</code>でテーブル定義の<code>WITH</code>いかにある設定値について</h3>
+
+<p>あとでまとめます。</p>
+
+<table>
+<thead>
+<tr>
+<th>名前</th>
+<th>意味</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>bloom_filter_fp_chance</td>
+<td></td>
+</tr>
+
+<tr>
+<td>caching</td>
+<td></td>
+</tr>
+
+<tr>
+<td>comment</td>
+<td>テーブルを説明するコメント</td>
+</tr>
+
+<tr>
+<td>compaction</td>
+<td></td>
+</tr>
+
+<tr>
+<td>compression</td>
+<td></td>
+</tr>
+
+<tr>
+<td>crc_check_chance</td>
+<td></td>
+</tr>
+
+<tr>
+<td>dclocal_read_repair_chance</td>
+<td></td>
+</tr>
+
+<tr>
+<td>default_time_to_live</td>
+<td></td>
+</tr>
+
+<tr>
+<td>gc_grace_seconds</td>
+<td>Cassandraでは削除されたRowはまず論理削除されます。論理削除されたRowはTombstone（お墓）と呼ばれます。このお墓は<code>SELECT</code>時にスキャンされます。CassandraではスキャンするRow数に上限があるのですが、お墓のRowも含まれるため必要な結果を得る前にスキャンの上限に達して結果が得られないことがあります。<code>gc_grace_seconds</code>はお墓を物理削除する間隔を指定します。デフォルトでは１０日となっています。</td>
+</tr>
+
+<tr>
+<td>max_index_interval</td>
+<td></td>
+</tr>
+
+<tr>
+<td>memtable_flush_period_in_ms</td>
+<td></td>
+</tr>
+
+<tr>
+<td>min_index_interval</td>
+<td></td>
+</tr>
+
+<tr>
+<td>read_repair_chance</td>
+<td></td>
+</tr>
+
+<tr>
+<td>speculative_retry</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p><a href="https://docs.datastax.com/ja/cql-jajp/3.1/cql/cql_reference/tabProp.html">https://docs.datastax.com/ja/cql-jajp/3.1/cql/cql_reference/tabProp.html</a></p>
+</blockquote>
+
+<h1 id="入門-cliでcrud">入門 - CLIでCRUD</h1>
+
+<p>今、<code>test</code>というKeyspaceと<code>feed</code>というテーブルを作成できました。
+ここでは、CRUD(CREATE, READ, UPDATE, DELETE)のやっていきます。</p>
+
+<h2 id="create">CREATE</h2>
+
+<p>ここでは、データの作成しについて見てみます。</p>
+
+<pre><code>cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('letitbe_or_not', '2019-03-25 00:00:000', 'あ');
+cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('letitbe_or_not', '2019-03-25 00:01:000', 'い');
+cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('letitbe_or_not', '2019-03-25 00:02:000', 'う');
+cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('twitter', '2019-03-25 00:00:000', 'Work, work, work, work, work, work');
+cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('twitter', '2019-03-25 00:01:000', 'Hahahahahahahaha');
+cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('twitter', '2019-03-25 00:02:000', 'Go to sleep');
+</code></pre>
+
+<p>CREATEは特に難しいとことはないです。複数挿入はできるのかわかりませんでした。MySQLのような文法ではできませんでした。</p>
+
+<blockquote>
+<p><a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlInsert.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlInsert.html</a></p>
+</blockquote>
+
+<h2 id="read">READ</h2>
+
+<p>ここでは、データの読み取りについてみてみます。</p>
+
+<pre><code>cqlsh&gt; SELECT * FROM test.feed;
+
+ user_id        | timestamp                       | message
+----------------+---------------------------------+------------------------------------
+        twitter | 2019-03-25 00:02:00.000000+0000 |                        Go to sleep
+        twitter | 2019-03-25 00:01:00.000000+0000 |                   Hahahahahahahaha
+        twitter | 2019-03-25 00:00:00.000000+0000 | Work, work, work, work, work, work
+ letitbe_or_not | 2019-03-25 00:02:00.000000+0000 |                                 う
+ letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 い
+ letitbe_or_not | 2019-03-25 00:00:00.000000+0000 |                                 あ
+
+(6 rows)
+</code></pre>
+
+<p>READは難しいところしかないです。前節の「Tableを作る」で見たようなデータの持ち方をしている時、連続したColumnしか読めないという制限を考える必要があります。そのような制限が具体的にはどうなるのかは以下の記事が大変参考になりました。</p>
+
+<blockquote>
+<p><a href="https://qiita.com/mizuka/items/3fb7ce3a7e631f2f7b29">https://qiita.com/mizuka/items/3fb7ce3a7e631f2f7b29</a></p>
+</blockquote>
+
+<p>Cassandraの制限を緩和する<code>ALLOW FILTERING</code>句があるのですが、フルスキャンが走るので実用的には使えなそうです。</p>
+
+<p>また、<code>IN</code>句は連続していないColumnを読むことができますが、コレクションを取ってこれないという制限があるようです。</p>
+
+<blockquote>
+<p><a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlSelect.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlSelect.html</a></p>
+</blockquote>
+
+<h2 id="update">UPDATE</h2>
+
+<p>ここでは、データの更新についてみてみます。</p>
+
+<pre><code>cqlsh&gt; UPDATE test.feed SET message='え' WHERE user_id = 'letitbe_or_not' AND timestamp= '2019-03-25 00:01:000';
+cqlsh&gt; SELECT * FROM test.feed;
+
+ user_id        | timestamp                       | message
+----------------+---------------------------------+------------------------------------
+        twitter | 2019-03-25 00:02:00.000000+0000 |                        Go to sleep
+        twitter | 2019-03-25 00:01:00.000000+0000 |                   Hahahahahahahaha
+        twitter | 2019-03-25 00:00:00.000000+0000 | Work, work, work, work, work, work
+ letitbe_or_not | 2019-03-25 00:02:00.000000+0000 |                                 う
+ letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 え
+ letitbe_or_not | 2019-03-25 00:00:00.000000+0000 |                                 あ
+</code></pre>
+
+<p>UPDATEは難しいところはないと思います。たぶん。</p>
+
+<blockquote>
+<p><a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlUpdate.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlUpdate.html</a></p>
+</blockquote>
+
+<h2 id="delete">DELETE</h2>
+
+<p>ここでは、データの削除についてみてみます。</p>
+
+<pre><code>cqlsh&gt; DELETE FROM test.feed WHERE user_id = 'letitbe_or_not' AND timestamp = '2019-03-25 00:00:00';
+cqlsh&gt; SELECT * FROM test.feed;
+
+ user_id        | timestamp                       | message
+----------------+---------------------------------+------------------------------------
+        twitter | 2019-03-25 00:02:00.000000+0000 |                        Go to sleep
+        twitter | 2019-03-25 00:01:00.000000+0000 |                   Hahahahahahahaha
+        twitter | 2019-03-25 00:00:00.000000+0000 | Work, work, work, work, work, work
+ letitbe_or_not | 2019-03-25 00:02:00.000000+0000 |                                 う
+ letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 え
+ 
+cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('letitbe_or_not', '2019-03-25 00:01:000', 'い');
+cqlsh&gt; SELECT * FROM test.feed;
+
+ user_id        | timestamp                       | message
+----------------+---------------------------------+------------------------------------
+        twitter | 2019-03-25 00:02:00.000000+0000 |                        Go to sleep
+        twitter | 2019-03-25 00:01:00.000000+0000 |                   Hahahahahahahaha
+        twitter | 2019-03-25 00:00:00.000000+0000 | Work, work, work, work, work, work
+ letitbe_or_not | 2019-03-25 00:02:00.000000+0000 |                                 う
+ letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 い
+
+(5 rows)
+cqlsh&gt;  DELETE FROM test.feed WHERE user_id = 'letitbe_or_not' AND timestamp = '2019-03-25 00:01:00' IF message = 'え';
+
+ [applied] | message
+-----------+---------
+     False |      い
+
+cqlsh&gt;  SELECT * FROM test.feed;
+
+ user_id        | timestamp                       | message
+----------------+---------------------------------+------------------------------------
+        twitter | 2019-03-25 00:02:00.000000+0000 |                        Go to sleep
+        twitter | 2019-03-25 00:01:00.000000+0000 |                   Hahahahahahahaha
+        twitter | 2019-03-25 00:00:00.000000+0000 | Work, work, work, work, work, work
+ letitbe_or_not | 2019-03-25 00:02:00.000000+0000 |                                 う
+ letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 い
+
+(5 rows)
+</code></pre>
+
+<p>PartitionKeyとClusteringKeyを指定して削除する、PartitionKeyを指定して、特定Partitionのデータを全て削除するという操作ができます。
+さらにPartitionKeyとClusteringKeyを等号で指定して、<code>IF</code>句を用いることでPrimaryKeyでないカラムに対しても条件を指定して削除することができます。</p>
+
+<p>「<code>DESC test.feed</code>でテーブル定義の<code>WITH</code>いかにある設定値について」でも書いたのですが、削除ではまず論理削除されます。
+論理削除されたRowがガベージコレクションにより物理削除されない場合、読み取り操作ではスキャンされる対象となるので注意が必要です。</p>
+
+<h1 id="終わりに">終わりに</h1>
+
+<p>いかがでしたか？
+CassandraのKeyspace、テーブルの作り方とCRUDを見てきました。
+水平スケールするハイパフォーマンスな分散DBであるCassandraは使える機会が多いと思うので、これからも調べてまとめていきたいと思います。</p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://getumen.github.io/2019/03/25/cassandra%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E3%81%AFcrud%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%E3%81%AF/" data-id="455db3d31c56be0a331ad9f6f608c14e" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E3%81%AFcrud%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%E3%81%AF/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Model-Independent Online Learning for Influence Maximization</div>
+    </a>
+    
+
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "getumen-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E3%81%AFcrud%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%E3%81%AF/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/Cassandra_logo.png)" alt="Cassandraのテーブルの作り方は？CRUDのやり方は？" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/cassandra">
+                        Cassandra
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E3%81%AFcrud%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%E3%81%AF/" class="title">Cassandraのテーブルの作り方は？CRUDのやり方は？</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-03-25 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-03-25</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/internet_influencer_woman.png)" alt="Cassandraのテーブルの作り方は？CRUDのやり方は？" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/" class="title">Model-Independent Online Learning for Influence Maximization</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-01-12 17:12:28 &#43;0900 JST" itemprop="datePublished">2019-01-12</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/document_research.png)" alt="Cassandraのテーブルの作り方は？CRUDのやり方は？" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-01-08 04:38:02 &#43;0900 JST" itemprop="datePublished">2019-01-08</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/hikaku_ball_woman.png)" alt="Cassandraのテーブルの作り方は？CRUDのやり方は？" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-01-05 19:58:34 &#43;0900 JST" itemprop="datePublished">2019-01-05</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/tanzaku.png)" alt="Cassandraのテーブルの作り方は？CRUDのやり方は？" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-01-04 20:51:04 &#43;0900 JST" itemprop="datePublished">2019-01-04</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/cassandra">
+                    cassandra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/machine-learning">
+                    machine-learning
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/bandit">
+                    bandit
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/cassandra">
+                    cassandra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/nosql">
+                    nosql
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">
+                    regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">
+                    読書
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/%E8%AB%96%E6%96%87%E7%B4%B9%E4%BB%8B">
+                    論文紹介
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://getumen.github.io/tags/bandit" style="font-size: 12px;">bandit</a>
+        
+        
+        <a href="https://getumen.github.io/tags/cassandra" style="font-size: 12px;">cassandra</a>
+        
+        
+        <a href="https://getumen.github.io/tags/nosql" style="font-size: 12px;">nosql</a>
+        
+        
+        <a href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems" style="font-size: 12px;">regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems</a>
+        
+        
+        <a href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8" style="font-size: 12px;">読書</a>
+        
+        
+        <a href="https://getumen.github.io/tags/%E8%AB%96%E6%96%87%E7%B4%B9%E4%BB%8B" style="font-size: 12px;">論文紹介</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019
+      &copy; @getumen
+    </div>
+  </div>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://getumen.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>

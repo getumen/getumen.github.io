@@ -6,10 +6,22 @@
     <description>Recent content on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 12 Jan 2019 17:12:28 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 25 Mar 2019 00:01:00 +0900</lastBuildDate>
     
 	<atom:link href="https://getumen.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cassandraのテーブルの作り方は？CRUDのやり方は？</title>
+      <link>https://getumen.github.io/2019/03/25/cassandra%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E3%81%AFcrud%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%E3%81%AF/</link>
+      <pubDate>Mon, 25 Mar 2019 00:01:00 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2019/03/25/cassandra%E3%81%AE%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E4%BD%9C%E3%82%8A%E6%96%B9%E3%81%AFcrud%E3%81%AE%E3%82%84%E3%82%8A%E6%96%B9%E3%81%AF/</guid>
+      <description>&lt;h1 id=&#34;概要&#34;&gt;概要&lt;/h1&gt;
+
+&lt;p&gt;Facebookが開発したNoSQLデータベースであるCassandraのテーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
+そして、実際に手を動かして動作を確認しました。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Model-Independent Online Learning for Influence Maximization</title>
