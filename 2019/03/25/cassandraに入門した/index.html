@@ -45,7 +45,7 @@ Facebookが開発したNoSQLデータベースであるCassandraに入門しま�
 
 <meta itemprop="datePublished" content="2019-03-25T00:01:00&#43;09:00" />
 <meta itemprop="dateModified" content="2019-03-25T00:01:00&#43;09:00" />
-<meta itemprop="wordCount" content="5286">
+<meta itemprop="wordCount" content="5345">
 
   <meta itemprop="image" content="https://getumen.github.io/images/banners/Cassandra_logo.png">
 
@@ -297,7 +297,7 @@ Facebookが開発したNoSQLデータベースであるCassandraに入門しま�
             <i class="fa fa-calendar"></i>
             <time datetime="2019-03-25 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-03-25</time>
             &middot;
-            5286
+            5345
             words
             &middot;
             11
@@ -504,8 +504,12 @@ CREATE TABLE test.feed (
 
 <h3 id="cassandraのデータタイプ">Cassandraのデータタイプ</h3>
 
-<p>色々あります。文字列型の文字コードがUTF-8だったり、<code>list</code>, <code>set</code>, <code>map</code>などのコレクション型があるのが個人的に嬉しいです。
-<a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cql_data_types_c.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cql_data_types_c.html</a></p>
+<p>色々あります。見ればわかるのでいかにリンクを貼るだけにします．
+文字列型の文字コードがUTF-8だったり、<code>list</code>, <code>set</code>, <code>map</code>などのコレクション型があるのが個人的に嬉しいです。</p>
+
+<blockquote>
+<p><a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cql_data_types_c.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cql_data_types_c.html</a></p>
+</blockquote>
 
 <h3 id="primary-keyとclustering-keyについて">Primary KeyとClustering Keyについて</h3>
 
@@ -515,9 +519,10 @@ CREATE TABLE test.feed (
 <p>これによりClustering Keyに指定されていない<code>user_id</code>はPartition Keyとなります．
 Partition Key単位でノードにレコードが配置されます．</p>
 
-<p>また，<code>timestamp</code>がClustering Keyとなりました．このClustering Keyを工夫して持つことによって，ソートされたレコードを取得できるようにしています．</p>
+<p>また，<code>timestamp</code>がClustering Keyと指定していました．このClustering Keyを工夫して持つことによって，ソートされたレコードを取得できるようにしています．
+どのようなデータ構造でデータを持つことで，<code>timestamp</code>によってソートできるようにしているのかをこれから見ていきます．</p>
 
-<p>比較のために，Clustring Keyがなかった場合，どのようなデータの持ち方をするのかを見てみます．
+<p>まずはじめに，Clustring Keyがなかった場合，どのようなデータの持ち方をするのかを見てみます．
 以下のようなテーブルがあったとします．</p>
 
 <pre><code>cqlsh&gt; CREATE TABLE test.feed (
@@ -528,15 +533,55 @@ Partition Key単位でノードにレコードが配置されます．</p>
 );
 </code></pre>
 
-<p>このように，Clustring Keyが指定されていないとき，以下のようなフィードデータを保存したとします．
- user_id | timestamp | message
-&mdash;&mdash;|&mdash;&mdash;|&mdash;&mdash;
-letitbe_or_not | 2019-03-25 00:00:000 | あ<br />
-letitbe_or_not | 2019-03-25 00:01:000 | い<br />
-letitbe_or_not | 2019-03-25 00:02:000 | う
-twitter | 2019-03-25 00:00:000 | Work, work, work, work, work, work
-twitter | 2019-03-25 00:01:000 | Hahahahahahahaha
-twitter | 2019-03-25 00:02:000 | Go to sleep</p>
+<p>このように，Clustring Keyが指定されていないとき，以下のようなフィードデータを保存したとします．</p>
+
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>timestamp</th>
+<th>message</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>letitbe_or_not</td>
+<td>2019-03-25 00:00:000</td>
+<td>あ</td>
+</tr>
+
+<tr>
+<td>letitbe_or_not</td>
+<td>2019-03-25 00:01:000</td>
+<td>い</td>
+</tr>
+
+<tr>
+<td>letitbe_or_not</td>
+<td>2019-03-25 00:02:000</td>
+<td>う</td>
+</tr>
+
+<tr>
+<td>twitter</td>
+<td>2019-03-25 00:00:000</td>
+<td>Work, work, work, work, work, work</td>
+</tr>
+
+<tr>
+<td>twitter</td>
+<td>2019-03-25 00:01:000</td>
+<td>Hahahahahahahaha</td>
+</tr>
+
+<tr>
+<td>twitter</td>
+<td>2019-03-25 00:02:000</td>
+<td>Go to sleep</td>
+</tr>
+</tbody>
+</table>
 
 <p>このとき，Cassandraの<code>Map&lt;PartitionKey, SortedMap&lt;ColumnKey, Value&gt;&gt;</code>というデータ構造に対して，データの持ち方のイメージは以下のようになっています．</p>
 
@@ -562,7 +607,7 @@ twitter | 2019-03-25 00:02:000 | Go to sleep</p>
 }
 </code></pre>
 
-<p>この例だと，<code>user_id+timestamp</code>がPartition Keyとなっていて，Column Keyは<code>message</code>というカラム名がキーになっています．
+<p>この例だと，<code>user_id</code>+<code>timestamp</code>がPartition Keyとなっていて，Column Keyは<code>message</code>というカラム名がキーになっています．
 この例からデータを取得することを考えると，Partition Keyはどちらも指定してクエリを投げる必要があると考えられます．そして，実際に指定する必要があります．
 <code>message</code>というカラム名によってソートされていますが，ソートされていることで得られるメリットはありません．</p>
 
@@ -579,7 +624,7 @@ twitter | 2019-03-25 00:02:000 | Go to sleep</p>
 
 <p>Clustring Keyとして，<code>timestamp</code>が指定されています．
 Clustering Keyとして指定されたカラムはカラム名ではなく、カラムの値がColumnKeyとなります。そして，Clustring Keyの値は，他のPrimary Keyでないカラム名のプレフィックスとなります。
-フィードの例では<code>Clustering Key</code>の値が<code>timestampの値:message</code>というようにカラム名にクラスタキーの値が入ります。</p>
+フィードの例では<code>Clustering Key</code>の値が<code>timestampの値:message</code>となります．</p>
 
 <p>以下のデータを保存したとき，今回はどのようにCassandraがデータを持つのかを考えます．</p>
 
@@ -658,6 +703,12 @@ Clustering Keyとして指定されたカラムはカラム名ではなく、カ
 前の例ではPrimary Keyのカラムを指定したクエリしか投げられませんでした．つまり，普通のKey Value Storeのような使い方しかできませんでした．
 今回の例ではPartition Keyを指定し，Clustring Keyについてソートした結果を効率的に得ることができそうです．
 そして，実際にColumn Keyが連続しているレコードを取得することができ，連続して取得できるようなレコードのみを取得できます（<code>SELECT</code>句でフィールドを指定する，<code>IN</code>句を使うのような例外を除いて）．</p>
+
+<p>参考文献</p>
+
+<blockquote>
+<p><a href="https://qiita.com/mtakahashi-ivi/items/f9fab96675d1963be9a0">https://qiita.com/mtakahashi-ivi/items/f9fab96675d1963be9a0</a></p>
+</blockquote>
 
 <h3 id="desc-test-feed-でテーブル定義の-with-いかにある設定値について"><code>DESC test.feed</code>でテーブル定義の<code>WITH</code>いかにある設定値について</h3>
 
