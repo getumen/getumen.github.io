@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/</loc>
+    <lastmod>2019-03-25T00:01:00+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/</loc>
     <lastmod>2019-01-12T17:12:28+09:00</lastmod>
   </url>
@@ -54,7 +59,20 @@
   </url>
   
   <url>
+    <loc>https://getumen.github.io/tags/cassandra/</loc>
+    <lastmod>2019-03-25T00:01:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://getumen.github.io/categories/cassandra/</loc>
+    <lastmod>2019-03-25T00:01:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://getumen.github.io/categories/</loc>
+    <lastmod>2019-03-25T00:01:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -65,8 +83,14 @@
   </url>
   
   <url>
+    <loc>https://getumen.github.io/tags/nosql/</loc>
+    <lastmod>2019-03-25T00:01:00+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://getumen.github.io/post/</loc>
-    <lastmod>2019-01-12T17:12:28+09:00</lastmod>
+    <lastmod>2019-03-25T00:01:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -96,7 +120,7 @@
   
   <url>
     <loc>https://getumen.github.io/</loc>
-    <lastmod>2019-01-12T17:12:28+09:00</lastmod>
+    <lastmod>2019-03-25T00:01:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   

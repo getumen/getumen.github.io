@@ -2,7 +2,7 @@
 <html lang="ja-jp">
 <head>
     <title>雑記</title>
-    <meta name="generator" content="Hugo 0.40.1" />
+    <meta name="generator" content="Hugo 0.54.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="getumen">
@@ -28,18 +28,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://getumen.github.io/" />
 
-
-
-<meta property="og:updated_time" content="2019-01-12T17:12:28&#43;09:00"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:updated_time" content="2019-03-25T00:01:00&#43;09:00"/>
 
     
     
@@ -85,8 +74,6 @@
           
           
           
-          
-          
 
           
 
@@ -103,10 +90,6 @@
           
           
           <a class="main-nav-link" href="https://getumen.github.io/about">About Me</a>
-          
-          
-          
-          <a class="main-nav-link" href="https://getumen.github.io/reading">読書記録</a>
           
           
       </nav>
@@ -140,8 +123,6 @@
           
           
           
-          
-          
 
           
 
@@ -158,10 +139,6 @@
           
           
           <td><a class="main-nav-link" href="https://getumen.github.io/about">About Me</a></td>
-          
-          
-          
-          <td><a class="main-nav-link" href="https://getumen.github.io/reading">読書記録</a></td>
           
           
           <td>
@@ -196,12 +173,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        8
+        9
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          4
+          6
         
         <span>
             Tags
@@ -283,6 +260,162 @@
 <article class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
+        <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" itemprop="url">
+            <img src="https://getumen.github.io/images/banners/Cassandra_logo.png" class="article-banner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/">
+    <h1 class="article-title" itemprop="name">
+        Cassandraに入門した
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2019-03-25 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-03-25</time>
+            &middot;
+            5286
+            words
+            &middot;
+            11
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/categories/cassandra">Cassandra</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/nosql">NoSQL</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/cassandra">Cassandra</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                <h1 id="概要">概要</h1>
+
+<p>Facebookが開発したNoSQLデータベースであるCassandraに入門しました．
+テーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
+そして、実際に手を動かして動作を確認しました。</p>
+            </p>
+            <p class="article-more-link">
+                <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" data-id="455db3d31c56be0a331ad9f6f608c14e" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
         <a href="https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/" itemprop="url">
             <img src="https://getumen.github.io/images/banners/internet_influencer_woman.png" class="article-banner">
         
@@ -301,10 +434,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-12 17:12:28 &#43;0900 JST" itemprop="datePublished">2019-01-12</time>
             &middot;
-            0
+            8203
             words
             &middot;
-            0
+            17
             minute read
         </div>
         
@@ -351,8 +484,6 @@
                 <p>紹介する論文はSNSのようなソーシャルグラフにアクセスできる設定で，口コミマーケティングを効率的にする方法を提案している論文です．
 これまでの研究では，ソーシャルグラフで情報がどのように拡散するかをモデル化して，そのモデルが成り立つ場合にうまく行く方法が提案されていました．
 この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．</p>
-
-<p></p>
             </p>
             <p class="article-more-link">
                 <a href="https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/">
@@ -461,10 +592,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-08 04:38:02 &#43;0900 JST" itemprop="datePublished">2019-01-08</time>
             &middot;
-            0
+            3740
             words
             &middot;
-            0
+            8
             minute read
         </div>
         
@@ -509,8 +640,6 @@
         <div class="article-entry" itemprop="articleBody">
             <p>
                 <p>今日読んだ部分では研究を紹介しています．</p>
-
-<p></p>
             </p>
             <p class="article-more-link">
                 <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/">
@@ -619,10 +748,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-05 19:58:34 &#43;0900 JST" itemprop="datePublished">2019-01-05</time>
             &middot;
-            0
+            2750
             words
             &middot;
-            0
+            6
             minute read
         </div>
         
@@ -667,8 +796,6 @@
         <div class="article-entry" itemprop="articleBody">
             <p>
                 <p>今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています</p>
-
-<p></p>
             </p>
             <p class="article-more-link">
                 <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/">
@@ -777,10 +904,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-04 20:51:04 &#43;0900 JST" itemprop="datePublished">2019-01-04</time>
             &middot;
-            0
+            5374
             words
             &middot;
-            0
+            11
             minute read
         </div>
         
@@ -825,8 +952,6 @@
         <div class="article-entry" itemprop="articleBody">
             <p>
                 <p>今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．</p>
-
-<p></p>
             </p>
             <p class="article-more-link">
                 <a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/">
@@ -935,10 +1060,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-03 00:19:02 &#43;0900 JST" itemprop="datePublished">2019-01-03</time>
             &middot;
-            0
+            1193
             words
             &middot;
-            0
+            3
             minute read
         </div>
         
@@ -983,8 +1108,6 @@
         <div class="article-entry" itemprop="articleBody">
             <p>
                 <p>今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．</p>
-
-<p></p>
             </p>
             <p class="article-more-link">
                 <a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/">
@@ -1093,10 +1216,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-02 21:34:59 &#43;0900 JST" itemprop="datePublished">2019-01-02</time>
             &middot;
-            0
+            2287
             words
             &middot;
-            0
+            5
             minute read
         </div>
         
@@ -1141,8 +1264,6 @@
         <div class="article-entry" itemprop="articleBody">
             <p>
                 <p>今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．</p>
-
-<p></p>
             </p>
             <p class="article-more-link">
                 <a href="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/">
@@ -1251,10 +1372,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-01 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-01-01</time>
             &middot;
-            0
+            2068
             words
             &middot;
-            0
+            5
             minute read
         </div>
         
@@ -1300,8 +1421,6 @@
             <p>
                 <p>今日読んだ部分では，マルチアームバンディット問題とはどのような問題なのか？を紹介し，応用例を紹介しています．
 また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．</p>
-
-<p></p>
             </p>
             <p class="article-more-link">
                 <a href="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/">
@@ -1410,10 +1529,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-01 00:00:00 &#43;0900 JST" itemprop="datePublished">2019-01-01</time>
             &middot;
-            0
+            619
             words
             &middot;
-            0
+            2
             minute read
         </div>
         
@@ -1461,8 +1580,6 @@
 
 <p>バンディット問題に対するアルゴリズムについてのサーベイ論文である<a href="http://sbubeck.com/SurveyBCB12.pdf">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems</a>を読んでまとめる．<br />
 このページでは概要の全訳と他の投稿のリンクを貼る．</p>
-
-<p></p>
             </p>
             <p class="article-more-link">
                 <a href="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems/">
@@ -1570,6 +1687,32 @@
             
             <li>
                 <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/Cassandra_logo.png)" alt="雑記" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/cassandra">
+                        Cassandra
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" class="title">Cassandraに入門した</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-03-25 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-03-25</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/12/model-independent-online-learning-for-influence-maximization/" class="thumbnail">
                     
                         <span style="background-image:url(https://getumen.github.io/images/banners/internet_influencer_woman.png)" alt="雑記" class="thumbnail-image"></span>
@@ -1672,32 +1815,6 @@
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" class="thumbnail">
-                    
-                        <span style="background-image:url(https://getumen.github.io/images/banners/kimochi_positive_woman.png)" alt="雑記" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
-                        machine learning
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)</a></p>
-                    <p class="item-date">
-                        <time datetime="2019-01-03 00:19:02 &#43;0900 JST" itemprop="datePublished">2019-01-03</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -1710,6 +1827,14 @@
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
         <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/cassandra">
+                    cassandra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
             
             <li class="category-list-item">
                 
@@ -1742,6 +1867,22 @@
                     bandit
                 </a>
                 <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/cassandra">
+                    cassandra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/nosql">
+                    nosql
+                </a>
+                <span class="category-list-count">1</span>
             </li>
             
             <li class="category-list-item">
@@ -1788,6 +1929,12 @@
         <a href="https://getumen.github.io/tags/bandit" style="font-size: 12px;">bandit</a>
         
         
+        <a href="https://getumen.github.io/tags/cassandra" style="font-size: 12px;">cassandra</a>
+        
+        
+        <a href="https://getumen.github.io/tags/nosql" style="font-size: 12px;">nosql</a>
+        
+        
         <a href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems" style="font-size: 12px;">regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems</a>
         
         
@@ -1820,14 +1967,17 @@
 </footer>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-47210848-3', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
 
 <script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>

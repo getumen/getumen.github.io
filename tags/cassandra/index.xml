@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cassandra on 雑記</title>
+    <link>https://getumen.github.io/tags/cassandra/</link>
+    <description>Recent content in Cassandra on 雑記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 25 Mar 2019 00:01:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://getumen.github.io/tags/cassandra/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cassandraに入門した</title>
+      <link>https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/</link>
+      <pubDate>Mon, 25 Mar 2019 00:01:00 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/</guid>
+      <description>&lt;h1 id=&#34;概要&#34;&gt;概要&lt;/h1&gt;
+
+&lt;p&gt;Facebookが開発したNoSQLデータベースであるCassandraに入門しました．
+テーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
+そして、実際に手を動かして動作を確認しました。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

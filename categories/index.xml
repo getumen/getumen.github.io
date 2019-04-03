@@ -6,9 +6,19 @@
     <description>Recent content in Categories on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <lastBuildDate>Mon, 25 Mar 2019 00:01:00 +0900</lastBuildDate>
     
 	<atom:link href="https://getumen.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cassandra</title>
+      <link>https://getumen.github.io/categories/cassandra/</link>
+      <pubDate>Mon, 25 Mar 2019 00:01:00 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/categories/cassandra/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Machine Learning</title>
