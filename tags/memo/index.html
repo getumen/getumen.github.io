@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja-jp">
 <head>
-    <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1) &middot; 雑記</title>
+    <title>Memo &middot; 雑記</title>
     <meta name="generator" content="Hugo 0.54.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,10 @@
       <meta name="description" content="日々学んだことをメモします">
     
     
-    <link rel="canonical" href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/"/>
+      <link href="https://getumen.github.io/tags/memo/index.xml" rel="alternate" type="application/rss+xml" title="雑記" />
+      <link href="https://getumen.github.io/tags/memo/index.xml" rel="feed" type="application/rss+xml" title="雑記" />
+    
+    <link rel="canonical" href="https://getumen.github.io/tags/memo/"/>
     <link rel="icon" href="https://getumen.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
@@ -20,36 +23,22 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" />
-<meta property="og:description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" />
+    <meta property="og:title" content="Memo" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://getumen.github.io/tags/memo/" />
 
-<meta property="og:image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png" />
-<meta property="article:published_time" content="2019-01-03T00:19:02&#43;09:00"/>
-<meta property="article:modified_time" content="2019-01-03T00:19:02&#43;09:00"/>
+<meta property="og:updated_time" content="2019-01-12T17:12:28&#43;09:00"/>
 
     
     
-<meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)">
-<meta itemprop="description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．">
+<meta itemprop="name" content="Memo">
+<meta itemprop="description" content="">
 
 
-<meta itemprop="datePublished" content="2019-01-03T00:19:02&#43;09:00" />
-<meta itemprop="dateModified" content="2019-01-03T00:19:02&#43;09:00" />
-<meta itemprop="wordCount" content="1193">
-
-  <meta itemprop="image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png">
-
-
-
-<meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
-
-    <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png"/>
-
-<meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)"/>
-<meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．"/>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Memo"/>
+<meta name="twitter:description" content=""/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -266,231 +255,45 @@
 
     <section id="main">
     
-    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-            <img src="https://getumen.github.io/images/banners/kimochi_positive_woman.png" class="article-banner">
-        
-
-        <header class="article-header">
-    <a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/">
-    <h1 class="article-title" itemprop="name">
-        Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2019-01-03 00:19:02 &#43;0900 JST" itemprop="datePublished">2019-01-03</time>
-            &middot;
-            1193
-            words
-            &middot;
-            3
-            minute read
+    
+    
+    
+    <section class="archives-wrap">
+        <div class="archive-category-wrap">
+            <span class="archive-category">Memo</span>
         </div>
-        
-        
+        <div class="archives">
             
             
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">machine learning</a>
-                
-                
-            </div>
+                <article class="archive-article archive-type-post">
+    <div class="archive-article-inner">
+        <div class="archive-article-thumbnail">
             
-        
-
-        
+            <a href="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/" class="thumbnail">
+                <span style="background-image:url(https://getumen.github.io/images/banners/internet_influencer_woman.png)" alt="論文メモメモ：Model-Independent Online Learning for Influence Maximization" class="thumbnail-image"></span>
+            </a>
             
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="https://getumen.github.io/tags/bandit">bandit</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">読書</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-        <div class="article-entry" itemprop="articleBody">
-            <p>今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．</p>
-
-<h1 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h1>
-
-<h2 id="確率的バンディット問題とは">確率的バンディット問題とは</h2>
-
-<p>各アームを$i=1,\dots,K$とし，アームに対応する未知の確率分布を$\nu_i$とする．
-各ステップ$t=1,2,\dots$で，予測者はアーム$I_{t}\in{1,\dots,K}$を選び，$\nu_{I_t}$から（過去とは独立に）報酬$X_{I_t,t}$を受け取る．
-アーム$i$の平均を$\mu_i$とし，アームの平均の最大値と，最大値を取るアームのインデックスをそれぞれ$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*\in\rm arg\max_{i=1,\dots,K}\mu_i$とする．
-確率的設定では擬リグレットを主に考える．
-これは，確率的設定においては実際の報酬について最適な行動と比較するより，最適な行動の期待値と比較するほうが自然であるためだ．</p>
-
-<p>以下のように擬リグレットを書き換えた定式化もリグレットとして用いる．
-最初から$s$ラウンドまでのプレイヤーに選ばれたアーム$i$の回数を$T_i(s)=\sum_{t=1}^s\mathbb{1}_{I_t=i}$とする．
-アーム$i$のsuboptimalityパラメータを$\Delta_i=\mu^*-\mu_i$とする．
-擬リグレットは$$\overline{R}_n=\left(\sum_{i=1}^K\mathbb{E}T_i(n)\right)\mu^*-\sum_{i=1}^K\mathbb{E}T_i(n)\mu_i=\sum_{i=1}^K\Delta_i\mathbb{E}T_i(n)$$と書くことができる．</p>
-
-<h2 id="2-1-optimism-in-face-of-uncertainty">2.1 Optimism in Face of Uncertainty</h2>
-
-<p>確率的バンディット問題の難しさは探索と活用のジレンマにある．
-この問題に対して良い戦略は探索と活用を同時に行うことだ．</p>
-
-<p>これを行うためのかんたんなヒューリスティックの原則は「不確かなときは楽観的に(optimism
-in face of uncertainty)」と呼ばれるものだ.
-このアイディアはとても汎用的で，不確かな環境の中で多くの連続した意思決定を行っていく問題に用いられる．
-予測者が環境から蓄積されたデータを持っていて，次にどのように行動するか決めなければならない場合を考える．
-はじめに，データに矛盾しない実際にあり得る環境の集合を構築する（一般に，concentration inequalitiesを用いて）．
-次に，この集合の中から最も好ましい環境を特定する．
-不確かなときは楽観的にの原則に基づき，最も好ましく，実現可能な環境の中で最適な決定を下す．
-今後見ていくように，この原則によりシンプルでありながら，確率的バンディット問題に対してほとんど最適なアルゴリズムを作ることができる．</p>
         </div>
-        <footer class="article-footer">
-    <a data-url="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" data-id="1ca9a44f5a21bb83a610281a6e26e58b" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
-    </a>
-    
-    <a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
+        <header class="archive-article-header">
+            <h1 itemprop="name">
+            <a class="archive-article-title" href="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/">論文メモメモ：Model-Independent Online Learning for Influence Maximization</a>
+            </h1>
+            <div class="archive-article-date">
+                <i class="fa fa-calendar"></i>
+                <time datetime="2019-01-12 17:12:28 &#43;0900 JST" itemprop="datePublished">2019-01-12</time>
+            </div>
+        </header>
     </div>
+</article>
+ 
+            
+        </div>
+    </section>
+    <nav id="page-nav">
 
-    
-<nav id="article-nav">
-    
-    <a href="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Older
-      </strong>
-      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)</div>
-    </a>
-    
-
-    
-    <a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Newer
-      </strong>
-      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)</div>
-    </a>
-    
 </nav>
 
-
-</article>
-
-
-<section id="comments">
-    <div id="disqus_thread">
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
     
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "getumen-github-io" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    </div>
-</section>
-
 
     </section>
 
@@ -508,7 +311,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/Cassandra_logo.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/Cassandra_logo.png)" alt="Memo" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -534,7 +337,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/internet_influencer_woman.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/internet_influencer_woman.png)" alt="Memo" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -560,7 +363,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/document_research.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/document_research.png)" alt="Memo" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -586,7 +389,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/hikaku_ball_woman.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/hikaku_ball_woman.png)" alt="Memo" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -612,7 +415,7 @@ in face of uncertainty)」と呼ばれるものだ.
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/tanzaku.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/tanzaku.png)" alt="Memo" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
