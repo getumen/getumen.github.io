@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 25 Mar 2019 00:01:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 25 May 2019 21:06:23 +0900</lastBuildDate>
     
 	<atom:link href="https://getumen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>論文メモ：Unbiased Learning to Rank With Biased Feedback</title>
+      <link>https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/</link>
+      <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/</guid>
+      <description>傾向スコアにより，検索エンジンの表示順序バイアスを取り除いて，検索エンジンのクリックログから関連性を学習する手法を提案 論文 https://www.ijcai.org/proceedings/2018/0738.pdf https://dl.acm.org/citation.cfm?id=3018699 1 概要 インタラ</description>
+    </item>
     
     <item>
       <title>Cassandraに入門した</title>

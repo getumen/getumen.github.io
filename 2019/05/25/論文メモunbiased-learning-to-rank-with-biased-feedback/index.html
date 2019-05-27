@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+<head>
+    <title>論文メモ：Unbiased Learning to Rank With Biased Feedback &middot; 雑記</title>
+    <meta name="generator" content="Hugo 0.54.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="getumen">
+    
+      <meta name="description" content="日々学んだことをメモします">
+    
+    
+    <link rel="canonical" href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/"/>
+    <link rel="icon" href="https://getumen.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
+    <link rel="stylesheet" href="https://getumen.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://getumen.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://getumen.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="論文メモ：Unbiased Learning to Rank With Biased Feedback" />
+<meta property="og:description" content="傾向スコアにより，検索エンジンの表示順序バイアスを取り除いて，検索エンジンのクリックログから関連性を学習する手法を提案 論文 https://www.ijcai.org/proceedings/2018/0738.pdf https://dl.acm.org/citation.cfm?id=3018699 1 概要 インタラ" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" />
+
+<meta property="og:image" content="https://getumen.github.io/images/banners/website_kensaku_kekka.png" />
+<meta property="article:published_time" content="2019-05-25T21:06:23&#43;09:00"/>
+<meta property="article:modified_time" content="2019-05-25T21:06:23&#43;09:00"/>
+
+    
+    
+<meta itemprop="name" content="論文メモ：Unbiased Learning to Rank With Biased Feedback">
+<meta itemprop="description" content="傾向スコアにより，検索エンジンの表示順序バイアスを取り除いて，検索エンジンのクリックログから関連性を学習する手法を提案 論文 https://www.ijcai.org/proceedings/2018/0738.pdf https://dl.acm.org/citation.cfm?id=3018699 1 概要 インタラ">
+
+
+<meta itemprop="datePublished" content="2019-05-25T21:06:23&#43;09:00" />
+<meta itemprop="dateModified" content="2019-05-25T21:06:23&#43;09:00" />
+<meta itemprop="wordCount" content="5918">
+
+  <meta itemprop="image" content="https://getumen.github.io/images/banners/website_kensaku_kekka.png">
+
+
+
+<meta itemprop="keywords" content="読書,memo,causal," />
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://getumen.github.io/images/banners/website_kensaku_kekka.png"/>
+
+<meta name="twitter:title" content="論文メモ：Unbiased Learning to Rank With Biased Feedback"/>
+<meta name="twitter:description" content="傾向スコアにより，検索エンジンの表示順序バイアスを取り除いて，検索エンジンのクリックログから関連性を学習する手法を提案 論文 https://www.ijcai.org/proceedings/2018/0738.pdf https://dl.acm.org/citation.cfm?id=3018699 1 概要 インタラ"/>
+<meta name="twitter:site" content="@letitbe_or_not"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://getumen.github.io/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://getumen.github.io/images/getumen.png')"></i>
+          
+          <span class="site-title">雑記</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/categories/">Categories</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/about">About Me</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://getumen.github.io/images/getumen.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://getumen.github.io/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/categories/">Categories</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/about">About Me</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://getumen.github.io/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://getumen.github.io/images/getumen.png">
+      
+      <h2 id="name">getumen</h2>
+      <h3 id="title">データエンジニアをしながらデータサイエンスの勉強をしています</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Earth</span>
+      
+          <a id="follow" href="https://github.com/getumen">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        10
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          7
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/getumen" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/letitbe_or_not" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://getumen.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <img src="https://getumen.github.io/images/banners/website_kensaku_kekka.png" class="article-banner">
+        
+
+        <header class="article-header">
+    <a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/">
+    <h1 class="article-title" itemprop="name">
+        論文メモ：Unbiased Learning to Rank With Biased Feedback
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2019-05-25 21:06:23 &#43;0900 JST" itemprop="datePublished">2019-05-25</time>
+            &middot;
+            5918
+            words
+            &middot;
+            12
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">machine learning</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">読書</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/memo">memo</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/causal">causal</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            
+
+<ul>
+<li>傾向スコアにより，検索エンジンの表示順序バイアスを取り除いて，検索エンジンのクリックログから関連性を学習する手法を提案</li>
+</ul>
+
+<!-- more -->
+
+<p>論文</p>
+
+<ul>
+<li><a href="https://www.ijcai.org/proceedings/2018/0738.pdf">https://www.ijcai.org/proceedings/2018/0738.pdf</a></li>
+<li><a href="https://dl.acm.org/citation.cfm?id=3018699">https://dl.acm.org/citation.cfm?id=3018699</a></li>
+</ul>
+
+<h1 id="1-概要">1 概要</h1>
+
+<p>インタラクティブなシステムでは暗黙的なフィードバック（クリックや滞在時間）は豊富なデータのソースである．
+暗黙的なフィードバックは多くのメリットを持つ一方で，暗黙的なフィードバック固有のバイアスのため効率的に使う上での障害になる．
+例えば，検索結果のランキングによるポジションバイアスはどのくらい多くのクリック結果が得られるかに強く影響する．
+だから，直接ランク学習の学習データとして直接クリックデータを使うと最適な解を得られない．
+このバイアスの問題を乗り越えるために，反事実推論フレームワークを示す．
+このフレームワークはバイアスの乗ったデータであるにもかかわらず経験リスク最終化によってバイアスのないランク学習のための理論的なバイアスを提供する．
+このフレームワークを用いて，暗黙的なフィードバックからの分類問題のための傾向スコアにより重みづけをしたランキングSVM(Propensity-weighted ranking SVM)を導出した．
+そのランキングSVMではクリックモデルが傾向スコア推定器の役割を果たす．
+理論的な裏付けの上に，提案手法はバイアスを効率的に扱うことを実験的に示した．
+また，提案手法はノイズや不正確な傾向スコアモデルに対して頑健であり，効率的にスケールすることを示した．
+加えて，利用できる検索エンジンを用いて提案手法が実世界に適用できることを示した．
+そして，実質的に情報取得のパフォーマンスを改善した．</p>
+
+<h1 id="導入">導入</h1>
+
+<h2 id="背景">背景</h2>
+
+<p>検索システムのバッチ訓練にはアノテーションされたテストデータが必要だが，ウェブ検索システムにおいて専門家から関連性のアノテーションを得るのは非現実的で不可能である．</p>
+
+<p>ユーザの振る舞いによる暗黙的なフィードバックはたくさんある．</p>
+
+<h2 id="課題-関連研究">課題 &amp; 関連研究</h2>
+
+<ol>
+<li>クリックされたかされていないかを関連性の正例負例に使うナイーブなアプローチはひどくバイアスが乗ってしまう．特に，表示する順番がユーザのクリックする場所に強く影響する[Joachims et al., 2007].
+この表示された位置のバイアスによって一様分布からかけ離れた不完全で歪んだ関連性のサンプルを生み出してしまう．</li>
+<li>クリックされた文章とスキップされた文章の間にあるクリックを好みとして扱うことは正確だとわかっている[Joachims,2002; Joachims et al., 2007]が，表示された順序に対して好きではないという好みを推測できるだけである．
+これは深刻なバイアスを生み，これらの好みによって鍛えられたアルゴリズムは表示する順序を（本来望ましいものと）逆向きにしがちだ．</li>
+<li>クリックの生成モデル[Chuklin et al. 2015]は同じクエリを複数回必要とするが，これは非現実的だ．</li>
+<li>オンライン学習アルゴリズムのようにランク学習がユーザに提示するものを乱択することを許しs [Raman et al., 2013; Hofmann et al., 2013]，バンディットフィードバックからバッチ学習すること[Swaminathan and Joachims,
+2015]で，原則的な方法でクリックのバイアスの問題を克服できる．しかし，訓練データを集めるとき常に検索のとき動的に並び変える必要があるのはランキングの質を下げ，観察データ（ランダムな割付を行ったものは実験データ？）を集めるのに比べてコストが高い．</li>
+</ol>
+
+<h2 id="貢献">貢献</h2>
+
+<p>上記課題を解決する理論的な原則に基づいていて，経験的に効率的な手法を示す．</p>
+
+<ol>
+<li>因果推論の手法から反事実推定の技術[Imbens and Rubin, 2015] を借用し，クエリレベルのサンプリングバイアスを補正すること[Wang et al.,2016]で，バイアスの乗ったフィードバックデータを利用して検索ランキングのパフォーマンスを評価するバイアスのない（ことを証明可能な）推定器を開発する．</li>
+<li>上記推定器をもとにランク学習のための傾向スコアで重み付けされた経験リスク最小化を提案する．Propensity SVM-Rankという学習法を実装する．</li>
+<li>クリックモデルはクリック結果を傾向スコアの計算のために用いて関連性の評価を必要としないので，クエリーが繰り返し観測される必要はない（課題３）．</li>
+<li>傾向スコアを求める小さな社会実験を除いて，提案手法はランダム化を必要としない．</li>
+</ol>
+
+<h1 id="2-関連研究">2 関連研究</h1>
+
+<h1 id="3-full-info-learning-to-rank">3  FULL-INFO LEARNING TO RANK</h1>
+
+<p>ランク学習の問題設定と従来の課題を見る．</p>
+
+<ul>
+<li>独立同分布から引かれたクエリ$\mathbf{x}_i\sim P(\mathbf{x})$のサンプル$\mathbf{X}$が与えられているとする．</li>
+<li>すべてのドキュメント$y$に対する関連性$rel(\mathbf{x},y)$は既知であると仮定する（関連性が全て既知だと仮定されているのでFull−Info設定という）．</li>
+<li>クエリ$\mathbf{x}$に対する任意のランキング$\mathbf{y}$の損失(e.g. <a href="https://en.wikipedia.org/wiki/Discounted_cumulative_gain">DCG</a>) $\ell(\mathbf{y}|\mathbf{x})$も計算できる．</li>
+<li>クエリ分布に対して期待値を取ることで，ランキング$S(\mathbf{x})$を返すランキングシステム$S$のリスクを$$R(S)=\int\Delta(S(\mathbf{x})|\mathbf{x})dP(\mathbf{x})\tag{1}$$
+を定義できる．</li>
+<li>経験リスクは$$\hat{R}(S)=\frac{1}{|\mathbf{X}|}\sum_{x_i\in\mathbf{X}}\Delta(S(\mathbf{x}_i)|\mathbf{x}_i)$$</li>
+<li>経験リスク最小化により$$\hat{X}=\arg\min_{S\in\mathcal{S}}\left\{\hat{R}(S)\right\}$$を取得する．</li>
+</ul>
+
+<p>２つの課題がある．</p>
+
+<ol>
+<li>すべてのドキュメントにラベル付を行うのは不可能であり， pooling technique(?)[Sparck-Jones and van Rijsbergen, 1975]はバイアスを導入してしまう．</li>
+<li>専門家の判断$rel(\mathbf{x},y)$は同じクエリの根底にあるすべての意図について集約されている必要がある．また，クエリの分布を適切に予想する判断によって適切な関連性$rel(\mathbf{x},y)$を割り当てることは困難だ．</li>
+</ol>
+
+<h1 id="4-partial-info-learning-to-rank">4 PARTIAL-INFO LEARNING TO RANK</h1>
+
+<ul>
+<li>暗黙的フィードバックから学習することは上記のFull−Infoのランク学習設定の課題を克服できうる．</li>
+<li>ユーザの特定の文脈や必要な情報に従う関連性の判断人基づきユーザが行動するので，ユーザのシグナルを利用することでユーザの意図を反映できるからだ．</li>
+<li>クエリ$\mathbf{x}_i$に対するユーザ固有の関連性$y$を$r_i(\mathbf{y})$と記す．</li>
+<li>しかし，暗黙的なフィードバックを用いたとき観測されなかったフィードバックの問題はpooling settingの問題よりずっと大きい．</li>
+<li>特に表示順序によるバイアスによって暗黙的なバイアスは歪められ，非ランダムに欠損している[Little and Rubin, 2002].</li>
+<li>我々は[Schnabel et al., 2016]と似た以下の反事実モデルを採用する</li>
+<li>関連性を$r_i(y)\in\{0,1\}$とし，関心のパフォーマンスを関連性のランキングの和$$\Delta(\mathbf{y}|\mathbf{x}_i,t_i)=\sum_{y\in\mathbf{y}}rank(y|\mathbf{y})\cdot r_i(y)\tag{2}$$によって測るとする．</li>
+<li>式１の類推からシステムのリスクを$$R(S)=\int\Delta(S(\mathbf{x}|\mathbf{x},r))dP(\mathbf{x},r)\tag{3}$$
+と定義する．</li>
+<li>提案する反事実モデルでは各クエリ$(\mathbf{x}_i,r_i)\sim P(\mathbf{x},r)$に対して，真の関連性ベクトル$r_i$が存在すると考える．</li>
+<li>関連性のシグナル（クリック等）は表示されたランキング$\overline{\mathbf{y}}_i$のもとで，上位のもののほうが下位のものよりも観測されやすい．</li>
+<li>明らかになった関連性を指し示す0/1のベクトルを$o_i\sim P(o_i|\mathbf{x}_i,\overline{\mathbf{y}_i},r_i)$と記す．</li>
+<li>各$o_i$の要素について，$Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}_i},r_i)$はクエリ$\mathbf{x}$に対して結果$y$の関連性$r_i(y)$を観測したことの周辺確率を表している．</li>
+<li>この観測確率値を観測の傾向スコアと呼ぶ</li>
+<li>この反事実モデルの設定を用いて新しいランキング$\mathbf{y}$に対しての$\Delta(\mathbf{y}|\mathbf{x}_i,r_i)$のバイアスのない推定量$$\hat{\Delta}_{IPS}(\mathbf{y}|\mathbf{x}_i,\overline{\mathbf{y}}_i,o_i) = \sum_{y:o_i(y)=1}\frac{rank(y|\mathbf{y})\cdot r_i(y)}{Q(o_i(y) = 1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)} = \sum_{y:o_i(y)=1\land r_i(y)=1}\frac{rank(y|\mathbf{y})}{Q(o_i(y) = 1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}$$をinverse propensity score (IPS) [Horvitz and Thompson, 1952; Rosenbaum and Rubin, 1983; Imbens and Rubin, 2015]を用いて得る．</li>
+
+<li><p>すべての$r(y)=1$である$y$に対して（関連のない$y$については必要でない），$Q(o_i(y) = 1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)&gt;0$が成り立つならば，任意の$\mathbf{y}$に対して，$\hat{\Delta}_{IPS}(\mathbf{y}|\mathbf{x}_i,\overline{\mathbf{y}}_i,o_i)$は$\Delta(\mathbf{y}|\mathbf{x}_i,r_i)$のバイアスのない推定量である．
+$$
+\mathbb{E}_{o_i}[\hat{\Delta}_{IPS}(\mathbf{y}|\mathbf{x}_i,\overline{\mathbf{y}}_i,o_i)]=\mathbb{E}\left[\sum_{y:o_i(y)=1}\frac{rank(y|\mathbf{y})\cdot r_i(y)}{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}\right]\\<br />
+=\sum_{y\in\mathbf{y}}\mathbb{E}_{o_i}\left[\frac{o_i(y)\cdot rank(y|\mathbf{y})\cdot r_i(y)}{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}\right] \\<br />
+=\sum_{y\in\mathbf{y}}\frac{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)\cdot rank(y|\mathbf{y})\cdot r_i(y)}{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}\\<br />
+=\sum_{y\in\mathbf{y}}rank(y|\mathbf{y})r_i(y)\\<br />
+=\Delta(\mathbf{y}|\mathbf{x}_i,r_i)
+$$</p></li>
+
+<li><p>$\hat{\Delta}_{IPS}$は推定に$o_i(y)=1\land r_i(y)=1$（クリックされたデータ等）だけが貢献する．</p></li>
+
+<li><p>他の値は観測されているので，あとは傾向スコア$Q(o_i(y) = |\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)$を推定できれば良い（つまり，他の交絡因子はない[Imbens and Rubin, 2015]）．</p></li>
+
+<li><p>システムの経験リスクはクエリについて平均を取ったIPS推定量となる$$\hat{R}_{IPS}(S)=\frac{1}{N}\sum_{i=1}^N\sum_{y:o_i(y)=1\land r_i(y)=1}\frac{rank(y|S(\mathbf{x}_i))}{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}\tag{4}$$</p></li>
+
+<li><p>IPS推定量をクエリについて平均を取った経験リスクはバイアスが乗っていないので期待値を取ればリスクに一致するので，十分なデータがあれば$S$の中で最適なシステムが学習できる</p></li>
+</ul>
+
+<h1 id="5-feedback-propensity-models">5 FEEDBACK PROPENSITY MODELS</h1>
+
+<p>傾向スコアの求め方について具体例を示す．</p>
+
+<h2 id="5-1-position-based-propensity-model">5.1 Position-Based Propensity Model</h2>
+
+<ul>
+<li>観測したクリックの傾向を導くためにクリック傾向モデルとして用いる．</li>
+<li>検索エンジンのログから検索クエリ$\mathbf{x}_i$，表示されたランキング$\overline{\mathbf{y}}_i$，$y$がクリックされたかどうかを表すベクトル$c(y_i)\in\{0,1\}$が得られる．</li>
+<li>ユーザが$y$を吟味したかを表す$e_i(y)$とし，吟味モデル$$P(e_i(y)=1|rank(y|\overline{\mathbf{y}}))\cdot P(c_i(y)=1|r_i(y),e_i(y)=1)$$を考える．</li>
+<li>吟味モデルではユーザが吟味するかは$\overline{\mathbf{y}}$の中の$y$のランクのみに依存する（傾向スコアは$p_{rank}(y|\overline{\mathbf{y}})$）．</li>
+<li>まず，簡単なクリックのノイズがないモデルを考える．ノイズフリーモデルでは，「クリック＝関連があるかつ吟味した」が成り立っている($c_i(y)=1 \iff r_i(y)=1 \land e_(y)=1$)．</li>
+<li>よってアンバイアスな経験リスクは$$R_{IPS}(S)=\frac{1}{n}\sum_{i=1}^n\sum_{y:c_i(y)=1}\frac{rank(y|S(\mathbf{x}_i))}{p_{rank}(y|\overline{\mathbf{y}})}\tag{5}$$</li>
+</ul>
+
+<h2 id="5-2-incorporating-click-noise">5.2 Incorporating Click Noise</h2>
+
+<ul>
+<li>次に，クリックの生成分布にノイズが乗っている設定を考える．$1\ge\epsilon_+&gt;\epsilon_-\ge0$ $$P(c_i(y)=1|r_i(y)=1, e_i(y)=1)=\epsilon_+,\\\ P(c_i(y)=1|r_i(y)=0, e_i(y)=1)=\epsilon_-$$</li>
+<li>これは関連するものをユーザがクリックする確率が$\epsilon_+$であり，関連しないものを誤ってクリックしてしまう確率が$\epsilon_-$であることを表している</li>
+<li>これにより正しい$r_i(y)$でなくノイズの乗った$\tilde{r}_i(y)$になる．</li>
+<li>このとき，経験リスクとリスクの大小関係が一致する．
+$$
+\mathbb{E}[\hat{R}_{IPS}(S_1)]&gt;\mathbb{E}[\hat{R}_{IPS}(S_2)]\\\
+\iff \mathbb{E}_{\mathbf{x},r,\hat{\mathbf{y}}}\left[ \mathbb{E}_o\mathbb{E}_{c|o}\left[ \sum_{y:c(y)=1}\frac{rank(y|S_1(\mathbf{x}))-rank(y|S_2(\mathbf{x}))}{p_{rank}(y|\mathbf{\hat{y}})}\right]\right]&gt;0\\\
+\iff\mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}P(c(y)=1|o(y)=1,r(y))\delta rank(y|\mathbf{x})\right]&gt;0 \\\
+\iff \mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}(\epsilon_+r(y)+\epsilon_-(1-r(y)))\cdot\delta rank(y|\mathbf{x})\right]&gt;0 \\<br />
+\iff \mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}((\epsilon_+-\epsilon_-)\cdot r(y)+\epsilon_-)\cdot\delta rank(y|\mathbf{x})\right]&gt;0 \\<br />
+\iff \mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}(\epsilon_+-\epsilon_-)\cdot r(y)\cdot\delta rank(y|\mathbf{x})\right]&gt;0 \\<br />
+\iff \mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}r(y)\cdot\delta rank(y|\mathbf{x})\right]&gt;0 \\<br />
+\iff R(S_1) &gt; R(S_2)
+$$
+ここで，$\delta rank(y|\mathbf{x})=rank(y|S_1(\mathbf{x}))-rank(y|S_2(\mathbf{x}))$，$\epsilon_-\sum_{y\in\mathbf{\hat{y}}}\delta rank(y|\mathbf{x})=0$である．</li>
+<li>上記より経験リスクとリスクの一致性があるので最適解を得られる．</li>
+</ul>
+
+<h2 id="5-3-propensity-estimation">5.3 Propensity Estimation</h2>
+
+<p>最後のステップとして，$p_r$の推定法を考える．</p>
+
+<ul>
+<li>単純な方法はランダム化（この場合，$p_r$を推定するためにユーザに対してランダムに並び替えた検索結果を見せる）だが，コストが高い．</li>
+<li>そこで，ランク$r$と「ランドマーク」となる$k$番目のランクと入れ替える．
+$$
+P(c_i(y&rsquo;)=1|no-swap)=p_k\cdot P(c_i(y&rsquo;)=1|e_i(y&rsquo;)=1)\\\
+P(c_i(y&rsquo;)=1|swap-k-and-r)=p_r\cdot P(c_i(y&rsquo;)=1|e_i(y&rsquo;)=1)
+$$</li>
+<li>式５の$p_r$は係数に定数がかかっていても経験リスクの大小関係に変化はないので，このスワップによる介入により推定された確率を傾向スコアとして用いることができる．</li>
+</ul>
+
+<h2 id="5-4-alternative-feedback-propensity-models">5.4 Alternative Feedback Propensity Models</h2>
+
+<ul>
+<li>この手法は様々なバイアスに適用できる (e.g.trust bias, saliency biases)</li>
+<li>この手法は２値分類だけでなく回帰でも使える．</li>
+</ul>
+
+<h1 id="6-propensity-weighted-svm-rank">6. PROPENSITY-WEIGHTED SVM-RANK</h1>
+
+<h1 id="7-empirical-evaluation">7. EMPIRICAL EVALUATION</h1>
+
+<h2 id="7-1-synthetic-data-experiments">7.1 Synthetic Data Experiments</h2>
+
+<ul>
+<li>傾向スコアとして$$Q(o(y)=1|\mathbf{x},y,r)=p_{rank}(y|\overline{\mathbf{y}})=\left(\frac{1}{rank(y|\overline{\mathbf{y}})}\right)^\eta$$</li>
+</ul>
+
+<h2 id="7-2-how-does-ranking-performance-scale-with-training-set-size">7.2 How does ranking performance scale with training set size?</h2>
+
+<p><img src="/images/banners/propensity.png" alt="データサイズVS関連性" title="データサイズVS関連性" /></p>
+
+<h2 id="how-much-presentation-bias-can-be-tolerated">How much presentation bias can be tolerated?</h2>
+
+<p><img src="/images/banners/propensity2.png" alt="ポジションバイアスの強さVS関連性" title="ポジションバイアスの強さVS関連性" /></p>
+
+<h2 id="7-4-how-robust-are-the-methods-to-click-noise">7.4 How robust are the methods to click noise?</h2>
+
+<p><img src="/images/banners/propensity3.png" alt="クリックノイズの強さVS関連性" title="クリックノイズの強さVS関連性" /></p>
+
+<h2 id="7-5-how-robust-is-propensity-svm-rank-to-misspecified-propensities">7.5 How robust is Propensity SVM-Rank to misspecified propensities?</h2>
+
+<p><img src="/images/banners/propensity4.png" alt="傾向スコアの正しさVS関連性" title="傾向スコアの正しさVS関連性" /></p>
+
+<h2 id="7-6-real-world-experiment">7.6 Real-World Experiment</h2>
+
+<p>Arxiv Full-Text Search <a href="http://search.arxiv.org:8081/">http://search.arxiv.org:8081/</a>で比較を行う．
+<img src="/images/banners/propensity5.png" alt="傾向スコアの正しさVS関連性" title="実データでの勝敗" /></p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" data-id="a10e756db4fa3c0e74ac49b7d94dffc1" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Cassandraに入門した</div>
+    </a>
+    
+
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "getumen-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/website_kensaku_kekka.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" class="title">論文メモ：Unbiased Learning to Rank With Biased Feedback</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-05-25 21:06:23 &#43;0900 JST" itemprop="datePublished">2019-05-25</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/Cassandra_logo.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/cassandra">
+                        Cassandra
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" class="title">Cassandraに入門した</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-03-25 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-03-25</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/internet_influencer_woman.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/" class="title">論文メモメモ：Model-Independent Online Learning for Influence Maximization</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-01-12 17:12:28 &#43;0900 JST" itemprop="datePublished">2019-01-12</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/document_research.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-01-08 04:38:02 &#43;0900 JST" itemprop="datePublished">2019-01-08</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/hikaku_ball_woman.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-01-05 19:58:34 &#43;0900 JST" itemprop="datePublished">2019-01-05</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/cassandra">
+                    cassandra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/machine-learning">
+                    machine-learning
+                </a>
+                <span class="category-list-count">9</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/bandit">
+                    bandit
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/cassandra">
+                    cassandra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/causal">
+                    causal
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/memo">
+                    memo
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/nosql">
+                    nosql
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">
+                    regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">
+                    読書
+                </a>
+                <span class="category-list-count">9</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://getumen.github.io/tags/bandit" style="font-size: 12px;">bandit</a>
+        
+        
+        <a href="https://getumen.github.io/tags/cassandra" style="font-size: 12px;">cassandra</a>
+        
+        
+        <a href="https://getumen.github.io/tags/causal" style="font-size: 12px;">causal</a>
+        
+        
+        <a href="https://getumen.github.io/tags/memo" style="font-size: 12px;">memo</a>
+        
+        
+        <a href="https://getumen.github.io/tags/nosql" style="font-size: 12px;">nosql</a>
+        
+        
+        <a href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems" style="font-size: 12px;">regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems</a>
+        
+        
+        <a href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8" style="font-size: 12px;">読書</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019
+      &copy; @getumen
+    </div>
+  </div>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+<script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://getumen.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>

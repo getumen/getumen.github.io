@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/</loc>
+    <lastmod>2019-05-25T21:06:23+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/</loc>
     <lastmod>2019-03-25T00:01:00+09:00</lastmod>
   </url>
@@ -77,14 +82,20 @@
   </url>
   
   <url>
+    <loc>https://getumen.github.io/tags/causal/</loc>
+    <lastmod>2019-05-25T21:06:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://getumen.github.io/categories/machine-learning/</loc>
-    <lastmod>2019-01-12T17:12:28+09:00</lastmod>
+    <lastmod>2019-05-25T21:06:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://getumen.github.io/tags/memo/</loc>
-    <lastmod>2019-01-12T17:12:28+09:00</lastmod>
+    <lastmod>2019-05-25T21:06:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -96,7 +107,7 @@
   
   <url>
     <loc>https://getumen.github.io/post/</loc>
-    <lastmod>2019-03-25T00:01:00+09:00</lastmod>
+    <lastmod>2019-05-25T21:06:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -114,13 +125,13 @@
   
   <url>
     <loc>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</loc>
-    <lastmod>2019-01-12T17:12:28+09:00</lastmod>
+    <lastmod>2019-05-25T21:06:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://getumen.github.io/</loc>
-    <lastmod>2019-03-25T00:01:00+09:00</lastmod>
+    <lastmod>2019-05-25T21:06:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
