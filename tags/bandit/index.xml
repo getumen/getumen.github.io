@@ -19,7 +19,9 @@
       <guid>https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/</guid>
       <description>&lt;p&gt;SNSのようなソーシャルグラフにアクセスできる設定で，口コミマーケティングを効率的にする方法を提案している論文です．
 これまでの研究では，ソーシャルグラフで情報がどのように拡散するかをモデル化して，そのモデルが成り立つ場合にうまく行く方法が提案されていました．
-この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．&lt;/p&gt;</description>
+この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,7 +30,9 @@
       <pubDate>Tue, 08 Jan 2019 04:38:02 +0900</pubDate>
       
       <guid>https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/</guid>
-      <description>&lt;p&gt;今日読んだ部分では研究を紹介しています．&lt;/p&gt;</description>
+      <description>&lt;p&gt;今日読んだ部分では研究を紹介しています．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -37,7 +41,9 @@
       <pubDate>Sat, 05 Jan 2019 19:58:34 +0900</pubDate>
       
       <guid>https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/</guid>
-      <description>&lt;p&gt;今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています&lt;/p&gt;</description>
+      <description>&lt;p&gt;今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -46,7 +52,9 @@
       <pubDate>Fri, 04 Jan 2019 20:51:04 +0900</pubDate>
       
       <guid>https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/</guid>
-      <description>&lt;p&gt;今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．&lt;/p&gt;</description>
+      <description>&lt;p&gt;今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -55,7 +63,9 @@
       <pubDate>Thu, 03 Jan 2019 00:19:02 +0900</pubDate>
       
       <guid>https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/</guid>
-      <description>&lt;p&gt;今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．&lt;/p&gt;</description>
+      <description>&lt;p&gt;今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -64,7 +74,9 @@
       <pubDate>Wed, 02 Jan 2019 21:34:59 +0900</pubDate>
       
       <guid>https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/</guid>
-      <description>&lt;p&gt;今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．&lt;/p&gt;</description>
+      <description>&lt;p&gt;今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -74,7 +86,9 @@
       
       <guid>https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/</guid>
       <description>&lt;p&gt;今日読んだ部分では，マルチアームバンディット問題とはどのような問題なのか？を紹介し，応用例を紹介しています．
-また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．&lt;/p&gt;</description>
+また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -86,7 +100,9 @@
       <description>&lt;h1 id=&#34;このページについて&#34;&gt;このページについて&lt;/h1&gt;
 
 &lt;p&gt;バンディット問題に対するアルゴリズムについてのサーベイ論文である&lt;a href=&#34;http://sbubeck.com/SurveyBCB12.pdf&#34;&gt;Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems&lt;/a&gt;を読んでまとめる．&lt;br /&gt;
-このページでは概要の全訳と他の投稿のリンクを貼る．&lt;/p&gt;</description>
+このページでは概要の全訳と他の投稿のリンクを貼る．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
