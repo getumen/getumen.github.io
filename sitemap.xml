@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/</loc>
+    <lastmod>2020-02-01T15:36:41+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://getumen.github.io/2019/07/27/minikube%E3%82%92ubuntu18.04%E3%81%AB%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B/</loc>
     <lastmod>2019-07-27T15:53:05+09:00</lastmod>
   </url>
@@ -63,6 +68,12 @@
   </url>
   
   <url>
+    <loc>https://getumen.github.io/tags/ansible/</loc>
+    <lastmod>2020-02-01T15:36:41+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://getumen.github.io/tags/bandit/</loc>
     <lastmod>2019-01-12T17:12:28+09:00</lastmod>
     <priority>0</priority>
@@ -93,6 +104,18 @@
   </url>
   
   <url>
+    <loc>https://getumen.github.io/categories/infra/</loc>
+    <lastmod>2020-02-01T15:36:41+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://getumen.github.io/tags/kubernetes/</loc>
+    <lastmod>2020-02-01T15:36:41+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://getumen.github.io/categories/machine-learning/</loc>
     <lastmod>2019-05-25T21:06:23+09:00</lastmod>
     <priority>0</priority>
@@ -112,7 +135,7 @@
   
   <url>
     <loc>https://getumen.github.io/post/</loc>
-    <lastmod>2019-07-27T15:53:05+09:00</lastmod>
+    <lastmod>2020-02-01T15:36:41+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -124,7 +147,13 @@
   
   <url>
     <loc>https://getumen.github.io/tags/</loc>
-    <lastmod>2019-01-12T17:12:28+09:00</lastmod>
+    <lastmod>2020-02-01T15:36:41+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://getumen.github.io/tags/vagrant/</loc>
+    <lastmod>2020-02-01T15:36:41+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -142,7 +171,7 @@
   
   <url>
     <loc>https://getumen.github.io/</loc>
-    <lastmod>2019-07-27T15:53:05+09:00</lastmod>
+    <lastmod>2020-02-01T15:36:41+09:00</lastmod>
     <priority>0</priority>
   </url>
   

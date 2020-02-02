@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on 雑記</title>
+    <link>https://getumen.github.io/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on 雑記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 01 Feb 2020 15:36:41 +0900</lastBuildDate>
+    
+	<atom:link href="https://getumen.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる</title>
+      <link>https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/</link>
+      <pubDate>Sat, 01 Feb 2020 15:36:41 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/</guid>
+      <description>&lt;h1 id=&#34;内容&#34;&gt;内容&lt;/h1&gt;
+
+&lt;p&gt;マルチノードのKubernetes環境をAnsibleとVagrantを用いて構築します．
+内容はほぼの&lt;a href=&#34;https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/&#34;&gt;Kubernetesのブログの内容&lt;/a&gt;日本語訳です．
+新しいバージョンをインストールするので，若干ブログの内容と違います．&lt;/p&gt;
+
+&lt;h1 id=&#34;ゴール&#34;&gt;ゴール&lt;/h1&gt;
+
+&lt;p&gt;ローカルマシンにプロダクション環境のようなマルチノードKubernetesクラスタを作成することです．&lt;/p&gt;
+
+&lt;h1 id=&#34;モチベーション&#34;&gt;モチベーション&lt;/h1&gt;
+
+&lt;p&gt;本番環境のようなマルチノードのKubernetesクラスタを作るといろいろなご利益がある．
+MiniKubeのような優れたものがあるが，アプリケーションの設計やアーキテクチャーによる問題やバグは解決できない．
+マルチノードのKubernetes環境を作ることでそうした問題を再現して解決できるようになる．
+だから，マルチノードのKubernetesクラスタを作れると嬉しい．&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

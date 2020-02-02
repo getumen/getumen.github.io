@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja-jp">
 <head>
-    <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2) &middot; 雑記</title>
+    <title>マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる &middot; 雑記</title>
     <meta name="generator" content="Hugo 0.40.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
       <meta name="description" content="日々学んだことをメモします">
     
     
-    <link rel="canonical" href="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/"/>
+    <link rel="canonical" href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/"/>
     <link rel="icon" href="https://getumen.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
@@ -20,20 +20,33 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)" />
-<meta property="og:description" content="今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．
+    <meta property="og:title" content="マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる" />
+<meta property="og:description" content="内容
+
+マルチノードのKubernetes環境をAnsibleとVagrantを用いて構築します．
+内容はほぼのKubernetesのブログの内容日本語訳です．
+新しいバージョンをインストールするので，若干ブログの内容と違います．
+
+ゴール
+
+ローカルマシンにプロダクション環境のようなマルチノードKubernetesクラスタを作成することです．
+
+モチベーション
+
+本番環境のようなマルチノードのKubernetesクラスタを作るといろいろなご利益がある．
+MiniKubeのような優れたものがあるが，アプリケーションの設計やアーキテクチャーによる問題やバグは解決できない．
+マルチノードのKubernetes環境を作ることでそうした問題を再現して解決できるようになる．
+だから，マルチノードのKubernetesクラスタを作れると嬉しい．
 
 " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/" />
-
-  <meta property="og:image" content="https://getumen.github.io/images/banners/money_slot_machine.png" />
+<meta property="og:url" content="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" />
 
 
 
-<meta property="article:published_time" content="2019-01-02T21:34:59&#43;09:00"/>
+<meta property="article:published_time" content="2020-02-01T15:36:41&#43;09:00"/>
 
-<meta property="article:modified_time" content="2019-01-02T21:34:59&#43;09:00"/>
+<meta property="article:modified_time" content="2020-02-01T15:36:41&#43;09:00"/>
 
 
 
@@ -47,27 +60,53 @@
 
     
     
-<meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)">
-<meta itemprop="description" content="今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．
+<meta itemprop="name" content="マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる">
+<meta itemprop="description" content="内容
+
+マルチノードのKubernetes環境をAnsibleとVagrantを用いて構築します．
+内容はほぼのKubernetesのブログの内容日本語訳です．
+新しいバージョンをインストールするので，若干ブログの内容と違います．
+
+ゴール
+
+ローカルマシンにプロダクション環境のようなマルチノードKubernetesクラスタを作成することです．
+
+モチベーション
+
+本番環境のようなマルチノードのKubernetesクラスタを作るといろいろなご利益がある．
+MiniKubeのような優れたものがあるが，アプリケーションの設計やアーキテクチャーによる問題やバグは解決できない．
+マルチノードのKubernetes環境を作ることでそうした問題を再現して解決できるようになる．
+だから，マルチノードのKubernetesクラスタを作れると嬉しい．
 
 ">
 
 
-<meta itemprop="datePublished" content="2019-01-02T21:34:59&#43;09:00" />
-<meta itemprop="dateModified" content="2019-01-02T21:34:59&#43;09:00" />
+<meta itemprop="datePublished" content="2020-02-01T15:36:41&#43;09:00" />
+<meta itemprop="dateModified" content="2020-02-01T15:36:41&#43;09:00" />
 <meta itemprop="wordCount" content="0">
 
-  <meta itemprop="image" content="https://getumen.github.io/images/banners/money_slot_machine.png">
 
 
+<meta itemprop="keywords" content="kubernetes,vagrant,ansible," />
 
-<meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる"/>
+<meta name="twitter:description" content="内容
 
-    <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://getumen.github.io/images/banners/money_slot_machine.png"/>
+マルチノードのKubernetes環境をAnsibleとVagrantを用いて構築します．
+内容はほぼのKubernetesのブログの内容日本語訳です．
+新しいバージョンをインストールするので，若干ブログの内容と違います．
 
-<meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)"/>
-<meta name="twitter:description" content="今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．
+ゴール
+
+ローカルマシンにプロダクション環境のようなマルチノードKubernetesクラスタを作成することです．
+
+モチベーション
+
+本番環境のようなマルチノードのKubernetesクラスタを作るといろいろなご利益がある．
+MiniKubeのような優れたものがあるが，アプリケーションの設計やアーキテクチャーによる問題やバグは解決できない．
+マルチノードのKubernetes環境を作ることでそうした問題を再現して解決できるようになる．
+だから，マルチノードのKubernetesクラスタを作れると嬉しい．
 
 "/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
@@ -289,13 +328,11 @@
     <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
-            <img src="https://getumen.github.io/images/banners/money_slot_machine.png" class="article-banner">
-        
 
         <header class="article-header">
-    <a href="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/">
+    <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/">
     <h1 class="article-title" itemprop="name">
-        Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)
+        マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる
     </h1>
     </a>
     <div class="article-meta">
@@ -303,7 +340,7 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2019-01-02 21:34:59 &#43;0900 JST" itemprop="datePublished">2019-01-02</time>
+            <time datetime="2020-02-01 15:36:41 &#43;0900 JST" itemprop="datePublished">2020-02-01</time>
             &middot;
             0
             words
@@ -319,7 +356,7 @@
                 <i class="fa fa-folder"></i>
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">machine learning</a>
+                <a class="article-category-link" href="https://getumen.github.io/categories/infra">infra</a>
                 
                 
             </div>
@@ -333,15 +370,15 @@
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/bandit">bandit</a>
+                <a class="article-category-link" href="https://getumen.github.io/tags/kubernetes">kubernetes</a>
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">読書</a>
+                <a class="article-category-link" href="https://getumen.github.io/tags/vagrant">vagrant</a>
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems</a>
+                <a class="article-category-link" href="https://getumen.github.io/tags/ansible">ansible</a>
                 
                 
             </div>
@@ -351,99 +388,471 @@
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <p>今日読んだ部分では，バンディット問題の確率的設定，敵対的設定，マルコフ性を持つ設定についてより詳しく紹介しています．</p>
+            <h1 id="内容">内容</h1>
+
+<p>マルチノードのKubernetes環境をAnsibleとVagrantを用いて構築します．
+内容はほぼの<a href="https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/">Kubernetesのブログの内容</a>日本語訳です．
+新しいバージョンをインストールするので，若干ブログの内容と違います．</p>
+
+<h1 id="ゴール">ゴール</h1>
+
+<p>ローカルマシンにプロダクション環境のようなマルチノードKubernetesクラスタを作成することです．</p>
+
+<h1 id="モチベーション">モチベーション</h1>
+
+<p>本番環境のようなマルチノードのKubernetesクラスタを作るといろいろなご利益がある．
+MiniKubeのような優れたものがあるが，アプリケーションの設計やアーキテクチャーによる問題やバグは解決できない．
+マルチノードのKubernetes環境を作ることでそうした問題を再現して解決できるようになる．
+だから，マルチノードのKubernetesクラスタを作れると嬉しい．</p>
 
 <p></p>
 
-<h1 id="１章-導入">１章 導入</h1>
+<h1 id="動作環境">動作環境</h1>
 
-<h2 id="確率的バンディット問題の設定とは">確率的バンディット問題の設定とは</h2>
+<p>Ubuntu18.04</p>
 
-<p>それぞれのアームを$i=1,\dots,K$とする．
-対応する$[0,1]$上の未知の確率分布を$\nu_i$とする．
-選択したアームに対応するが確率分布$\nu_i$から独立にサンプリングされた報酬を$X_{i,t}$とする．</p>
+<h1 id="事前準備">事前準備</h1>
 
-<hr />
+<h2 id="vagrant">Vagrant</h2>
 
-<p><em>確率的バンディット問題</em><br />
-既知のパラメータ：アーム数$K$，取りうるラウンド数$n\ge K$<br />
-未知のパラメータ：$[0,1]$上の$K$個の確率分布$\nu_1,\nu_2,\dots,\nu_K$<br />
-各ラウンドに対して，<br />
-1. 予測者はアーム$I_t\in\{1,\dots,K\}$を選ぶ
-2. 与えられた選択$I_t$に対して，過去に依存しない報酬$X_{I_t,t}\sim\nu_{I_t}$が環境から支払われ，予測者に明らかになる．</p>
+<p>以下のスクリプトを実行する．</p>
 
-<hr />
+<pre><code class="language-bash">#!/bin/bash
 
-<p>$i=1,\dots,K$に対して，$\nu_i$の平均（アーム$i$の報酬の平均）を$\mu_i$と記す．
-また，平均が最大のアームの平均値とそのアームのインデックスを$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*=\rm arg\max_{i=1,\dots,K}\mu_i$とする．
-擬リグレットは$$\overline{R}_n=n\mu^*-\sum_{t=1}^n\mathbb{E}[\mu_{I_t}]$$
-とかける．</p>
+set -eu
 
-<h2 id="敵対的バンディット問題の設定とは">敵対的バンディット問題の設定とは</h2>
+sudo apt-get update
+sudo apt-get install -y vagrant
+</code></pre>
 
-<p>確率的バンディットの研究と並行して，探索と活用のトレードオフをゲームセオリーの視点からの定式化したものが研究された．
-ゲームセオリー版のバンディット設定の動機づけをするために，不正をしているカジノにいることを考える．
-そこでは，$i=1,\dots,K$のスロットマシンがあり，各時刻$t$にオーナーは自由な報酬（悪意を持って選ばれることがありうる）$g_{i,t}\in[0,1]$を$X_{i,t}$にセットする（誰もギャンブルにいかなくなるので，すべての報酬をゼロにする場合には興味がない）．
-予測者は$t=1,2,\dots$において，アーム$I_{t}\in{1,\dots,K}$を選び，報酬$g_{I_t,t}$を観測する．
-このとき，リグレットは最小できるだろうか？<br />
-このような設定を敵対的設定という．</p>
+<h2 id="virtualbox">virtualbox</h2>
 
-<p>敵対者が神だったりすると勝てないので，敵対者に仮定を置く．</p>
+<p>以下のスクリプトを実行する．</p>
 
-<ul>
-<li>obvious adversary<br />
-各アームの報酬を設定するメカニズムが予測者の行動に依存しない</li>
-<li>nonobvious adversary<br />
-各アームの報酬を設定するメカニズムが予測者の過去の行動に依存する．</li>
-</ul>
+<pre><code class="language-bash">#!/bin/bash
 
-<p>明らかにこの２つの区別はプレイヤーが乱択する際に意味を持つ．もし，プレイヤーが決定的にアームを選ぶなら，敵対者はゲームのはじめにプレイヤーの行動をシミュレートして正しく報酬を決めることができてしまう．</p>
+set -eu
 
-<p>nonobvious設定においてはリグレットの意味が曖昧になる．
-リグレットをプレイヤーの累積報酬と$n$ラウンドで最良の一つのアームを引き続けたときの報酬を比較したものとする．
-報酬がプレイヤーの過去の行動に依存するため，プレイヤーが一つのアームを引き続けたとき，敵対的に決められた報酬とプレイヤーが実際に得られる報酬が異なることがある．</p>
+sudo apt-get update
+sudo apt-get install -y virtualbox
+</code></pre>
 
-<hr />
+<h2 id="ansible">Ansible</h2>
 
-<p><em>敵対的バンディット問題</em><br />
-既知のパラメータ：アーム数$K$，ラウンド数$n\ge K$<br />
-各ラウンド$t=1,2,\dots$に対して，</p>
+<p>以下のスクリプトを実行する．</p>
 
-<ol>
-<li>予測者は外部の乱数を利用して（しなくても良い），アーム$I_k\in\{1,\dots,K\}$を選ぶ．<br /></li>
-<li>同時に，敵対者は外部の乱数を利用して（しなくても良い），報酬ベクトル$\mathbf{g}_t=(g_{1,t},g_{2,t},\dots,g_{K,t})\in[0,1]^K$を選ぶ．<br /></li>
-<li>予測者は報酬$g_{I_t,t}$を受け取り，観測する．他のアームの報酬は観測しない．</li>
-</ol>
+<pre><code class="language-bash">#!/bin/bash
 
-<hr />
+set -eu
 
-<p>この敵対的バンディット設定のゴールは高確率でのリグレットバウンドを得ることか，予測者と敵対者のランダム性に対しての期待リグレットバウンドを出すことである．
-nonobvious設定でこうしたリグレットを出すのは大変なので，擬リグレットから始める．
-$$\overline{R}_n=\max_{i=1,\dots,K}\mathbb{E}\left[\sum_{t=1}^ng_{i,t}-\sum_{t=1}^ng_{I_t,t}\right]$$</p>
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible -y
+sudo apt-get update
+sudo apt-get install -y ansible
+</code></pre>
 
-<h2 id="マルコフ性のあるバンディット設定">マルコフ性のあるバンディット設定</h2>
+<h1 id="セットアップ">セットアップ</h1>
 
-<p>３つ目の基盤となるバンディット設定では各アームがそれぞれが状態空間を持つKこのマルコフ過程だと考える．
-各時刻において，状態$s$においてアーム$i$が選ばれ，確率的な報酬が確率分布$\nu_{i,s}$からサンプリングされる．そして，アーム$i$の報酬過程の状態が確率的遷移行列$M_i$に基づいて，マルコフ過程のやり方で遷移する．
-報酬と新しい状態はプレイヤーに明らかになっている．
-一方で，選ばれなかったアームの状態は変わらない．
-これまでのバンディット設定はプレイヤーがリソースを投入するアーム$i$は変わらなかったが，マルコフ性のあるバンディット設定では変わりうる．
-また，確率的遷移行列$M_i$は既知であるとすることが多い．
-この場合，動的計画法により計算可能である．
-Gittinsは効率的に計算できる貪欲法を提案した．</p>
+<h2 id="step-1-vagrantfileを作る">Step 1: Vagrantfileを作る</h2>
 
-<p>マルコフ性のあるバンディット設定の有名な例はベイジアンバンディットだ．
-これらはパラメトリックな確率的バンディットである．
-報酬分布のパラメータは既知の事前分布からサンプリングされ，リグレットは事前分布からサンプリングされたパラメータに対して平均を取ることで計算される．
-選ばれたアームの状態遷移は新しい報酬を観測後，報酬の事後分布を更新することに対応する．</p>
+<pre><code class="language-ruby"># VagrantのBox
+IMAGE_NAME = &quot;bento/ubuntu-16.04&quot;
+# ノード数
+N = 2
+
+# &quot;2&quot;はVagrantの設定のバージョン．&quot;1&quot;と&quot;2&quot;があるが，&quot;2&quot;を選択．
+Vagrant.configure(&quot;2&quot;) do |config|
+    # 仮想マシンで一つのSSHキーを使うように設定
+    config.ssh.insert_key = false
+
+    # providerの設定．virtualboxを選択
+    # https://www.vagrantup.com/docs/virtualbox/
+    config.vm.provider &quot;virtualbox&quot; do |v|
+        # memory MB
+        v.memory = 1024
+        # cpu core
+        v.cpus = 2
+    end
+      
+    # マルチノード構成にするために複数マシンを定義するため config.vm.define を用いる．
+    # https://www.vagrantup.com/docs/multi-machine/
+    config.vm.define &quot;k8s-master&quot; do |master|
+        # box名
+        # https://www.vagrantup.com/docs/boxes.html
+        master.vm.box = IMAGE_NAME
+        # networkの設定
+        # private_network, forwarded_port, public_networkがあるが，今回は外部と通信しないので，private_network．
+        # mac addressをそれぞれのゲストでユニークになるように変える必要がある
+        # https://kubernetes.io/ja/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#mac%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%A8product-uuid%E3%81%8C%E5%85%A8%E3%81%A6%E3%81%AE%E3%83%8E%E3%83%BC%E3%83%89%E3%81%A7%E3%83%A6%E3%83%8B%E3%83%BC%E3%82%AF%E3%81%A7%E3%81%82%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%A4%9C%E8%A8%BC
+        # https://www.vagrantup.com/docs/networking/
+        master.vm.network &quot;private_network&quot;, ip: &quot;192.168.50.10&quot;, :mac =&gt; &quot;5CA1AB1E0000&quot;
+        master.vm.hostname = &quot;k8s-master&quot;
+        # ansibleでプロビジョニングする
+        # https://www.vagrantup.com/docs/provisioning/ansible.html
+        master.vm.provision &quot;ansible&quot; do |ansible|
+            ansible.playbook = &quot;kubernetes-setup/master-playbook.yml&quot;
+            ansible.extra_vars = {
+                node_ip: &quot;192.168.50.10&quot;,
+            }
+        end
+    end
+
+    (1..N).each do |i|
+        config.vm.define &quot;node-#{i}&quot; do |node|
+            node.vm.box = IMAGE_NAME
+            node.vm.network &quot;private_network&quot;, ip: &quot;192.168.50.#{i + 10}&quot;, :mac =&gt; &quot;5CA1AB1E000#{i}&quot;
+            node.vm.hostname = &quot;node-#{i}&quot;
+            node.vm.provision &quot;ansible&quot; do |ansible|
+                ansible.playbook = &quot;kubernetes-setup/node-playbook.yml&quot;
+                ansible.extra_vars = {
+                    node_ip: &quot;192.168.50.#{i + 10}&quot;,
+                }
+            end
+        end
+    end
+end
+</code></pre>
+
+<h2 id="step-2-kubernetes-master用のansible-playbookを作る">Step 2: Kubernetes Master用のAnsible Playbookを作る</h2>
+
+<p>先程<code>Vagrantfile</code>を作成したディレクトリ内にに<code>kubernetes-setup</code>というディレクトリを作成する．
+そして，<code>kubernetes-setup</code>の中に<code>master-playbook.yml</code>と<code>node-playbook.yml</code>を作成する．</p>
+
+<pre><code class="language-bash">$ ls
+Vagrantfile
+$ mkdir kubernetes-setup
+$ ls
+kubernetes-setup/  Vagrantfile
+$ touch kubernetes-setup/master-playbook.yml kubernetes-setup/node-playbook.yml
+</code></pre>
+
+<p>kubernetes-setup/master-playbook.yml</p>
+
+<pre><code>---
+---
+# 対象ホスト
+- hosts: all
+  # ルート権限を使う
+  become: true
+  tasks:
+  # パッケージをインストールする
+  - name: Install packages that allow apt to be used over HTTPS
+    apt:
+      name: &quot;{{ packages }}&quot;
+      # playbook実行後の状態
+      state: present
+      update_cache: yes
+    vars:
+      # インストールするパッケージたち
+      packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+
+  - name: Add an apt signing key for Docker
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Add apt repository for stable version
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+      state: present
+
+  - name: Install docker and its dependecies
+    apt: 
+      name: &quot;{{ packages }}&quot;
+      state: present
+      update_cache: yes
+    vars:
+      packages:
+      - docker-ce 
+      - docker-ce-cli 
+    notify:
+    - docker status
+  
+  # cgroup-driverをcgroupfsではなく，systemdにする
+  # https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/
+  - name: Setup Docker cgroup-driver
+    copy:
+      content: {&quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;], &quot;log-driver&quot;: &quot;json-file&quot;, &quot;log-opts&quot;: {&quot;max-size&quot;: &quot;100m&quot;}, &quot;storage-driver&quot;: &quot;overlay2&quot;}
+      dest: /etc/docker/daemon.json
+
+  - name: Setup Docker systemd
+    file: path=/etc/systemd/system/docker.service.d state=directory owner=root group=root mode=0744
+
+  - name: Restart docker
+    service:
+      name: docker
+      daemon_reload: yes
+      state: restarted
+
+  - name: Add vagrant user to docker group
+    user:
+      name: vagrant
+      group: docker
+  
+  # swapを無効化する
+  # swapが有効だとKubeletが起動しないので
+  - name: Remove swapfile from /etc/fstab
+    mount:
+      name: &quot;{{ item }}&quot;
+      fstype: swap
+      state: absent
+    with_items:
+    - swap
+    - none
+
+  - name: Disable swap
+    command: swapoff -a
+    when: ansible_swaptotal_mb &gt; 0
+
+  # kubelet, kubeadm, kubectlをインストールする
+  - name: Add an apt signing key for Kubernetes
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+
+  - name: Adding apt repository for Kubernetes
+    apt_repository:
+      repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+      state: present
+      filename: kubernetes.list
+
+  - name: Install Kubernetes binaries
+    apt: 
+      name: &quot;{{ packages }}&quot;
+      state: present
+      update_cache: yes
+    vars:
+      packages:
+      - kubelet 
+      - kubeadm 
+      - kubectl
+
+  # DebianやUbuntuでは/etc/default/kubeletは消されている
+  # https://github.com/kubernetes/release/pull/672
+  # 自分で作ってとのことなので作る
+  - name: Configure node ip
+    copy:
+      content: |
+        KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+      dest: /etc/default/kubelet
+    #   lineinfile:
+    #   path: /etc/default/kubelet
+    #   line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+
+  - name: Restart kubelet
+    service:
+      name: kubelet
+      daemon_reload: yes
+      state: restarted
+
+  # kubeadmを用いてKubernetesクラスタを初期化する
+  - name: Initialize the Kubernetes cluster using kubeadm
+    command: kubeadm init --apiserver-advertise-address=&quot;192.168.50.10&quot; --apiserver-cert-extra-sans=&quot;192.168.50.10&quot;  --node-name k8s-master --pod-network-cidr=192.168.0.0/16
+
+  # vagrantユーザがKubernetesクラスタにアクセスするための設定を行う
+  - name: Setup kubeconfig for vagrant user
+    command: &quot;{{ item }}&quot;
+    with_items:
+    - mkdir -p /home/vagrant/.kube
+    - cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
+    - chown vagrant:vagrant /home/vagrant/.kube/config
+
+  # pod感の通信のためにCalicoを導入します
+  # https://techblog.yahoo.co.jp/infrastructure/kubernetes_calico_networking/
+  - name: Install calico pod network
+    become: false
+    command: kubectl apply -f https://docs.projectcalico.org/v3.8/manifests/calico.yaml
+    # command: kubectl create -f https://docs.projectcalico.org/v3.4/getting-started/kubernetes/installation/hosted/calico.yaml
+  
+  # ノードをKubernetesクラスタに加えるためにJOINコマンドを生成し，登録する
+  - name: Generate join command
+    command: kubeadm token create --print-join-command
+    register: join_command
+
+  - name: Copy join command to local file
+    become: false
+    local_action: copy content=&quot;{{ join_command.stdout_lines[0] }}&quot; dest=&quot;./join-command&quot;
+
+  # docker daemonの状態を確認
+  handlers:
+  - name: docker status
+    service: name=docker state=started
+</code></pre>
+
+<h2 id="step-3-kubernetes-node用のansible-playbookを作る">Step 3: Kubernetes Node用のAnsible Playbookを作る</h2>
+
+<p>kubernetes-setup/node-playbook.yml</p>
+
+<pre><code>---
+# 対象ホスト
+---
+# 対象ホスト
+- hosts: all
+  # ルート権限を使う
+  become: true
+  tasks:
+  # パッケージをインストールする
+  - name: Install packages that allow apt to be used over HTTPS
+    apt:
+      name: &quot;{{ packages }}&quot;
+      # playbook実行後の状態
+      state: present
+      update_cache: yes
+    vars:
+      # インストールするパッケージたち
+      packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+  - name: Add an apt signing key for Docker
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Add apt repository for stable version
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+      state: present
+
+  - name: Install docker and its dependecies
+    apt: 
+      name: &quot;{{ packages }}&quot;
+      state: present
+      update_cache: yes
+    vars:
+      packages:
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io
+    notify:
+    - docker status
+  
+  - name: Setup Docker cgroup-driver
+    copy:
+      content: {&quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;], &quot;log-driver&quot;: &quot;json-file&quot;, &quot;log-opts&quot;: {&quot;max-size&quot;: &quot;100m&quot;}, &quot;storage-driver&quot;: &quot;overlay2&quot;}
+      dest: /etc/docker/daemon.json
+
+  - name: Setup Docker systemd
+    file: path=/etc/systemd/system/docker.service.d state=directory owner=root group=root mode=0744
+
+  - name: Restart docker
+    service:
+      name: docker
+      daemon_reload: yes
+      state: restarted
+
+  - name: Add vagrant user to docker group
+    user:
+      name: vagrant
+      group: docker
+  
+  # swapを無効化する
+  # swapが有効だとKubeletが起動しないので
+  - name: Remove swapfile from /etc/fstab
+    mount:
+      name: &quot;{{ item }}&quot;
+      fstype: swap
+      state: absent
+    with_items:
+      - swap
+      - none
+
+  - name: Disable swap
+    command: swapoff -a
+    when: ansible_swaptotal_mb &gt; 0
+
+  # kubelet, kubeadm, kubectlをインストールする
+  - name: Add an apt signing key for Kubernetes
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+
+  - name: Adding apt repository for Kubernetes
+    apt_repository:
+      repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+      state: present
+      filename: kubernetes.list
+
+  - name: Install Kubernetes binaries
+    apt: 
+      name: &quot;{{ packages }}&quot;
+      state: present
+      update_cache: yes
+    vars:
+      packages:
+      - kubelet 
+      - kubeadm 
+      - kubectl
+
+  # DebianやUbuntuでは/etc/default/kubeletは消されている
+  # https://github.com/kubernetes/release/pull/672
+  # 自分で作ってとのことなので作る
+  - name: Configure node ip
+    copy:
+      content: |
+        KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+      dest: /etc/default/kubelet
+    #   lineinfile:
+    #   path: /etc/default/kubelet
+    #   line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+
+  - name: Restart kubelet
+    service:
+      name: kubelet
+      daemon_reload: yes
+      state: restarted
+
+  # nodeをKubernetesクラスタに追加する
+  - name: Copy the join command to server location
+    copy: src=join-command dest=/tmp/join-command.sh mode=0777
+
+  - name: Join the node to cluster
+    command: sh /tmp/join-command.sh
+
+  # docker daemonの状態を確認
+  handlers:
+  - name: docker status
+    service: name=docker state=started
+
+</code></pre>
+
+<h2 id="step-4-vagrantfileを実行する">Step 4: Vagrantfileを実行する</h2>
+
+<pre><code class="language-bash">$ ls
+kubernetes-setup/  Vagrantfile
+$ vagrant up
+</code></pre>
+
+<h1 id="動作確認">動作確認</h1>
+
+<pre><code>$ ## Accessing master
+$ vagrant ssh k8s-master
+vagrant@k8s-master:~$  kubectl get nodes
+NAME         STATUS   ROLES    AGE   VERSION
+k8s-master   Ready    master   12h   v1.17.2
+node-1       Ready    &lt;none&gt;   12h   v1.17.2
+node-2       Ready    &lt;none&gt;   12h   v1.17.2
+
+$ ## Accessing nodes
+$ vagrant ssh node-1
+$ vagrant ssh node-2
+</code></pre>
         </div>
         <footer class="article-footer">
-    <a data-url="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/" data-id="1888d78d45be7aa86c6f3b369adbf099" class="article-share-link">
+    <a data-url="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" data-id="d9d372d13a72b5537e2b2bda00bd2e0d" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
     
-    <a href="https://getumen.github.io/2019/01/02/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-2/#disqus_thread" class="article-comment-link">
+    <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/#disqus_thread" class="article-comment-link">
         Comments
     </a>
     
@@ -519,21 +928,14 @@ Gittinsは効率的に計算できる貪欲法を提案した．</p>
     
 <nav id="article-nav">
     
-    <a href="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="https://getumen.github.io/2019/07/27/minikube%E3%82%92ubuntu18.04%E3%81%AB%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Older
       </strong>
-      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (1)</div>
+      <div class="article-nav-title">MinikubeをUbuntu18.04にインストールする</div>
     </a>
     
 
-    
-    <a href="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Newer
-      </strong>
-      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)</div>
-    </a>
     
 </nav>
 
@@ -635,7 +1037,7 @@ Gittinsは効率的に計算できる貪欲法を提案した．</p>
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/website_kensaku_kekka.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/website_kensaku_kekka.png)" alt="マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -661,7 +1063,7 @@ Gittinsは効率的に計算できる貪欲法を提案した．</p>
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/Cassandra_logo.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/Cassandra_logo.png)" alt="マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -687,7 +1089,7 @@ Gittinsは効率的に計算できる貪欲法を提案した．</p>
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/internet_influencer_woman.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (2)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/internet_influencer_woman.png)" alt="マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる" class="thumbnail-image"></span>
                     
                     </a>
                 </div>

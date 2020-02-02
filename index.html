@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:updated_time" content="2019-07-27T15:53:05&#43;09:00"/>
+<meta property="og:updated_time" content="2020-02-01T15:36:41&#43;09:00"/>
 
 
 
@@ -184,12 +184,12 @@
     </div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        11
+        12
         <span>Posts</span>
       </div>
       <div class="article-info-block">
         
-          7
+          10
         
         <span>
             Tags
@@ -267,6 +267,176 @@
     <section id="main">
     
     
+
+<article class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        </a>
+
+        <header class="article-header">
+    <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/">
+    <h1 class="article-title" itemprop="name">
+        マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2020-02-01 15:36:41 &#43;0900 JST" itemprop="datePublished">2020-02-01</time>
+            &middot;
+            0
+            words
+            &middot;
+            0
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/categories/infra">infra</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/kubernetes">kubernetes</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/vagrant">vagrant</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/ansible">ansible</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <p>
+                <h1 id="内容">内容</h1>
+
+<p>マルチノードのKubernetes環境をAnsibleとVagrantを用いて構築します．
+内容はほぼの<a href="https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/">Kubernetesのブログの内容</a>日本語訳です．
+新しいバージョンをインストールするので，若干ブログの内容と違います．</p>
+
+<h1 id="ゴール">ゴール</h1>
+
+<p>ローカルマシンにプロダクション環境のようなマルチノードKubernetesクラスタを作成することです．</p>
+
+<h1 id="モチベーション">モチベーション</h1>
+
+<p>本番環境のようなマルチノードのKubernetesクラスタを作るといろいろなご利益がある．
+MiniKubeのような優れたものがあるが，アプリケーションの設計やアーキテクチャーによる問題やバグは解決できない．
+マルチノードのKubernetes環境を作ることでそうした問題を再現して解決できるようになる．
+だから，マルチノードのKubernetesクラスタを作れると嬉しい．</p>
+
+<p></p>
+            </p>
+            <p class="article-more-link">
+                <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/">
+                    Read more
+                </a>
+            </p>
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" data-id="d9d372d13a72b5537e2b2bda00bd2e0d" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+</article>
 
 <article class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
@@ -1670,165 +1840,6 @@
     </div>
 </article>
 
-<article class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        <a href="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/" itemprop="url">
-            <img src="https://getumen.github.io/images/banners/man_vs_ai_igo.png" class="article-banner">
-        
-        </a>
-
-        <header class="article-header">
-    <a href="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/">
-    <h1 class="article-title" itemprop="name">
-        Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (1)
-    </h1>
-    </a>
-    <div class="article-meta">
-
-        
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2019-01-01 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-01-01</time>
-            &middot;
-            0
-            words
-            &middot;
-            0
-            minute read
-        </div>
-        
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                
-                <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">machine learning</a>
-                
-                
-            </div>
-            
-        
-
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                
-                <a class="article-category-link" href="https://getumen.github.io/tags/bandit">bandit</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">読書</a>
-                &middot;
-                
-                
-                <a class="article-category-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems</a>
-                
-                
-            </div>
-            
-        
-    </div>
-</header>
-
-        <div class="article-entry" itemprop="articleBody">
-            <p>
-                <p>今日読んだ部分では，マルチアームバンディット問題とはどのような問題なのか？を紹介し，応用例を紹介しています．
-また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．</p>
-
-<p></p>
-            </p>
-            <p class="article-more-link">
-                <a href="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/">
-                    Read more
-                </a>
-            </p>
-        </div>
-        <footer class="article-footer">
-    <a data-url="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/" data-id="7c4acddada235bd59ac803158a619778" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
-    </a>
-    
-    <a href="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
-    
-
-    <script>
-    (function ($) {
-        
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-    </script>
-</footer>
-
-    </div>
-</article>
-
 
 <nav id="page-nav">
 
@@ -1853,6 +1864,32 @@
     </h3>
     <div class="widget">
         <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" class="thumbnail">
+                    
+                        <span class="thumbnail-image thumbnail-none"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/infra">
+                        infra
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" class="title">マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる</a></p>
+                    <p class="item-date">
+                        <time datetime="2020-02-01 15:36:41 &#43;0900 JST" itemprop="datePublished">2020-02-01</time>
+                    </p>
+                </div>
+            </li>
             
             <li>
                 <div class="item-thumbnail">
@@ -1958,32 +1995,6 @@
                 </div>
             </li>
             
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="thumbnail">
-                    
-                        <span style="background-image:url(https://getumen.github.io/images/banners/document_research.png)" alt="雑記" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        
-                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
-                        machine learning
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" class="title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)</a></p>
-                    <p class="item-date">
-                        <time datetime="2019-01-08 04:38:02 &#43;0900 JST" itemprop="datePublished">2019-01-08</time>
-                    </p>
-                </div>
-            </li>
-            
         </ul>
     </div>
 </div>
@@ -2001,6 +2012,14 @@
                 
                 <a class="category-list-link" href="https://getumen.github.io/categories/cassandra">
                     cassandra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/infra">
+                    infra
                 </a>
                 <span class="category-list-count">1</span>
             </li>
@@ -2040,6 +2059,14 @@
             
             <li class="category-list-item">
                 
+                <a class="category-list-link" href="https://getumen.github.io/tags/ansible">
+                    ansible
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
                 <a class="category-list-link" href="https://getumen.github.io/tags/bandit">
                     bandit
                 </a>
@@ -2058,6 +2085,14 @@
                 
                 <a class="category-list-link" href="https://getumen.github.io/tags/causal">
                     causal
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/kubernetes">
+                    kubernetes
                 </a>
                 <span class="category-list-count">1</span>
             </li>
@@ -2088,6 +2123,14 @@
             
             <li class="category-list-item">
                 
+                <a class="category-list-link" href="https://getumen.github.io/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
                 <a class="category-list-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">
                     読書
                 </a>
@@ -2111,6 +2154,9 @@
     <div class="widget tagcloud">
         
         
+        <a href="https://getumen.github.io/tags/ansible" style="font-size: 12px;">ansible</a>
+        
+        
         <a href="https://getumen.github.io/tags/bandit" style="font-size: 12px;">bandit</a>
         
         
@@ -2120,6 +2166,9 @@
         <a href="https://getumen.github.io/tags/causal" style="font-size: 12px;">causal</a>
         
         
+        <a href="https://getumen.github.io/tags/kubernetes" style="font-size: 12px;">kubernetes</a>
+        
+        
         <a href="https://getumen.github.io/tags/memo" style="font-size: 12px;">memo</a>
         
         
@@ -2127,6 +2176,9 @@
         
         
         <a href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems" style="font-size: 12px;">regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems</a>
+        
+        
+        <a href="https://getumen.github.io/tags/vagrant" style="font-size: 12px;">vagrant</a>
         
         
         <a href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8" style="font-size: 12px;">読書</a>
@@ -2148,7 +2200,7 @@
 <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019
+      &copy; 2020
       &copy; @getumen
     </div>
   </div>
