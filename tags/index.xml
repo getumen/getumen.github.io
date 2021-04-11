@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 雑記</title>
@@ -6,13 +6,9 @@
     <description>Recent content in Tags on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 01 Feb 2020 15:36:41 +0900</lastBuildDate>
-    
-	<atom:link href="https://getumen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 01 Feb 2020 15:36:41 +0900</lastBuildDate><atom:link href="https://getumen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ansible</title>
+      <title>ansible</title>
       <link>https://getumen.github.io/tags/ansible/</link>
       <pubDate>Sat, 01 Feb 2020 15:36:41 +0900</pubDate>
       
@@ -21,11 +17,47 @@
     </item>
     
     <item>
-      <title>Bandit</title>
-      <link>https://getumen.github.io/tags/bandit/</link>
-      <pubDate>Sat, 12 Jan 2019 17:12:28 +0900</pubDate>
+      <title>kubernetes</title>
+      <link>https://getumen.github.io/tags/kubernetes/</link>
+      <pubDate>Sat, 01 Feb 2020 15:36:41 +0900</pubDate>
       
-      <guid>https://getumen.github.io/tags/bandit/</guid>
+      <guid>https://getumen.github.io/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vagrant</title>
+      <link>https://getumen.github.io/tags/vagrant/</link>
+      <pubDate>Sat, 01 Feb 2020 15:36:41 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/vagrant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>causal</title>
+      <link>https://getumen.github.io/tags/causal/</link>
+      <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/causal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>memo</title>
+      <link>https://getumen.github.io/tags/memo/</link>
+      <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/memo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>読書</title>
+      <link>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</link>
+      <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</guid>
       <description></description>
     </item>
     
@@ -39,34 +71,7 @@
     </item>
     
     <item>
-      <title>Causal</title>
-      <link>https://getumen.github.io/tags/causal/</link>
-      <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
-      
-      <guid>https://getumen.github.io/tags/causal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>https://getumen.github.io/tags/kubernetes/</link>
-      <pubDate>Sat, 01 Feb 2020 15:36:41 +0900</pubDate>
-      
-      <guid>https://getumen.github.io/tags/kubernetes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Memo</title>
-      <link>https://getumen.github.io/tags/memo/</link>
-      <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
-      
-      <guid>https://getumen.github.io/tags/memo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Nosql</title>
+      <title>NoSQL</title>
       <link>https://getumen.github.io/tags/nosql/</link>
       <pubDate>Mon, 25 Mar 2019 00:01:00 +0900</pubDate>
       
@@ -75,29 +80,20 @@
     </item>
     
     <item>
-      <title>Regret Analysis of Stochastic and Nonstochastic Multi Armed Bandit Problems</title>
+      <title>bandit</title>
+      <link>https://getumen.github.io/tags/bandit/</link>
+      <pubDate>Sat, 12 Jan 2019 17:12:28 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/bandit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems</title>
       <link>https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems/</link>
       <pubDate>Tue, 08 Jan 2019 04:38:02 +0900</pubDate>
       
       <guid>https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vagrant</title>
-      <link>https://getumen.github.io/tags/vagrant/</link>
-      <pubDate>Sat, 01 Feb 2020 15:36:41 +0900</pubDate>
-      
-      <guid>https://getumen.github.io/tags/vagrant/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>読書</title>
-      <link>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</link>
-      <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
-      
-      <guid>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</guid>
       <description></description>
     </item>
     

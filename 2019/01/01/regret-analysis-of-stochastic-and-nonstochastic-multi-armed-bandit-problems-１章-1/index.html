@@ -2,7 +2,7 @@
 <html lang="ja-jp">
 <head>
     <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (1) &middot; 雑記</title>
-    <meta name="generator" content="Hugo 0.40.1" />
+    <meta name="generator" content="Hugo 0.82.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="getumen">
@@ -22,57 +22,26 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (1)" />
 <meta property="og:description" content="今日読んだ部分では，マルチアームバンディット問題とはどのような問題なのか？を紹介し，応用例を紹介しています．
-また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．
-
-" />
+また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/" />
-
-  <meta property="og:image" content="https://getumen.github.io/images/banners/man_vs_ai_igo.png" />
-
-
-
-<meta property="article:published_time" content="2019-01-01T00:01:00&#43;09:00"/>
-
-<meta property="article:modified_time" content="2019-01-01T00:01:00&#43;09:00"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/" /><meta property="og:image" content="https://getumen.github.io/images/banners/man_vs_ai_igo.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-01-01T00:01:00&#43;09:00" />
+<meta property="article:modified_time" content="2019-01-01T00:01:00&#43;09:00" />
 
 
     
-    
-<meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (1)">
+    <meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (1)">
 <meta itemprop="description" content="今日読んだ部分では，マルチアームバンディット問題とはどのような問題なのか？を紹介し，応用例を紹介しています．
-また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．
-
-">
-
-
-<meta itemprop="datePublished" content="2019-01-01T00:01:00&#43;09:00" />
+また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．"><meta itemprop="datePublished" content="2019-01-01T00:01:00&#43;09:00" />
 <meta itemprop="dateModified" content="2019-01-01T00:01:00&#43;09:00" />
-<meta itemprop="wordCount" content="0">
-
-  <meta itemprop="image" content="https://getumen.github.io/images/banners/man_vs_ai_igo.png">
-
-
-
+<meta itemprop="wordCount" content="2087"><meta itemprop="image" content="https://getumen.github.io/images/banners/man_vs_ai_igo.png">
 <meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
-
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://getumen.github.io/images/banners/man_vs_ai_igo.png"/>
 
 <meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems １章 (1)"/>
 <meta name="twitter:description" content="今日読んだ部分では，マルチアームバンディット問題とはどのような問題なのか？を紹介し，応用例を紹介しています．
-また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．
-
-"/>
+また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -308,10 +277,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-01 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-01-01</time>
             &middot;
-            0
+            2087
             words
             &middot;
-            0
+            5
             minute read
         </div>
         
@@ -356,27 +325,18 @@
         <div class="article-entry" itemprop="articleBody">
             <p>今日読んだ部分では，マルチアームバンディット問題とはどのような問題なのか？を紹介し，応用例を紹介しています．
 また，マルチアームバンディット問題の３つの設定と性能を図るための評価指標であるリグレットというものを３つ定義しています．</p>
-
-<p></p>
-
-<h1 id="１章-導入">１章 導入</h1>
-
-<h2 id="マルチアームバンディット問題とは">マルチアームバンディット問題とは</h2>
-
+<h2 id="１章-導入">１章 導入</h2>
+<h3 id="マルチアームバンディット問題とは">マルチアームバンディット問題とは</h3>
 <p>マルチアームバンディット問題は行動の候補からそのラウンドに行う行動を繰り返し割り当てる問題である．
 各ラウンドで，１つの行動を割り当て，報酬を受け取る．
 このときのゴールは報酬の合計が最大になるように繰り返し行動を割り当てることである．
 バンディットという名前はアメリカのスロットマシンのスラングに由来している．
 カジノで，プレイヤーがたくさんのスロットマシンからアームを引くスロットマシンを次々に選んで，コインを入れていく問題がマルチアームバンディット問題となる．</p>
-
 <p>バンディット問題は限られた情報の中で繰り返し意思決定していく問題である．そして，この問題は繰り返しの試行の中で，過去にうまく行ったアームを引き続けるのか，今後より高い報酬を返すかもしれないアームを探すのかという探索と活用のトレードオフに直面する．</p>
-
-<h2 id="応用">応用</h2>
-
+<h3 id="応用">応用</h3>
 <p>Thompsonによるもともとのバンディット問題の動機は医療における試行に由来するが，現代においては様々な産業分野で応用されている．</p>
-
 <ul>
-<li>広告表示とWebページ最適化<br />
+<li>広告表示とWebページ最適化<br>
 Webページの来訪者にどの広告を表示するか，どのデザインを表示するか．このときの報酬はクリックスルーレートや他の望ましいユーザの行動となる．</li>
 <li>ネットワークのデータ送信
 ソース・ルーティングは，送信元から受信先へのパスを与えられたネットワークから選んで送信する通信方式である．このとき，パケットをどのパスを使って送るかがバンディット問題になる．</li>
@@ -385,18 +345,13 @@ Webページの来訪者にどの広告を表示するか，どのデザイン�
 Gellyらはバンディット問題のアルゴリズムを囲碁の木探索に用いるMoGoを実装することに成功した．
 MoGoはKocsis and Szepesv´ariによる階層型のバンディットのためのUCT(Upper Confidence bound applied to Trees)戦略を用いた．これは２章のUCB(Upper Confidence Bound)アルゴリズムから導かれる．</li>
 </ul>
-
-<h2 id="確率的バンディット設定と敵対的バンディット設定-マルコフ性をもつバンディット設定">確率的バンディット設定と敵対的バンディット設定，マルコフ性をもつバンディット設定</h2>
-
+<h3 id="確率的バンディット設定と敵対的バンディット設定マルコフ性をもつバンディット設定">確率的バンディット設定と敵対的バンディット設定，マルコフ性をもつバンディット設定</h3>
 <p>報酬が支払われる過程に仮定されている性質によって，バンディット問題は３つの基盤となる定式化がある．その３種類とは確率的設定，敵対的設定，マルコフ性をもつ設定である．
 本稿では確率的設定と敵対的設定を取り上げる．マルコフ性を持つバンディット設定については Mahajan and TeneketzisやGittinsらを参照．</p>
-
-<h2 id="リグレット">リグレット</h2>
-
+<h3 id="リグレット">リグレット</h3>
 <p>バンディット問題において，プレイヤーや予測者（バンディットアルゴリズムを実装した人）の振る舞いを解析するために，最適な戦略を取った人との性能の差を比較する．
 ここで，最適な戦略とは$n$ステップの間，一貫して最適なアームを引き続けることである．
 言い換えれば，最適な戦略を取らなかったことに対する予測者のRegret（後悔）を調査する．</p>
-
 <p>アーム数を$K\ge2$とする．
 各アーム$i=1\dots K$に紐付いた未知の報酬を$X_{i,1},X_{i,2},\dots$とする．
 予測者は各ステップ$t=1,2,\dots$でアーム$I_t$を選び，紐付いた報酬$X_{I_t,t}$を受け取る．
@@ -404,27 +359,23 @@ nステップ後のリグレットは
 $$R_n=\max_{t=1,\dots,K}\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}$$
 期間nを前もって知らなくて良い場合，予測者はanytimeであるという．
 予測者がanytimeであるとき，アルゴリズムをいつでも停止することができる．</p>
-
-<p>一般に，報酬$X_{i,t}$と予測者の選択$I_t$がともに確率的であるため，以下の２種類の平均リグレットを考えられる．
-1. 期待リグレット(expected regret)
-  $$\mathbb{E}R_n=\mathbb{E}\left[\max_{i=1,\dots,K}\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}\right]$$
-2. 擬リグレット(Pseudo Regret)
-  $$\overline{R}_n=\max_{i=1,\dots,K}\mathbb{E}\left[\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}\right]$$
-両方の定義で，報酬と予測者の行動の両方について期待値を取っている．
+<p>一般に，報酬$X_{i,t}$と予測者の選択$I_t$がともに確率的であるため，以下の２種類の平均リグレットを考えられる．</p>
+<ol>
+<li>期待リグレット(expected regret)
+$$\mathbb{E}R_n=\mathbb{E}\left[\max_{i=1,\dots,K}\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}\right]$$</li>
+<li>擬リグレット(Pseudo Regret)
+$$\overline{R}_n=\max_{i=1,\dots,K}\mathbb{E}\left[\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}\right]$$</li>
+</ol>
+<p>両方の定義で，報酬と予測者の行動の両方について期待値を取っている．
 擬リグレットは期待値をとった最適な報酬と比較している．一方で，期待リグレットは実際の報酬に対して最適な行動を取ったときのリグレットの期待値である．
 このため，擬リグレットは常に期待リグレットより弱い．
 フォーマルに書くと$\overline{R}_n\le\mathbb{E}R_n$となる．</p>
-
-<p>本当に？</p>
-
+<p>以下で疑リグレットは期待リグレットより弱いことを確認する．</p>
 <p>$i=1,\dots,n$, $0\le\theta\le1$に対して，$$\theta x_i+(1-\theta)y_i\le\theta \max_jx_j+(1-\theta)\max_jy_j$$
 が成り立つ．左辺の最大値を考えると，$$\max_i\theta x_i+(1-\theta)y_i\le\theta \max_jx_j+(1-\theta)\max_jy_j$$
 が成り立つ．よって，$\max$は凸関数である．
 そこで，イェンゼンの不等式$f(\mathbb{E}[x])\le\mathbb{E}[f(x)]$($f$は凸関数)より，$\overline{R}_n\le\mathbb{E}R_n$となる．</p>
-
 <p>以上より本当に擬リグレットは期待リグレットより弱かった．</p>
-
-<p>閑話休題</p>
         </div>
         <footer class="article-footer">
     <a data-url="https://getumen.github.io/2019/01/01/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%91%E7%AB%A0-1/" data-id="7c4acddada235bd59ac803158a619778" class="article-share-link">
@@ -533,7 +484,7 @@ $$R_n=\max_{t=1,\dots,K}\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}$$
 <section id="comments">
     <div id="disqus_thread">
         <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -903,23 +854,25 @@ $$R_n=\max_{t=1,\dots,K}\sum_{t=1}^nX_{i,t}-\sum_{t=1}^nX_{I_t,t}$$
 <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020
-      &copy; @getumen
+      &copy; 2021
+      © @getumen
     </div>
   </div>
 </footer>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-47210848-3', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
 <script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>
 <script src="https://getumen.github.io/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>

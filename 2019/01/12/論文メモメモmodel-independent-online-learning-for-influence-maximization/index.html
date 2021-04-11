@@ -2,7 +2,7 @@
 <html lang="ja-jp">
 <head>
     <title>論文メモメモ：Model-Independent Online Learning for Influence Maximization &middot; 雑記</title>
-    <meta name="generator" content="Hugo 0.40.1" />
+    <meta name="generator" content="Hugo 0.82.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="getumen">
@@ -23,59 +23,28 @@
     <meta property="og:title" content="論文メモメモ：Model-Independent Online Learning for Influence Maximization" />
 <meta property="og:description" content="SNSのようなソーシャルグラフにアクセスできる設定で，口コミマーケティングを効率的にする方法を提案している論文です．
 これまでの研究では，ソーシャルグラフで情報がどのように拡散するかをモデル化して，そのモデルが成り立つ場合にうまく行く方法が提案されていました．
-この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．
-
-" />
+この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/" />
-
-  <meta property="og:image" content="https://getumen.github.io/images/banners/internet_influencer_woman.png" />
-
-
-
-<meta property="article:published_time" content="2019-01-12T17:12:28&#43;09:00"/>
-
-<meta property="article:modified_time" content="2019-01-12T17:12:28&#43;09:00"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/" /><meta property="og:image" content="https://getumen.github.io/images/banners/internet_influencer_woman.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-01-12T17:12:28&#43;09:00" />
+<meta property="article:modified_time" content="2019-01-12T17:12:28&#43;09:00" />
 
 
     
-    
-<meta itemprop="name" content="論文メモメモ：Model-Independent Online Learning for Influence Maximization">
+    <meta itemprop="name" content="論文メモメモ：Model-Independent Online Learning for Influence Maximization">
 <meta itemprop="description" content="SNSのようなソーシャルグラフにアクセスできる設定で，口コミマーケティングを効率的にする方法を提案している論文です．
 これまでの研究では，ソーシャルグラフで情報がどのように拡散するかをモデル化して，そのモデルが成り立つ場合にうまく行く方法が提案されていました．
-この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．
-
-">
-
-
-<meta itemprop="datePublished" content="2019-01-12T17:12:28&#43;09:00" />
+この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．"><meta itemprop="datePublished" content="2019-01-12T17:12:28&#43;09:00" />
 <meta itemprop="dateModified" content="2019-01-12T17:12:28&#43;09:00" />
-<meta itemprop="wordCount" content="0">
-
-  <meta itemprop="image" content="https://getumen.github.io/images/banners/internet_influencer_woman.png">
-
-
-
+<meta itemprop="wordCount" content="8193"><meta itemprop="image" content="https://getumen.github.io/images/banners/internet_influencer_woman.png">
 <meta itemprop="keywords" content="bandit,読書,memo," />
-
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://getumen.github.io/images/banners/internet_influencer_woman.png"/>
 
 <meta name="twitter:title" content="論文メモメモ：Model-Independent Online Learning for Influence Maximization"/>
 <meta name="twitter:description" content="SNSのようなソーシャルグラフにアクセスできる設定で，口コミマーケティングを効率的にする方法を提案している論文です．
 これまでの研究では，ソーシャルグラフで情報がどのように拡散するかをモデル化して，そのモデルが成り立つ場合にうまく行く方法が提案されていました．
-この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．
-
-"/>
+この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -311,10 +280,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-12 17:12:28 &#43;0900 JST" itemprop="datePublished">2019-01-12</time>
             &middot;
-            0
+            8193
             words
             &middot;
-            0
+            17
             minute read
         </div>
         
@@ -360,112 +329,73 @@
             <p>SNSのようなソーシャルグラフにアクセスできる設定で，口コミマーケティングを効率的にする方法を提案している論文です．
 これまでの研究では，ソーシャルグラフで情報がどのように拡散するかをモデル化して，そのモデルが成り立つ場合にうまく行く方法が提案されていました．
 この論文では，拡散モデルを不可知にした場合に，マーケティングに協力してくれるインフルエンサー全体の中から一部を選んで，情報を投稿してもらい，その影響を最大化するという組み合わせ最適化問題をうまく解いています．</p>
-
-<p></p>
-
 <p>論文-&gt;<a href="https://www.cs.ubc.ca/~sharanv/IMB.pdf">https://www.cs.ubc.ca/~sharanv/IMB.pdf</a></p>
-
-<h1 id="概要">概要</h1>
-
+<h2 id="概要">概要</h2>
 <p>我々はソーシャルネットでの影響最大化問題(Influence Maximization, IM)を考える．
 影響最大化問題というのは商品を体験させる根源となるユーザを選ぶことで，商品を認知するユーザの数を最大化するという問題である．</p>
-
 <p>先行研究では拡散モデルを知っていると仮定していたが，提案手法の新しいパラメータ化により提案フレームワークは拡散モデルを知らなくても良いだけでなく，データから統計的に効率的に学習する．
 我々はIMの目的関数に対応する代替関数として単調な劣モジュラ関数を与え，それがもとのIMの目的関数の酔い近似であることをしめす．
 マーケッターが情報の伝達を支配する要素を学習しながら，同時にソーシャルネットの活用したい場合を考える．
 このために，ペアごとの影響についてのsemi-banditフィードバックモデルを提案し，LinUCBベースのバンディットアルゴリズムを開発する．
 モデルと独立した解析により（既存研究と比べて）我々のリグレットバウンドはネットワークサイズに対してより良い依存性を持っていることを示した．</p>
-
 <p>実験評価により，我々のフレームワークは背後にある拡散モデルにロバストであり，最適に近い解を効率的に学習することを示した．</p>
-
-<h1 id="1-introduction">1. Introduction</h1>
-
-<h1 id="2-influence-maximization">2. Influence Maximization</h1>
-
+<h2 id="1-introduction">1. Introduction</h2>
+<h2 id="2-influence-maximization">2. Influence Maximization</h2>
 <p>IM問題の定式化をする．</p>
-
 <p>ソーシャルネットのグラフ構造を表す有向グラフを$G$とする．
 マーケティングに協力してくれるインフルエンサーの集合を$C$とする．
 ネットワークの拡散モデルを$D$とする．</p>
-
 <p>グラフはユーザを表すグラフの頂点$V=\{1,\dots,n\}$とフォロー関係などを表す辺$E$を用いて$G=(V,E)$として表せる．
 各々のカーディナリティは$|V|=n$，$|E|=m$であるとする．</p>
-
 <p>インフルエンサーの集合$C$はカーディナリティによる制約や$V$の部分集合にある組み合わせ制約により，$K\le n$に対して$C\subseteq\{S\subseteq V:|S|\le K\}$と決まる．</p>
-
 <p>拡散モデル$D$は１回のマーケティングで協力してもらうインフルエンサーの集合$S\in C$が決まるとネットワーク上の拡散の仕方が決まる確率的な過程だ．
 一般性を失わずに，$D$の確率要素は確率変数のベクトル$\mathbf{w}$により表されるとする．
 各拡散の仕方は拡散モデル固有の確率分布$\mathbb{P}$から独立にサンプルされた$\mathbf{w}$を持つと仮定する．
 $\mathbf{w}$がサンプルされたとき，$D(\mathbf{w})$は拡散モデル$D$の具体化したものとしてみなせる．$D(\cdot)$は$\mathbf{w}$によって条件付けられる決定的な関数となる．</p>
-
 <p>上記の定義が与えられたもとでIM問題では次のようなことをしたい．</p>
-
 <p>マーケターはインフルエンサー$S\in C$を選ぶ．そのあと，拡散モデル用の確率変数ベクトル$w\sim\mathbb{P}$がランダムにサンプルされて決まる．
 ユーザ$v$が商品を認知したかを示す指示関数を$\mathbb{1}(S,v,D(\mathbf{w}))\in\{0,1\}$とする．
 ユーザ$v$がインフルエンサー集合$S\subseteq C$の流した口コミに影響される確率を$$F(S,v)=\mathbb{E}[ \mathbb{1}(S,v,D(\mathbf{w}))|S]\tag{1}$$とする．ここで，期待値はありうる$D(\mathbf{w})$について取ったものである．
 インフルエンサー$S$を選んだときに商品を認知するユーザ数の期待値を$F(S)=\sum_{v\in V}F(S,v)$とする．
 IM問題の目的は$S\in C$の制約のもとで$F(S)$を最大化することだ．
 言い換えれば，$S^*\in\rm arg\max_{S\in C}F(S)$を見つけることだ．</p>
-
 <p>IM問題は一般にNP-Hardだが，目的関数$F(S)$は単調サブモジュラ関数であるため準最適な解が貪欲法により多項式時間で得られる．
 拡散モデル$D$は下記の単調性を持つと仮定する</p>
-
-<hr />
-
+<hr>
 <p>仮定1</p>
-
 <p>任意の$v\in V$と任意の$S_1\subseteq S_2\subseteq V$に対して，もし$F(S_1,v)\le F(S_2,v)$ならば，$S$について$F(S,v)$は単調である．</p>
-
-<hr />
-
+<hr>
 <p>既存研究はこの仮定を満たしている．（一見，単調劣モジュラ関数の定義のように見えるけれど，これは拡散モデル$D$についての仮定なので注意．）</p>
-
-<h1 id="3-surrogate-objective">3. Surrogate Objective</h1>
-
+<h2 id="3-surrogate-objective">3. Surrogate Objective</h2>
 <p>ここでは，NP-Hardの目的関数を代替する代替関数を定義し，近似の精度を求めていく．
 代替関数を考えるためにユーザ$v$に最も影響を与えるインフルエンサーについて考える．</p>
-
 <p>任意の$S\subseteq V$と任意のペアごとの確率$p:V\times V\rightarrow[0,1]$に対して，すべてのユーザ$v\in V$について$$f(S,v,p)=\max_{u\in S}p_{u,v}\tag{2}$$を定義する．
 ここで，$p_{u,v}$は順序付けられたペアごとの確率である．（$u$が$v$に影響を与える確率を表している）
 また，$f(S,p)=\sum_{v\in V}f(S,v,p)$とする．
 このとき，すべての$p$に対して$f(S,p)$は常に$S$について単調劣モジュラ関数である(Krause &amp; Golovin, 2012).</p>
-
 <p>ペアごとに影響を受けか考えるために$u$が$v$に影響を与える確率を$p^*_{u,v}=F(\{u\},v)$とする．
 選ばれたインフルエンサーの集合$S$に$v$が影響される最大のペアごとに見たときの到達率(maximal pairwise reachablity)は$f(S,v,p^*)=\max_{u\in S}p^{*}_{u,v}$と定義する．</p>
-
 <p>提案するIM問題の代替関数は$$f(S,p^*)=\sum_{v\in V}f(S,v,p^*)$$である．
 この目的関数に基づいて，$S\in C$という制約のもとで$f(S,p^*)$を最大化することによって得られるIM問題の近似解$\tilde{S}$を得られる．</p>
-
 <p>代替関数の近似精度を$\rho=f(\tilde{S},p^*)/F(S^*)$とすると，次の定理が得られる．</p>
-
-<hr />
-
+<hr>
 <p>Theorem 1.</p>
-
 <p>任意のグラフ$G$，選ばれたインフルエンサー集合$S\in C$，仮定１を満たす拡散モデル$D$に対して，</p>
-
 <ol>
 <li>$f(S,p^*)\le F(S)$</li>
 <li>もし，$F(S)$が$S$について劣モジュラ関数ならば，$1/K\le\rho\le1$</li>
 </ol>
-
-<hr />
-
-<p><em>直感的理解を考えてみる</em></p>
-
+<hr>
+<h3 id="直感的理解を考えてみる">直感的理解を考えてみる</h3>
 <p>１については，直感的には全インフルエンサーがあるユーザに与える影響のほうが，最も影響を与える１人のインフルエンサーのみがあるユーザに与える影響より大きいので成り立つと考えられる．
 ２については，$\rho\le1$は１の場合を考えれば成り立つと考えられる．
 下からのバウンドについてはすべてのインフルエンサーがあるユーザに与える影響より，最も影響を与える１人のインフルエンサーの影響がK(選ばれたインフルエンサーの総数)人いる場合のほうが影響が大きいので成り立つと考えられる．</p>
-
-<hr />
-
+<hr>
 <p>証明</p>
-
 <p>定理１は単調劣モジュラ関数であることから証明できる．
 仮定１から任意の選ばれたインフルエンサー集合$S\in C$と任意のインフルエンサー$u$任意のユーザ$v$について$F(\{u\},v)\le F(S,v)$が成り立つ．
 このことから$$f(S,v,p^*)=\max_{u\in S}F(\{u\},v)\le F(S,v)$$が成り立つ．
 よって，$$f(S,p^*)=\sum_{v\in V}f(S,v,p^*)\le\sum_{v\in V}F(S,v)=F(S)$$となり，1が示された．</p>
-
 <p>1の結果と$S^*$の定義から$$f(\tilde{S},p^*)\le F(\tilde{S})\le F(\tilde{S})$$が得られる．
 よって，$\rho\le1$である．次に，$K/1\le\rho$を示すために，$S=\{u_1,u_2,\dots,u_K\}$と仮定し，$k=1,\dots,K$に対して$S_k=\{u_1,u_2,\dots,u_k\}$と定義する．
 これを用いて，$|S|=K$である任意の$S\subseteq V$に対して，$$F(S)=F(S_1)+\sum_{k=1}^{K-1}[ F(S_{k+1})-F(S_k)]$$
@@ -473,187 +403,125 @@ $$\le\sum_{k=1}^KF(\{u_k\})=\sum_{k=1}^K\sum_{v\in V}F(\{u_k\},v)$$
 $$\le K\max_{u\in S}F(\{u_k\},v)=K\sum_{v\in V}f(S,v,p^*)=Kf(S,p^*).$$
 ここで，最初の不等式は$F(S)$の劣モジュラ性を用いた．
 これにより，$$F(S^*)\le Kf(S^*,p^*)\le Kf(\tilde{S},p^*)$$が得られるので，$\rho\ge1/K$.</p>
-
-<hr />
-
+<hr>
 <p>$\tilde{S}\in\rm arg\max_{S\in C}f(S,p^*)$を解くことは計算量的に難しいので近似アルゴリズムにより準最適な解を計算する必要がある．
 そのような近似アルゴリズムを学習アルゴリズムと区別するために$ORACLE$と表記する．その出力を$\hat{S}=ORACLE(G,C,p)$とする．
 $ORACLE$が$\alpha$近似アルゴリズムであるとはすべての確率$p:V\times V\rightarrow[ 0,1]$に対して，$f(\hat{S},p)\ge\alpha\max_{S\in C}f(S,p)$を満たすアルゴリズムであることを言う．
 $f(S,p^*)$は劣モジュラ関数なので$\alpha=1-1/e$である (Nemhauser et al.,1978)．</p>
-
-<h1 id="4-influence-maximization-semi-bandits">4. Influence Maximization Semi-Bandits</h1>
-
-<h2 id="4-1-influence-maximization-semi-bandits">4.1. Influence Maximization Semi-Bandits</h2>
-
+<h2 id="4-influence-maximization-semi-bandits">4. Influence Maximization Semi-Bandits</h2>
+<h3 id="41-influence-maximization-semi-bandits">4.1. Influence Maximization Semi-Bandits</h3>
 <p>マーケターはソーシャルグラフ$G$とインフルエンサーの集合$C$は知っているが，拡散モデル$D$は知らない．</p>
-
 <p>マーケターがTラウンドソーシャルネットワークとインタラクションを持つ設定を考える．
 各$t\in\{1,\dots,T\}$ラウンドで，マーケターは事前知識とかこの観測に基づき，インフルエンサーの部分集合$S_t\subseteq C$を選ぶ．
 そして，独立に拡散確率変数$\mathbf{w}_t\sim\mathbb{P}$をサンプリングされる．
 インフルエンサーの部分集合$S_t$から拡散モデル$D(\mathbf{w}_t)$に従ってソーシャルネットワークで拡散していく．</p>
-
 <p>マーケターの報酬はtラウンドで影響を受けたユーザの数である．
 $$r_t=\sum_{v\in V}\mathbb{1}(S_t,v,D(\mathbf{w}_t)).$$
 定義より，$F(S_t)=\mathbb{E}[ r_t|S_t,D(\mathbf{w}_t)]$である．
 マーケターの目的はTラウンドを通して，累積報酬を最大化することである．これはリグレットを最小化することと等しい．</p>
-
-<h2 id="4-2-pairwise-influence-feedback-model">4.2. Pairwise Influence Feedback Model</h2>
-
+<h3 id="42-pairwise-influence-feedback-model">4.2. Pairwise Influence Feedback Model</h3>
 <p>ペアごとの影響のフィードバック（pairwise influence feedback）というIMのセミバンディットフィードバックモデルを提案する．
 このフィードバックモデルではラウンド$t$の終わりにすべての選ばれたインフルエンサー$u\in S_t$とすべてのユーザ$v\in V$に対して，マーケターは$\mathbb{1}(\{u\},v,D(\mathbf{w}_t))$を観測する．
 言いかえれば，$S=\{u\}$を選んだとき拡散モデル$D(\mathbf{w}_t)$のもとで，$v$が影響されるかを観測する．
 このようなセミバンディットのフィードバックは，例えば，FacebookなどでShareやLikeを観測することで実現できる．</p>
-
-<h2 id="4-3-linear-generalization">4.3. Linear Generalization</h2>
-
+<h3 id="43-linear-generalization">4.3. Linear Generalization</h3>
 <p>ユーザからユーザへの到達確率をパラメータで表現しようとすると$O(n^2)$のパラメータを学習する必要がある（大きなネットワークに適用できない）．</p>
-
 <p>そこで，線形モデル(linear generalization assumption)によって表現できると仮定する．
 各ユーザに対して影響を与える側の未知の学習パラメータ$\mathbf{\theta}_v^*\in\mathcal{R}^d$と影響を受ける側の既知の与えられたパラメータ$\mathbf{x}_v\in\mathcal{R}^d$を仮定する．</p>
-
-<hr />
-
-<p><em>Assumption 2. Linear generalization assumption</em></p>
-
+<hr>
+<h4 id="assumption-2-linear-generalization-assumption">Assumption 2. Linear generalization assumption*</h4>
 <p>すべての$u,v\in V$に対して，$p^*_{u,v}$は$\mathbf{\theta}_u^*$と$\mathbf{x}_v$の内積によってよく近似されると仮定する．
 つまり，$$p_{u,v}^*\approx\langle\mathbf{\theta}_u^*,\mathbf{x}_v\rangle=\mathbf{x}_v^T\mathbf{\theta}_u^*$$</p>
-
-<hr />
-
+<hr>
 <p>これによりセミバンディット問題のパラメータ数は$O(dn)$になる．</p>
-
-<h2 id="4-4-performance-metric">4.4. Performance Metric</h2>
-
+<h3 id="44-performance-metric">4.4. Performance Metric</h3>
 <p>$\kappa\in(0,1)$として，$\kappa$でスケールされたリグレットを
 $$R^\kappa(T)=TF(S^*)-\frac{1}{\kappa}\mathbb{E}\left[ \sum_{t=1}^TF(S_t)\right]\tag{4}$$</p>
-
 <p>NP-Hardの問題であるにもかかわらず，もとの関数の最適解と比較したリグレットを定義している．
 その代わり$\kappa$で最適解を割り引いたリグレットを考える．</p>
-
-<h1 id="5-algorithm">5. Algorithm</h1>
-
+<h2 id="5-algorithm">5. Algorithm</h2>
 <p>diffusion-independent LinUCB(DILinUCB)というアルゴリズムを提案する．
-<img src="/images/banners/DILinUCB.png" alt="DILinUCB" title="DILinUCB" /></p>
-
+<img src="/images/banners/DILinUCB.png" alt="DILinUCB" title="DILinUCB"></p>
 <p>$G$はネットワーク・トポロジーであり，$C$はインフルエンサーの集合である．
 $ORACLE$は最適化アルゴリズムであり，$X$は特徴量の行列である．
 $\lambda$は正則化パラメータであり，$\sigma$は観測のノイズを表し，学習率の役割を果たす．</p>
-
 <p>各インフルエンサー$u$と時刻$t$に対して，グラム行列$\Sigma_{u,t}\in\mathbb{R}^{d\times d}$と過去の$u$からの伝播を足し合わせたベクトルとして$\mathbf{b}_{u,t}\in\mathbb{R}^d$を定義する．
 $t$ラウンドのユーザ$u$の重みベクトルを$\hat{\theta}_{u,t}$とする．
 インフルエンサー$u$からユーザ$v$への到達確率は$\langle \mathbf{\hat{\theta}_{u,t}},\mathbf{x}_v\rangle$であり，その分散は$|\mathbf{x}_v|_{\Sigma_{u,t}^{-1}}=\sqrt{\mathbf{x}_v^T\Sigma_{u,t}^{-1}\mathbf{x}_v}$である．</p>
-
 <p>$c$は平均と分散のトレードオフをコントロールしていて，「楽観度（degree of optimism）」を決める．</p>
-
 <p>アルゴリズムの流れを説明する．
 まず，UCBの推定を用いてORACLEにより，インフルエンサーの部分集合$S_t$を計算する．
 そして，$v$が$u$から影響を受けたかを表すフィードバック$\mathbf{y}_{u,t}\in\mathbb{R}^{n}$を受け取る．
 K人の選ばれたインフルエンサーについてフィードバックを受けたら，統計量を更新する．$Proj$という関数は$[ 0,1]$の区間に射影する関数である．</p>
-
-<h1 id="6-regret-bound">6. Regret Bound</h1>
-
+<h2 id="6-regret-bound">6. Regret Bound</h2>
 <p>仮定１，２のもとで，</p>
-
-<hr />
-
+<hr>
 <p>Theorem 2.</p>
-
 <p>任意の$\lambda,\sigma&gt;0$，任意の特徴行列$X$，任意の$\alpha$近似オラクル$ORACLE$，任意の以下の不等式を満たす$c$に対して，
 $$c\ge\frac{1}{\sigma}\sqrt{dn\ln\left(1+\frac{nT}{\sigma^2\lambda d}\right)+2\ln(n^2T)}+\sqrt{\lambda}\max_{u\in V}|\mathbf{\theta_u^*}|_2\tag{5}$$
 $(ORACLE, X, c, \lambda, \sigma)$を入力としたときのDILinUCBを適用したとき，$\rho\alpha$でスケールされたリグレットは
 $$R^{\rho\alpha}(T)\le\frac{2c}{\rho\alpha}n^{\frac{3}{2}}\sqrt{\frac{dKT\ln(1+\frac{nT}{d\lambda\sigma^2})}{\lambda\ln(1+\frac{1}{\lambda\sigma^2})}}+\frac{1}{\rho}$$である．</p>
-
 <p>$X=I$のとき，
 $$R^{\rho\alpha}(T)\le\frac{2c}{\rho\alpha}n^{\frac{3}{2}}\sqrt{\frac{dKT\ln(1+\frac{T}{d\lambda\sigma^2})}{\lambda\ln(1+\frac{1}{\lambda\sigma^2})}}+\frac{1}{\rho}$$</p>
-
-<hr />
-
+<hr>
 <p>$\lambda=\sigma=1$とし，$c$をタイトな値としたとき，リグレットは$\tilde{O}(n^2d\sqrt{KT}/(\alpha\rho))$が一般の特徴行列について成り立ち，$\tilde{O}(n^{2.5}\sqrt{KT}/(\alpha\rho))$が特徴行列が単位行列のとき成り立つ（$\tilde{O}$はログファクターを隠している）．</p>
-
 <p>バウンドのタイトさを述べる．
 $\tilde{O}(\sqrt{T})$は準最適であり，$\tilde{O}(\sqrt{K})$は組み合わせセミバンディット設定で標準的だ．
 $\tilde{O}(\sqrt{d})$は線形バンディット設定で標準的だ．</p>
-
 <p>$\tilde{O}(n^2)$について説明する．
 $\tilde{O}(n)$は報酬の大きさに起因する（０，１の値ではなく０からnの値を取る）．
 $\tilde{O}(\sqrt{n})$は到達確率の統計的な依存性のためだ（独立性があれば取れるが，独立性は現実的でない）．
 もう一つの$\tilde{O}(\sqrt{n})$は各$u$で$\theta_{u}^*$を学習するため生じる．</p>
-
 <p>証明のスケッチ
 良いイベントを$$\mathcal{F}=\left\{|\mathbf{x}^T_v(\hat{\mathbf{\theta}}_{u,t-1}-\mathbf{\theta}^*_u)|\le c|\mathbf{x}_v|_{\mathbf{\Sigma}_{u,t-1}^{-1}} \forall u,v\in V,t\le T\right\}$$
 と定義し、悪いイベント$\overline{\mathcal{F}}$を良いイベントの補集合とする。</p>
-
 <p>$\rho\alpha$でスケールされたリグレットを良いイベントと悪いイベントに分割すると
 $$R^{\rho\alpha}(T)\le\frac{2c}{\rho\alpha}\left\{\sum_{t=1}^T\sum_{u\in S_t}\sum_{v\in V}|\mathbf{x}_v|_{\mathbf{\Sigma}_{u,t-1}^{-1}}|\mathcal{F}\right\}+\frac{P(\overline{\mathcal{F}})}{\rho}nT$$
 と言う不等式で表すことができる。kokode,$P(\overline{\mathcal{F}})$は$\overline{\mathcal{F}}$の確率である。</p>
-
 <p>リグレットは$\sum_{v\in V}|\mathbf{x}_v|_{\mathbf{\Sigma}_{u,t-1}^{-1}}$の最悪ケースのバウンドと$P(\overline{\mathcal{F}})$のバウンドを求めることにより出る。</p>
-
-<h1 id="7-practical-implementation">7. Practical Implementation</h1>
-
-<h2 id="7-1-target-feature-construction">7.1. Target Feature Construction</h2>
-
+<h2 id="7-practical-implementation">7. Practical Implementation</h2>
+<h3 id="71-target-feature-construction">7.1. Target Feature Construction</h3>
 <p>$X$は自由なので色々できる．ラプラス行列とか．</p>
-
-<h2 id="7-2-laplacian-regularization">7.2. Laplacian Regularization</h2>
-
+<h3 id="72-laplacian-regularization">7.2. Laplacian Regularization</h3>
 <p>インフルエンサー数が多いときのためにLaplacian Regularizationを入れる工夫が考えられる．</p>
-
-<h2 id="7-3-computational-complexity">7.3. Computational Complexity</h2>
-
+<h3 id="73-computational-complexity">7.3. Computational Complexity</h3>
 <p>共役勾配法や遅延評価を用いた劣モジュラ最適化によりアルゴリズムを高速化できる．</p>
-
-<h1 id="8-experiments">8. Experiments</h1>
-
-<h2 id="8-1-empirical-verification-of-surrogate-objective">8.1. Empirical Verification of Surrogate Objective</h2>
-
+<h2 id="8-experiments">8. Experiments</h2>
+<h3 id="81-empirical-verification-of-surrogate-objective">8.1. Empirical Verification of Surrogate Objective</h3>
 <p>人口データを用いた実験．拡散モデルの推定のためにアルゴリズムは50kラウンド回した．
-<img src="/images/banners/DILinUCBSynthetic.png" alt="(a)もとの目的関数と近似された目的関数の比較．横軸はインフルエンサー数であり，縦軸は影響されたユーザの期待値 (b)定理１の近似精度をプロットしたもの．下界上界は定理１に基づく．" title="DILinUCB人口データの実験" /></p>
-
+<img src="/images/banners/DILinUCBSynthetic.png" alt="(a)もとの目的関数と近似された目的関数の比較．横軸はインフルエンサー数であり，縦軸は影響されたユーザの期待値 (b)定理１の近似精度をプロットしたもの．下界上界は定理１に基づく．" title="DILinUCB人口データの実験"></p>
 <p>代替関数はよく近似できていることがわかる．</p>
-
-<h2 id="8-2-performance-of-dilinucb">8.2. Performance of DILinUCB</h2>
-
-<p><img src="/images/banners/DILinUCBReal.png" alt="Facebookデータの実験" title="DILinUCBFacebookデータの実験" /></p>
-
+<h3 id="82-performance-of-dilinucb">8.2. Performance of DILinUCB</h3>
+<p><img src="/images/banners/DILinUCBReal.png" alt="Facebookデータの実験" title="DILinUCBFacebookデータの実験"></p>
 <p>Facebookのデータを用いる。
 ユーザ数は4kで関係数は88kである。
 拡散モデルは未知なので既存研究で用いられたICモデルとLTモデルと言うモデルを仮定する。
 比較手法はCUCBと言う手法で、CUCBはICモデルを仮定している。
 TAB(インフルエンサー数)は特徴行列が単位行列、I（インフルエンサー数、特徴量次元数）はユーザ情報を用いた行列、L（インフルエンサー数、特徴量次元数）はラプラス正則化を用いたもの。
 $T=5k$とする。</p>
-
 <p>図2からわかること</p>
-
 <ol>
 <li>ICでもLTでもDILinUCBの方がCUCBよりより低いリグレットになっている</li>
 <li>ユーザ特徴量を使うとリグレットが小さくなっている</li>
 <li>CUCBは拡散モデルにロバストでない</li>
 <li>ラプラス正則化は効いていない</li>
 </ol>
-
 <p>図3(a)からわかること</p>
-
 <ol>
 <li>特徴量数が$d=50$の時が$d=10,100$の時より良い。</li>
 <li>ラプラス正則化を用いた時は$d=100$がより低いリグレットを達成。</li>
 <li>$d=10$だと表現力が足りず、$d=100$だと$T=5k$で学習できない。</li>
 <li>ラプラス正則化が高次元特徴量に聞く</li>
 </ol>
-
-<p>図3(b),&copy;からわかること（縦軸はリグレットでなく報酬になっているので注意）</p>
-
+<p>図3(b),(c)からわかること（縦軸はリグレットでなく報酬になっているので注意）</p>
 <ol>
 <li>Kを増やすと報酬が増える</li>
 <li>ICモデルでは$K=50$の時CUCBがアウトパフォーム</li>
 <li>LTでは全てでDILinUCBがアウトパフォーム</li>
 </ol>
-
 <p>DILinUCBはCUCBより背景のモデルにロバストだとわかる</p>
-
-<h1 id="9-related-work">9. Related Work</h1>
-
-<h1 id="10-conclusion">10. Conclusion</h1>
+<h2 id="9-related-work">9. Related Work</h2>
+<h2 id="10-conclusion">10. Conclusion</h2>
         </div>
         <footer class="article-footer">
     <a data-url="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/" data-id="0a77cf2913f69052fe17f725ed33332a" class="article-share-link">
@@ -762,7 +630,7 @@ $T=5k$とする。</p>
 <section id="comments">
     <div id="disqus_thread">
         <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -1132,23 +1000,25 @@ $T=5k$とする。</p>
 <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020
-      &copy; @getumen
+      &copy; 2021
+      © @getumen
     </div>
   </div>
 </footer>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-47210848-3', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
 <script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>
 <script src="https://getumen.github.io/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>

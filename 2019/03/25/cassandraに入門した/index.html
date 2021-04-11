@@ -2,7 +2,7 @@
 <html lang="ja-jp">
 <head>
     <title>Cassandraに入門した &middot; 雑記</title>
-    <meta name="generator" content="Hugo 0.40.1" />
+    <meta name="generator" content="Hugo 0.82.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="getumen">
@@ -22,66 +22,32 @@
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <meta property="og:title" content="Cassandraに入門した" />
 <meta property="og:description" content="概要
-
 Facebookが開発したNoSQLデータベースであるCassandraに入門しました．
 テーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
-そして、実際に手を動かして動作を確認しました。
-
-" />
+そして、実際に手を動かして動作を確認しました。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" />
-
-  <meta property="og:image" content="https://getumen.github.io/images/banners/Cassandra_logo.png" />
-
-
-
-<meta property="article:published_time" content="2019-03-25T00:01:00&#43;09:00"/>
-
-<meta property="article:modified_time" content="2019-03-25T00:01:00&#43;09:00"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" /><meta property="og:image" content="https://getumen.github.io/images/banners/Cassandra_logo.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-03-25T00:01:00&#43;09:00" />
+<meta property="article:modified_time" content="2019-03-25T00:01:00&#43;09:00" />
 
 
     
-    
-<meta itemprop="name" content="Cassandraに入門した">
+    <meta itemprop="name" content="Cassandraに入門した">
 <meta itemprop="description" content="概要
-
 Facebookが開発したNoSQLデータベースであるCassandraに入門しました．
 テーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
-そして、実際に手を動かして動作を確認しました。
-
-">
-
-
-<meta itemprop="datePublished" content="2019-03-25T00:01:00&#43;09:00" />
+そして、実際に手を動かして動作を確認しました。"><meta itemprop="datePublished" content="2019-03-25T00:01:00&#43;09:00" />
 <meta itemprop="dateModified" content="2019-03-25T00:01:00&#43;09:00" />
-<meta itemprop="wordCount" content="0">
-
-  <meta itemprop="image" content="https://getumen.github.io/images/banners/Cassandra_logo.png">
-
-
-
+<meta itemprop="wordCount" content="5435"><meta itemprop="image" content="https://getumen.github.io/images/banners/Cassandra_logo.png">
 <meta itemprop="keywords" content="NoSQL,Cassandra," />
-
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://getumen.github.io/images/banners/Cassandra_logo.png"/>
 
 <meta name="twitter:title" content="Cassandraに入門した"/>
 <meta name="twitter:description" content="概要
-
 Facebookが開発したNoSQLデータベースであるCassandraに入門しました．
 テーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
-そして、実際に手を動かして動作を確認しました。
-
-"/>
+そして、実際に手を動かして動作を確認しました。"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -317,10 +283,10 @@ Facebookが開発したNoSQLデータベースであるCassandraに入門しま�
             <i class="fa fa-calendar"></i>
             <time datetime="2019-03-25 00:01:00 &#43;0900 JST" itemprop="datePublished">2019-03-25</time>
             &middot;
-            0
+            5435
             words
             &middot;
-            0
+            11
             minute read
         </div>
         
@@ -359,95 +325,56 @@ Facebookが開発したNoSQLデータベースであるCassandraに入門しま�
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="概要">概要</h1>
-
+            <h2 id="概要">概要</h2>
 <p>Facebookが開発したNoSQLデータベースであるCassandraに入門しました．
 テーブルの使い方とCRUDの使い方、その時の注意点を調べてまとめました。
 そして、実際に手を動かして動作を確認しました。</p>
-
-<p></p>
-
-<h1 id="事前準備">事前準備</h1>
-
+<h2 id="事前準備">事前準備</h2>
 <p>以下がすでにインストールされているとします。</p>
-
 <ul>
 <li>Docker</li>
 </ul>
-
-<h1 id="環境構築">環境構築</h1>
-
+<h2 id="環境構築">環境構築</h2>
 <p>環境構築は<a href="https://hub.docker.com/_/cassandra">DockerHubのCassandraのページ</a>を参考にして行いました。</p>
-
 <p>Cassandraはネットワークを通じて他のノードと通信し、クラスタを作成します。
 まず、Dockerのネットワークを作成します。ネットワークの名前はなんでも良いのですが、<code>cassandra-nw</code>としました。</p>
-
-<pre><code>$ docker network create cassandra-nw
-</code></pre>
-
-<p>次に、Dockerのコンテナを削除してもデータが消えないようにローカルにデータを保存するディレクトリを作成します。</p>
-
-<pre><code class="language-bash">$ mkdir $HOME/cassandra
-$ mkdir $HOME/cassandra2
-</code></pre>
-
-<p>２つのノードを作成する予定なので、２つのディレクトリを作成しました。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker network create cassandra-nw
+</code></pre></div><p>次に、Dockerのコンテナを削除してもデータが消えないようにローカルにデータを保存するディレクトリを作成します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir $HOME/cassandra
+mkdir $HOME/cassandra2
+</code></pre></div><p>２つのノードを作成する予定なので、２つのディレクトリを作成しました。</p>
 <p>以下のコマンドを実行して、１つ目のCassandraのノードを作成します。</p>
-
-<pre><code class="language-bash">$ docker run --name cassandra1 --network cassandra-nw -v $HOME/cassandra:/var/lib/cassandra -p 9042:9042 cassandra:latest
-</code></pre>
-
-<p>次に、同じマシン上で２つ目のCassandraのノードを作成します。</p>
-
-<pre><code class="language-bash">$ docker run --name cassandra2 --network cassandra-nw -e CASSANDRA_SEEDS=cassandra1 -v $HOME/cassandra2:/var/lib/cassandra -p 9043:9042  cassandra:latest
-</code></pre>
-
-<p>２つ目のノードを作成する際、<code>CASSANDRA_SEEDS</code>という環境変数を用いてシードとなるノードを指定しました。シードノードは新しいノードをCassandraのリングに加える際、ノードのゴシッププロセスをブートストラップするために利用されるようです。各ノードとP2Pで通信し、シードノードが新しいノードの親となる訳ではないので、単一障害点を持たない分散DBとなっているようです。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --name cassandra1 --network cassandra-nw -v $HOME/cassandra:/var/lib/cassandra -p 9042:9042 cassandra:latest
+</code></pre></div><p>次に、同じマシン上で２つ目のCassandraのノードを作成します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --name cassandra2 --network cassandra-nw -e CASSANDRA_SEEDS<span style="color:#f92672">=</span>cassandra1 -v $HOME/cassandra2:/var/lib/cassandra -p 9043:9042  cassandra:latest
+</code></pre></div><p>２つ目のノードを作成する際、<code>CASSANDRA_SEEDS</code>という環境変数を用いてシードとなるノードを指定しました。シードノードは新しいノードをCassandraのリングに加える際、ノードのゴシッププロセスをブートストラップするために利用されるようです。各ノードとP2Pで通信し、シードノードが新しいノードの親となる訳ではないので、単一障害点を持たない分散DBとなっているようです。</p>
 <p>以上の操作で、２つのノードからなるCassandraクラスタを作成することができました。</p>
-
-<h1 id="入門-cliでテーブルを作る">入門 - CLIでテーブルを作る</h1>
-
+<h2 id="入門---cliでテーブルを作る">入門 - CLIでテーブルを作る</h2>
 <p>ここでは、MySQLでDatabaseに相当するKeyspaceを作成し、テーブルを作成し、CRUD(Create, Read, Update, Delete)を行います。
 また、操作中に出てくる概念について調べてまとます。</p>
-
-<h2 id="cqlでクエリを叩く">CQLでクエリを叩く</h2>
-
+<h3 id="cqlでクエリを叩く">CQLでクエリを叩く</h3>
 <p>Dockerを用いてcqlを起動するために、以下のコマンドを実行します。</p>
-
-<pre><code class="language-bash">$ docker run -it --network cassandra-nw --rm cassandra cqlsh cassandra1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -it --network cassandra-nw --rm cassandra cqlsh cassandra1
 Connected to Test Cluster at cassandra1:9042.
-[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
-Use HELP for help.
+<span style="color:#f92672">[</span>cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4<span style="color:#f92672">]</span>
+Use HELP <span style="color:#66d9ef">for</span> help.
 cqlsh&gt;
-</code></pre>
-
-<p><code>cqlsh&gt;</code>と表示されていれば、CQLでクエリを実行する環境が作成できています。</p>
-
-<h2 id="keyspaceを作る">Keyspaceを作る</h2>
-
+</code></pre></div><p><code>cqlsh&gt;</code>と表示されていれば、CQLでクエリを実行する環境が作成できています。</p>
+<h3 id="keyspaceを作る">Keyspaceを作る</h3>
 <p>まず、<code>keyspace</code>という、MySQLなどで<code>database</code>に相当する概念を表示します。</p>
-
-<pre><code>cqlsh&gt; DESCRIBE keyspaces
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cqlsh&gt; DESCRIBE keyspaces
 
 system_schema  system_auth  system  system_distributed  system_traces
-</code></pre>
-
-<p>次に、今回使用するKeyspaceを作成します。</p>
-
-<pre><code>cqlsh&gt; CREATE KEYSPACE test WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }; 
+</code></pre></div><p>次に、今回使用するKeyspaceを作成します。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cqlsh&gt; CREATE KEYSPACE test WITH REPLICATION <span style="color:#f92672">=</span> <span style="color:#f92672">{</span> <span style="color:#e6db74">&#39;class&#39;</span> : <span style="color:#e6db74">&#39;SimpleStrategy&#39;</span>, <span style="color:#e6db74">&#39;replication_factor&#39;</span> : <span style="color:#ae81ff">1</span> <span style="color:#f92672">}</span>; 
 
 cqlsh&gt; DESCRIBE keyspaces
 
 system_schema  system              test           system_auth
 system_distributed  system_traces
-</code></pre>
-
-<p><code>test</code>というKeyspaceを作成しました。
+</code></pre></div><p><code>test</code>というKeyspaceを作成しました。
 ここで、<code>class</code>に<code>SimpleStrategy</code>を指定しました。
 他に指定できるものと、その意味は下のようになっています。</p>
-
 <table>
 <thead>
 <tr>
@@ -455,108 +382,85 @@ system_distributed  system_traces
 <th>意味</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>SimpleStrategy</td>
 <td>１つのデータセンターと１つのラックを使うときに指定する。<code>replication_factor</code>はクラスターの中にいくつRowをコピーするかを指定します。</td>
 </tr>
-
 <tr>
 <td>NetworkTopologyStrategy</td>
 <td>複数のデータセンターまたは複数のラックを使うときに指定します。<code>replication_factor</code>の代わりにデータセンター名とそのデータセンターのreplication_factorを指定します。</td>
 </tr>
 </tbody>
 </table>
-
 <blockquote>
 <p><a href="https://docs.apigee.com/private-cloud/v4.17.09/about-cassandra-replication-factor-and-consistency-level">https://docs.apigee.com/private-cloud/v4.17.09/about-cassandra-replication-factor-and-consistency-level</a></p>
 </blockquote>
-
 <h2 id="tableを作る">Tableを作る</h2>
-
 <p>Keyspaceを作成することができたので、次にテーブルを作成します。
 Cassandraでは，テーブルをどのように作るかによって投げられるクエリーがほとんど決まってしまうので，テーブル作成が大変重要です．</p>
-
 <p>Key Value Store では，カラムの値でソートしたデータを取得できないものが多いです．
 しかし，Cassandraでは予めテーブル作成時に決めたカラムの値でソートしたデータを取得することができます．
 ここでは，テーブル定義によってどのようなデータ構造でCassandraにデータが保持されるのか，そのときどのようなクエリーを投げることができて，どのようなクエリーを投げることができないのかを見ていきます．</p>
-
 <p>まず、フィードというテーブルを作成します。
 FacebookやTwitterのホーム画面に表示されるアレです。</p>
-
-<pre><code>cqlsh&gt; CREATE TABLE test.feed (
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cqlsh&gt; CREATE TABLE test.feed <span style="color:#f92672">(</span>
     user_id  text,
     timestamp    timestamp,
     message text,
-    primary key((user_id), timestamp)
-) WITH CLUSTERING ORDER BY (timestamp DESC);
+    primary key<span style="color:#f92672">((</span>user_id<span style="color:#f92672">)</span>, timestamp<span style="color:#f92672">)</span>
+<span style="color:#f92672">)</span> WITH CLUSTERING ORDER BY <span style="color:#f92672">(</span>timestamp DESC<span style="color:#f92672">)</span>;
 
 cqlsh&gt; DESC test.feed;
 
-CREATE TABLE test.feed (
+CREATE TABLE test.feed <span style="color:#f92672">(</span>
     user_id text,
     timestamp timestamp,
     message text,
-    PRIMARY KEY (user_id, timestamp)
-) WITH CLUSTERING ORDER BY (timestamp DESC)
-    AND bloom_filter_fp_chance = 0.01
-    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
-    AND comment = ''
-    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
-    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
-    AND crc_check_chance = 1.0
-    AND dclocal_read_repair_chance = 0.1
-    AND default_time_to_live = 0
-    AND gc_grace_seconds = 864000
-    AND max_index_interval = 2048
-    AND memtable_flush_period_in_ms = 0
-    AND min_index_interval = 128
-    AND read_repair_chance = 0.0
-    AND speculative_retry = '99PERCENTILE';
-</code></pre>
-
-<p>色々と出てきました。順を追って見ていきます。</p>
-
+    PRIMARY KEY <span style="color:#f92672">(</span>user_id, timestamp<span style="color:#f92672">)</span>
+<span style="color:#f92672">)</span> WITH CLUSTERING ORDER BY <span style="color:#f92672">(</span>timestamp DESC<span style="color:#f92672">)</span>
+    AND bloom_filter_fp_chance <span style="color:#f92672">=</span> 0.01
+    AND caching <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#39;keys&#39;</span>: <span style="color:#e6db74">&#39;ALL&#39;</span>, <span style="color:#e6db74">&#39;rows_per_partition&#39;</span>: <span style="color:#e6db74">&#39;NONE&#39;</span><span style="color:#f92672">}</span>
+    AND comment <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+    AND compaction <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#39;class&#39;</span>: <span style="color:#e6db74">&#39;org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy&#39;</span>, <span style="color:#e6db74">&#39;max_threshold&#39;</span>: <span style="color:#e6db74">&#39;32&#39;</span>, <span style="color:#e6db74">&#39;min_threshold&#39;</span>: <span style="color:#e6db74">&#39;4&#39;</span><span style="color:#f92672">}</span>
+    AND compression <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#39;chunk_length_in_kb&#39;</span>: <span style="color:#e6db74">&#39;64&#39;</span>, <span style="color:#e6db74">&#39;class&#39;</span>: <span style="color:#e6db74">&#39;org.apache.cassandra.io.compress.LZ4Compressor&#39;</span><span style="color:#f92672">}</span>
+    AND crc_check_chance <span style="color:#f92672">=</span> 1.0
+    AND dclocal_read_repair_chance <span style="color:#f92672">=</span> 0.1
+    AND default_time_to_live <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    AND gc_grace_seconds <span style="color:#f92672">=</span> <span style="color:#ae81ff">864000</span>
+    AND max_index_interval <span style="color:#f92672">=</span> <span style="color:#ae81ff">2048</span>
+    AND memtable_flush_period_in_ms <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    AND min_index_interval <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>
+    AND read_repair_chance <span style="color:#f92672">=</span> 0.0
+    AND speculative_retry <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;99PERCENTILE&#39;</span>;
+</code></pre></div><p>色々と出てきました。順を追って見ていきます。</p>
 <ol>
 <li>Data Typeについて</li>
 <li>Primary KeyとClustering Orderについて</li>
 <li><code>DESC test.feed</code>でテーブル定義の<code>WITH</code>いかにある設定値について</li>
 </ol>
-
 <h3 id="cassandraのデータタイプ">Cassandraのデータタイプ</h3>
-
 <p>色々あります。見ればわかるのでいかにリンクを貼るだけにします．
 文字列型の文字コードがUTF-8だったり、<code>list</code>, <code>set</code>, <code>map</code>などのコレクション型があるのが個人的に嬉しいです。</p>
-
 <blockquote>
 <p><a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cql_data_types_c.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cql_data_types_c.html</a></p>
 </blockquote>
-
 <h3 id="primary-keyとclustering-keyについて">Primary KeyとClustering Keyについて</h3>
-
 <p>Cassandraでは<code>Map&lt;PartitionKey, SortedMap&lt;ColumnKey, Value&gt;&gt;</code>という形でデータを保持しています。
 上で作成したフィードテーブルでは、Primary Keyとして<code>((user_id), timestamp)</code>、Clustering Keyとして<code>timestamp DESC</code>を指定しました。</p>
-
 <p>これによりClustering Keyに指定されていない<code>user_id</code>はPartition Keyとなります．
 Partition Key単位でノードにレコードが配置されます．</p>
-
 <p>また，<code>timestamp</code>がClustering Keyと指定していました．このClustering Keyを工夫して持つことによって，ソートされたレコードを取得できるようにしています．
 どのようなデータ構造でデータを持つことで，<code>timestamp</code>によってソートできるようにしているのかをこれから見ていきます．</p>
-
 <p>まずはじめに，Clustring Keyがなかった場合，どのようなデータの持ち方をするのかを見てみます．
 以下のようなテーブルがあったとします．</p>
-
-<pre><code>cqlsh&gt; CREATE TABLE test.feed (
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cqlsh&gt; CREATE TABLE test.feed <span style="color:#f92672">(</span>
     user_id  text,
     timestamp    timestamp,
     message text,
-    primary key(user_id, timestamp)
-);
-</code></pre>
-
-<p>このように，Clustring Keyが指定されていないとき，以下のようなフィードデータを保存したとします．</p>
-
+    primary key<span style="color:#f92672">(</span>user_id, timestamp<span style="color:#f92672">)</span>
+<span style="color:#f92672">)</span>;
+</code></pre></div><p>このように，Clustring Keyが指定されていないとき，以下のようなフィードデータを保存したとします．</p>
 <table>
 <thead>
 <tr>
@@ -565,38 +469,32 @@ Partition Key単位でノードにレコードが配置されます．</p>
 <th>message</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>letitbe_or_not</td>
 <td>2019-03-25 00:00:000</td>
 <td>あ</td>
 </tr>
-
 <tr>
 <td>letitbe_or_not</td>
 <td>2019-03-25 00:01:000</td>
 <td>い</td>
 </tr>
-
 <tr>
 <td>letitbe_or_not</td>
 <td>2019-03-25 00:02:000</td>
 <td>う</td>
 </tr>
-
 <tr>
 <td>twitter</td>
 <td>2019-03-25 00:00:000</td>
 <td>Work, work, work, work, work, work</td>
 </tr>
-
 <tr>
 <td>twitter</td>
 <td>2019-03-25 00:01:000</td>
 <td>Hahahahahahahaha</td>
 </tr>
-
 <tr>
 <td>twitter</td>
 <td>2019-03-25 00:02:000</td>
@@ -604,52 +502,42 @@ Partition Key単位でノードにレコードが配置されます．</p>
 </tr>
 </tbody>
 </table>
-
 <p>このとき，Cassandraの<code>Map&lt;PartitionKey, SortedMap&lt;ColumnKey, Value&gt;&gt;</code>というデータ構造に対して，データの持ち方のイメージは以下のようになっています．</p>
-
-<pre><code>{
-    'letitbe_or_not:2019-03-25 00:00:00': {
-        'message': 'あ'
-    },
-    'letitbe_or_not:2019-03-25 00:01:00': {
-        'message': 'い'
-    },
-    'letitbe_or_not:2019-03-25 00:02:00': {
-        'message': 'う'
-    },
-    'twitter:2019-03-25 00:00:00': {
-        'message': 'Work, work, work, work, work, work'
-    },
-    'twitter:2019-03-25 00:01:00': {
-        'message': 'Hahahahahahahaha'
-    },
-    'twitter:2019-03-25 00:02:00': {    
-        'message': 'Go to sleep'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#960050;background-color:#1e0010">&#39;letitbe_or_not:2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:00:00&#39;:</span> <span style="color:#960050;background-color:#1e0010">{</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;あ&#39;</span>
+    }<span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#960050;background-color:#1e0010">&#39;letitbe_or_not:</span><span style="color:#ae81ff">2019-03-25</span> <span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">01</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">&#39;:</span> {
+        <span style="color:#960050;background-color:#1e0010">&#39;message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;い&#39;</span>
+    }<span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#960050;background-color:#1e0010">&#39;letitbe_or_not:</span><span style="color:#ae81ff">2019-03-25</span> <span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">02</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">&#39;:</span> {
+        <span style="color:#960050;background-color:#1e0010">&#39;message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;う&#39;</span>
+    }<span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#960050;background-color:#1e0010">&#39;twitter:</span><span style="color:#ae81ff">2019-03-25</span> <span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">&#39;:</span> {
+        <span style="color:#960050;background-color:#1e0010">&#39;message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;Work,</span> <span style="color:#960050;background-color:#1e0010">work,</span> <span style="color:#960050;background-color:#1e0010">work,</span> <span style="color:#960050;background-color:#1e0010">work,</span> <span style="color:#960050;background-color:#1e0010">work,</span> <span style="color:#960050;background-color:#1e0010">work&#39;</span>
+    }<span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#960050;background-color:#1e0010">&#39;twitter:</span><span style="color:#ae81ff">2019-03-25</span> <span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">01</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">&#39;:</span> {
+        <span style="color:#960050;background-color:#1e0010">&#39;message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;Hahahahahahahaha&#39;</span>
+    }<span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#960050;background-color:#1e0010">&#39;twitter:</span><span style="color:#ae81ff">2019-03-25</span> <span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">02</span><span style="color:#960050;background-color:#1e0010">:</span><span style="color:#ae81ff">00</span><span style="color:#960050;background-color:#1e0010">&#39;:</span> {    
+        <span style="color:#960050;background-color:#1e0010">&#39;message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;Go</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">sleep&#39;</span>
     }
-}
-</code></pre>
-
-<p>この例だと，<code>user_id</code>+<code>timestamp</code>がPartition Keyとなっていて，Column Keyは<code>message</code>というカラム名がキーになっています．
+<span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div><p>この例だと，<code>user_id</code>+<code>timestamp</code>がPartition Keyとなっていて，Column Keyは<code>message</code>というカラム名がキーになっています．
 この例からデータを取得することを考えると，Partition Keyはどちらも指定してクエリを投げる必要があると考えられます．そして，実際に指定する必要があります．
 <code>message</code>というカラム名によってソートされていますが，ソートされていることで得られるメリットはありません．</p>
-
 <p>次に，今回作成したフィードテーブルではどのようなレコードを取得できるのかを考えます．
 テーブル定義を再掲します．</p>
-
-<pre><code>cqlsh&gt; CREATE TABLE test.feed (
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cqlsh&gt; CREATE TABLE test.feed <span style="color:#f92672">(</span>
     user_id  text,
     timestamp    timestamp,
     message text,
-    primary key((user_id), timestamp)
-) WITH CLUSTERING ORDER BY (timestamp DESC);
-</code></pre>
-
-<p>Clustring Keyとして，<code>timestamp</code>が指定されています．
+    primary key<span style="color:#f92672">((</span>user_id<span style="color:#f92672">)</span>, timestamp<span style="color:#f92672">)</span>
+<span style="color:#f92672">)</span> WITH CLUSTERING ORDER BY <span style="color:#f92672">(</span>timestamp DESC<span style="color:#f92672">)</span>;
+</code></pre></div><p>Clustring Keyとして，<code>timestamp</code>が指定されています．
 Clustering Keyとして指定されたカラムはカラム名ではなく、カラムの値がColumnKeyとなります。そして，Clustring Keyの値は，他のPrimary Keyでないカラム名のプレフィックスとなります。
 フィードの例では<code>Clustering Key</code>の値が<code>timestampの値:message</code>となります．</p>
-
 <p>以下のデータを保存したとき，今回はどのようにCassandraがデータを持つのかを考えます．</p>
-
 <table>
 <thead>
 <tr>
@@ -658,38 +546,32 @@ Clustering Keyとして指定されたカラムはカラム名ではなく、カ
 <th>message</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>letitbe_or_not</td>
 <td>2019-03-25 00:00:000</td>
 <td>あ</td>
 </tr>
-
 <tr>
 <td>letitbe_or_not</td>
 <td>2019-03-25 00:01:000</td>
 <td>い</td>
 </tr>
-
 <tr>
 <td>letitbe_or_not</td>
 <td>2019-03-25 00:02:000</td>
 <td>う</td>
 </tr>
-
 <tr>
 <td>twitter</td>
 <td>2019-03-25 00:00:000</td>
 <td>Work, work, work, work, work, work</td>
 </tr>
-
 <tr>
 <td>twitter</td>
 <td>2019-03-25 00:01:000</td>
 <td>Hahahahahahahaha</td>
 </tr>
-
 <tr>
 <td>twitter</td>
 <td>2019-03-25 00:02:000</td>
@@ -697,45 +579,36 @@ Clustering Keyとして指定されたカラムはカラム名ではなく、カ
 </tr>
 </tbody>
 </table>
-
 <p>Cassandraでの持ち方イメージ</p>
-
-<pre><code>{
-    'letitbe_or_not': {
-        '2019-03-25 00:00:00': '',
-        '2019-03-25 00:00:00:message': 'あ',
-        '2019-03-25 00:01:00': '',
-        '2019-03-25 00:01:00:message': 'い',
-        '2019-03-25 00:02:00': '',
-        '2019-03-25 00:02:00:message': 'う'
-    },
-    'twitter': {
-        '2019-03-25 00:00:00': '',
-        '2019-03-25 00:00:00:message': 'Work, work, work, work, work, work',
-        '2019-03-25 00:01:00': '',
-        '2019-03-25 00:01:00:message': 'Hahahahahahahaha',
-        '2019-03-25 00:02:00': '',
-        '2019-03-25 00:02:00:message': 'Go to sleep'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#960050;background-color:#1e0010">&#39;letitbe_or_not&#39;:</span> <span style="color:#960050;background-color:#1e0010">{</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:00:00&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:00:00:message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;あ&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:01:00&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:01:00:message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;い&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:02:00&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:02:00:message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;う&#39;</span>
+    }<span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#960050;background-color:#1e0010">&#39;twitter&#39;:</span> {
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:00:00&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:00:00:message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;Work,</span> <span style="color:#960050;background-color:#1e0010">work,</span> <span style="color:#960050;background-color:#1e0010">work,</span> <span style="color:#960050;background-color:#1e0010">work,</span> <span style="color:#960050;background-color:#1e0010">work,</span> <span style="color:#960050;background-color:#1e0010">work&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:01:00&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:01:00:message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;Hahahahahahahaha&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:02:00&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;&#39;,</span>
+        <span style="color:#960050;background-color:#1e0010">&#39;2019-03-25</span> <span style="color:#960050;background-color:#1e0010">00:02:00:message&#39;:</span> <span style="color:#960050;background-color:#1e0010">&#39;Go</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">sleep&#39;</span>
     }
-}
-</code></pre>
-
-<p>この場合ではPartion Keyは<code>user_id</code>の値となっています．
+<span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div><p>この場合ではPartion Keyは<code>user_id</code>の値となっています．
 大きく変わったのは<code>timestamp</code>の値がすべてのColumn Keyに入っていることです．そして，Column Keyによってソートされていることで，<code>timestamp</code>の値によって昇順にソートされていることが重要です．
 前の例ではPrimary Keyのカラムを指定したクエリしか投げられませんでした．つまり，普通のKey Value Storeのような使い方しかできませんでした．
 今回の例ではPartition Keyを指定し，Clustring Keyについてソートした結果を効率的に得ることができそうです．
 そして，実際にColumn Keyが連続しているレコードを取得することができ，連続して取得できるようなレコードのみを取得できます（<code>SELECT</code>句でフィールドを指定する，<code>IN</code>句を使うのような例外を除いて）．</p>
-
 <p>参考文献</p>
-
 <blockquote>
 <p><a href="https://qiita.com/mtakahashi-ivi/items/f9fab96675d1963be9a0">https://qiita.com/mtakahashi-ivi/items/f9fab96675d1963be9a0</a></p>
 </blockquote>
-
-<h3 id="desc-test-feed-でテーブル定義の-with-いかにある設定値について"><code>DESC test.feed</code>でテーブル定義の<code>WITH</code>いかにある設定値について</h3>
-
+<h3 id="desc-testfeedでテーブル定義のwithいかにある設定値について"><code>DESC test.feed</code>でテーブル定義の<code>WITH</code>いかにある設定値について</h3>
 <p>あとでまとめます。</p>
-
 <table>
 <thead>
 <tr>
@@ -743,112 +616,86 @@ Clustering Keyとして指定されたカラムはカラム名ではなく、カ
 <th>意味</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>bloom_filter_fp_chance</td>
 <td></td>
 </tr>
-
 <tr>
 <td>caching</td>
 <td></td>
 </tr>
-
 <tr>
 <td>comment</td>
 <td>テーブルを説明するコメント</td>
 </tr>
-
 <tr>
 <td>compaction</td>
 <td></td>
 </tr>
-
 <tr>
 <td>compression</td>
 <td></td>
 </tr>
-
 <tr>
 <td>crc_check_chance</td>
 <td></td>
 </tr>
-
 <tr>
 <td>dclocal_read_repair_chance</td>
 <td></td>
 </tr>
-
 <tr>
 <td>default_time_to_live</td>
 <td></td>
 </tr>
-
 <tr>
 <td>gc_grace_seconds</td>
 <td>Cassandraでは削除されたRowはまず論理削除されます。論理削除されたRowはTombstone（お墓）と呼ばれます。このお墓は<code>SELECT</code>時にスキャンされます。CassandraではスキャンするRow数に上限があるのですが、お墓のRowも含まれるため必要な結果を得る前にスキャンの上限に達して結果が得られないことがあります。<code>gc_grace_seconds</code>はお墓を物理削除する間隔を指定します。デフォルトでは１０日となっています。</td>
 </tr>
-
 <tr>
 <td>max_index_interval</td>
 <td></td>
 </tr>
-
 <tr>
 <td>memtable_flush_period_in_ms</td>
 <td></td>
 </tr>
-
 <tr>
 <td>min_index_interval</td>
 <td></td>
 </tr>
-
 <tr>
 <td>read_repair_chance</td>
 <td></td>
 </tr>
-
 <tr>
 <td>speculative_retry</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-
 <blockquote>
 <p><a href="https://docs.datastax.com/ja/cql-jajp/3.1/cql/cql_reference/tabProp.html">https://docs.datastax.com/ja/cql-jajp/3.1/cql/cql_reference/tabProp.html</a></p>
 </blockquote>
-
-<h1 id="入門-cliでcrud">入門 - CLIでCRUD</h1>
-
+<h2 id="入門---cliでcrud">入門 - CLIでCRUD</h2>
 <p>今、<code>test</code>というKeyspaceと<code>feed</code>というテーブルを作成できました。
 ここでは、CRUD(CREATE, READ, UPDATE, DELETE)のやっていきます。</p>
-
-<h2 id="create">CREATE</h2>
-
+<h3 id="create">CREATE</h3>
 <p>ここでは、データの作成しについて見てみます。</p>
-
-<pre><code>cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('letitbe_or_not', '2019-03-25 00:00:000', 'あ');
-cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('letitbe_or_not', '2019-03-25 00:01:000', 'い');
-cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('letitbe_or_not', '2019-03-25 00:02:000', 'う');
-cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('twitter', '2019-03-25 00:00:000', 'Work, work, work, work, work, work');
-cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('twitter', '2019-03-25 00:01:000', 'Hahahahahahahaha');
-cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('twitter', '2019-03-25 00:02:000', 'Go to sleep');
-</code></pre>
-
-<p>CREATEは特に難しいとことはないです。複数挿入はできるのかわかりませんでした。MySQLのような文法ではできませんでした。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cqlsh&gt; INSERT INTO test.feed<span style="color:#f92672">(</span>user_id, timestamp, message<span style="color:#f92672">)</span> VALUES <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;letitbe_or_not&#39;</span>, <span style="color:#e6db74">&#39;2019-03-25 00:00:000&#39;</span>, <span style="color:#e6db74">&#39;あ&#39;</span><span style="color:#f92672">)</span>;
+cqlsh&gt; INSERT INTO test.feed<span style="color:#f92672">(</span>user_id, timestamp, message<span style="color:#f92672">)</span> VALUES <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;letitbe_or_not&#39;</span>, <span style="color:#e6db74">&#39;2019-03-25 00:01:000&#39;</span>, <span style="color:#e6db74">&#39;い&#39;</span><span style="color:#f92672">)</span>;
+cqlsh&gt; INSERT INTO test.feed<span style="color:#f92672">(</span>user_id, timestamp, message<span style="color:#f92672">)</span> VALUES <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;letitbe_or_not&#39;</span>, <span style="color:#e6db74">&#39;2019-03-25 00:02:000&#39;</span>, <span style="color:#e6db74">&#39;う&#39;</span><span style="color:#f92672">)</span>;
+cqlsh&gt; INSERT INTO test.feed<span style="color:#f92672">(</span>user_id, timestamp, message<span style="color:#f92672">)</span> VALUES <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;twitter&#39;</span>, <span style="color:#e6db74">&#39;2019-03-25 00:00:000&#39;</span>, <span style="color:#e6db74">&#39;Work, work, work, work, work, work&#39;</span><span style="color:#f92672">)</span>;
+cqlsh&gt; INSERT INTO test.feed<span style="color:#f92672">(</span>user_id, timestamp, message<span style="color:#f92672">)</span> VALUES <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;twitter&#39;</span>, <span style="color:#e6db74">&#39;2019-03-25 00:01:000&#39;</span>, <span style="color:#e6db74">&#39;Hahahahahahahaha&#39;</span><span style="color:#f92672">)</span>;
+cqlsh&gt; INSERT INTO test.feed<span style="color:#f92672">(</span>user_id, timestamp, message<span style="color:#f92672">)</span> VALUES <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;twitter&#39;</span>, <span style="color:#e6db74">&#39;2019-03-25 00:02:000&#39;</span>, <span style="color:#e6db74">&#39;Go to sleep&#39;</span><span style="color:#f92672">)</span>;
+</code></pre></div><p>CREATEは特に難しいとことはないです。複数挿入はできるのかわかりませんでした。MySQLのような文法ではできませんでした。</p>
 <blockquote>
 <p><a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlInsert.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlInsert.html</a></p>
 </blockquote>
-
-<h2 id="read">READ</h2>
-
+<h3 id="read">READ</h3>
 <p>ここでは、データの読み取りについてみてみます。</p>
-
-<pre><code>cqlsh&gt; SELECT * FROM test.feed;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cqlsh&gt; SELECT * FROM test.feed;
 
  user_id        | timestamp                       | message
 ----------------+---------------------------------+------------------------------------
@@ -859,28 +706,19 @@ cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('twitter', 
  letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 い
  letitbe_or_not | 2019-03-25 00:00:00.000000+0000 |                                 あ
 
-(6 rows)
-</code></pre>
-
-<p>READは難しいところしかないです。前節の「Tableを作る」で見たようなデータの持ち方をしている時、連続したColumnしか読めないという制限を考える必要があります。そのような制限が具体的にはどうなるのかは以下の記事が大変参考になりました。</p>
-
+<span style="color:#f92672">(</span><span style="color:#ae81ff">6</span> rows<span style="color:#f92672">)</span>
+</code></pre></div><p>READは難しいところしかないです。前節の「Tableを作る」で見たようなデータの持ち方をしている時、連続したColumnしか読めないという制限を考える必要があります。そのような制限が具体的にはどうなるのかは以下の記事が大変参考になりました。</p>
 <blockquote>
 <p><a href="https://qiita.com/mizuka/items/3fb7ce3a7e631f2f7b29">https://qiita.com/mizuka/items/3fb7ce3a7e631f2f7b29</a></p>
 </blockquote>
-
 <p>Cassandraの制限を緩和する<code>ALLOW FILTERING</code>句があるのですが、フルスキャンが走るので実用的には使えなそうです。</p>
-
 <p>また、<code>IN</code>句は連続していないColumnを読むことができますが、コレクションを取ってこれないという制限があるようです。</p>
-
 <blockquote>
 <p><a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlSelect.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlSelect.html</a></p>
 </blockquote>
-
-<h2 id="update">UPDATE</h2>
-
+<h3 id="update">UPDATE</h3>
 <p>ここでは、データの更新についてみてみます。</p>
-
-<pre><code>cqlsh&gt; UPDATE test.feed SET message='え' WHERE user_id = 'letitbe_or_not' AND timestamp= '2019-03-25 00:01:000';
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cqlsh&gt; UPDATE test.feed SET message<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;え&#39;</span> WHERE user_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;letitbe_or_not&#39;</span> AND timestamp<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2019-03-25 00:01:000&#39;</span>;
 cqlsh&gt; SELECT * FROM test.feed;
 
  user_id        | timestamp                       | message
@@ -891,19 +729,13 @@ cqlsh&gt; SELECT * FROM test.feed;
  letitbe_or_not | 2019-03-25 00:02:00.000000+0000 |                                 う
  letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 え
  letitbe_or_not | 2019-03-25 00:00:00.000000+0000 |                                 あ
-</code></pre>
-
-<p>UPDATEは難しいところはないと思います。たぶん。</p>
-
+</code></pre></div><p>UPDATEは難しいところはないと思います。たぶん。</p>
 <blockquote>
 <p><a href="https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlUpdate.html">https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlUpdate.html</a></p>
 </blockquote>
-
-<h2 id="delete">DELETE</h2>
-
+<h3 id="delete">DELETE</h3>
 <p>ここでは、データの削除についてみてみます。</p>
-
-<pre><code>cqlsh&gt; DELETE FROM test.feed WHERE user_id = 'letitbe_or_not' AND timestamp = '2019-03-25 00:00:00';
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cqlsh&gt; DELETE FROM test.feed WHERE user_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;letitbe_or_not&#39;</span> AND timestamp <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2019-03-25 00:00:00&#39;</span>;
 cqlsh&gt; SELECT * FROM test.feed;
 
  user_id        | timestamp                       | message
@@ -914,7 +746,7 @@ cqlsh&gt; SELECT * FROM test.feed;
  letitbe_or_not | 2019-03-25 00:02:00.000000+0000 |                                 う
  letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 え
  
-cqlsh&gt; INSERT INTO test.feed(user_id, timestamp, message) VALUES ('letitbe_or_not', '2019-03-25 00:01:000', 'い');
+cqlsh&gt; INSERT INTO test.feed<span style="color:#f92672">(</span>user_id, timestamp, message<span style="color:#f92672">)</span> VALUES <span style="color:#f92672">(</span><span style="color:#e6db74">&#39;letitbe_or_not&#39;</span>, <span style="color:#e6db74">&#39;2019-03-25 00:01:000&#39;</span>, <span style="color:#e6db74">&#39;い&#39;</span><span style="color:#f92672">)</span>;
 cqlsh&gt; SELECT * FROM test.feed;
 
  user_id        | timestamp                       | message
@@ -925,10 +757,10 @@ cqlsh&gt; SELECT * FROM test.feed;
  letitbe_or_not | 2019-03-25 00:02:00.000000+0000 |                                 う
  letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 い
 
-(5 rows)
-cqlsh&gt;  DELETE FROM test.feed WHERE user_id = 'letitbe_or_not' AND timestamp = '2019-03-25 00:01:00' IF message = 'え';
+<span style="color:#f92672">(</span><span style="color:#ae81ff">5</span> rows<span style="color:#f92672">)</span>
+cqlsh&gt;  DELETE FROM test.feed WHERE user_id <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;letitbe_or_not&#39;</span> AND timestamp <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2019-03-25 00:01:00&#39;</span> IF message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;え&#39;</span>;
 
- [applied] | message
+ <span style="color:#f92672">[</span>applied<span style="color:#f92672">]</span> | message
 -----------+---------
      False |      い
 
@@ -942,17 +774,12 @@ cqlsh&gt;  SELECT * FROM test.feed;
  letitbe_or_not | 2019-03-25 00:02:00.000000+0000 |                                 う
  letitbe_or_not | 2019-03-25 00:01:00.000000+0000 |                                 い
 
-(5 rows)
-</code></pre>
-
-<p>PartitionKeyとClusteringKeyを指定して削除する、PartitionKeyを指定して、特定Partitionのデータを全て削除するという操作ができます。
+<span style="color:#f92672">(</span><span style="color:#ae81ff">5</span> rows<span style="color:#f92672">)</span>
+</code></pre></div><p>PartitionKeyとClusteringKeyを指定して削除する、PartitionKeyを指定して、特定Partitionのデータを全て削除するという操作ができます。
 さらにPartitionKeyとClusteringKeyを等号で指定して、<code>IF</code>句を用いることでPrimaryKeyでないカラムに対しても条件を指定して削除することができます。</p>
-
 <p>「<code>DESC test.feed</code>でテーブル定義の<code>WITH</code>いかにある設定値について」でも書いたのですが、削除ではまず論理削除されます。
 論理削除されたRowがガベージコレクションにより物理削除されない場合、読み取り操作ではスキャンされる対象となるので注意が必要です。</p>
-
-<h1 id="終わりに">終わりに</h1>
-
+<h2 id="終わりに">終わりに</h2>
 <p>CassandraのKeyspace、テーブルの作り方とCRUDを見てきました。
 水平スケールするハイパフォーマンスな分散DBであるCassandraは使える機会が多いと思うので、これからも調べてまとめていきたいと思います。</p>
         </div>
@@ -1063,7 +890,7 @@ cqlsh&gt;  SELECT * FROM test.feed;
 <section id="comments">
     <div id="disqus_thread">
         <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -1433,23 +1260,25 @@ cqlsh&gt;  SELECT * FROM test.feed;
 <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020
-      &copy; @getumen
+      &copy; 2021
+      © @getumen
     </div>
   </div>
 </footer>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-47210848-3', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
 <script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>
 <script src="https://getumen.github.io/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>

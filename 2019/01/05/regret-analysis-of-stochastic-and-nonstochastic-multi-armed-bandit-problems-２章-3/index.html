@@ -2,7 +2,7 @@
 <html lang="ja-jp">
 <head>
     <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3) &middot; 雑記</title>
-    <meta name="generator" content="Hugo 0.40.1" />
+    <meta name="generator" content="Hugo 0.82.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="getumen">
@@ -21,55 +21,24 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)" />
-<meta property="og:description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています
-
-" />
+<meta property="og:description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" />
-
-  <meta property="og:image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png" />
-
-
-
-<meta property="article:published_time" content="2019-01-05T19:58:34&#43;09:00"/>
-
-<meta property="article:modified_time" content="2019-01-05T19:58:34&#43;09:00"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" /><meta property="og:image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-01-05T19:58:34&#43;09:00" />
+<meta property="article:modified_time" content="2019-01-05T19:58:34&#43;09:00" />
 
 
     
-    
-<meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)">
-<meta itemprop="description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています
-
-">
-
-
-<meta itemprop="datePublished" content="2019-01-05T19:58:34&#43;09:00" />
+    <meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)">
+<meta itemprop="description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています"><meta itemprop="datePublished" content="2019-01-05T19:58:34&#43;09:00" />
 <meta itemprop="dateModified" content="2019-01-05T19:58:34&#43;09:00" />
-<meta itemprop="wordCount" content="0">
-
-  <meta itemprop="image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png">
-
-
-
+<meta itemprop="wordCount" content="2722"><meta itemprop="image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png">
 <meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
-
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png"/>
 
 <meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)"/>
-<meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています
-
-"/>
+<meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -305,10 +274,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-05 19:58:34 &#43;0900 JST" itemprop="datePublished">2019-01-05</time>
             &middot;
-            0
+            2722
             words
             &middot;
-            0
+            6
             minute read
         </div>
         
@@ -352,112 +321,79 @@
 
         <div class="article-entry" itemprop="articleBody">
             <p>今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています</p>
-
-<p></p>
-
-<h1 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h1>
-
-<h2 id="2-3-lower-bound">2.3 Lower Bound</h2>
-
+<h2 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h2>
+<h3 id="23-lower-bound">2.3 Lower Bound</h3>
 <p>前の節の結果が確率分布がベルヌーイのとき改善できないということを示す．</p>
-
 <p>$p,q\in[0,1]$に対して，パラメータが$p$のベルヌーイ分布とパラメータが$q$のベルヌーイ分布のカルバック・ライブラーダーバージェンスを$$k(p,q)=p\ln\frac{p}{q}+(1-p)\ln\frac{1-p}{1-q}$$と定義する．</p>
-
-<hr />
-
+<hr>
 <p><em>Theorem 2.2 (Distribution-dependent lower bound).</em>
 どんなベルヌーイからの報酬の分布の集合，$\Delta_i&gt;0$となるアーム$i$，$a&gt;0$に対しても，$\mathbb{E}T_i(n)=\mathcal{o}(n^a)$を満たすような戦略を考える．
 どんなベルヌーイからの報酬の分布の集合に対してもいかが成り立つ．
 $$\lim_{n\rightarrow+\infty}\inf\frac{\overline{R}_n}{\ln n}\ge\sum_{i:\Delta_i&gt;0}\frac{\Delta_i}{kl(\mu_i,\mu^*)}.$$</p>
-
-<hr />
-
+<hr>
 <p>式(2.4)の結果と比較するために左側からはPinskerの不等式，右側からは$\ln x\le x-1$を用いて，
 $$2(p-q)^2\le kl(p,q)\le\frac{(p-q)^2}{q(1-q)}$$を用いる．</p>
-
-<hr />
-
-<p><em>証明</em></p>
-
+<hr>
+<h4 id="証明">証明</h4>
 <p>証明は３つのステップから構成される．かんたんのためアームが２つのときのみを考える．</p>
-
-<h3 id="first-step-notations">First step: Notations</h3>
-
-<p>一般性を損なうことなく，アーム１を最適なアーム，アーム２を最適でないアームとする．つまり，$\mu_2&lt;\mu_1<1$とする．
-また，$\epsilon>0$とする．$x\mapsto kl(\mu_2,x)$は連続であるため，$$kl(\mu_2,\mu_2&rsquo;)\le(1+\epsilon)kl(\mu_2,\mu_1)\tag{2.9}$$を満たすような$\mu_2&rsquo;\in(\mu_1,1)$を見つけることができる（アーム１より優れたアーム）．</p>
-
-<p>アーム２のパラメータを$\mu_2&rsquo;$に置き換えた修正されたバンディットに対して積分したとき，$\mathbb{E}&lsquo;$，$\mathbb{P}&lsquo;$と記す．
+<h5 id="first-step-notations">First step: Notations</h5>
+<p>一般性を損なうことなく，アーム１を最適なアーム，アーム２を最適でないアームとする．つまり，$\mu_2&lt;\mu_1&lt;1$とする．
+また，$\epsilon&gt;0$とする．$x\mapsto kl(\mu_2,x)$は連続であるため，$$kl(\mu_2,\mu_2')\le(1+\epsilon)kl(\mu_2,\mu_1)\tag{2.9}$$を満たすような$\mu_2'\in(\mu_1,1)$を見つけることができる（アーム１より優れたアーム）．</p>
+<p>アーム２のパラメータを$\mu_2'$に置き換えた修正されたバンディットに対して積分したとき，$\mathbb{E}'$，$\mathbb{P}'$と記す．
 もとのバンディット問題と修正されたバンディット問題に対しての予測者の振る舞いを比較したい．
 特に，予測者が２つの問題を区別できない確率が十分に大きいことを証明したい．
 そして，仮説により，良い予測者がいるという事実を用いて，アーム２が最適である．修正されたバンディット問題に対してアルゴリズムはあまり多くの失敗はしないことを知っている．
 言い換えれば，最適なアームが試行される回数についての下界を知っている．
 この理由のため，もとの問題でアーム２が試行される回数の下界が暗に示される．</p>
-
 <p>ここで，報酬の表記法を変えて，アーム２から$n$回引いたときに得られる確率変数列を$X_{2,1},\dots,X_{2,n}$と記す．（つまり，$s$回目に引いた報酬を$X_{2,s}$とする．）
 $s\in\{1,\dots,n\}$に対して，
-$$\hat{kl}_s=\sum_{t=1}^s\ln\frac{\mu_2X_{2,t}+(1-\mu_2)(1-X_{2,t})}{\mu_2&rsquo;X_{2,t}+(1-\mu_2&rsquo;)(1-X_{2,t})}$$
-$X_{2.s}$はパラメータが$\mu_2$であるベルヌーイ分布からi.i.d.にサンプルされているので，もとのバンディットについて，$\hat{kl}_{T_2(n)}$は（正規化されていない）$n$ステップ目での$kl(\mu_2,\mu_2&rsquo;)$の経験的な推定量になっている．（sステップ目で報酬は（アーム２を引いたとき）＋（アーム２を引かなかったとき）＝$\mu_2X_{2,t}+(1-\mu_2)(1-X_{2,t})$）
+$$\hat{kl}_s=\sum_{t=1}^s\ln\frac{\mu_2X_{2,t}+(1-\mu_2)(1-X_{2,t})}{\mu_2&rsquo;X_{2,t}+(1-\mu_2')(1-X_{2,t})}$$
+$X_{2.s}$はパラメータが$\mu_2$であるベルヌーイ分布からi.i.d.にサンプルされているので，もとのバンディットについて，$\hat{kl}_{T_2(n)}$は（正規化されていない）$n$ステップ目での$kl(\mu_2,\mu_2')$の経験的な推定量になっている．（sステップ目で報酬は（アーム２を引いたとき）＋（アーム２を引かなかったとき）＝$\mu_2X_{2,t}+(1-\mu_2)(1-X_{2,t})$）
 もう一つの重要な性質は次のようなものだ．
 $X_{2,1},\dots,X_{2,n}$によって生成される完全加法族のどんな事象$A$に対しても，以下のchange-of-measure identityが成り立つ．
-$$\mathbb{P}&lsquo;(A)=\mathbb{E}[\mathbb{1}_A\exp(-\hat{kl}_{T_2(n)})]\tag{2.10}$$</p>
-
+$$\mathbb{P}'(A)=\mathbb{E}[\mathbb{1}_A\exp(-\hat{kl}_{T_2(n)})]\tag{2.10}$$</p>
 <p>元のバンディット問題と修正されたバンディット問題の予測者の振る舞いを結びつけるために，次の事象を導入する．
-$$C_n=\left\{T_2(n)&lt;\frac{1-\epsilon}{kl(\mu_2,\mu_2&rsquo;)}\ln(n)~and~\hat{kl}_{T_2(n)}\le\left(1-\frac{\epsilon}{2}\right)\ln(n)\right\}\tag{2.11}$$</p>
-
-<h3 id="second-step-p-c-n-mathcal-o-1">Second step: $P(C_n) = \mathcal{o}(1)$</h3>
-
+$$C_n=\left\{T_2(n)&lt;\frac{1-\epsilon}{kl(\mu_2,\mu_2')}\ln(n)~and~\hat{kl}_{T_2(n)}\le\left(1-\frac{\epsilon}{2}\right)\ln(n)\right\}\tag{2.11}$$</p>
+<h5 id="second-step-pc_n--mathcalo1">Second step: $P(C_n) = \mathcal{o}(1)$</h5>
 <p>式(2.10)と式(2.11)により
-$$\mathbb{P}&lsquo;(C_n)=\mathbb{E}\mathbb{1}_{C_n}\exp(-\hat{kl}_{T_2(n)})\ge e^{-(1-\epsilon/2)\ln(n)}\mathbb{P}(C_n)$$
-かんたんのために$$f_n=\frac{1-\epsilon}{kl(\mu_2,\mu_2&rsquo;)}\ln(n)$$
+$$\mathbb{P}'(C_n)=\mathbb{E}\mathbb{1}_{C_n}\exp(-\hat{kl}_{T_2(n)})\ge e^{-(1-\epsilon/2)\ln(n)}\mathbb{P}(C_n)$$
+かんたんのために$$f_n=\frac{1-\epsilon}{kl(\mu_2,\mu_2')}\ln(n)$$
 を導入する．</p>
-
 <p>式(2.11)とマルコフの不等式$\mathbb{P}(|X|\ge a)\le\frac{\mathbb{E}(|X|)}{a}$を用いて，
-$$\mathbb{P}(C_n)\le n^{(1-\epsilon/2)}\mathbb{P}&lsquo;(C_n)\le n^{(1-\epsilon/2)}\mathbb{P}&lsquo;(T_2(n)&lt; f_n)\le n^{(1-\epsilon/2)}\frac{\mathbb{E}[n-T_2(n)]}{n-f_n}$$</p>
-
+$$\mathbb{P}(C_n)\le n^{(1-\epsilon/2)}\mathbb{P}'(C_n)\le n^{(1-\epsilon/2)}\mathbb{P}'(T_2(n)&lt; f_n)\le n^{(1-\epsilon/2)}\frac{\mathbb{E}[n-T_2(n)]}{n-f_n}$$</p>
 <p>修正されたバンディット問題のアーム２は唯一の最適なアームである．
 これによって，どんなバンディット問題，どんな最適でないアーム$i$，任意の$a&gt;0$に対して，戦略は$\mathbb{E}T_i(n)=\mathcal{o}(n^a)$を満たす．
 よって，
-$$P(C_n)\le n^{1-\epsilon/2}\frac{\mathbb{E}&rsquo;[n-T_2(n)]}{n-f_n}=\mathcal{o}(1)$$</p>
-
-<h3 id="third-step-mathbb-p-t-2-n-f-n-mathcal-o-1">Third step: $\mathbb{P}(T_2(n) &lt; f_n) = \mathcal{o}(1)$.</h3>
-
+$$P(C_n)\le n^{1-\epsilon/2}\frac{\mathbb{E}'[n-T_2(n)]}{n-f_n}=\mathcal{o}(1)$$</p>
+<h5 id="third-step-mathbbpt_2n--f_n--mathcalo1">Third step: $\mathbb{P}(T_2(n) &lt; f_n) = \mathcal{o}(1)$</h5>
 <p>$$\mathbb{P}(C_n)\ge\mathbb{P}\left(T_2(n)&lt; f_n~and~\max_{s\le f_n}\hat{kl}_s\le\left(1-\frac{1}{\epsilon}\right)\ln(n)\right)$$
 これが成り立つのは右辺のほうが，式(2.11)の右側の事象が起きる確率が減るためだと思われる($T_2(n)&lt; f_n$のため)．
-$$=\mathbb{P}\left(T_2(n)&lt; f_n~and~\frac{kl(\mu_2,\mu_2&rsquo;)}{(1-\epsilon)\ln(n)}\max_{s\le f_n}\hat{kl}_s\le\frac{1-\epsilon/2}{1-\epsilon}kl(\mu_2,\mu_2&rsquo;)\right)\tag{2.12}$$
+$$=\mathbb{P}\left(T_2(n)&lt; f_n~and~\frac{kl(\mu_2,\mu_2')}{(1-\epsilon)\ln(n)}\max_{s\le f_n}\hat{kl}_s\le\frac{1-\epsilon/2}{1-\epsilon}kl(\mu_2,\mu_2')\right)\tag{2.12}$$
 これは右側の事象を両辺$f_n$でわった．</p>
-
 <p>次の大数の強法則の最大バージョンを使う．
 正の平均$\mu&gt;0$をもつ，独立な実数の確率変数のどんな列$(X_t)$に対しても，
 $$\lim_{n\rightarrow\infty}\frac{1}{n}\sum_{t=1}^nX_t\mu ~almost~surely$$
 が成り立つ．これにより
 $$\lim_{n\rightarrow\infty}\frac{1}{n}\max_{s=1,\dots,n}\sum_{t=1}^sX_t\mu ~almost~surely$$
 が成り立つことがわかる．</p>
-
-<p>$kl(\mu_2,\mu_2&rsquo;)&gt;0$と$\frac{1-\epsilon/2}{1-\epsilon}&gt;1$であるから，
-$$\lim_{n\rightarrow\infty}\mathbb{P}\left(\frac{kl(\mu_2,\mu_2&rsquo;)}{(1-\epsilon)\ln(n)}\max_{s\le f_n}\hat{kl}_s\le\frac{1-\epsilon/2}{1-\epsilon}kl(\mu_2,\mu_2&rsquo;)\right)=1$$
+<p>$kl(\mu_2,\mu_2')&gt;0$と$\frac{1-\epsilon/2}{1-\epsilon}&gt;1$であるから，
+$$\lim_{n\rightarrow\infty}\mathbb{P}\left(\frac{kl(\mu_2,\mu_2')}{(1-\epsilon)\ln(n)}\max_{s\le f_n}\hat{kl}_s\le\frac{1-\epsilon/2}{1-\epsilon}kl(\mu_2,\mu_2')\right)=1$$
 (KLダイバージェンスは正であるから両辺から符号を変えずに消せる＋左辺のみ$1/\ln n$で減少)</p>
-
 <p>これによって，second stepの結果と式(2.12)から，
 $$\mathbb{P}(T_2(n)&lt; f_n)=\mathcal{o}(1)$$
 ($\mathbb{P}(C_n)$は$\mathcal{o}(1)$であるのに，下から抑えている条件の右側は1に収束していく．このため，左側の条件が$\mathcal{o}(1)$になるしかない．)</p>
-
-<p>$f_n=\frac{1-\epsilon}{kl(\mu_2,\mu_2&rsquo;)}\ln(n)$と式(2.9)を用いて，
+<p>$f_n=\frac{1-\epsilon}{kl(\mu_2,\mu_2')}\ln(n)$と式(2.9)を用いて，
 $$\mathbb{E}T_2(n)\ge(1+\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)}{kl(\mu_2,\mu_1)}$$
 これを擬リグレットの定義に入れると題意を得る．</p>
-
 <p>最後の$n$回までにアーム２を引く回数の期待値の下界で$(1+\mathcal{o}(1))$が出てくるのがどうやるのかわからなかった(´・ω・｀)</p>
-
 <p>手を動かしてみる．</p>
-
 <p>$\mathbb{P}(T_2(n)&lt; f_n)=\mathcal{o}(1)$であるから$\mathbb{P}(T_2(n)\ge f_n)=1-\mathcal{o}(1)$である．
 マルコフの不等式$\mathbb{P}(|X|\ge a)\le\frac{\mathbb{E}(|X|)}{a}$を使って，$\frac{\mathbb{E}T_2(n)}{f_n}\ge\mathbb{P}(T_2(n)\ge f_n)=1-\mathcal{o}(1)$
 となり，
 $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)}{kl(\mu_2,\mu_1)}$$
 が得られる．</p>
-
 <p>他の文献を見ても下界の定数部分のオーダは$1-\mathcal{o}(1)$となっているので，元論文のタイポかもしれない</p>
-
-<hr />
+<hr>
         </div>
         <footer class="article-footer">
     <a data-url="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" data-id="9dea8f283c33bf6053d56698a837a03d" class="article-share-link">
@@ -566,7 +502,7 @@ $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)
 <section id="comments">
     <div id="disqus_thread">
         <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -936,23 +872,25 @@ $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)
 <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020
-      &copy; @getumen
+      &copy; 2021
+      © @getumen
     </div>
   </div>
 </footer>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-47210848-3', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
 <script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>
 <script src="https://getumen.github.io/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>

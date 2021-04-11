@@ -2,7 +2,7 @@
 <html lang="ja-jp">
 <head>
     <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1) &middot; 雑記</title>
-    <meta name="generator" content="Hugo 0.40.1" />
+    <meta name="generator" content="Hugo 0.82.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="getumen">
@@ -21,55 +21,24 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)" />
-<meta property="og:description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．
-
-" />
+<meta property="og:description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" />
-
-  <meta property="og:image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png" />
-
-
-
-<meta property="article:published_time" content="2019-01-03T00:19:02&#43;09:00"/>
-
-<meta property="article:modified_time" content="2019-01-03T00:19:02&#43;09:00"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="https://getumen.github.io/2019/01/03/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-1/" /><meta property="og:image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-01-03T00:19:02&#43;09:00" />
+<meta property="article:modified_time" content="2019-01-03T00:19:02&#43;09:00" />
 
 
     
-    
-<meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)">
-<meta itemprop="description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．
-
-">
-
-
-<meta itemprop="datePublished" content="2019-01-03T00:19:02&#43;09:00" />
+    <meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)">
+<meta itemprop="description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．"><meta itemprop="datePublished" content="2019-01-03T00:19:02&#43;09:00" />
 <meta itemprop="dateModified" content="2019-01-03T00:19:02&#43;09:00" />
-<meta itemprop="wordCount" content="0">
-
-  <meta itemprop="image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png">
-
-
-
+<meta itemprop="wordCount" content="1193"><meta itemprop="image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png">
 <meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
-
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://getumen.github.io/images/banners/kimochi_positive_woman.png"/>
 
 <meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (1)"/>
-<meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．
-
-"/>
+<meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -305,10 +274,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-03 00:19:02 &#43;0900 JST" itemprop="datePublished">2019-01-03</time>
             &middot;
-            0
+            1193
             words
             &middot;
-            0
+            3
             minute read
         </div>
         
@@ -352,29 +321,20 @@
 
         <div class="article-entry" itemprop="articleBody">
             <p>今日読んだ部分では確率的バンディット問題をより詳しく定義し，「不確実なときは楽観的に」というヒューリスティックの原則を紹介しています．</p>
-
-<p></p>
-
-<h1 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h1>
-
-<h2 id="確率的バンディット問題とは">確率的バンディット問題とは</h2>
-
+<h2 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h2>
+<h3 id="確率的バンディット問題とは">確率的バンディット問題とは</h3>
 <p>各アームを$i=1,\dots,K$とし，アームに対応する未知の確率分布を$\nu_i$とする．
 各ステップ$t=1,2,\dots$で，予測者はアーム$I_{t}\in{1,\dots,K}$を選び，$\nu_{I_t}$から（過去とは独立に）報酬$X_{I_t,t}$を受け取る．
 アーム$i$の平均を$\mu_i$とし，アームの平均の最大値と，最大値を取るアームのインデックスをそれぞれ$\mu^*=\max_{i=1,\dots,K}\mu_i$と$i^*\in\rm arg\max_{i=1,\dots,K}\mu_i$とする．
 確率的設定では擬リグレットを主に考える．
 これは，確率的設定においては実際の報酬について最適な行動と比較するより，最適な行動の期待値と比較するほうが自然であるためだ．</p>
-
 <p>以下のように擬リグレットを書き換えた定式化もリグレットとして用いる．
 最初から$s$ラウンドまでのプレイヤーに選ばれたアーム$i$の回数を$T_i(s)=\sum_{t=1}^s\mathbb{1}_{I_t=i}$とする．
 アーム$i$のsuboptimalityパラメータを$\Delta_i=\mu^*-\mu_i$とする．
 擬リグレットは$$\overline{R}_n=\left(\sum_{i=1}^K\mathbb{E}T_i(n)\right)\mu^*-\sum_{i=1}^K\mathbb{E}T_i(n)\mu_i=\sum_{i=1}^K\Delta_i\mathbb{E}T_i(n)$$と書くことができる．</p>
-
-<h2 id="2-1-optimism-in-face-of-uncertainty">2.1 Optimism in Face of Uncertainty</h2>
-
+<h3 id="21-optimism-in-face-of-uncertainty">2.1 Optimism in Face of Uncertainty</h3>
 <p>確率的バンディット問題の難しさは探索と活用のジレンマにある．
 この問題に対して良い戦略は探索と活用を同時に行うことだ．</p>
-
 <p>これを行うためのかんたんなヒューリスティックの原則は「不確かなときは楽観的に(optimism
 in face of uncertainty)」と呼ばれるものだ.
 このアイディアはとても汎用的で，不確かな環境の中で多くの連続した意思決定を行っていく問題に用いられる．
@@ -491,7 +451,7 @@ in face of uncertainty)」と呼ばれるものだ.
 <section id="comments">
     <div id="disqus_thread">
         <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -861,23 +821,25 @@ in face of uncertainty)」と呼ばれるものだ.
 <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020
-      &copy; @getumen
+      &copy; 2021
+      © @getumen
     </div>
   </div>
 </footer>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-47210848-3', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
 <script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>
 <script src="https://getumen.github.io/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>

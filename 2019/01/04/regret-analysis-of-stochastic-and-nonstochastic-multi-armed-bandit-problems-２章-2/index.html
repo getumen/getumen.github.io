@@ -2,7 +2,7 @@
 <html lang="ja-jp">
 <head>
     <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2) &middot; 雑記</title>
-    <meta name="generator" content="Hugo 0.40.1" />
+    <meta name="generator" content="Hugo 0.82.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="author" content="getumen">
@@ -21,55 +21,24 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
     <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)" />
-<meta property="og:description" content="今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．
-
-" />
+<meta property="og:description" content="今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" />
-
-  <meta property="og:image" content="https://getumen.github.io/images/banners/tanzaku.png" />
-
-
-
-<meta property="article:published_time" content="2019-01-04T20:51:04&#43;09:00"/>
-
-<meta property="article:modified_time" content="2019-01-04T20:51:04&#43;09:00"/>
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" /><meta property="og:image" content="https://getumen.github.io/images/banners/tanzaku.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2019-01-04T20:51:04&#43;09:00" />
+<meta property="article:modified_time" content="2019-01-04T20:51:04&#43;09:00" />
 
 
     
-    
-<meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)">
-<meta itemprop="description" content="今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．
-
-">
-
-
-<meta itemprop="datePublished" content="2019-01-04T20:51:04&#43;09:00" />
+    <meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)">
+<meta itemprop="description" content="今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．"><meta itemprop="datePublished" content="2019-01-04T20:51:04&#43;09:00" />
 <meta itemprop="dateModified" content="2019-01-04T20:51:04&#43;09:00" />
-<meta itemprop="wordCount" content="0">
-
-  <meta itemprop="image" content="https://getumen.github.io/images/banners/tanzaku.png">
-
-
-
+<meta itemprop="wordCount" content="5366"><meta itemprop="image" content="https://getumen.github.io/images/banners/tanzaku.png">
 <meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
-
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://getumen.github.io/images/banners/tanzaku.png"/>
 
 <meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)"/>
-<meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．
-
-"/>
+<meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -305,10 +274,10 @@
             <i class="fa fa-calendar"></i>
             <time datetime="2019-01-04 20:51:04 &#43;0900 JST" itemprop="datePublished">2019-01-04</time>
             &middot;
-            0
+            5366
             words
             &middot;
-            0
+            11
             minute read
         </div>
         
@@ -352,32 +321,23 @@
 
         <div class="article-entry" itemprop="articleBody">
             <p>今日読んだ部分では確率的バンディット問題のアルゴリズムの一つであるUCBという手法について，アルゴリズムと定理，その証明を紹介しています．</p>
-
-<p></p>
-
-<h1 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h1>
-
-<h2 id="2-2-upper-confidence-bound-ucb-strategies">2.2 Upper Confidence Bound (UCB) Strategies</h2>
-
+<h2 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h2>
+<h3 id="22-upper-confidence-bound-ucb-strategies">2.2 Upper Confidence Bound (UCB) Strategies</h3>
 <p>ここでは報酬$X$の確率分布は次のモーメントについての条件を満たすとする．
 どんな$\lambda$に対しても，$$\ln\mathbb{E}e^{\lambda(X-\mathbb{E}[X])}\le\psi(\lambda)~and~\ln\mathbb{E}e^{\lambda(\mathbb{E}[X]-X)}\le\psi(\lambda)\tag{2.2}$$
 をみたす凸関数$\psi$が存在する．
 例えば，$X\in[0,1]$のとき，$\psi(\lambda)=\frac{\lambda^2}{8}$とすると，ヘフディングの補題となる．</p>
-
 <p>ここでは確率的マルチアームバンディット問題に対して「不確かなときは楽観的に」の原則に基づき取り組む．
 そうするために，式(2.2)を用いて固定の信頼水準のときのアームの平均の上界を構築し，最も良さそうなアームを選ぶ．
 凸解析からLegendre–Fenchel transform（フェンシル変換）を導入する．
 凸関数$\psi$のフェンシル変換は$$\psi^*(\epsilon)=\sup_{\lambda\in\mathbb{R}}(\lambda\epsilon-\psi(\lambda)).$$
 例として，$x&gt;0$にたいして，$\psi(x)=e^x$ならば，$\psi^*(x)=x\ln x-x$．
 $\psi(x)=\frac{1}{p}|x|$ならば，$\psi^*(x)=\frac{1}{q}|x|$が$\frac{1}{p}+\frac{1}{q}=1$が成り立つような$1&lt; p,q&lt;\infty$に対して成り立つ．</p>
-
 <p>アーム$i$を$s$回引いたときに得られる報酬の標本平均を$\hat{u}_{i,s}$とする．報酬は独立同分布から得られるので$\hat{\mu}_{i,s}=\frac{1}{s}\sum_{t=1}^sX_{i,t}$となる．
 マルコフの不等式を使って，式(2.2)から$$\mathbb{P}(\mu_{i}-\hat{\mu}_{i,s}&gt;\epsilon)\le e^{-s\psi^*(\epsilon)}\tag{2.3}$$を得る．</p>
-
 <blockquote>
 <p>マルコフの不等式を使って，式(2.2)から$\mathbb{P}(\mu_{i}-\hat{\mu}_{i,s}&gt;\epsilon)\le e^{-s\psi^*(\epsilon)}$を得る．</p>
 </blockquote>
-
 <p>式を眺めていただけだと得られなかったので，手を動かしてみる．
 まず，母平均が$\mu_i=\mathbb{E}_s[X_{i,s}]$であることと，標本平均が$\hat{\mu}_{i,s}=\frac{1}{s}\sum_{t=1}^sX_{i,t}$であることを用いて，$$\mathbb{P}(\mu_{i}\hat{\mu}_{i,s}&gt;\epsilon)=\mathbb{P}\left(\mathbb{E}_s[X_{i,s}]-\frac{1}{s}\sum_{t=1}^sX_{i,s}&gt;\epsilon\right)$$
 と書き換える．次に，式(2.2)に寄せていくために自然対数の底$e$の肩に乗せる．$$\mathbb{P}\left(\mathbb{E}_s[X_{i,s}]-\frac{1}{s}\sum_{t=1}^sX_{i,s}&gt;\epsilon\right)=\mathbb{P}\left(e^{\lambda\left(s\mathbb{E}_s[X_{i,s}]-\sum_{t=1}^sX_{i,s}\right)}&gt;e^{s\epsilon\lambda}\right)$$
@@ -388,94 +348,72 @@ $$\mathbb{P}\left(e^{\lambda\left(s\mathbb{E}_s[X_{i,s}]-\sum_{t=1}^sX_{i,s}\rig
 上界で抑えて，フェンシル変換を用いると
 $$e^{s(\psi(\lambda)-\epsilon\lambda)}\le e^{-s(\sup_{\lambda}(\epsilon\lambda)-\psi(\lambda))}\le e^{-s\psi^*(\epsilon)}$$
 となり，ほしかった式(2.3)が出てくる．</p>
-
 <p>また，式(2.2)の右側を使うことで，$\mathbb{P}(\hat{\mu}_{i,s}-\mu_{i}&gt;\epsilon)\le e^{-s\psi^*(\epsilon)}$を得ることもできる．</p>
-
-<p>閑話休題</p>
-
 <p>言い換えれば，少なくとも$1-\delta$の確率で，$$\hat{\mu}_{i,s}+(\psi^*)^{-1}\left(\frac{1}{s}\ln\frac{1}{\delta}\right)&gt;\mu_{i}$$がなりたつ．</p>
-
 <blockquote>
 <p>少なくとも$1-\delta$の確率で，$\hat{\mu}_{i,s}+(\psi^*)^{-1}\left(\frac{1}{s}\ln\frac{1}{\delta}\right)&gt;\mu_{i}$がなりたつ．</p>
 </blockquote>
-
 <p>手を動かして確認してみる．少なくとも$1-\delta$の確率で成り立つということは式(2.3)の右辺が$\delta$であるということである．
 $\delta=e^{-s\psi^*(\epsilon)}$とおくと，$$\delta=e^{-s\psi^*(\epsilon)}\iff \psi^*(\epsilon)=\frac{1}{s}\ln\frac{1}{s}\iff\epsilon=(\psi^*)^{-1}\left(\frac{1}{s}\ln\frac{1}{s}\right).$$
 これを式(2.3)の左辺の逆を取ったもの代入すると$\hat{\mu}_{i,s}+(\psi^*)^{-1}\left(\frac{1}{s}\ln\frac{1}{\delta}\right)&gt;\mu_{i}$が得られる．</p>
-
 <p>また，式(2.2)の右側を使うことで，$\mu_{i}+(\psi^*)^{-1}\left(\frac{1}{s}\ln\frac{1}{\delta}\right)\ge\hat{\mu}_{i,s}$を得ることもできる．</p>
-
 <p>本題に戻る．</p>
-
 <p>これを用いて，入力パラメータ$\alpha&gt;0$にたいして$(\alpha,\psi)$-UCBという戦略を考える．
 時刻$t$において，次のアームを選ぶ．
 $$I_t\in\rm arg\max_{i=1,\dots,K}\left[\hat{\mu}_{i,T_i(t-1)}+(\psi^*)^{-1}\left(\frac{\alpha\ln t}{T_{i}(t-1)}\right)\right].$$
 ここで，本にはないが，説明で使うために$\overline{\mu}_i=\hat{\mu}_{i,T_i(t-1)}+(\psi^*)^{-1}\left(\frac{\alpha\ln t}{T_{i}(t-1)}\right)$をUCB用いたスコアと呼ぶことにする．
 これは$s$を$t-1$回までにアームを引いた回数$s=T_i(t-1)$とし，$\delta$を$\delta=1/t^\alpha$とすることに等しい．
 $\delta=1/t^\alpha$であることから，最初はガバガバな確率で母平均の上界を標本平均から構築し，試行を繰り返すごとに引き締まった確率になっていくことがわかる．</p>
-
-<hr />
-
+<hr>
 <p><em>Theorem 2.1 $(\alpha,\psi)$-UCBの擬リグレット</em></p>
-
 <p>報酬分布が式(2.2)を満たすと仮定する．$\alpha&gt;2$を用いた$(\alpha,\psi)$-UCBは$$\overline{R}_n\le\sum_{i:\Delta_i&gt;0}\left(\frac{\alpha\Delta_i}{\psi^*(\Delta_i/2)}\ln n+\frac{\alpha}{\alpha-2}\right)$$を満たす．</p>
-
-<hr />
-
+<hr>
 <p>報酬が$[0,1]$の値を取る場合，式(2.2)で$\psi(\lambda)=\frac{\lambda^2}{8}$とするとヘフディングの補題となり，$\psi^*(\epsilon)=2\epsilon^2$となる．
 そして，擬リグレットの上界は$$\overline{R}_n\le\sum_{i:\Delta_i&gt;0}\left(\frac{2\alpha}{\Delta_i}\ln n+\frac{\alpha}{\alpha-2}\right)\tag{2.4}$$となる．
 この重要な特殊化した$(\alpha,\psi)$-UCBの例を$\alpha$-UCBと呼ぶ．</p>
-
-<hr />
-
+<hr>
 <p>証明</p>
-
 <p>はじめに，$I_t=i$ならば，以下の３つの不等式のうち少なくとも１つは成り立つ．
 $$\hat{\mu}_{i^*,T_{i^*}(t-1)}+(\psi^*)^{-1}\left(\frac{\alpha\ln t}{T_{i^*}(t-1)}\right)\le\mu^*\tag{2.5}$$
 $$\hat{\mu}_{i,T_{i}(t-1)}&gt;\mu_i+(\psi^*)^{-1}\left(\frac{\alpha\ln t}{T_{i}(t-1)}\right)\tag{2.6}$$
 $$T_i(t-1)&lt;\frac{\alpha\ln t}{\psi^*(\Delta_i/2)}\tag{2.7}$$</p>
-
 <blockquote>
 <p>$I_t=i$ならば，以下の３つの不等式のうち少なくとも１つは成り立つ．</p>
 </blockquote>
-
 <p>このあと，３つの式がどれも成り立たないと仮定しきたとき，アルゴリズムが矛盾するということが示されて，３つのうち少なくとも１つは成り立つことが示される．
 しかし，これらの式がどこから降ってきたのかわからないので，考えてみる．</p>
-
 <p>アーム$i$が引かれたとき，次の３つの場合が考えられる．（信頼区間の上界と下界はUCBスコアを導入する際に導出してある．）</p>
-
 <ol>
-<li><p>最適なアームの標本平均が下ブレすぎて，信頼区間の下界の下にある場合<br />
-最適なアームアーム$i^*$について，信頼区間の下界について$\hat{\mu}_{i,s}&gt;\mu_{i}-(\psi^*)^{-1}\left(\frac{1}{s}\ln\frac{1}{\delta}\right)$が成り立っていない場合は式(2.5)そのものとなる．</p></li>
-
-<li><p>引いたアームの標本平均が上ブレ過ぎて，信頼区間の上界の上にある場合<br />
-引いたアーム$i$について，信頼区間の上界について$\hat{\mu}_{i,s}\le\mu_{i}+(\psi^*)^{-1}\left(\frac{1}{s}\ln\frac{1}{\delta}\right)$が成り立っていない場合は式(2.6)そのものとなる．</p></li>
-
-<li><p>引いたアームと最適なアームの信頼区間がともに正しい（標本平均が信頼区間の中に入っている）場合<br />
+<li>
+<p>最適なアームの標本平均が下ブレすぎて，信頼区間の下界の下にある場合<br>
+最適なアームアーム$i^*$について，信頼区間の下界について$\hat{\mu}_{i,s}&gt;\mu_{i}-(\psi^*)^{-1}\left(\frac{1}{s}\ln\frac{1}{\delta}\right)$が成り立っていない場合は式(2.5)そのものとなる．</p>
+</li>
+<li>
+<p>引いたアームの標本平均が上ブレ過ぎて，信頼区間の上界の上にある場合<br>
+引いたアーム$i$について，信頼区間の上界について$\hat{\mu}_{i,s}\le\mu_{i}+(\psi^*)^{-1}\left(\frac{1}{s}\ln\frac{1}{\delta}\right)$が成り立っていない場合は式(2.6)そのものとなる．</p>
+</li>
+<li>
+<p>引いたアームと最適なアームの信頼区間がともに正しい（標本平均が信頼区間の中に入っている）場合<br>
 このとき，UCBスコアについて，$\overline{\mu}_{i^*}&gt;\mu^*$，$\overline{\mu}_{i}&gt;\mu_i$が成り立っている．
 また，（アーム$i$が引かれたので）$\overline{\mu}_i\ge\overline{\mu}_{i^*}$が成り立っている．
 これらをあわせて$$\overline{\mu}_{i}=\hat{\mu}_i+(\psi^*)^{-1}\left(\frac{\alpha\ln t}{T_i(t-1)}\right)&gt;\mu_{i^*}$$が成り立つ．
 これに$\hat{\mu}_i+(\psi^*)^{-1}\left(\frac{\alpha\ln t}{T_i(t-1)}\right)&gt;\mu_i$を用いて，$\hat{\mu}_i$を消去すると，
 $$2(\psi^*)^{-1}\left(\frac{\alpha\ln t}{T_i(t-1)}\right)&gt;\mu_{i^*}-\mu_i=\Delta_i$$を得る．
-逆関数をもとにもどすと，$T_i(t-1)&lt;\frac{\alpha\ln t}{\psi^*(\Delta_i/2)}$が得られる．</p></li>
+逆関数をもとにもどすと，$T_i(t-1)&lt;\frac{\alpha\ln t}{\psi^*(\Delta_i/2)}$が得られる．</p>
+</li>
 </ol>
-
-<p>閑話休題</p>
-
 <p>３つの式が全て偽であった場合を考える．
 $$\hat{\mu}_{i^*,T_{i^*,}(t-1)}+(\psi)^*\left(\frac{\alpha\ln t}{T_{i^*}(t-1)}\right)&gt;\mu^*$$
 $$=\mu_i-\Delta_i$$
 $$\ge\mu_i+2(\psi^*)^{-1}\left(\frac{\alpha\ln t}{T_i(t-1)}\right)$$
 $$\ge\hat{\mu}_{i,T_i(t-1)}+2(\psi^*)^{-1}\left(\frac{\alpha\ln t}{T_i(t-1)}\right)$$
 となる．これはUCBスコアが最適アームのほうが大きくなり，$I_t\not=i$であることを示していて矛盾する．</p>
-
 <p>言い換えれば，擬リグレットのバウンドを証明するためには$u=\lceil\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}\rceil$とおいたとき，
 $$\mathbb{E}T_i(n)=\mathbb{E}\sum_{t=1}^n\mathbb{1}_{I_t=i}\le u+\mathbb{E}\sum_{t=u+1}^{n}\mathbb{1}_{I_t=i~and~(2.7)~is~false}$$
 式(2.7)が成り立たないとき，式(2.5)または式(2.6)が成り立つので，アーム$i$を引いたことを省略して書くと，
 $$\le u+\mathbb{E}\sum_{t=u+1}^{n}\mathbb{1}_{(2.5)~or~(2.6)~is~true}$$
 指示関数の期待値は確率になるので，
 $$=u+\sum_{t=u+1}^{n}\mathbb{P}((2.5)~is~true)+\mathbb{P}((2.6)~is~true)$$</p>
-
 <p>ここで，$$\mathbb{P}((2.5)~is~true)\le\mathbb{P}\left(\exists s\in\{1,\dots,t\}:\hat{u}_{i^*,s}+(\psi^*)^{-1}\left(\frac{\alpha\ln t}{s}\right)\le\mu^*\right)$$
 ユニオンバウンドを使って，
 $$\le\sum_{s=1}^t\mathbb{P}\left(\hat{u}_{i^*,s}+(\psi^*)^{-1}\left(\frac{\alpha\ln t}{s}\right)\le\mu^*\right)$$
@@ -483,13 +421,10 @@ $t$回目の試行のとき$\delta=\frac{1}{t^\alpha}$であったので，
 $$\le\sum_{s=1}^t\frac{1}{t^\alpha}=\frac{1}{t^{\alpha-1}}$$
 が成り立つ．式(2.6)についても同様の上界が求められる．
 シンプルな計算によって，証明が得られる．</p>
-
 <blockquote>
 <p>シンプルな計算によって，証明が得られる．</p>
 </blockquote>
-
 <p>手を動かして確認してみる．</p>
-
 <p>今までに得られた結果より，
 $$\mathbb{E}T_i(n)\le\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+2\sum_{t=u+1}^{n}\frac{1}{t^{\alpha-1}}$$
 $$\le\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+2\sum_{t=u+1}^{\infty}\frac{1}{t^{\alpha-1}}$$
@@ -497,19 +432,14 @@ $$\le\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+2\sum_{t=u+1}^{\infty}\frac{1}{t^{\a
 $$\le\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+2\int_{t=u}^{\infty}\frac{1}{t^{\alpha-1}}dt$$
 積分を解いて
 $$\le\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+\frac{2}{-(\alpha-2)}\left[\frac{1}{t^{\alpha-2}}\right]_{u}^\infty=\frac{\alpha\ln n}{\psi^*(\Delta_i/2)}+\frac{2}{u^{\alpha-2}(\alpha-2)}$$</p>
-
 <p>ここまで正しければ，
 $$\frac{2}{u^{\alpha-2}(\alpha-2)}\le\frac{\alpha}{\Delta_i(\alpha-2)}$$
 がでてくるはずなのですが，わかりませんでした(´・ω・｀)．</p>
-
-<hr />
-
-<h1 id="広告">広告</h1>
-
+<hr>
+<h2 id="広告">広告</h2>
 <div>
     
-<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=letitbeornot-22&m=amazon&o=9&p=8&l=as1&IS2=1&detail=1&asins=406152917X&linkId=bbdbd510bff5a934edefee1925184368&bc1=ffffff&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr">
-</iframe>
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://rcm-fe.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=letitbeornot-22&m=amazon&o=9&p=8&l=as1&IS2=1&detail=1&asins=406152917X&linkId=bbdbd510bff5a934edefee1925184368&bc1=ffffff&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr"></iframe>
 
 </div>
         </div>
@@ -620,7 +550,7 @@ $$\frac{2}{u^{\alpha-2}(\alpha-2)}\le\frac{\alpha}{\Delta_i(\alpha-2)}$$
 <section id="comments">
     <div id="disqus_thread">
         <div id="disqus_thread"></div>
-<script>
+<script type="application/javascript">
     var disqus_config = function () {
     
     
@@ -990,23 +920,25 @@ $$\frac{2}{u^{\alpha-2}(\alpha-2)}\le\frac{\alpha}{\Delta_i(\alpha-2)}$$
 <footer id="footer">
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020
-      &copy; @getumen
+      &copy; 2021
+      © @getumen
     </div>
   </div>
 </footer>
 
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-47210848-3', 'auto');
-ga('send', 'pageview');
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
-
 <script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>
 <script src="https://getumen.github.io/js/script.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
