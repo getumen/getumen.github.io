@@ -6,7 +6,34 @@
     <description>Recent content in Tags on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 01 Feb 2020 15:36:41 +0900</lastBuildDate><atom:link href="https://getumen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Apr 2021 15:57:28 +0900</lastBuildDate><atom:link href="https://getumen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>auction theory</title>
+      <link>https://getumen.github.io/tags/auction-theory/</link>
+      <pubDate>Sat, 24 Apr 2021 15:57:28 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/auction-theory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>読書</title>
+      <link>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</link>
+      <pubDate>Sat, 24 Apr 2021 15:57:28 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>読書メモ</title>
+      <link>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8%E3%83%A1%E3%83%A2/</link>
+      <pubDate>Sat, 24 Apr 2021 15:57:28 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8%E3%83%A1%E3%83%A2/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>ansible</title>
       <link>https://getumen.github.io/tags/ansible/</link>
@@ -49,15 +76,6 @@
       <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
       
       <guid>https://getumen.github.io/tags/memo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>読書</title>
-      <link>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</link>
-      <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
-      
-      <guid>https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8/</guid>
       <description></description>
     </item>
     

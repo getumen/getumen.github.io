@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja-jp">
 <head>
-    <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4) &middot; 雑記</title>
+    <title>Auction Theory 1章 (1) &middot; 雑記</title>
     <meta name="generator" content="Hugo 0.82.0" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
       <meta name="description" content="日々学んだことをメモします">
     
     
-    <link rel="canonical" href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/"/>
+    <link rel="canonical" href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/"/>
     <link rel="icon" href="https://getumen.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
@@ -20,25 +20,28 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" />
-<meta property="og:description" content="今日読んだ部分では研究を紹介しています．" />
+    <meta property="og:title" content="Auction Theory 1章 (1)" />
+<meta property="og:description" content="オークション理論の本を読みます．
+オークション理論の導入です．" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" /><meta property="og:image" content="https://getumen.github.io/images/banners/document_research.png" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-01-08T04:38:02&#43;09:00" />
-<meta property="article:modified_time" content="2019-01-08T04:38:02&#43;09:00" />
+<meta property="og:url" content="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/" /><meta property="og:image" content="https://getumen.github.io/images/banners/auction_hammer.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-24T15:57:28&#43;09:00" />
+<meta property="article:modified_time" content="2021-04-24T15:57:28&#43;09:00" />
 
 
     
-    <meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)">
-<meta itemprop="description" content="今日読んだ部分では研究を紹介しています．"><meta itemprop="datePublished" content="2019-01-08T04:38:02&#43;09:00" />
-<meta itemprop="dateModified" content="2019-01-08T04:38:02&#43;09:00" />
-<meta itemprop="wordCount" content="3740"><meta itemprop="image" content="https://getumen.github.io/images/banners/document_research.png">
-<meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
+    <meta itemprop="name" content="Auction Theory 1章 (1)">
+<meta itemprop="description" content="オークション理論の本を読みます．
+オークション理論の導入です．"><meta itemprop="datePublished" content="2021-04-24T15:57:28&#43;09:00" />
+<meta itemprop="dateModified" content="2021-04-24T15:57:28&#43;09:00" />
+<meta itemprop="wordCount" content="3838"><meta itemprop="image" content="https://getumen.github.io/images/banners/auction_hammer.png">
+<meta itemprop="keywords" content="読書,読書メモ,auction theory," />
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://getumen.github.io/images/banners/document_research.png"/>
+<meta name="twitter:image" content="https://getumen.github.io/images/banners/auction_hammer.png"/>
 
-<meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)"/>
-<meta name="twitter:description" content="今日読んだ部分では研究を紹介しています．"/>
+<meta name="twitter:title" content="Auction Theory 1章 (1)"/>
+<meta name="twitter:description" content="オークション理論の本を読みます．
+オークション理論の導入です．"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -258,13 +261,13 @@
     <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
-            <img src="https://getumen.github.io/images/banners/document_research.png" class="article-banner">
+            <img src="https://getumen.github.io/images/banners/auction_hammer.png" class="article-banner">
         
 
         <header class="article-header">
-    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/">
+    <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/">
     <h1 class="article-title" itemprop="name">
-        Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)
+        Auction Theory 1章 (1)
     </h1>
     </a>
     <div class="article-meta">
@@ -272,9 +275,9 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2019-01-08 04:38:02 &#43;0900 JST" itemprop="datePublished">2019-01-08</time>
+            <time datetime="2021-04-24 15:57:28 &#43;0900 JST" itemprop="datePublished">2021-04-24</time>
             &middot;
-            3740
+            3838
             words
             &middot;
             8
@@ -288,7 +291,7 @@
                 <i class="fa fa-folder"></i>
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">machine learning</a>
+                <a class="article-category-link" href="https://getumen.github.io/categories/auction">auction</a>
                 
                 
             </div>
@@ -302,15 +305,15 @@
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/bandit">bandit</a>
-                &middot;
-                
-                
                 <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">読書</a>
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems</a>
+                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8%E3%83%A1%E3%83%A2">読書メモ</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/auction-theory">auction theory</a>
                 
                 
             </div>
@@ -320,91 +323,118 @@
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <p>今日読んだ部分では研究を紹介しています．</p>
-<h2 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h2>
-<h3 id="24-refinements-and-bibliographic-remarks">2.4 Refinements and Bibliographic Remarks</h3>
-<p>ここで，いくつかの細かな改善点を議論する．
-以下では有界な報酬を考える（2.4.7を除いて）</p>
-<h4 id="241-improved-constants">2.4.1 Improved Constants</h4>
-<p>UCBの証明のリグレットバウンドは２つの方法で改善できる．
-１つは異なる時間ステップでのユニオンバウンドを“peeling” argumentに置き換えることだ．
-これにより，$\alpha&gt;1$に対して，ログオーダーのリグレットを達成できる．
-２つ目の改善はGarivier and Capp´eによって提案された式(2.5)–(2.7)を使うより曖昧な条件を使う方法だ．
-これにより，$\alpha$-UCBのリグレットのオーダが$\alpha&gt;1$に対して，$\frac{\alpha}{2}\ln n$となる．
-$\alpha$が位置に近い値より改善できないのは下界からわかる．</p>
-<h4 id="242-second-order-bounds">2.4.2 Second-Order Bounds</h4>
-<p>$\alpha$-UCBは最適なリグレットオーダであるが，式 (2.4)と定理2.2はギャップがある．
-これに対して，いくつかの改善法が提案されている．</p>
-<p>Audibertらによって提案されたUCB-Vはヘフディングの不等式の代わりにBernsteinの不等式を用いた．
-他のやり方ではL2ノルムで距離を図るのではなく，KLダイバージェンスで測る方法だ．
-Honda and Takemuraは漸近的な結果を示し，Garivier and Capp´eやMaillardらはKL-UCBという手法を示した．
-このリグレットは$\alpha&gt;1$にたいして，$$$\sum_{i:\Delta_i&gt;0}\frac{\Delta_i}{kl(\mu_i,\mu^*)}\alpha\ln n+\mathcal{O}(1)$$である．
-KL-UCBはベルヌーイ分布に対して最適であり，どんな報酬分布に対しても$\alpha$-UCBより優れている．</p>
-<hr>
-<p>メモ</p>
-<p>機械学習プロフェッショナルシリーズのバンディット問題の本によると，
-KL-UCBは理論限界を達成できるもののKLダイバージェンスを含む式を$\mu^*$に関して解く必要があるけれど，閉形式で解けないためニュートン法を用いるなどの工夫が必要．
-しかし，バンディット問題はパフォーマンスが要求される環境で利用される場合があるため，そのような場合でも利用できる計算コストが低いかつ理論げんかいを達成できる戦略が必要．
-そこで，DMED(Deterministic Minimum Empirical Divergence)ポリシーという戦略が提案されている．</p>
-<hr>
-<h4 id="243-distribution-free-bounds">2.4.3 Distribution-Free Bounds</h4>
-<p>$\Delta_i$が0に近い値をとるとき、式(2.4)は非常に大きな値になりうる。
-しかし、アーム$i$から引いたリグレットは$n\Delta_i$より大きくならない。
-こうした点から、$\alpha$-UCBのリグレットは$\sqrt{\alpha nK\ln n}$より小さいリグレットになる（数値の定数を除いて）。
-しかし、次の節で示すようにリグレットのminimaxな下界は$\sqrt{Kn}$である。
-Audibert and Bubeckはこの余分なログオーダを取り除く修正版の$\alpha$-UCBを提案した。
-$\Delta=\min_{i=i^*}\Delta_i$としたとき、MOSS (Minimax Optimal Strategy in the Stochastic case)は
-$$\min\left\{\sqrt{nK}, \frac{K}{\Delta}\ln\frac{n\Delta^2}{K}\right\}$$
-より小さなリグレットを達成する（数値の定数を除いて）。</p>
-<hr>
-<p><a href="https://en.wikipedia.org/wiki/Minimax_estimator">minimax最適</a>とは？</p>
-<h5 id="問題設定">問題設定</h5>
-<p>条件付き確率分布$P(x|\theta)$からのノイズの乗ったデータ(?)または破損したデータ(?)$x\in\mathcal{X}$から決定的な（ベイズではない）パラメータ$\theta\in\Theta$を推定する問題を考える。ゴールは与えられたリスク関数$R(\theta, \delta)$を最小化するパラメータ$\theta$を推定する良い推定器$\delta(x)$を見つけることだ。
-ここで、リスク関数とは確率$P(x|\theta)$についての損失関数$L(\theta,\delta)$の期待値である。</p>
-<h5 id="定義">定義</h5>
-<p>リスク関数$R(\theta,\delta)$に対して推定器$\delta^M:\mathcal{X}\mapsto\Theta$がminimaxであるとはその推定器が全ての推定器の中で最小のリスクをとるとるということである。つまり、$$\sup_{\theta\in\Theta}R(\theta,\delta^M)=\inf_{\delta}\sup_{\theta\in\Theta}R(\theta,\delta)$$
-を満たすということである。</p>
-<hr>
-<p>この結果の弱いところは最も小さなギャップ$\Delta$にのみ依存していることである．
-Auer and Ortnerはimproved UCBという$$\sum_{i:\Delta_i&gt;0}\frac{1}{\Delta_i}\ln(n\Delta_i^2)$$を達成する戦略を作った．
-これはいくつかの設定でMOSSより優れているが$\sqrt{nK}$のminimax最適なレートを達成していない．
-すべての場合でMOSSとimproved UCBより優れてたリグレットを達成できる手法があるかはopen problemだ．
-実現可能な予想としては
-$$\sum_{i:\Delta_i&gt;0}\frac{1}{\Delta_i}\ln\frac{n}{H}~with~\sum_{i:\Delta_i&gt;0}\frac{1}{\Delta_i^2}$$が達成できるとなっている．</p>
-<h3 id="244-high-probability-bounds">2.4.4 High Probability Bounds</h3>
-<p>擬リグレット$\overline{R}_n$は重要だが，$\hat{R}_n=n\mu^*-\sum_{t=1}^n\mu_{I_t}$を高確率で保証したい場合もある．
-$\hat{R}_n$のばらつきが$\sqrt{n}$のオーダであり，$\overline{R}_n$のオーダは$\ln n$であるため，$\sqrt{n}$が優位になると考えられるので$\hat{R}_n$を$\overline{R}_n$に近づけるのは難しいことだと考えれる．
-AudibertらはUCBの$\hat{R}_n$のconcentrationの性質を解析した．それによると$\hat{R}_n$はその期待値の周りに集中しているが，nについて多項式オーダで$\hat{R}_n$はオーダ$n$になる．
-Salomon and Audibertは常時停止可能なアルゴリズムは基本的に指数部に色々乗っている古典的なconcentration inequalityではこの多項式のconcentrationを改善できないことを証明した．
-このことはHigh Probability Boundsに関しては常時停止可能なアルゴリズムは停止時間を用いるアルゴリズムより弱いことを示している．</p>
-<h3 id="245-epsilon-greedy">2.4.5 $\epsilon$-Greedy</h3>
-<p>$\epsilon$-Greedyはシンプルな戦略である．
-パラメータ$0&lt;\epsilon&lt;1$を選び，$1-\epsilon$の確率で貪欲に経験的に最も高い報酬を得られるアームを引き，$\epsilon$の確率でランダムにアームを引く．
-Auerらは$\epsilon$をtに依存する関数$\epsilon_t=K/(d^2t)$としたとき，$0&lt; d&lt;\min_{i\not=i^*}\Delta_i$が与えられているもとで，擬リグレットは$(K\ln n)/d^2$のようになることを証明した．
-このアルゴリズムは実用上はうまく行くが，$\min_{i\not=i^*}\Delta_i$のタイトな下界を$d$として選ばないと，性能は劣化する．</p>
-<h3 id="246-thompson-sampling">2.4.6 Thompson Sampling</h3>
-<p>マルチアームバンディット問題に関する極めて初期の研究でThompsonは，ベルヌーイ分布の場合の戦略を提案した．
-トンプソンサンプリングと呼ばれる戦略は次のようなものだ．</p>
-<p>パラメータ$\mu_{i}\in[0,1]$の一様な事前分布を考える．$t$ラウンドでの$\mu_i$に対する事後分布を$\pi_{i,t}$とする．また，$\theta_{i,t}\sim\pi_{i,t}$とする．
-戦略は$I_t\in\rm arg\max_{i=1,d\dots,K}\theta_{i,t}$というものだ．</p>
-<p>Agrawal and Goyalはトンプソンサンプリングがログオーダのレートを達成することを示した．
-Kaufmannらは式(2.4)とちょうど同じ擬リグレットを達成できることを示した．</p>
-<h3 id="247-heavy-tailed-distributions">2.4.7 Heavy-Tailed Distributions</h3>
-<p>2.2節ではモーメント母関数を通してUCB戦略を得た．また，定理2.1で示されるバウンドは分布のテールが重くなると悪化することがわかる．
-特に，モーメント母関数が有限でない場合は結果が得られなくなる．</p>
-<p>しかし，Bubeckらは分布の分散が有限であるならば式(2.4)と同じ擬リグレットを得られる戦略が存在することを示した．
-より正確に言うと基本的な経験平均より洗練されたよりロバストな平均のエスティメータを使うことで，1でバウンドされた$1+\epsilon$のモーメントを持つ分布に対するUCB戦略を構築することができる．
-その時のリグレットは
-$$R_{n}\le\sum_{i:\Delta_i&gt;0}\left(8\left(\frac{4}{\Delta_i}\right)^{\frac{1}{\epsilon}}\ln n+5\Delta_i\right)$$
-をみたす．（論文ではリグレットで表記されているが，文脈的には魏リグレットでは？）</p>
+            <p>オークション理論の本を読みます．
+オークション理論の導入です．</p>
+<p>読む本のアフィリエイト広告です．
+<div>
+    
+<iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=getumen.github.io-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B00NL6CGAW&linkId=6c7e7b8e9631a697ca1104924a1fcaf8"></iframe>
+
+</div></p>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>オークションは古今東西広く行われているのはなぜだろうか？</li>
+<li>オークションが固定の価格に比べて売るメカニズムとして特に適しているのはどんな時だろうか？</li>
+<li>買い手観点で良いbidding戦略はなんだろうか？</li>
+<li>売り手観点で他のオークション形態より大きな利益を得られるオークション形態はなんだろうか？</li>
+</ul>
+<p>これらの疑問や他の疑問がこの本の内容を形作っている．</p>
+<h3 id="いくつかの一般的なオークション形態">いくつかの一般的なオークション形態</h3>
+<ul>
+<li>イングリッシュオークション<br>
+価格が公開されていて上昇していくオークション形態．
+売りは小さな価格から始まり，少なくとも２人の買い手がいる限り少しずつ上げられていく．
+買い手が１人になった時，値段の上昇は止まる．
+フォーマルにモデル化すると次のようになる．価格は連続的に挙げられていくゲームの元で，それぞれの買い手は現在の値段で買うことを全員に明らかな方法で，手をあげて示す．買い手は価格が高すぎると思ったら手を下げてそのことを示す．オークションは買い手が一人になったら終わる．残った買い手は商品を得て，２番目の買い手が降りた値段を払う．</li>
+<li>ダッチオークション<br>
+価格が公開されていて下降していくオークション形態．
+オークション主催者は誰も買い手がつかなそうな価格から始める．誰か一人の買い手が買おうとしたら，その時の価格で商品を買う．</li>
+<li>封印価格ファーストプライスオークション<br>
+買い手は入札価格を封筒に入れて提出する．入札価格が最も高かった人が商品を獲得し，自身の入札価格を支払う．</li>
+<li>封印価格セカンドプライスオークション<br>
+買い手は入札価格を封筒に入れて提出する．入札価格が最も高かった人が商品を獲得し，２番目に高い入札額を支払う．</li>
+</ul>
+<h3 id="価値付け">価値付け</h3>
+<p>オークションはよく使われる．なぜならば，売り手は買い手が商品に払う最大の価値を知らないからだ．
+売り手と買い手が直面する価値の不確実性がオークションの本質的特徴だ．</p>
+<p>買い付け時に買い手にとっての商品の価値をそれぞれの買い手が知っている状況は私的に価値を知っている設定，または， <em>私的価値(private value)</em> と呼ばれる．この設定では買い手は他の買い手の価値を確信を持って知ってはいないし，他の買い手の価値を知っていることが特定の買い手の価値に影響することもない．
+private valueの仮定は商品の価値が商品を使うことによって生じる時に，最も当てはまる．
+一方で，転売や投資目的の場合はprivate valueの仮定はよくない．</p>
+<p>買い手がオークション時に価値を知らずに，価値が他の買い手も知ることができる情報に影響される状況は <em>相互依存価値(interdependent values)</em> と呼ばれる．このような状況はオークションの後に販売する場合に向いている．
+この状況の特殊な場合は，買い手は価値を知らないが，全ての買い手にとって同じ価値である状況だ．この状況は <em>一般的価値(common value)</em> と呼ばれる．
+このような状況は商品の価値がオークション時にはわからない市場価値によって決まる場合に向いている．典型的な例としては埋蔵量不明の石油が眠っている土地の販売だ．それぞれの買い手は埋蔵量を調べることができるが，最終的な価値は将来の石油売り上げによって決まる．</p>
+<p><em>相互依存</em> という語は価値の構造と他の買い手が持つ情報にどのように価値が影響されるかについてのみ言及している．
+買い手が観測したシグナルがどのように拡散するのかという情報の統計的性質については言及していない．
+こうして，特定の買い手の価値が他の買い手によって観測されたシグナルに依存するが，シグナル自身は統計的に独立である価値が相互依存な状況を考えることができる．
+同様に，特定の買い手の価値が自身のシグナルに依存しるが，シグナル自身は関連している価値が相互依存ではない状況を考えることができる．</p>
+<h3 id="同等のオークション">同等のオークション</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ファーストプライス</th>
+<th>セカンドプライス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>オープン</td>
+<td>ダッチ</td>
+<td>イングリッシュ</td>
+</tr>
+<tr>
+<td>封印価格</td>
+<td>封印価格ファーストプライス</td>
+<td>封印価格セカンドプライス</td>
+</tr>
+</tbody>
+</table>
+<p>これらの４つのオークション形式は互いに異なり，違った方法で現実世界に実装されているが，そのうちのいくつかの違いは表面的な違いに過ぎない．</p>
+<p>始めに，ダッチオークション（価格がオープンで下降していく）が封印価格ファーストプライスオークションと戦略的には同じであることを見ていく．
+封殺価格ファーストプライスオークションにおいて，買い手の戦略は秘密情報を入札価格に反映することだ．
+ダッチオークションはオープンに行われるにもかかわらず，買い手に何も有益な情報を与えない．唯一の利用できる情報はある買い手が現在の価格で購入することに同意したという情報だけだ．しかし，それによってオークションは終了する．もし，商品が購入可能ならば，封印価格ファーストプライスオークションである量を買い付けるのはダッチオークションで同じ量を買い付けるのと同じだ．全てのファーストプライスオークションの戦略はダッチオークションと同じだ．</p>
+<p>次に，価格が私的である時，イングリッシュオークション（価格がオープンで上昇していく）が封印価格セカンドプライスオークションと同じであることを見ていく（ただし，前のものより弱い意味で）．
+イングリッシュオークションは他の買い手が降りた時の情報を得ることができ，それにより私的に知る情報について推論することがおそらく可能だ．
+私的価値(private value)設定においてはこの情報は役に立たない．
+イングリッシュオークションにおいて，価値を超えた価格になった後でも残り続けるのは最適ではない，得られるのは損失のみだ．また，価値に価格が達する前に降りるのも最適ではない，得られた可能性があった利益を逃してしまう．封印価格セカンドプライスオークションも同様に価値で入札するのが最適だ（あとの章で記述）．
+こうして，私的価値(private value)設定においては，どちらでも価値で入札するのが最適だ．</p>
+<p>イングリッシュオークションとセカンドプライスオークションが同等さは２つの意味で <em>弱い</em>．
+１つめは２つのオークションは戦略的に同等ではない．
+２つ目は，より重要なことに，私的価値(private value)設定においてのみ最適な戦略が同じになる．
+相互依存価値設定では，他の買い手が持っている情報が特定の買い手の商品の価値の評価に関連する．他の買い手が早めに降りることは買い手に商品の価値の推定額を減らさせる悪いニュースになる．
+こうして，相互依存価値設定では２つのオークションは買い手の観点から同じではない．</p>
+<h3 id="売り上げ-vs-効率性">売り上げ VS 効率性</h3>
+<p>オークション理論を案内する主要な疑問の１つに経済的な機関として異なるオークション形式のパフォーマンスを比較することがある．
+売り手の観点から，オークション形式を比較する上で自然な物差しは <em>売り上げ</em> だ．しかし，社会全体の観点からだと <em>効率性</em> ，商品の価値を後になって最大化できる人のてに渡らせることがより重要だ．これは公共資産を民間セクターに売却するときに特に成り立つ．</p>
+<p>しかし，効率性は尺度とすべきだろうか？
+オークションが効率的に再割り当てしないにもかかわらず，市場が商品を効率的に際割り当てすることに頼ることができないのはなぜだろう？
+結局，含み益があるならば，オークションに勝った人は他のより高い価値を提示した人に転売することができる．
+我々はこの主張は多くの理由で疑わしいと主張する．
+まず，オークション後の執行は少数の仲介人（特に民営化の文脈では）によって行われる．
+そしてそれにより再販売価格について交渉が生じることになる．
+そのような交渉は効率的な結果を生まない傾向がある．というのも，不完全な情報のもとで行われがちだからだ．
+２番目に，再販売は著しい執行費用を引き起こす可能性があるからだ．それにより行うべきであっても再販売が行われない．
+執行費用や交渉の遅れがない理想的な環境であっても，転売できるという主張を否定する．
+再販売は効率性を保証できないので，効率性を得たい政策の作成者は注意深くオークション形式を選択する傾向がある．</p>
+<p>売り上げと効率性がオークション形式を決める尺度の全てではないが，オークションルールの透明性，簡潔さの美徳を持っている．そして，これが重要な点である．
+また，他の重要な要素として，オークション形式は買い手の結託に対する敏感さという点で異なる．</p>
+<h3 id="オークションとは何か">オークションとは何か？</h3>
+<p>様々な販売方式がオークションに該当する．
+オークションかそうでないかの厳密な観点を採用する前に，様々なオークション形式が共通して持っている重要な性質を探してみる．</p>
+<p>１つ目のオークションのような形式に共通する側面として，買い手からいくら払うつもりがあるのかに関して入札額と言う形で情報を引き出し，受け取った情報のみに基づいて誰が勝者で，いくら払うのかを決める．
+このことはオークションはどんな商品をうるためにも使うことができると言う意味で普遍的であると暗示している．</p>
+<p>２つ目のオークションのような形式に共通する側面として，匿名性がある．
+買い手が誰であるかは商品の入札に誰が勝つかやいくら払うかに関係がない．</p>
+<p>今後の賞では，方式のより大きなクラスとして <em>Mechanisms(メカニズム)</em> と呼ばれるクラスにオークションを置く．
+メカニズムは一般性や匿名性が必ずしも必要ないという点でオークションと異なる．</p>
         </div>
         <footer class="article-footer">
-    <a data-url="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" data-id="c97e999dea6cfb53d0c512c084466d42" class="article-share-link">
+    <a data-url="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/" data-id="07b22745fd855a7a0a990c904113fd65" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
     
-    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/#disqus_thread" class="article-comment-link">
+    <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/#disqus_thread" class="article-comment-link">
         Comments
     </a>
     
@@ -480,21 +510,14 @@ $$R_{n}\le\sum_{i:\Delta_i&gt;0}\left(8\left(\frac{4}{\Delta_i}\right)^{\frac{1}
     
 <nav id="article-nav">
     
-    <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Older
       </strong>
-      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)</div>
+      <div class="article-nav-title">マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる</div>
     </a>
     
 
-    
-    <a href="https://getumen.github.io/2019/01/12/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2%E3%83%A1%E3%83%A2model-independent-online-learning-for-influence-maximization/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Newer
-      </strong>
-      <div class="article-nav-title">論文メモメモ：Model-Independent Online Learning for Influence Maximization</div>
-    </a>
     
 </nav>
 
@@ -544,7 +567,7 @@ $$R_{n}\le\sum_{i:\Delta_i&gt;0}\left(8\left(\frac{4}{\Delta_i}\right)^{\frac{1}
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory 1章 (1)" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -622,7 +645,7 @@ $$R_{n}\le\sum_{i:\Delta_i&gt;0}\left(8\left(\frac{4}{\Delta_i}\right)^{\frac{1}
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/website_kensaku_kekka.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/website_kensaku_kekka.png)" alt="Auction Theory 1章 (1)" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -648,7 +671,7 @@ $$R_{n}\le\sum_{i:\Delta_i&gt;0}\left(8\left(\frac{4}{\Delta_i}\right)^{\frac{1}
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/Cassandra_logo.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/Cassandra_logo.png)" alt="Auction Theory 1章 (1)" class="thumbnail-image"></span>
                     
                     </a>
                 </div>

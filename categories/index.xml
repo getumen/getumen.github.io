@@ -6,7 +6,16 @@
     <description>Recent content in Categories on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 01 Feb 2020 15:36:41 +0900</lastBuildDate><atom:link href="https://getumen.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Apr 2021 15:57:28 +0900</lastBuildDate><atom:link href="https://getumen.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>auction</title>
+      <link>https://getumen.github.io/categories/auction/</link>
+      <pubDate>Sat, 24 Apr 2021 15:57:28 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/categories/auction/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>infra</title>
       <link>https://getumen.github.io/categories/infra/</link>

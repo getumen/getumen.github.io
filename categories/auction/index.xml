@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>auction on 雑記</title>
+    <link>https://getumen.github.io/categories/auction/</link>
+    <description>Recent content in auction on 雑記</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 24 Apr 2021 15:57:28 +0900</lastBuildDate><atom:link href="https://getumen.github.io/categories/auction/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Auction Theory 1章 (1)</title>
+      <link>https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/</link>
+      <pubDate>Sat, 24 Apr 2021 15:57:28 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/</guid>
+      <description>&lt;p&gt;オークション理論の本を読みます．
+オークション理論の導入です．&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
