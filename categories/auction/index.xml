@@ -6,13 +6,22 @@
     <description>Recent content in auction on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 24 Apr 2021 15:57:28 +0900</lastBuildDate><atom:link href="https://getumen.github.io/categories/auction/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 25 Apr 2021 18:22:49 +0900</lastBuildDate><atom:link href="https://getumen.github.io/categories/auction/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Auction Theory 1章 (1)</title>
-      <link>https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/</link>
+      <title>Auction Theory 2章 (1)</title>
+      <link>https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/</link>
+      <pubDate>Sun, 25 Apr 2021 18:22:49 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/</guid>
+      <description>私的価値オークション： A First Look 独立同分布な私的価値設定で４つの一般的なオークション形式の均衡な入札の振る舞いについて考えることでフォーマルな分</description>
+    </item>
+    
+    <item>
+      <title>Auction Theory 1章</title>
+      <link>https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/</link>
       <pubDate>Sat, 24 Apr 2021 15:57:28 +0900</pubDate>
       
-      <guid>https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0-1/</guid>
+      <guid>https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/</guid>
       <description>&lt;p&gt;オークション理論の本を読みます．
 オークション理論の導入です．&lt;/p&gt;</description>
     </item>

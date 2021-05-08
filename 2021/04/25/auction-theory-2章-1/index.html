@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="ja-jp">
+<head>
+    <title>Auction Theory 2章 (1) &middot; 雑記</title>
+    <meta name="generator" content="Hugo 0.83.1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="getumen">
+    
+      <meta name="description" content="日々学んだことをメモします">
+    
+    
+    <link rel="canonical" href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/"/>
+    <link rel="icon" href="https://getumen.github.io/favicon.ico">
+    <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
+    <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
+    <link rel="stylesheet" href="https://getumen.github.io/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://getumen.github.io/css/monokai.css">
+    <link rel="stylesheet" href="https://getumen.github.io/fancybox/jquery.fancybox.css">
+    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    <meta property="og:title" content="Auction Theory 2章 (1)" />
+<meta property="og:description" content="私的価値オークション： A First Look 独立同分布な私的価値設定で４つの一般的なオークション形式の均衡な入札の振る舞いについて考えることでフォーマルな分" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" /><meta property="og:image" content="https://getumen.github.io/images/banners/auction_hammer.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-25T18:22:49&#43;09:00" />
+<meta property="article:modified_time" content="2021-04-25T18:22:49&#43;09:00" />
+
+
+    
+    <meta itemprop="name" content="Auction Theory 2章 (1)">
+<meta itemprop="description" content="私的価値オークション： A First Look 独立同分布な私的価値設定で４つの一般的なオークション形式の均衡な入札の振る舞いについて考えることでフォーマルな分"><meta itemprop="datePublished" content="2021-04-25T18:22:49&#43;09:00" />
+<meta itemprop="dateModified" content="2021-04-25T18:22:49&#43;09:00" />
+<meta itemprop="wordCount" content="8422"><meta itemprop="image" content="https://getumen.github.io/images/banners/auction_hammer.png">
+<meta itemprop="keywords" content="読書,読書メモ,auction theory," />
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://getumen.github.io/images/banners/auction_hammer.png"/>
+
+<meta name="twitter:title" content="Auction Theory 2章 (1)"/>
+<meta name="twitter:description" content="私的価値オークション： A First Look 独立同分布な私的価値設定で４つの一般的なオークション形式の均衡な入札の振る舞いについて考えることでフォーマルな分"/>
+<meta name="twitter:site" content="@letitbe_or_not"/>
+
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+
+
+<div id="container">
+	<header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="https://getumen.github.io/" id="logo">
+          
+          <i class="logo" style="background-image: url('https://getumen.github.io/images/getumen.png')"></i>
+          
+          <span class="site-title">雑記</span>
+      </a>
+      <nav id="main-nav">
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/">Home</a>
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/tags/">Tags</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/categories/">Categories</a>
+          
+          
+          
+          <a class="main-nav-link" href="https://getumen.github.io/about">About Me</a>
+          
+          
+      </nav>
+        <nav id="sub-nav">
+          <div class="profile" id="profile-nav">
+            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://getumen.github.io/images/getumen.png"><i class="fa fa-caret-down"></i></a>
+          </div>
+        </nav>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+              <input type="search" name="q" class="search-form-input" placeholder="Search">
+              <button type="submit" class="search-form-submit">
+              </button>
+              <input type="hidden" name="sitesearch" value="https://getumen.github.io/" />
+         </form>
+        </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tbody>
+          <tr>
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/">Home</a></td>
+          
+          
+          
+          
+          
+          
+          
+          
+
+          
+
+          
+          
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/tags/">Tags</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/categories/">Categories</a></td>
+          
+          
+          
+          <td><a class="main-nav-link" href="https://getumen.github.io/about">About Me</a></td>
+          
+          
+          <td>
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
+          <input type="search" name="q" class="search-form-input" placeholder="Search">
+          <input type="hidden" name="sitesearch" value="https://getumen.github.io/" />
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</header>
+
+   	
+   	<div class="outer">
+   	
+    	<aside id="profile">
+  <div class="inner profile-inner">
+    <div class="base-info profile-block">
+      
+      <img id="avatar" src="https://getumen.github.io/images/getumen.png">
+      
+      <h2 id="name">getumen</h2>
+      <h3 id="title">データエンジニアをしながらデータサイエンスの勉強をしています</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>Earth</span>
+      
+          <a id="follow" href="https://github.com/getumen">
+              Follow
+          </a>
+      
+    </div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        14
+        <span>Posts</span>
+      </div>
+      <div class="article-info-block">
+        
+          12
+        
+        <span>
+            Tags
+        </span>
+      </div>
+    </div>
+    <div class="profile-block social-links">
+      <table>
+        <tr>
+          
+<td><a href="//github.com/getumen" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td><a href="//twitter.com/letitbe_or_not" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></td>
+
+
+          <td><a href="https://getumen.github.io/index.xml" target="_blank" title="RSS"><i class="fa fa-rss"></i></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</aside>
+
+    
+
+    <section id="main">
+    
+    <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+            <img src="https://getumen.github.io/images/banners/auction_hammer.png" class="article-banner">
+        
+
+        <header class="article-header">
+    <a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/">
+    <h1 class="article-title" itemprop="name">
+        Auction Theory 2章 (1)
+    </h1>
+    </a>
+    <div class="article-meta">
+
+        
+        <div class="article-date">
+            <i class="fa fa-calendar"></i>
+            <time datetime="2021-04-25 18:22:49 &#43;0900 JST" itemprop="datePublished">2021-04-25</time>
+            &middot;
+            8422
+            words
+            &middot;
+            17
+            minute read
+        </div>
+        
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-folder"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/categories/auction">auction</a>
+                
+                
+            </div>
+            
+        
+
+        
+            
+            
+            <div class="article-category">
+                <i class="fa fa-tags"></i>
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">読書</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8%E3%83%A1%E3%83%A2">読書メモ</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/auction-theory">auction theory</a>
+                
+                
+            </div>
+            
+        
+    </div>
+</header>
+
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="私的価値オークション-a-first-look">私的価値オークション： A First Look</h2>
+<p>独立同分布な私的価値設定で４つの一般的なオークション形式の均衡な入札の振る舞いについて考えることでフォーマルな分析を始める．
+前の章の議論から私的価値設定で封印価格ファーストプライスオークションと封印価格セカンドプライスオークションの２つを考慮すれば十分だ．</p>
+<p>この章ではオークション理論の基本的な方法論を導入する．
+我々は情報環境は以下の２つからなると仮定する．</p>
+<ol>
+<li>買い手にとっての価値の構造．今回の場合は，私的価値．</li>
+<li>買い手が利用できる情報の分布．今回の場合は独立同分布．</li>
+</ol>
+<p>我々は２つの異なるオークション形式を考慮する．</p>
+<ol>
+<li>封印価格ファーストプライスオークション</li>
+<li>封印価格セカンドプライスオークション</li>
+</ol>
+<p>それぞれのオークションフォーマットは買い手間の不完全情報ゲームを決める．
+そして，情報環境を固定したまま，それぞれのゲームの結果についてベイジアンナッシュ均衡を決める．
+いくつも均衡がある場合はいくつかの基準（支配，完全，対称）で一つに選ぶ．
+しかし，基準は全てのオークション形式に一様に適用される．</p>
+<hr>
+<p>基準について</p>
+<ul>
+<li>支配戦略：ある買い手の戦略で他の買い手の戦略によらず他の全ての戦略以上に高い利得を得られる戦略</li>
+<li>完全情報ゲーム：すべての意思決定点において、これまでにとられた行動や実現した状態に関する情報がすべて与えられているような展開型ゲーム．言いかえれば、情報集合がすべて 1 点からなっており、どのノードにおいてもそこで手番をもつプレーヤーがそれまでの歴史を完全に把握できるようなゲーム</li>
+<li>対称ゲーム：特定の戦略を行うために払う費用は誰が行うかではなく他の採用された戦略によってのみ決まるゲーム</li>
+</ul>
+<hr>
+<h3 id="対称モデル">対称モデル</h3>
+<p>単一財オークションを考える</p>
+<table>
+<thead>
+<tr>
+<th>記法</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$N$</td>
+<td>買い手の数</td>
+</tr>
+<tr>
+<td>$X_i$</td>
+<td>買い手$i$が割り当てた価値．買い手が払うことができる額の最大値．</td>
+</tr>
+<tr>
+<td>$x_i$</td>
+<td>$X_i$の実現値</td>
+</tr>
+<tr>
+<td>$F$</td>
+<td>価値の累積密度関数</td>
+</tr>
+<tr>
+<td>$f \equiv F'$</td>
+<td>価値の確率密度函数．連続関数．全ての台を持つ．</td>
+</tr>
+<tr>
+<td>$\beta_i$</td>
+<td>買い手$i$の戦略．$\beta_i:[0,\omega]\rightarrow\mathbb{R}_+$．価値から入札額を決める関数.</td>
+</tr>
+</tbody>
+</table>
+<p>設定</p>
+<ul>
+<li>単調増加する分布関数$F$に従って，$[0,\omega]$の範囲で独立同分布からサンプリングされる</li>
+<li>$F$の台は非負の値$[0,\infty)$である可能性がある．いずれの場合でも，$E[X_i]&lt;\infty$である．</li>
+<li>買い手はリスク中立的である（期待収益最大化のみを考える）</li>
+<li>実現値以外の全てのモデルの要素は全ての買い手の共通知識．</li>
+<li>分布関数$F$は共通知識</li>
+<li>買い手の数は共通知識</li>
+<li>買い手に予算制約や流動性の制約はない（買いたいだけ買える）</li>
+<li>分布関数$F$は全ての買い手に共通（対称な買い手．symmetric bidder）</li>
+</ul>
+<p>我々は対称な買い手の元では対称平衡の結果に興味がある．</p>
+<ul>
+<li>ファーストプライスオークションやセカンドプライスオークションで対称均衡戦略はなんだろうか？</li>
+<li>売り手観点で，どちらのオークションフォーマットの方が期待収益が大きいのだろうか？</li>
+</ul>
+<h3 id="セカンドプライスオークション">セカンドプライスオークション</h3>
+<p>セカンドプライスオークションにおいて，隠された入札額$b_i$を買い手が入札し，支払額は以下のようになる．
+\begin{equation}
+\Pi_i=\begin{cases}
+x_i-\max_{j\not=i}b_j &amp; if b_i &gt; \max_{j\not=i}b_j \\<br>
+0 &amp; if b_i &lt; \max_{j\not=i}b_j
+\end{cases}
+\end{equation}
+引き分けの場合は勝者に等確率で商品が買われる．</p>
+<h4 id="命題21">命題2.1</h4>
+<p>封印価格セカンドプライスオークションにおいて，$\beta^Ⅱ(x)=x$として入札するのが弱支配戦略である．</p>
+<h5 id="命題21の証明">命題2.1の証明</h5>
+<p>買い手１を考える．
+$p_1=\max_{j\not=i}b_j$が競合する入札額の中で最も高い入札額だとする．
+買い手１はもし$x_1&gt;p_i$で入札すれば勝ち，$x_1&lt; p_1$で入札すれば負ける．
+買い手１は$z_1&lt; x_1$で入札することを考える．
+もし，$x_1&gt;z_1\ge p_1$である時，買い手１はかち利益は$x_1-p_1$である．
+もし，$p_1&gt;x_1&gt;z_1$である時，買い手１は負ける．
+しかし，もし，$x_1&gt;p_1&gt;z_1$の時，正の利益を得られるにも関わらず負ける．
+こうして，$x_1$より少ない入札額は報酬を減らすことはあっても増やすことはない．
+同様のことが$x_1$より多い入札額に対しても成り立つ．</p>
+<p>この命題は入札額が独立同分布でなくても成り立つ．
+私的価値の仮定のみで成り立つ．</p>
+<p>命題2.1がある時，買い手が均衡でいくら払うのか気になる．</p>
+<table>
+<thead>
+<tr>
+<th>記法</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Y_1 \equiv Y_1^{(N-1)}$</td>
+<td>買い手１以外の買い手の入札額の最高値</td>
+</tr>
+<tr>
+<td>$G(y)$</td>
+<td>$Y_1$の分布関数．$G(y)=F(y)^{N-1}$</td>
+</tr>
+</tbody>
+</table>
+<p>セカンドプライスオークションにおいて支払額の期待値は</p>
+<p>\begin{equation}
+m^{Ⅱ}(x)=Prob[Win]\times E[２番目に高い入札額|xが一番高い入札額 ] \\<br>
+=Prob[Win]\times E[２番目に高い入札額|xが一番高い入札額 ] \\<br>
+=G(x)\times E[ Y_1|Y_1&lt; x]
+\end{equation}</p>
+<h3 id="ファーストプライスオークション">ファーストプライスオークション</h3>
+<p>セカンドプライスオークションにおいて，隠された入札額$b_i$を買い手が入札し，支払額は以下のようになる．
+\begin{equation}
+\Pi_i=\begin{cases}
+x_i-b_i &amp; if b_i &gt; \max_{j\not=i}b_j \\<br>
+0 &amp; if b_i &lt; \max_{j\not=i}b_j
+\end{cases}
+\end{equation}
+引き分けの場合は勝者に等確率で商品が買われる．</p>
+<p>セカンドプライスオークション同様に価値で入札すると得られる報酬は０になるので価値で入札できない．
+他の買い手の入札戦略が固定であっても確実に勝ったり負けたりする入札額はない．
+買い手は勝つ確率は高くなるが得られる報酬は低くなるというトレードオフに直面する．
+このトレードオフがどのように影響するか対称均衡戦略のヒューリスティックな派生から始める．</p>
+<p>買い手$j\not=1$は対称で，狭義単調増加で，微分可能な均衡戦略$\beta^Ⅰ\equiv\beta$に従うと仮定する．買い手1は$X_1=x$を受け取り，$b$で入札するとする．</p>
+<p>はじめに，$b&gt;\beta(\omega)$の入札額を選ぶことは最適であることはない．
+その時，買い手１は確実に勝てる．
+わずかに入札額を減らしても確実に勝つことができるが，支払いを減らすことができる．
+そのため，$b\le\beta(\omega)$のみを考えることができる．</p>
+<p>第二に，価値０で入札する買い手は正の入札額を入札することはできない．
+というのも，もし勝っても損失のみを得てしまう．
+こうして，$\beta(0)=0$となる．</p>
+<p>買い手１が最も高い入札額$\max_{i\not=1}\beta(X_i)&lt; b$で入札するときはいつでも買い手１がオークションに勝つ．
+$\beta$は狭義短調増加であるので，$\max_{i\not=i}\beta(X_i)=\beta(\max_{i\not=i}X_i)=\beta(Y_1)$．
+買い手１は$\beta(Y_1)&lt; b\iff Y_1&lt;\beta^{-1}(b)$の時常に勝つ．</p>
+<p>そのため，買い手１の期待収益は
+\begin{equation}
+G(\beta^{-1}(b))\times(x-b)
+\end{equation}</p>
+<p>$b$について最大化することを考えると微分により次の条件が出てくる．
+\begin{equation}
+\frac{G'(\beta^{-1}(b))}{\beta'(\beta^{-1}(b))}(x-b)-G(\beta^{-1}(b))=0
+\end{equation}
+対称均衡において$b=\beta(x)$であるから
+\begin{equation}
+G(x)\beta'(x)+G'(x)\beta(x)=xG'(x) \\<br>
+\iff \frac{d}{dx}(G(x)\beta(x))=xG'(x)
+\end{equation}
+$\beta(0)=0$であるから，
+\begin{equation}
+\beta(x)=\frac{1}{G(x)}\int_0^xyG'(y)dy\\<br>
+=E[ Y_1|Y_1&lt; x]
+\end{equation}
+$\beta$の導出は必要条件でしかないのでこれは単にヒューリスティックである．</p>
+<p>次の命題でこれが最適であることを検証する．</p>
+<h4 id="命題22">命題2.2</h4>
+<p>ファーストプライスオークションの対称平衡戦略は
+\begin{equation}
+\beta^Ⅰ(x)=E[ Y_1|Y_1&lt; x]
+\end{equation}
+である．
+ここで，$Y_1$は$N-1$の独立して引かれた価値の最も高い値である．</p>
+<h5 id="命題22の証明">命題2.2の証明</h5>
+<p>買い手１以外の全ての買い手が$\beta^Ⅰ\equiv\beta$の入札戦略に従うと仮定する．
+その場合，買い手１も同じ戦略に従うことが最適であることを示す．</p>
+<p>まず，$\beta$は狭義短調増加で連続関数であることに注意する．
+これによって，均衡状態では最も高い価値を持つ買い手は最も高い入札額を提示し，オークションに勝利する．
+買い手１が$b&gt;\beta(\omega)$で入札するのは最適ではない．
+$b\le\beta(\omega)$で入札した場合，価値$x$を持つ買い手の期待収益は以下のように計算される．
+$b$が均衡となるような入札額($\beta(z)=b$)の価値を$z=\beta^{-1}(b)$と記す．
+期待収益は
+\begin{equation}
+\Pi(b,x)=G(z)[ x-\beta(z) ] \\<br>
+=G(z)x-G(z)E[ Y_1|Y_1&lt; z] \\<br>
+=G(z)x-\int_0^zyG'(y)dy \\<br>
+=G(z)x-G(z)z+\int_0^zG(y)dy \\<br>
+=G(z)(x-z)+\int_0^zG(y)dy
+\end{equation}
+したがって，$z\ge x$と$z\le x$両方で以下を得る．
+\begin{equation}
+\Pi(\beta(x),x)-\Pi(\beta(z),x)=G(z)(z-x)-\int_x^zG(y)dy\ge0
+\end{equation}</p>
+<p>このことより他の全ての買い手が戦略$\beta$に従っているとき，買い手１も戦略$\beta$に従うことが最適となる．
+そして，このことは戦略$\beta$が対称均衡戦略であることを示している．</p>
+<p>均衡入札額は部分積分んお公式により
+\begin{equation}
+\beta^Ⅰ(x)=x-\int_0^x\frac{G(y)}{G(x)}dy
+\end{equation}
+とかける．
+\begin{equation}
+\frac{G(y)}{G(x)}=\left[ \frac{F(y)}{F(x)}\right]^{N-1}
+\end{equation}
+であるため，$x$より小さな値となる．</p>
+<p>入札額が価値より少ない度合いは競合する入札者の数に依存し，$N$が増えると０に近いていく．
+これによって，固定の分布$F$にしたいして，入札者の数が増えるに従って，均衡な入札額$\beta^Ⅰ$は$x$に近づいていく．</p>
+<h5 id="例21">例2.1</h5>
+<p>価値が$[0,1]$の一様分布である．$F(x)=x$ならば$G(x)=x^{N-1}$であり，
+\begin{equation}
+\beta^Ⅰ(x)=\frac{N-1}{N}x
+\end{equation}
+である．</p>
+<div>
+    
+<iframe src="https://www.desmos.com/calculator/rnibqhdmff?embed" width="500px" height="500px" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+</div>
+<h5 id="例22">例2.2</h5>
+<p>価値が$[0,\infty)$の指数分布である．入札者が２人である．
+ある$\lambda&gt;0$に対して，$F(x)=1-\exp(-\lambda x)$である時，
+\begin{equation}
+\beta^Ⅰ(x)=x-\int^x_0\frac{F(y)}{F(x)}dy\\<br>
+=\frac{1}{\lambda}-\frac{x\exp(-\lambda x)}{1-\exp(-\lambda x)}
+\end{equation}</p>
+<div>
+    
+<iframe src="https://www.desmos.com/calculator/ltmbfapftk?embed" width="500px" height="500px" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+</div>
+<p>$\lambda=2$の場合を考えると$E[X]=\frac{1}{2}$となる．
+指数分布に従う価値では書いての価値が１００万ドルといった高い値であっても５０セント以下で入札する．
+これはより高く入札しないことで大きな損が生じるリスクを考えると直感に反する．
+しかし，高い価値を持つ買い手が均衡状態で負ける確率は極めて小さい．実際に$10^{-400000}$以下である．
+$\frac{1}{2}$以上の入札額で入札する人がいないという事実は全ての$x$に対して，
+\begin{equation}
+\beta^Ⅰ(x)=E[ Y_1|Y_1&lt; x]\le E[ Y_1]
+\end{equation}
+であるという性質の結果である．
+２人の入札者の場合もう１つの入札額はは$E[X]$である．</p>
+<h3 id="売り上げの比較">売り上げの比較</h3>
+<p>ファーストプライスオークションとセカンドプライスオークションの両方における前の節で導かれた対称均衡戦略で，２つのフォーマットの売り上げを比較できる．</p>
+<p>ファーストプライスオークションにおいて，勝者は入札額が課金される．
+価値$x$の入札者の期待支払額は
+\begin{equation}
+m^Ⅰ(x)=Prob[入札で勝つ]\times 支払額=G(x)\times E[ Y_1|Y_1&lt; x].
+\end{equation}
+これはセカンドプライスオークションと同じである．
+売り手の期待売り上げはオークション前の買い手の期待支払額の和であるため，２つのオークションの期待売り上げは同じである．
+これがなぜなのかを見ていく．</p>
+<p>それぞれのオークションで特定の買い手のオークション前の期待支払額は$A={Ⅰ,Ⅱ}$として，
+\begin{equation}
+E[ m^A(X)]=\int_0^\omega m^A(x)f(x)dx \\<br>
+=\int_0^\omega\left(\int_0^x yG'(y)dy\right)f(x)dx
+\end{equation}
+である．
+重積分の積分順序の変更により
+\begin{equation}
+E[ m^A(X)]=\int^\omega_0\left(\int^\omega_yf(x)dx\right)yG'(y)dy \\<br>
+=\int_0^\omega y(1-F(y))G'(y)dy
+\end{equation}
+となる．
+生じる期待売り上げ$E[R^A]$は個別入札者のオークション前の期待支払額の$N$倍であるので，
+\begin{equation}
+E[R^A]=N\times E[m^A(X)] \\<br>
+=N\int^\omega_0y(1-F(y))G'(y)dy
+\end{equation}
+N個の価値の２番目に高い価値$Y_2^{(N)}$の確率密度函数は$f_2^{(N)}(y)=N(1-F(y))f_1^{(N-1)}(y)$である（付録Cの順序統計参照）．
+$f_1^(N-1)(y)=G'(y)$であるので，
+\begin{equation}
+E[R^A]=\int^\omega_0yf_2^{(N)}(y)dy \\<br>
+=E\left[Y_2^{(N)}\right]
+\end{equation}</p>
+<p><em>２つのオークションで売り手の期待収益は同じ</em>という結論を出すことができる．
+これを命題として表す．</p>
+<h4 id="命題23">命題2.3</h4>
+<p>独立同分布に従う私的価値の元で，ファーストプライスオークションにおける期待売上はセカンドプライスオークションの売り上げの期待値と同じである．</p>
+<p>これは個別の実現値を考えると売り上げの大小はあるが，平均としては同じであることを示している．
+価格の分布を深掘りする．</p>
+<table>
+<thead>
+<tr>
+<th>記法</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L^Ⅰ$</td>
+<td>ファーストプライスオークションにおける価格の分布</td>
+</tr>
+<tr>
+<td>$L^Ⅱ$</td>
+<td>セカンドプライスオークションにおける価格の分布</td>
+</tr>
+</tbody>
+</table>
+<p>$L^Ⅱ$は$L^Ⅰ$の <em>mean-preserving spread</em> （平均値は同じであるがより分散が大きい）である（付録B）．</p>
+<h4 id="命題24">命題2.4</h4>
+<p>独立同分布に従う私的価値の元で，セカンドプライスオークションの均衡価格の分布はセカンドプライスオークションの均衡価格の分布のmean-preserving spreadである．</p>
+<h5 id="命題24の証明">命題2.4の証明</h5>
+<p>セカンドプライスオークションの売り上げは確率変数$R^Ⅱ=Y_2^{(N)}$である．
+ファーストプライスオークションの売り上げは確率変数$R^Ⅰ=\beta(Y_1^{(N)}$である．
+そのため，
+\begin{equation}
+E\left[R^Ⅱ|R^Ⅰ=p\right]=E\left[Y_2^{(N)}|Y_1^{(N)}=\beta^{-1}(p)\right]
+\end{equation}
+とかける．
+２番目に高い価値$Y_1^{(N-1)}$について最も高い価値が$Y_1^{(N)}=y$であるという事象が与える情報は２番目に高い価値$Y_1^{(N-1)}$が$y$より少ないということのみであるため，どんな$y$に対しても
+\begin{equation}
+E\left[Y_2^{(N)}|Y_1^{(N)}=y\right]=E\left[Y_1^{(N-1)}|Y_1^{(N)}&lt;y\right]
+\end{equation}
+である．
+これによって
+\begin{equation}
+E\left[R^Ⅱ|R^Ⅰ=p\right]=E\left[Y_1^{(N-1)}|Y_1^{(N)}&lt;\beta^{-1}(p)\right] \\<br>
+=\beta(\beta^{-1}(p)) \\<br>
+=p
+\end{equation}
+となる．
+$E\left[R^Ⅱ|R^Ⅰ=p\right]=p$が成り立つので，$R^Ⅰ+Z$と$R[Z|R^Ⅰ=p]=0$が$R^Ⅱ$と同じになるような確率変数$Z$が存在する．</p>
+<h3 id="予約価格">予約価格</h3>
+<p>この節ではある閾値$r$より価格が低かったら売り手は売らないと言う権利を使える状況を考える．
+そのような閾値を予約価格という．
+この節では予約価格が売り手の売り上げに与える影響を調べる．</p>
+<h4 id="セカンドプライスオークションにおける予約価格">セカンドプライスオークションにおける予約価格</h4>
+<p>セカンドプライスオークションにおいて予約価格は戦略に影響を与えず，価値で入札するのが弱支配戦略である．
+買い手の期待支払額は
+\begin{equation}
+m^Ⅱ(x,r) = \begin{cases}
+0 &amp; if x &lt; r \\<br>
+rG(r) + \int_r^xyG'(y)dy &amp; if x \ge r
+\end{cases}
+\end{equation}
+である．
+これは２番目の入札額が$r$より小さくても$r$は支払わなくてはならないからだ．</p>
+<h4 id="ファーストプライスオークションにおける予約価格">ファーストプライスオークションにおける予約価格</h4>
+<p>$x&lt;r$である買い手は利益を得られないのでオークションに参加しない．
+$\beta^Ⅰ$は予約価格$r$の元でのファーストプライスオークションにおける対称均衡戦略であるため，$\beta^Ⅰ(r)=r$である．
+これは価値$r$を持つ買い手は他の入札者全てが$r$より少ない入札額を提示して自身が$r$で入札した時のみオークションに勝てるからだ．
+他の点はファーストプライスオークションの解析に影響せず，以下の対称均衡入札入札戦略をどんな$x\ge r$についても得る．
+\begin{equation}
+\beta^Ⅰ(x)=E\left[\max\{Y_1, r\}|Y_1&lt;x\right] \\<br>
+=r\frac{G(r)}{G(x)}+\frac{1}{G(x)}\int_r^x yG'(y)dy
+\end{equation}
+そして，期待支払額は
+\begin{equation}
+m^Ⅰ(x,r)=G(x)\times \beta^Ⅰ(x) \\<br>
+=rG(r)+\int_r^xyG'(y)dy
+\end{equation}</p>
+<p>こうして，ファーストプライスオークションとセカンドプライスオークションの期待支払額と期待収益が同じになった．
+命題2.3を予約価格がある設定も含むように一般化できた．</p>
+<h4 id="予約価格が売り上げに与える影響">予約価格が売り上げに与える影響</h4>
+<p>予約価格はどのように売り手の売り上げに影響するだろうか？
+オークション方式を$A=\{Ⅰ, Ⅱ\}$とすると，オークション前の買い手の期待支払額は
+\begin{equation}
+E\left[m^A(X,r)\right]=\int_r^\omega m^A(x,r)f(x)dx \\<br>
+=\int_r^\omega \left(rG(r)+\int_r^xyG'(y)dy\right)f(x)dx \\<br>
+=r(1-F(r))G(r)+\int_r^\omega\left(\int_r^x yG'(y) dy\right)f(x) dx (重積分の順序変更) \\<br>
+=r(1-F(r))G(r)+\int_r^\omega y(1−F(y))G'(y)dy \\<br>
+\end{equation}</p>
+<p>売り手観点から最適な，売り上げを最大化する予約価格はなんだろうか？
+売り手にとっての商品の価値を$x_0\in[0,\omega)$とする．
+売り手は予約価格を$x_0$より小さくすることはないので，$r\ge x_0$の時の売り手の期待収益の総和は
+\begin{equation}
+\Pi_0=N\times E[m^A(X,r)]+F(r)^Nx_0
+\end{equation}
+$r$について微分すると，
+\begin{equation}
+\frac{d\Pi_0}{dr}=N\left[1-F(r)-rf(r) \right]G(r)+NG(r)f(r)x_0
+\end{equation}
+$F$のハザード比は$\lambda(x)=f(x)/(1-F(x))$として定義されるので，
+\begin{equation}
+\frac{d\Pi_0}{dr}=N\left<a href="1-F(r)">1-(r-x_0)\lambda(r) \right</a>G(r)
+\end{equation}
+と書ける．</p>
+<p>第一に，$X_0&gt;0$の時，$r=x_0$での$\Pi_0$は正の値となるので，$r&gt;x_0$と売り手は指定すべきである．
+$x_0=0$の時，$\Pi_0$の微分は$r=0$で0となる．
+$\lambda(r)$が有界である限り，0で極小値を持つ．そのため，小さな予約価格は売り上げをあげる．
+そのため， <em>売り上げを最大化する売り手は常に勝ち以上の予約価格を設定する</em>．
+なぜ$x_0$を超える予約価格を設定することで売り上げを増やすことができるのだろうか？
+二人の買い手がいて$x_0=0$であるセカンドプライスオークションを考える．
+売り手が正の予約価格$r$を設定することで最も高い入札額$Y_1$が$r$より小さくなり，売れ残ってしまう危険性がある．
+しかし，この損失の可能性は最も高い価格$Y_1$が$r$より大きく，２番目の価格が$r$より小さい可能性によって埋め合わされる（他の全ての場合で予約価格は価格に影響しない）．その場合，予約価格を適用することで，売値は$Y_2$ではなく$r$になる．
+最初の事象が起きる確率は$F(r)^2$でその時の損失は$r$である．
+２番目の事象が起きる確率は$2F(r)(1-F(r))$であり，その時収益は$2rF(r)(1-F(r))$である．
+小さな予約価格を設定することで，期待収益が期待損失を上回る．
+このことは <em>除外原理(exlcution principal)</em> と言われることがある．</p>
+<p>第二に，１次の条件から最適な予約価格$r^* $は
+\begin{equation}
+(r^*-x_0)\lambda(r^*)=1
+\end{equation}
+を満たす．また，同値な形として
+\begin{equation}
+r^*-\frac{1}{\lambda(r^*)}=x_0
+\end{equation}</p>
+<p>$\lambda(\cdot)$が狭義単調増加関数であるとき，この条件は十分条件で，予約価格は買い手の数に依存しない．
+予約価格は１人の買い手のみが予約価格を超えている時のみ効果がある．
+予約価格は１人の買い手のように影響する．</p>
+<h4 id="入場料">入場料</h4>
+<p>予約価格では$r$より少ない価値を締め出す効果があったが，均衡での支払額は0であるためオークションに参加してもしなくても同じだった．
+他の排除する方法としてオークションの入場料を取ることだ．</p>
+<p>予約価格$r$は$x&lt; r$である価値を持つ買い手全てを締め出す．
+同様の買い手の集合を排除するには$e=G(r)\times r$の入場料をそれぞれの買い手から取れば良い．
+$e$を支払った後，ファーストプライスオークションとセカンドプライスオークションにおいて，価値$r$を持つ買い手の期待支払額は0になる．
+予約価格$r$の除外効果は予め決まった入場料$e$と同じになる．
+逆に，入場料$e$の除外効果は予め決まった予約価格$r$と同じになる．</p>
+<h4 id="効率性-vs-売り上げ">効率性 vs 売り上げ</h4>
+<p>予約価格や入場料は売り上げを増やす効果があるが，効率性には悪い影響がありうる．
+売り手にとっての価値が0である商品を考える．
+予約価格なしでは商品は必ず売られ，対称モデルでは常に最も高い価値を持った買い手に売られる．
+こうして，ファーストプライスオークションとセカンドプライスオークションによって価値が最も高い人に商品が渡る．
+予約価格ありだと商品が売り手の元に残り続ける確率が0より大きな値となる．この点で非効率的である．
+これは効率性と売り上げにはトレードオフがあることを示している．</p>
+<h4 id="commitment-issue">Commitment Issue</h4>
+<p>無視してきた２つの実用上で考慮すべきことがある．</p>
+<p>第一に，予約価格以上では売れない時，売り手は商品を売らないということだ．
+予約価格を設定することで売り手はいくつかの取引から得られる利益を諦めているので，この誓約は特に重要だ．
+この誓約がない場合，買い手はより低い予約価格で再びオークションが行われるのを待つだろう．
+こうした期待値はファーストプライスオークションの入札戦略に影響する．
+将来再び販売される可能性によって買い手はより低い価格を待つということが起きる．
+そして，それにより今日の需要が減る．
+それに応じて，売り手は１回の販売で最適な価格や商品が腐りやすい場合のように，今日の予約価格を下げなければならない．</p>
+<p>第二に，無関係ではない問題として秘密の予約価格という問題がある．
+今まで予約価格は公開されている設定を考えていたが，芸術のオークションなどのように秘密の予約価格を持つオークションがある．
+売り手は全ての入札額とそれによって決まった価格を見て売るかどうかを選べる．
+しかし，これは将来売り手がより高い価格になることを予想している時にしか合理的ではない．
+ここでも，将来の売り出しについて買い手の期待値が現在の入札に影響している．</p>
+
+        </div>
+        <footer class="article-footer">
+    <a data-url="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" data-id="af69a522686e09ca9dfb34adacce2b7d" class="article-share-link">
+        <i class="fa fa-share"></i>
+        Share
+    </a>
+    
+    <a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/#disqus_thread" class="article-comment-link">
+        Comments
+    </a>
+    
+
+    <script>
+    (function ($) {
+        
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+    </script>
+</footer>
+
+    </div>
+
+    
+<nav id="article-nav">
+    
+    <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">
+          Older
+      </strong>
+      <div class="article-nav-title">Auction Theory 1章</div>
+    </a>
+    
+
+    
+</nav>
+
+
+</article>
+
+
+<section id="comments">
+    <div id="disqus_thread">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "getumen-github-io" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+</section>
+
+
+    </section>
+
+   	
+    	<aside id="sidebar">
+    
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Recents
+    </h3>
+    <div class="widget">
+        <ul id="recent-post">
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory 2章 (1)" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/auction">
+                        auction
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" class="title">Auction Theory 2章 (1)</a></p>
+                    <p class="item-date">
+                        <time datetime="2021-04-25 18:22:49 &#43;0900 JST" itemprop="datePublished">2021-04-25</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory 2章 (1)" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/auction">
+                        auction
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/" class="title">Auction Theory 1章</a></p>
+                    <p class="item-date">
+                        <time datetime="2021-04-24 15:57:28 &#43;0900 JST" itemprop="datePublished">2021-04-24</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Auction Theory 2章 (1)" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/infra">
+                        infra
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" class="title">マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる</a></p>
+                    <p class="item-date">
+                        <time datetime="2020-02-01 15:36:41 &#43;0900 JST" itemprop="datePublished">2020-02-01</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/07/27/minikube%E3%82%92ubuntu18.04%E3%81%AB%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Auction Theory 2章 (1)" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/%E5%82%99%E5%BF%98%E9%8C%B2">
+                        備忘録
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/07/27/minikube%E3%82%92ubuntu18.04%E3%81%AB%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B/" class="title">MinikubeをUbuntu18.04にインストールする</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-07-27 15:53:05 &#43;0900 JST" itemprop="datePublished">2019-07-27</time>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="item-thumbnail">
+                    <a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" class="thumbnail">
+                    
+                        <span style="background-image:url(https://getumen.github.io/images/banners/website_kensaku_kekka.png)" alt="Auction Theory 2章 (1)" class="thumbnail-image"></span>
+                    
+                    </a>
+                </div>
+                <div class="item-inner">
+                    
+                    
+                    <p class="item-category">
+                        
+                        <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">
+                        machine learning
+                        </a>
+                    </p>
+                    
+                    
+                    <p class="item-title"><a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" class="title">論文メモ：Unbiased Learning to Rank With Biased Feedback</a></p>
+                    <p class="item-date">
+                        <time datetime="2019-05-25 21:06:23 &#43;0900 JST" itemprop="datePublished">2019-05-25</time>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/auction">
+                    auction
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/cassandra">
+                    cassandra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/infra">
+                    infra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/machine-learning">
+                    machine-learning
+                </a>
+                <span class="category-list-count">9</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/categories/%E5%82%99%E5%BF%98%E9%8C%B2">
+                    備忘録
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tags
+    </h3>
+    <div class="widget">
+        <ul class="category-list">
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/ansible">
+                    ansible
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/auction-theory">
+                    auction-theory
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/bandit">
+                    bandit
+                </a>
+                <span class="category-list-count">8</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/cassandra">
+                    cassandra
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/causal">
+                    causal
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/kubernetes">
+                    kubernetes
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/memo">
+                    memo
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/nosql">
+                    nosql
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">
+                    regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems
+                </a>
+                <span class="category-list-count">7</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/vagrant">
+                    vagrant
+                </a>
+                <span class="category-list-count">1</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">
+                    読書
+                </a>
+                <span class="category-list-count">11</span>
+            </li>
+            
+            <li class="category-list-item">
+                
+                <a class="category-list-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8%E3%83%A1%E3%83%A2">
+                    読書メモ
+                </a>
+                <span class="category-list-count">2</span>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+
+
+    
+
+
+<div class="widget-wrap">
+    <h3 class="widget-title">
+        Tag cloud
+    </h3>
+    <div class="widget tagcloud">
+        
+        
+        <a href="https://getumen.github.io/tags/ansible" style="font-size: 12px;">ansible</a>
+        
+        
+        <a href="https://getumen.github.io/tags/auction-theory" style="font-size: 12px;">auction-theory</a>
+        
+        
+        <a href="https://getumen.github.io/tags/bandit" style="font-size: 12px;">bandit</a>
+        
+        
+        <a href="https://getumen.github.io/tags/cassandra" style="font-size: 12px;">cassandra</a>
+        
+        
+        <a href="https://getumen.github.io/tags/causal" style="font-size: 12px;">causal</a>
+        
+        
+        <a href="https://getumen.github.io/tags/kubernetes" style="font-size: 12px;">kubernetes</a>
+        
+        
+        <a href="https://getumen.github.io/tags/memo" style="font-size: 12px;">memo</a>
+        
+        
+        <a href="https://getumen.github.io/tags/nosql" style="font-size: 12px;">nosql</a>
+        
+        
+        <a href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems" style="font-size: 12px;">regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems</a>
+        
+        
+        <a href="https://getumen.github.io/tags/vagrant" style="font-size: 12px;">vagrant</a>
+        
+        
+        <a href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8" style="font-size: 12px;">読書</a>
+        
+        
+        <a href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8%E3%83%A1%E3%83%A2" style="font-size: 12px;">読書メモ</a>
+        
+    </div>
+</div>
+
+
+
+
+
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+    
+	</div>
+</div>
+
+<footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021
+      © @getumen
+    </div>
+  </div>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-47210848-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script src="https://getumen.github.io/fancybox/jquery.fancybox.pack.js"></script>
+<script src="https://getumen.github.io/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+</body>
+</html>

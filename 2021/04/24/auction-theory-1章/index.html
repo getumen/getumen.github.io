@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja-jp">
 <head>
-    <title>論文メモ：Unbiased Learning to Rank With Biased Feedback &middot; 雑記</title>
+    <title>Auction Theory 1章 &middot; 雑記</title>
     <meta name="generator" content="Hugo 0.83.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
       <meta name="description" content="日々学んだことをメモします">
     
     
-    <link rel="canonical" href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/"/>
+    <link rel="canonical" href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/"/>
     <link rel="icon" href="https://getumen.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
@@ -20,25 +20,28 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="論文メモ：Unbiased Learning to Rank With Biased Feedback" />
-<meta property="og:description" content="傾向スコアにより，検索エンジンの表示順序バイアスを取り除いて，検索エンジンのクリックログから関連性を学習する手法を提案 論文 https://www.ijcai.org/proceedings/2018/0738.pdf https://dl.acm.org/citation.cfm?id=3018699 1 概要 インタラ" />
+    <meta property="og:title" content="Auction Theory 1章" />
+<meta property="og:description" content="オークション理論の本を読みます．
+オークション理論の導入です．" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" /><meta property="og:image" content="https://getumen.github.io/images/banners/website_kensaku_kekka.png" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-05-25T21:06:23&#43;09:00" />
-<meta property="article:modified_time" content="2019-05-25T21:06:23&#43;09:00" />
+<meta property="og:url" content="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/" /><meta property="og:image" content="https://getumen.github.io/images/banners/auction_hammer.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-04-24T15:57:28&#43;09:00" />
+<meta property="article:modified_time" content="2021-04-24T15:57:28&#43;09:00" />
 
 
     
-    <meta itemprop="name" content="論文メモ：Unbiased Learning to Rank With Biased Feedback">
-<meta itemprop="description" content="傾向スコアにより，検索エンジンの表示順序バイアスを取り除いて，検索エンジンのクリックログから関連性を学習する手法を提案 論文 https://www.ijcai.org/proceedings/2018/0738.pdf https://dl.acm.org/citation.cfm?id=3018699 1 概要 インタラ"><meta itemprop="datePublished" content="2019-05-25T21:06:23&#43;09:00" />
-<meta itemprop="dateModified" content="2019-05-25T21:06:23&#43;09:00" />
-<meta itemprop="wordCount" content="5918"><meta itemprop="image" content="https://getumen.github.io/images/banners/website_kensaku_kekka.png">
-<meta itemprop="keywords" content="読書,memo,causal," />
+    <meta itemprop="name" content="Auction Theory 1章">
+<meta itemprop="description" content="オークション理論の本を読みます．
+オークション理論の導入です．"><meta itemprop="datePublished" content="2021-04-24T15:57:28&#43;09:00" />
+<meta itemprop="dateModified" content="2021-04-24T15:57:28&#43;09:00" />
+<meta itemprop="wordCount" content="3822"><meta itemprop="image" content="https://getumen.github.io/images/banners/auction_hammer.png">
+<meta itemprop="keywords" content="読書,読書メモ,auction theory," />
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://getumen.github.io/images/banners/website_kensaku_kekka.png"/>
+<meta name="twitter:image" content="https://getumen.github.io/images/banners/auction_hammer.png"/>
 
-<meta name="twitter:title" content="論文メモ：Unbiased Learning to Rank With Biased Feedback"/>
-<meta name="twitter:description" content="傾向スコアにより，検索エンジンの表示順序バイアスを取り除いて，検索エンジンのクリックログから関連性を学習する手法を提案 論文 https://www.ijcai.org/proceedings/2018/0738.pdf https://dl.acm.org/citation.cfm?id=3018699 1 概要 インタラ"/>
+<meta name="twitter:title" content="Auction Theory 1章"/>
+<meta name="twitter:description" content="オークション理論の本を読みます．
+オークション理論の導入です．"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -258,13 +261,13 @@
     <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
-            <img src="https://getumen.github.io/images/banners/website_kensaku_kekka.png" class="article-banner">
+            <img src="https://getumen.github.io/images/banners/auction_hammer.png" class="article-banner">
         
 
         <header class="article-header">
-    <a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/">
+    <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/">
     <h1 class="article-title" itemprop="name">
-        論文メモ：Unbiased Learning to Rank With Biased Feedback
+        Auction Theory 1章
     </h1>
     </a>
     <div class="article-meta">
@@ -272,12 +275,12 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2019-05-25 21:06:23 &#43;0900 JST" itemprop="datePublished">2019-05-25</time>
+            <time datetime="2021-04-24 15:57:28 &#43;0900 JST" itemprop="datePublished">2021-04-24</time>
             &middot;
-            5918
+            3822
             words
             &middot;
-            12
+            8
             minute read
         </div>
         
@@ -288,7 +291,7 @@
                 <i class="fa fa-folder"></i>
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">machine learning</a>
+                <a class="article-category-link" href="https://getumen.github.io/categories/auction">auction</a>
                 
                 
             </div>
@@ -306,11 +309,11 @@
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/memo">memo</a>
+                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8%E3%83%A1%E3%83%A2">読書メモ</a>
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/causal">causal</a>
+                <a class="article-category-link" href="https://getumen.github.io/tags/auction-theory">auction theory</a>
                 
                 
             </div>
@@ -320,207 +323,112 @@
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <ul>
-<li>傾向スコアにより，検索エンジンの表示順序バイアスを取り除いて，検索エンジンのクリックログから関連性を学習する手法を提案</li>
-</ul>
-<!-- raw HTML omitted -->
-<p>論文</p>
+            <p>オークション理論の本を読みます．
+オークション理論の導入です．</p>
+<h2 id="introduction">Introduction</h2>
 <ul>
-<li><a href="https://www.ijcai.org/proceedings/2018/0738.pdf">https://www.ijcai.org/proceedings/2018/0738.pdf</a></li>
-<li><a href="https://dl.acm.org/citation.cfm?id=3018699">https://dl.acm.org/citation.cfm?id=3018699</a></li>
+<li>オークションは古今東西広く行われているのはなぜだろうか？</li>
+<li>オークションが固定の価格に比べて売るメカニズムとして特に適しているのはどんな時だろうか？</li>
+<li>買い手観点で良いbidding戦略はなんだろうか？</li>
+<li>売り手観点で他のオークション形態より大きな利益を得られるオークション形態はなんだろうか？</li>
 </ul>
-<h2 id="1-概要">1 概要</h2>
-<p>インタラクティブなシステムでは暗黙的なフィードバック（クリックや滞在時間）は豊富なデータのソースである．
-暗黙的なフィードバックは多くのメリットを持つ一方で，暗黙的なフィードバック固有のバイアスのため効率的に使う上での障害になる．
-例えば，検索結果のランキングによるポジションバイアスはどのくらい多くのクリック結果が得られるかに強く影響する．
-だから，直接ランク学習の学習データとして直接クリックデータを使うと最適な解を得られない．
-このバイアスの問題を乗り越えるために，反事実推論フレームワークを示す．
-このフレームワークはバイアスの乗ったデータであるにもかかわらず経験リスク最終化によってバイアスのないランク学習のための理論的なバイアスを提供する．
-このフレームワークを用いて，暗黙的なフィードバックからの分類問題のための傾向スコアにより重みづけをしたランキングSVM(Propensity-weighted ranking SVM)を導出した．
-そのランキングSVMではクリックモデルが傾向スコア推定器の役割を果たす．
-理論的な裏付けの上に，提案手法はバイアスを効率的に扱うことを実験的に示した．
-また，提案手法はノイズや不正確な傾向スコアモデルに対して頑健であり，効率的にスケールすることを示した．
-加えて，利用できる検索エンジンを用いて提案手法が実世界に適用できることを示した．
-そして，実質的に情報取得のパフォーマンスを改善した．</p>
-<h2 id="導入">導入</h2>
-<h3 id="背景">背景</h3>
-<p>検索システムのバッチ訓練にはアノテーションされたテストデータが必要だが，ウェブ検索システムにおいて専門家から関連性のアノテーションを得るのは非現実的で不可能である．</p>
-<p>ユーザの振る舞いによる暗黙的なフィードバックはたくさんある．</p>
-<h3 id="課題--関連研究">課題 &amp; 関連研究</h3>
-<ol>
-<li>クリックされたかされていないかを関連性の正例負例に使うナイーブなアプローチはひどくバイアスが乗ってしまう．特に，表示する順番がユーザのクリックする場所に強く影響する[Joachims et al., 2007].
-この表示された位置のバイアスによって一様分布からかけ離れた不完全で歪んだ関連性のサンプルを生み出してしまう．</li>
-<li>クリックされた文章とスキップされた文章の間にあるクリックを好みとして扱うことは正確だとわかっている[Joachims,2002; Joachims et al., 2007]が，表示された順序に対して好きではないという好みを推測できるだけである．
-これは深刻なバイアスを生み，これらの好みによって鍛えられたアルゴリズムは表示する順序を（本来望ましいものと）逆向きにしがちだ．</li>
-<li>クリックの生成モデル[Chuklin et al. 2015]は同じクエリを複数回必要とするが，これは非現実的だ．</li>
-<li>オンライン学習アルゴリズムのようにランク学習がユーザに提示するものを乱択することを許しs [Raman et al., 2013; Hofmann et al., 2013]，バンディットフィードバックからバッチ学習すること[Swaminathan and Joachims,
-2015]で，原則的な方法でクリックのバイアスの問題を克服できる．しかし，訓練データを集めるとき常に検索のとき動的に並び変える必要があるのはランキングの質を下げ，観察データ（ランダムな割付を行ったものは実験データ？）を集めるのに比べてコストが高い．</li>
-</ol>
-<h3 id="貢献">貢献</h3>
-<p>上記課題を解決する理論的な原則に基づいていて，経験的に効率的な手法を示す．</p>
-<ol>
-<li>因果推論の手法から反事実推定の技術[Imbens and Rubin, 2015] を借用し，クエリレベルのサンプリングバイアスを補正すること[Wang et al.,2016]で，バイアスの乗ったフィードバックデータを利用して検索ランキングのパフォーマンスを評価するバイアスのない（ことを証明可能な）推定器を開発する．</li>
-<li>上記推定器をもとにランク学習のための傾向スコアで重み付けされた経験リスク最小化を提案する．Propensity SVM-Rankという学習法を実装する．</li>
-<li>クリックモデルはクリック結果を傾向スコアの計算のために用いて関連性の評価を必要としないので，クエリーが繰り返し観測される必要はない（課題３）．</li>
-<li>傾向スコアを求める小さな社会実験を除いて，提案手法はランダム化を必要としない．</li>
-</ol>
-<h2 id="2-関連研究">2 関連研究</h2>
-<h2 id="3--full-info-learning-to-rank">3  FULL-INFO LEARNING TO RANK</h2>
-<p>ランク学習の問題設定と従来の課題を見る．</p>
+<p>これらの疑問や他の疑問がこの本の内容を形作っている．</p>
+<h3 id="いくつかの一般的なオークション形態">いくつかの一般的なオークション形態</h3>
 <ul>
-<li>独立同分布から引かれたクエリ$\mathbf{x}_i\sim P(\mathbf{x})$のサンプル$\mathbf{X}$が与えられているとする．</li>
-<li>すべてのドキュメント$y$に対する関連性$rel(\mathbf{x},y)$は既知であると仮定する（関連性が全て既知だと仮定されているのでFull−Info設定という）．</li>
-<li>クエリ$\mathbf{x}$に対する任意のランキング$\mathbf{y}$の損失(e.g. <a href="https://en.wikipedia.org/wiki/Discounted_cumulative_gain">DCG</a>) $\ell(\mathbf{y}|\mathbf{x})$も計算できる．</li>
-<li>クエリ分布に対して期待値を取ることで，ランキング$S(\mathbf{x})$を返すランキングシステム$S$のリスクを$$R(S)=\int\Delta(S(\mathbf{x})|\mathbf{x})dP(\mathbf{x})\tag{1}$$
-を定義できる．</li>
-<li>経験リスクは$$\hat{R}(S)=\frac{1}{|\mathbf{X}|}\sum_{x_i\in\mathbf{X}}\Delta(S(\mathbf{x}_i)|\mathbf{x}_i)$$</li>
-<li>経験リスク最小化により$$\hat{X}=\arg\min_{S\in\mathcal{S}}\left\{\hat{R}(S)\right\}$$を取得する．</li>
+<li>イングリッシュオークション<br>
+価格が公開されていて上昇していくオークション形態．
+売りは小さな価格から始まり，少なくとも２人の買い手がいる限り少しずつ上げられていく．
+買い手が１人になった時，値段の上昇は止まる．
+フォーマルにモデル化すると次のようになる．価格は連続的に挙げられていくゲームの元で，それぞれの買い手は現在の値段で買うことを全員に明らかな方法で，手をあげて示す．買い手は価格が高すぎると思ったら手を下げてそのことを示す．オークションは買い手が一人になったら終わる．残った買い手は商品を得て，２番目の買い手が降りた値段を払う．</li>
+<li>ダッチオークション<br>
+価格が公開されていて下降していくオークション形態．
+オークション主催者は誰も買い手がつかなそうな価格から始める．誰か一人の買い手が買おうとしたら，その時の価格で商品を買う．</li>
+<li>封印価格ファーストプライスオークション<br>
+買い手は入札価格を封筒に入れて提出する．入札価格が最も高かった人が商品を獲得し，自身の入札価格を支払う．</li>
+<li>封印価格セカンドプライスオークション<br>
+買い手は入札価格を封筒に入れて提出する．入札価格が最も高かった人が商品を獲得し，２番目に高い入札額を支払う．</li>
 </ul>
-<p>２つの課題がある．</p>
-<ol>
-<li>すべてのドキュメントにラベル付を行うのは不可能であり， pooling technique(?)[Sparck-Jones and van Rijsbergen, 1975]はバイアスを導入してしまう．</li>
-<li>専門家の判断$rel(\mathbf{x},y)$は同じクエリの根底にあるすべての意図について集約されている必要がある．また，クエリの分布を適切に予想する判断によって適切な関連性$rel(\mathbf{x},y)$を割り当てることは困難だ．</li>
-</ol>
-<h2 id="4-partial-info-learning-to-rank">4 PARTIAL-INFO LEARNING TO RANK</h2>
-<ul>
-<li>
-<p>暗黙的フィードバックから学習することは上記のFull−Infoのランク学習設定の課題を克服できうる．</p>
-</li>
-<li>
-<p>ユーザの特定の文脈や必要な情報に従う関連性の判断人基づきユーザが行動するので，ユーザのシグナルを利用することでユーザの意図を反映できるからだ．</p>
-</li>
-<li>
-<p>クエリ$\mathbf{x}_i$に対するユーザ固有の関連性$y$を$r_i(\mathbf{y})$と記す．</p>
-</li>
-<li>
-<p>しかし，暗黙的なフィードバックを用いたとき観測されなかったフィードバックの問題はpooling settingの問題よりずっと大きい．</p>
-</li>
-<li>
-<p>特に表示順序によるバイアスによって暗黙的なバイアスは歪められ，非ランダムに欠損している[Little and Rubin, 2002].</p>
-</li>
-<li>
-<p>我々は[Schnabel et al., 2016]と似た以下の反事実モデルを採用する</p>
-</li>
-<li>
-<p>関連性を$r_i(y)\in\{0,1\}$とし，関心のパフォーマンスを関連性のランキングの和$$\Delta(\mathbf{y}|\mathbf{x}_i,t_i)=\sum_{y\in\mathbf{y}}rank(y|\mathbf{y})\cdot r_i(y)\tag{2}$$によって測るとする．</p>
-</li>
-<li>
-<p>式１の類推からシステムのリスクを$$R(S)=\int\Delta(S(\mathbf{x}|\mathbf{x},r))dP(\mathbf{x},r)\tag{3}$$
-と定義する．</p>
-</li>
-<li>
-<p>提案する反事実モデルでは各クエリ$(\mathbf{x}_i,r_i)\sim P(\mathbf{x},r)$に対して，真の関連性ベクトル$r_i$が存在すると考える．</p>
-</li>
-<li>
-<p>関連性のシグナル（クリック等）は表示されたランキング$\overline{\mathbf{y}}_i$のもとで，上位のもののほうが下位のものよりも観測されやすい．</p>
-</li>
-<li>
-<p>明らかになった関連性を指し示す0/1のベクトルを$o_i\sim P(o_i|\mathbf{x}_i,\overline{\mathbf{y}_i},r_i)$と記す．</p>
-</li>
-<li>
-<p>各$o_i$の要素について，$Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}_i},r_i)$はクエリ$\mathbf{x}$に対して結果$y$の関連性$r_i(y)$を観測したことの周辺確率を表している．</p>
-</li>
-<li>
-<p>この観測確率値を観測の傾向スコアと呼ぶ</p>
-</li>
-<li>
-<p>この反事実モデルの設定を用いて新しいランキング$\mathbf{y}$に対しての$\Delta(\mathbf{y}|\mathbf{x}_i,r_i)$のバイアスのない推定量$$\hat{\Delta}_{IPS}(\mathbf{y}|\mathbf{x}_i,\overline{\mathbf{y}}_i,o_i) = \sum_{y:o_i(y)=1}\frac{rank(y|\mathbf{y})\cdot r_i(y)}{Q(o_i(y) = 1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)} = \sum_{y:o_i(y)=1\land r_i(y)=1}\frac{rank(y|\mathbf{y})}{Q(o_i(y) = 1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}$$をinverse propensity score (IPS) [Horvitz and Thompson, 1952; Rosenbaum and Rubin, 1983; Imbens and Rubin, 2015]を用いて得る．</p>
-</li>
-<li>
-<p>すべての$r(y)=1$である$y$に対して（関連のない$y$については必要でない），$Q(o_i(y) = 1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)&gt;0$が成り立つならば，任意の$\mathbf{y}$に対して，$\hat{\Delta}_{IPS}(\mathbf{y}|\mathbf{x}_i,\overline{\mathbf{y}}_i,o_i)$は$\Delta(\mathbf{y}|\mathbf{x}_i,r_i)$のバイアスのない推定量である．
-$$
-\mathbb{E}_{o_i}[\hat{\Delta}_{IPS}(\mathbf{y}|\mathbf{x}_i,\overline{\mathbf{y}}_i,o_i)]=\mathbb{E}\left[\sum_{y:o_i(y)=1}\frac{rank(y|\mathbf{y})\cdot r_i(y)}{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}\right]\\\<br>
-=\sum_{y\in\mathbf{y}}\mathbb{E}_{o_i}\left[\frac{o_i(y)\cdot rank(y|\mathbf{y})\cdot r_i(y)}{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}\right] \\\<br>
-=\sum_{y\in\mathbf{y}}\frac{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)\cdot rank(y|\mathbf{y})\cdot r_i(y)}{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}\\\<br>
-=\sum_{y\in\mathbf{y}}rank(y|\mathbf{y})r_i(y)\\\<br>
-=\Delta(\mathbf{y}|\mathbf{x}_i,r_i)
-$$</p>
-</li>
-<li>
-<p>$\hat{\Delta}_{IPS}$は推定に$o_i(y)=1\land r_i(y)=1$（クリックされたデータ等）だけが貢献する．</p>
-</li>
-<li>
-<p>他の値は観測されているので，あとは傾向スコア$Q(o_i(y) = |\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)$を推定できれば良い（つまり，他の交絡因子はない[Imbens and Rubin, 2015]）．</p>
-</li>
-<li>
-<p>システムの経験リスクはクエリについて平均を取ったIPS推定量となる$$\hat{R}_{IPS}(S)=\frac{1}{N}\sum_{i=1}^N\sum_{y:o_i(y)=1\land r_i(y)=1}\frac{rank(y|S(\mathbf{x}_i))}{Q(o_i(y)=1|\mathbf{x}_i,\overline{\mathbf{y}}_i,r_i)}\tag{4}$$</p>
-</li>
-<li>
-<p>IPS推定量をクエリについて平均を取った経験リスクはバイアスが乗っていないので期待値を取ればリスクに一致するので，十分なデータがあれば$S$の中で最適なシステムが学習できる</p>
-</li>
-</ul>
-<h2 id="5-feedback-propensity-models">5 FEEDBACK PROPENSITY MODELS</h2>
-<p>傾向スコアの求め方について具体例を示す．</p>
-<h3 id="51-position-based-propensity-model">5.1 Position-Based Propensity Model</h3>
-<ul>
-<li>観測したクリックの傾向を導くためにクリック傾向モデルとして用いる．</li>
-<li>検索エンジンのログから検索クエリ$\mathbf{x}_i$，表示されたランキング$\overline{\mathbf{y}}_i$，$y$がクリックされたかどうかを表すベクトル$c(y_i)\in\{0,1\}$が得られる．</li>
-<li>ユーザが$y$を吟味したかを表す$e_i(y)$とし，吟味モデル$$P(e_i(y)=1|rank(y|\overline{\mathbf{y}}))\cdot P(c_i(y)=1|r_i(y),e_i(y)=1)$$を考える．</li>
-<li>吟味モデルではユーザが吟味するかは$\overline{\mathbf{y}}$の中の$y$のランクのみに依存する（傾向スコアは$p_{rank}(y|\overline{\mathbf{y}})$）．</li>
-<li>まず，簡単なクリックのノイズがないモデルを考える．ノイズフリーモデルでは，「クリック＝関連があるかつ吟味した」が成り立っている($c_i(y)=1 \iff r_i(y)=1 \land e_(y)=1$)．</li>
-<li>よってアンバイアスな経験リスクは$$R_{IPS}(S)=\frac{1}{n}\sum_{i=1}^n\sum_{y:c_i(y)=1}\frac{rank(y|S(\mathbf{x}_i))}{p_{rank}(y|\overline{\mathbf{y}})}\tag{5}$$</li>
-</ul>
-<h3 id="52-incorporating-click-noise">5.2 Incorporating Click Noise</h3>
-<ul>
-<li>次に，クリックの生成分布にノイズが乗っている設定を考える．$1\ge\epsilon_+&gt;\epsilon_-\ge0$ $$P(c_i(y)=1|r_i(y)=1, e_i(y)=1)=\epsilon_+,\\\ P(c_i(y)=1|r_i(y)=0, e_i(y)=1)=\epsilon_-$$</li>
-<li>これは関連するものをユーザがクリックする確率が$\epsilon_+$であり，関連しないものを誤ってクリックしてしまう確率が$\epsilon_-$であることを表している</li>
-<li>これにより正しい$r_i(y)$でなくノイズの乗った$\tilde{r}_i(y)$になる．</li>
-<li>このとき，経験リスクとリスクの大小関係が一致する．
-$$
-\mathbb{E}[\hat{R}_{IPS}(S_1)]&gt;\mathbb{E}[\hat{R}_{IPS}(S_2)]\\\
-\iff \mathbb{E}_{\mathbf{x},r,\hat{\mathbf{y}}}\left[ \mathbb{E}_o\mathbb{E}_{c|o}\left[ \sum_{y:c(y)=1}\frac{rank(y|S_1(\mathbf{x}))-rank(y|S_2(\mathbf{x}))}{p_{rank}(y|\mathbf{\hat{y}})}\right]\right]&gt;0\\\
-\iff\mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}P(c(y)=1|o(y)=1,r(y))\delta rank(y|\mathbf{x})\right]&gt;0 \\\
-\iff \mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}(\epsilon_+r(y)+\epsilon_-(1-r(y)))\cdot\delta rank(y|\mathbf{x})\right]&gt;0 \\\<br>
-\iff \mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}((\epsilon_+-\epsilon_-)\cdot r(y)+\epsilon_-)\cdot\delta rank(y|\mathbf{x})\right]&gt;0 \\\<br>
-\iff \mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}(\epsilon_+-\epsilon_-)\cdot r(y)\cdot\delta rank(y|\mathbf{x})\right]&gt;0 \\\<br>
-\iff \mathbb{E}_{\mathbf{x},r}\left[ \sum_{y}r(y)\cdot\delta rank(y|\mathbf{x})\right]&gt;0 \\\<br>
-\iff R(S_1) &gt; R(S_2)
-$$
-ここで，$\delta rank(y|\mathbf{x})=rank(y|S_1(\mathbf{x}))-rank(y|S_2(\mathbf{x}))$，$\epsilon_-\sum_{y\in\mathbf{\hat{y}}}\delta rank(y|\mathbf{x})=0$である．</li>
-<li>上記より経験リスクとリスクの一致性があるので最適解を得られる．</li>
-</ul>
-<h3 id="53-propensity-estimation">5.3 Propensity Estimation</h3>
-<p>最後のステップとして，$p_r$の推定法を考える．</p>
-<ul>
-<li>単純な方法はランダム化（この場合，$p_r$を推定するためにユーザに対してランダムに並び替えた検索結果を見せる）だが，コストが高い．</li>
-<li>そこで，ランク$r$と「ランドマーク」となる$k$番目のランクと入れ替える．
-$$
-P(c_i(y')=1|no-swap)=p_k\cdot P(c_i(y')=1|e_i(y')=1)\\\
-P(c_i(y')=1|swap-k-and-r)=p_r\cdot P(c_i(y')=1|e_i(y')=1)
-$$</li>
-<li>式５の$p_r$は係数に定数がかかっていても経験リスクの大小関係に変化はないので，このスワップによる介入により推定された確率を傾向スコアとして用いることができる．</li>
-</ul>
-<h2 id="54-alternative-feedback-propensity-models">5.4 Alternative Feedback Propensity Models</h2>
-<ul>
-<li>この手法は様々なバイアスに適用できる (e.g.trust bias, saliency biases)</li>
-<li>この手法は２値分類だけでなく回帰でも使える．</li>
-</ul>
-<h2 id="6-propensity-weighted-svm-rank">6. PROPENSITY-WEIGHTED SVM-RANK</h2>
-<h2 id="7-empirical-evaluation">7. EMPIRICAL EVALUATION</h2>
-<h3 id="71-synthetic-data-experiments">7.1 Synthetic Data Experiments</h3>
-<ul>
-<li>傾向スコアとして$$Q(o(y)=1|\mathbf{x},y,r)=p_{rank}(y|\overline{\mathbf{y}})=\left(\frac{1}{rank(y|\overline{\mathbf{y}})}\right)^\eta$$</li>
-</ul>
-<h3 id="72-how-does-ranking-performance-scale-with-training-set-size">7.2 How does ranking performance scale with training set size?</h3>
-<p><img src="/images/banners/propensity.png" alt="データサイズVS関連性" title="データサイズVS関連性"></p>
-<h3 id="how-much-presentation-bias-can-be-tolerated">How much presentation bias can be tolerated?</h3>
-<p><img src="/images/banners/propensity2.png" alt="ポジションバイアスの強さVS関連性" title="ポジションバイアスの強さVS関連性"></p>
-<h3 id="74-how-robust-are-the-methods-to-click-noise">7.4 How robust are the methods to click noise?</h3>
-<p><img src="/images/banners/propensity3.png" alt="クリックノイズの強さVS関連性" title="クリックノイズの強さVS関連性"></p>
-<h3 id="75-how-robust-is-propensity-svm-rank-to-misspecified-propensities">7.5 How robust is Propensity SVM-Rank to misspecified propensities?</h3>
-<p><img src="/images/banners/propensity4.png" alt="傾向スコアの正しさVS関連性" title="傾向スコアの正しさVS関連性"></p>
-<h3 id="76-real-world-experiment">7.6 Real-World Experiment</h3>
-<p>Arxiv Full-Text Search <a href="http://search.arxiv.org:8081/">http://search.arxiv.org:8081/</a>で比較を行う．
-<img src="/images/banners/propensity5.png" alt="傾向スコアの正しさVS関連性" title="実データでの勝敗"></p>
-
+<h3 id="価値付け">価値付け</h3>
+<p>オークションはよく使われる．なぜならば，売り手は買い手が商品に払う最大の価値を知らないからだ．
+売り手と買い手が直面する価値の不確実性がオークションの本質的特徴だ．</p>
+<p>買い付け時に買い手にとっての商品の価値をそれぞれの買い手が知っている状況は私的に価値を知っている設定，または， <em>私的価値(private value)</em> と呼ばれる．この設定では買い手は他の買い手の価値を確信を持って知ってはいないし，他の買い手の価値を知っていることが特定の買い手の価値に影響することもない．
+private valueの仮定は商品の価値が商品を使うことによって生じる時に，最も当てはまる．
+一方で，転売や投資目的の場合はprivate valueの仮定はよくない．</p>
+<p>買い手がオークション時に価値を知らずに，価値が他の買い手も知ることができる情報に影響される状況は <em>相互依存価値(interdependent values)</em> と呼ばれる．このような状況はオークションの後に販売する場合に向いている．
+この状況の特殊な場合は，買い手は価値を知らないが，全ての買い手にとって同じ価値である状況だ．この状況は <em>一般的価値(common value)</em> と呼ばれる．
+このような状況は商品の価値がオークション時にはわからない市場価値によって決まる場合に向いている．典型的な例としては埋蔵量不明の石油が眠っている土地の販売だ．それぞれの買い手は埋蔵量を調べることができるが，最終的な価値は将来の石油売り上げによって決まる．</p>
+<p><em>相互依存</em> という語は価値の構造と他の買い手が持つ情報にどのように価値が影響されるかについてのみ言及している．
+買い手が観測したシグナルがどのように拡散するのかという情報の統計的性質については言及していない．
+こうして，特定の買い手の価値が他の買い手によって観測されたシグナルに依存するが，シグナル自身は統計的に独立である価値が相互依存な状況を考えることができる．
+同様に，特定の買い手の価値が自身のシグナルに依存しるが，シグナル自身は関連している価値が相互依存ではない状況を考えることができる．</p>
+<h3 id="同等のオークション">同等のオークション</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ファーストプライス</th>
+<th>セカンドプライス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>オープン</td>
+<td>ダッチ</td>
+<td>イングリッシュ</td>
+</tr>
+<tr>
+<td>封印価格</td>
+<td>封印価格ファーストプライス</td>
+<td>封印価格セカンドプライス</td>
+</tr>
+</tbody>
+</table>
+<p>これらの４つのオークション形式は互いに異なり，違った方法で現実世界に実装されているが，そのうちのいくつかの違いは表面的な違いに過ぎない．</p>
+<p>始めに，ダッチオークション（価格がオープンで下降していく）が封印価格ファーストプライスオークションと戦略的には同じであることを見ていく．
+封殺価格ファーストプライスオークションにおいて，買い手の戦略は秘密情報を入札価格に反映することだ．
+ダッチオークションはオープンに行われるにもかかわらず，買い手に何も有益な情報を与えない．唯一の利用できる情報はある買い手が現在の価格で購入することに同意したという情報だけだ．しかし，それによってオークションは終了する．もし，商品が購入可能ならば，封印価格ファーストプライスオークションである量を買い付けるのはダッチオークションで同じ量を買い付けるのと同じだ．全てのファーストプライスオークションの戦略はダッチオークションと同じだ．</p>
+<p>次に，価格が私的である時，イングリッシュオークション（価格がオープンで上昇していく）が封印価格セカンドプライスオークションと同じであることを見ていく（ただし，前のものより弱い意味で）．
+イングリッシュオークションは他の買い手が降りた時の情報を得ることができ，それにより私的に知る情報について推論することがおそらく可能だ．
+私的価値(private value)設定においてはこの情報は役に立たない．
+イングリッシュオークションにおいて，価値を超えた価格になった後でも残り続けるのは最適ではない，得られるのは損失のみだ．また，価値に価格が達する前に降りるのも最適ではない，得られた可能性があった利益を逃してしまう．封印価格セカンドプライスオークションも同様に価値で入札するのが最適だ（あとの章で記述）．
+こうして，私的価値(private value)設定においては，どちらでも価値で入札するのが最適だ．</p>
+<p>イングリッシュオークションとセカンドプライスオークションが同等さは２つの意味で <em>弱い</em>．
+１つめは２つのオークションは戦略的に同等ではない．
+２つ目は，より重要なことに，私的価値(private value)設定においてのみ最適な戦略が同じになる．
+相互依存価値設定では，他の買い手が持っている情報が特定の買い手の商品の価値の評価に関連する．他の買い手が早めに降りることは買い手に商品の価値の推定額を減らさせる悪いニュースになる．
+こうして，相互依存価値設定では２つのオークションは買い手の観点から同じではない．</p>
+<h3 id="売り上げ-vs-効率性">売り上げ VS 効率性</h3>
+<p>オークション理論を案内する主要な疑問の１つに経済的な機関として異なるオークション形式のパフォーマンスを比較することがある．
+売り手の観点から，オークション形式を比較する上で自然な物差しは <em>売り上げ</em> だ．しかし，社会全体の観点からだと <em>効率性</em> ，商品の価値を後になって最大化できる人のてに渡らせることがより重要だ．これは公共資産を民間セクターに売却するときに特に成り立つ．</p>
+<p>しかし，効率性は尺度とすべきだろうか？
+オークションが効率的に再割り当てしないにもかかわらず，市場が商品を効率的に際割り当てすることに頼ることができないのはなぜだろう？
+結局，含み益があるならば，オークションに勝った人は他のより高い価値を提示した人に転売することができる．
+我々はこの主張は多くの理由で疑わしいと主張する．
+まず，オークション後の執行は少数の仲介人（特に民営化の文脈では）によって行われる．
+そしてそれにより再販売価格について交渉が生じることになる．
+そのような交渉は効率的な結果を生まない傾向がある．というのも，不完全な情報のもとで行われがちだからだ．
+２番目に，再販売は著しい執行費用を引き起こす可能性があるからだ．それにより行うべきであっても再販売が行われない．
+執行費用や交渉の遅れがない理想的な環境であっても，転売できるという主張を否定する．
+再販売は効率性を保証できないので，効率性を得たい政策の作成者は注意深くオークション形式を選択する傾向がある．</p>
+<p>売り上げと効率性がオークション形式を決める尺度の全てではないが，オークションルールの透明性，簡潔さの美徳を持っている．そして，これが重要な点である．
+また，他の重要な要素として，オークション形式は買い手の結託に対する敏感さという点で異なる．</p>
+<h3 id="オークションとは何か">オークションとは何か？</h3>
+<p>様々な販売方式がオークションに該当する．
+オークションかそうでないかの厳密な観点を採用する前に，様々なオークション形式が共通して持っている重要な性質を探してみる．</p>
+<p>１つ目のオークションのような形式に共通する側面として，買い手からいくら払うつもりがあるのかに関して入札額と言う形で情報を引き出し，受け取った情報のみに基づいて誰が勝者で，いくら払うのかを決める．
+このことはオークションはどんな商品をうるためにも使うことができると言う意味で普遍的であると暗示している．</p>
+<p>２つ目のオークションのような形式に共通する側面として，匿名性がある．
+買い手が誰であるかは商品の入札に誰が勝つかやいくら払うかに関係がない．</p>
+<p>今後の賞では，方式のより大きなクラスとして <em>Mechanisms(メカニズム)</em> と呼ばれるクラスにオークションを置く．
+メカニズムは一般性や匿名性が必ずしも必要ないという点でオークションと異なる．</p>
         </div>
         <footer class="article-footer">
-    <a data-url="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" data-id="a10e756db4fa3c0e74ac49b7d94dffc1" class="article-share-link">
+    <a data-url="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/" data-id="a5eb5c9639c833f7560d6a38ca6ab291" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
     
-    <a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/#disqus_thread" class="article-comment-link">
+    <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/#disqus_thread" class="article-comment-link">
         Comments
     </a>
     
@@ -596,20 +504,20 @@ $$</li>
     
 <nav id="article-nav">
     
-    <a href="https://getumen.github.io/2019/03/25/cassandra%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Older
       </strong>
-      <div class="article-nav-title">Cassandraに入門した</div>
+      <div class="article-nav-title">マルチノードのKubernetesの開発環境をAnsibleとVagrantで作ってみる</div>
     </a>
     
 
     
-    <a href="https://getumen.github.io/2019/07/27/minikube%E3%82%92ubuntu18.04%E3%81%AB%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Newer
       </strong>
-      <div class="article-nav-title">MinikubeをUbuntu18.04にインストールする</div>
+      <div class="article-nav-title">Auction Theory 2章 (1)</div>
     </a>
     
 </nav>
@@ -660,7 +568,7 @@ $$</li>
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory 1章" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -686,7 +594,7 @@ $$</li>
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory 1章" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -712,7 +620,7 @@ $$</li>
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Auction Theory 1章" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -738,7 +646,7 @@ $$</li>
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/07/27/minikube%E3%82%92ubuntu18.04%E3%81%AB%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Auction Theory 1章" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -764,7 +672,7 @@ $$</li>
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/website_kensaku_kekka.png)" alt="論文メモ：Unbiased Learning to Rank With Biased Feedback" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/website_kensaku_kekka.png)" alt="Auction Theory 1章" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
