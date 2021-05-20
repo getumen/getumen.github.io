@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja-jp">
 <head>
-    <title>Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3) &middot; 雑記</title>
+    <title>Auction Theory A &middot; 雑記</title>
     <meta name="generator" content="Hugo 0.83.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
       <meta name="description" content="日々学んだことをメモします">
     
     
-    <link rel="canonical" href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/"/>
+    <link rel="canonical" href="https://getumen.github.io/2021/05/08/auction-theory-a/"/>
     <link rel="icon" href="https://getumen.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
@@ -20,25 +20,25 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)" />
-<meta property="og:description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています" />
+    <meta property="og:title" content="Auction Theory A" />
+<meta property="og:description" content="連続確率分布 $[0,\omega]$の値をとる確率変数$X$があるとする． 累積分布関数$F:[0,\omega]\rightarrow[0," />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" /><meta property="og:image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2019-01-05T19:58:34&#43;09:00" />
-<meta property="article:modified_time" content="2019-01-05T19:58:34&#43;09:00" />
+<meta property="og:url" content="https://getumen.github.io/2021/05/08/auction-theory-a/" /><meta property="og:image" content="https://getumen.github.io/images/banners/auction_hammer.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-08T16:17:02&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-08T16:17:02&#43;09:00" />
 
 
     
-    <meta itemprop="name" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)">
-<meta itemprop="description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています"><meta itemprop="datePublished" content="2019-01-05T19:58:34&#43;09:00" />
-<meta itemprop="dateModified" content="2019-01-05T19:58:34&#43;09:00" />
-<meta itemprop="wordCount" content="2722"><meta itemprop="image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png">
-<meta itemprop="keywords" content="bandit,読書,Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems," />
+    <meta itemprop="name" content="Auction Theory A">
+<meta itemprop="description" content="連続確率分布 $[0,\omega]$の値をとる確率変数$X$があるとする． 累積分布関数$F:[0,\omega]\rightarrow[0,"><meta itemprop="datePublished" content="2021-05-08T16:17:02&#43;09:00" />
+<meta itemprop="dateModified" content="2021-05-08T16:17:02&#43;09:00" />
+<meta itemprop="wordCount" content="1328"><meta itemprop="image" content="https://getumen.github.io/images/banners/auction_hammer.png">
+<meta itemprop="keywords" content="読書,読書メモ,auction theory," />
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://getumen.github.io/images/banners/hikaku_ball_woman.png"/>
+<meta name="twitter:image" content="https://getumen.github.io/images/banners/auction_hammer.png"/>
 
-<meta name="twitter:title" content="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)"/>
-<meta name="twitter:description" content="今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています"/>
+<meta name="twitter:title" content="Auction Theory A"/>
+<meta name="twitter:description" content="連続確率分布 $[0,\omega]$の値をとる確率変数$X$があるとする． 累積分布関数$F:[0,\omega]\rightarrow[0,"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -258,13 +258,13 @@
     <article id="page-undefined" class="article article-type-page" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
-            <img src="https://getumen.github.io/images/banners/hikaku_ball_woman.png" class="article-banner">
+            <img src="https://getumen.github.io/images/banners/auction_hammer.png" class="article-banner">
         
 
         <header class="article-header">
-    <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/">
+    <a href="https://getumen.github.io/2021/05/08/auction-theory-a/">
     <h1 class="article-title" itemprop="name">
-        Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)
+        Auction Theory A
     </h1>
     </a>
     <div class="article-meta">
@@ -272,12 +272,12 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2019-01-05 19:58:34 &#43;0900 JST" itemprop="datePublished">2019-01-05</time>
+            <time datetime="2021-05-08 16:17:02 &#43;0900 JST" itemprop="datePublished">2021-05-08</time>
             &middot;
-            2722
+            1328
             words
             &middot;
-            6
+            3
             minute read
         </div>
         
@@ -288,7 +288,7 @@
                 <i class="fa fa-folder"></i>
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/categories/machine-learning">machine learning</a>
+                <a class="article-category-link" href="https://getumen.github.io/categories/auction">auction</a>
                 
                 
             </div>
@@ -302,15 +302,15 @@
                 <i class="fa fa-tags"></i>
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/bandit">bandit</a>
-                &middot;
-                
-                
                 <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8">読書</a>
                 &middot;
                 
                 
-                <a class="article-category-link" href="https://getumen.github.io/tags/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems</a>
+                <a class="article-category-link" href="https://getumen.github.io/tags/%E8%AA%AD%E6%9B%B8%E3%83%A1%E3%83%A2">読書メモ</a>
+                &middot;
+                
+                
+                <a class="article-category-link" href="https://getumen.github.io/tags/auction-theory">auction theory</a>
                 
                 
             </div>
@@ -320,88 +320,127 @@
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <p>今日読んだ部分では確率的バンディット問題の分布がベルヌーイだったときの下界を出しています</p>
-<h2 id="２章-stochastic-bandits-fundamental-results">２章 Stochastic Bandits: Fundamental Results</h2>
-<h3 id="23-lower-bound">2.3 Lower Bound</h3>
-<p>前の節の結果が確率分布がベルヌーイのとき改善できないということを示す．</p>
-<p>$p,q\in[0,1]$に対して，パラメータが$p$のベルヌーイ分布とパラメータが$q$のベルヌーイ分布のカルバック・ライブラーダーバージェンスを$$k(p,q)=p\ln\frac{p}{q}+(1-p)\ln\frac{1-p}{1-q}$$と定義する．</p>
-<hr>
-<p><em>Theorem 2.2 (Distribution-dependent lower bound).</em>
-どんなベルヌーイからの報酬の分布の集合，$\Delta_i&gt;0$となるアーム$i$，$a&gt;0$に対しても，$\mathbb{E}T_i(n)=\mathcal{o}(n^a)$を満たすような戦略を考える．
-どんなベルヌーイからの報酬の分布の集合に対してもいかが成り立つ．
-$$\lim_{n\rightarrow+\infty}\inf\frac{\overline{R}_n}{\ln n}\ge\sum_{i:\Delta_i&gt;0}\frac{\Delta_i}{kl(\mu_i,\mu^*)}.$$</p>
-<hr>
-<p>式(2.4)の結果と比較するために左側からはPinskerの不等式，右側からは$\ln x\le x-1$を用いて，
-$$2(p-q)^2\le kl(p,q)\le\frac{(p-q)^2}{q(1-q)}$$を用いる．</p>
-<hr>
-<h4 id="証明">証明</h4>
-<p>証明は３つのステップから構成される．かんたんのためアームが２つのときのみを考える．</p>
-<h5 id="first-step-notations">First step: Notations</h5>
-<p>一般性を損なうことなく，アーム１を最適なアーム，アーム２を最適でないアームとする．つまり，$\mu_2&lt;\mu_1&lt;1$とする．
-また，$\epsilon&gt;0$とする．$x\mapsto kl(\mu_2,x)$は連続であるため，$$kl(\mu_2,\mu_2')\le(1+\epsilon)kl(\mu_2,\mu_1)\tag{2.9}$$を満たすような$\mu_2'\in(\mu_1,1)$を見つけることができる（アーム１より優れたアーム）．</p>
-<p>アーム２のパラメータを$\mu_2'$に置き換えた修正されたバンディットに対して積分したとき，$\mathbb{E}'$，$\mathbb{P}'$と記す．
-もとのバンディット問題と修正されたバンディット問題に対しての予測者の振る舞いを比較したい．
-特に，予測者が２つの問題を区別できない確率が十分に大きいことを証明したい．
-そして，仮説により，良い予測者がいるという事実を用いて，アーム２が最適である．修正されたバンディット問題に対してアルゴリズムはあまり多くの失敗はしないことを知っている．
-言い換えれば，最適なアームが試行される回数についての下界を知っている．
-この理由のため，もとの問題でアーム２が試行される回数の下界が暗に示される．</p>
-<p>ここで，報酬の表記法を変えて，アーム２から$n$回引いたときに得られる確率変数列を$X_{2,1},\dots,X_{2,n}$と記す．（つまり，$s$回目に引いた報酬を$X_{2,s}$とする．）
-$s\in\{1,\dots,n\}$に対して，
-$$\hat{kl}_s=\sum_{t=1}^s\ln\frac{\mu_2X_{2,t}+(1-\mu_2)(1-X_{2,t})}{\mu_2&rsquo;X_{2,t}+(1-\mu_2')(1-X_{2,t})}$$
-$X_{2.s}$はパラメータが$\mu_2$であるベルヌーイ分布からi.i.d.にサンプルされているので，もとのバンディットについて，$\hat{kl}_{T_2(n)}$は（正規化されていない）$n$ステップ目での$kl(\mu_2,\mu_2')$の経験的な推定量になっている．（sステップ目で報酬は（アーム２を引いたとき）＋（アーム２を引かなかったとき）＝$\mu_2X_{2,t}+(1-\mu_2)(1-X_{2,t})$）
-もう一つの重要な性質は次のようなものだ．
-$X_{2,1},\dots,X_{2,n}$によって生成される完全加法族のどんな事象$A$に対しても，以下のchange-of-measure identityが成り立つ．
-$$\mathbb{P}'(A)=\mathbb{E}[\mathbb{1}_A\exp(-\hat{kl}_{T_2(n)})]\tag{2.10}$$</p>
-<p>元のバンディット問題と修正されたバンディット問題の予測者の振る舞いを結びつけるために，次の事象を導入する．
-$$C_n=\left\{T_2(n)&lt;\frac{1-\epsilon}{kl(\mu_2,\mu_2')}\ln(n)~and~\hat{kl}_{T_2(n)}\le\left(1-\frac{\epsilon}{2}\right)\ln(n)\right\}\tag{2.11}$$</p>
-<h5 id="second-step-pc_n--mathcalo1">Second step: $P(C_n) = \mathcal{o}(1)$</h5>
-<p>式(2.10)と式(2.11)により
-$$\mathbb{P}'(C_n)=\mathbb{E}\mathbb{1}_{C_n}\exp(-\hat{kl}_{T_2(n)})\ge e^{-(1-\epsilon/2)\ln(n)}\mathbb{P}(C_n)$$
-かんたんのために$$f_n=\frac{1-\epsilon}{kl(\mu_2,\mu_2')}\ln(n)$$
-を導入する．</p>
-<p>式(2.11)とマルコフの不等式$\mathbb{P}(|X|\ge a)\le\frac{\mathbb{E}(|X|)}{a}$を用いて，
-$$\mathbb{P}(C_n)\le n^{(1-\epsilon/2)}\mathbb{P}'(C_n)\le n^{(1-\epsilon/2)}\mathbb{P}'(T_2(n)&lt; f_n)\le n^{(1-\epsilon/2)}\frac{\mathbb{E}[n-T_2(n)]}{n-f_n}$$</p>
-<p>修正されたバンディット問題のアーム２は唯一の最適なアームである．
-これによって，どんなバンディット問題，どんな最適でないアーム$i$，任意の$a&gt;0$に対して，戦略は$\mathbb{E}T_i(n)=\mathcal{o}(n^a)$を満たす．
-よって，
-$$P(C_n)\le n^{1-\epsilon/2}\frac{\mathbb{E}'[n-T_2(n)]}{n-f_n}=\mathcal{o}(1)$$</p>
-<h5 id="third-step-mathbbpt_2n--f_n--mathcalo1">Third step: $\mathbb{P}(T_2(n) &lt; f_n) = \mathcal{o}(1)$</h5>
-<p>$$\mathbb{P}(C_n)\ge\mathbb{P}\left(T_2(n)&lt; f_n~and~\max_{s\le f_n}\hat{kl}_s\le\left(1-\frac{1}{\epsilon}\right)\ln(n)\right)$$
-これが成り立つのは右辺のほうが，式(2.11)の右側の事象が起きる確率が減るためだと思われる($T_2(n)&lt; f_n$のため)．
-$$=\mathbb{P}\left(T_2(n)&lt; f_n~and~\frac{kl(\mu_2,\mu_2')}{(1-\epsilon)\ln(n)}\max_{s\le f_n}\hat{kl}_s\le\frac{1-\epsilon/2}{1-\epsilon}kl(\mu_2,\mu_2')\right)\tag{2.12}$$
-これは右側の事象を両辺$f_n$でわった．</p>
-<p>次の大数の強法則の最大バージョンを使う．
-正の平均$\mu&gt;0$をもつ，独立な実数の確率変数のどんな列$(X_t)$に対しても，
-$$\lim_{n\rightarrow\infty}\frac{1}{n}\sum_{t=1}^nX_t\mu ~almost~surely$$
-が成り立つ．これにより
-$$\lim_{n\rightarrow\infty}\frac{1}{n}\max_{s=1,\dots,n}\sum_{t=1}^sX_t\mu ~almost~surely$$
-が成り立つことがわかる．</p>
-<p>$kl(\mu_2,\mu_2')&gt;0$と$\frac{1-\epsilon/2}{1-\epsilon}&gt;1$であるから，
-$$\lim_{n\rightarrow\infty}\mathbb{P}\left(\frac{kl(\mu_2,\mu_2')}{(1-\epsilon)\ln(n)}\max_{s\le f_n}\hat{kl}_s\le\frac{1-\epsilon/2}{1-\epsilon}kl(\mu_2,\mu_2')\right)=1$$
-(KLダイバージェンスは正であるから両辺から符号を変えずに消せる＋左辺のみ$1/\ln n$で減少)</p>
-<p>これによって，second stepの結果と式(2.12)から，
-$$\mathbb{P}(T_2(n)&lt; f_n)=\mathcal{o}(1)$$
-($\mathbb{P}(C_n)$は$\mathcal{o}(1)$であるのに，下から抑えている条件の右側は1に収束していく．このため，左側の条件が$\mathcal{o}(1)$になるしかない．)</p>
-<p>$f_n=\frac{1-\epsilon}{kl(\mu_2,\mu_2')}\ln(n)$と式(2.9)を用いて，
-$$\mathbb{E}T_2(n)\ge(1+\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)}{kl(\mu_2,\mu_1)}$$
-これを擬リグレットの定義に入れると題意を得る．</p>
-<p>最後の$n$回までにアーム２を引く回数の期待値の下界で$(1+\mathcal{o}(1))$が出てくるのがどうやるのかわからなかった(´・ω・｀)</p>
-<p>手を動かしてみる．</p>
-<p>$\mathbb{P}(T_2(n)&lt; f_n)=\mathcal{o}(1)$であるから$\mathbb{P}(T_2(n)\ge f_n)=1-\mathcal{o}(1)$である．
-マルコフの不等式$\mathbb{P}(|X|\ge a)\le\frac{\mathbb{E}(|X|)}{a}$を使って，$\frac{\mathbb{E}T_2(n)}{f_n}\ge\mathbb{P}(T_2(n)\ge f_n)=1-\mathcal{o}(1)$
-となり，
-$$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)}{kl(\mu_2,\mu_1)}$$
-が得られる．</p>
-<p>他の文献を見ても下界の定数部分のオーダは$1-\mathcal{o}(1)$となっているので，元論文のタイポかもしれない</p>
-<hr>
+            <h2 id="連続確率分布">連続確率分布</h2>
+<p>$[0,\omega]$の値をとる確率変数$X$があるとする．
+累積分布関数$F:[0,\omega]\rightarrow[0,1]$は
+\begin{equation}
+F(x)=Prob[X\le x]
+\end{equation}
+この本を通して$F(x)$は狭義短調増加で連続微分可能であるとする．</p>
+<p>$F$の微分は確率密度函数であり，小文字で$f\equiv F'$と書く．
+仮定より,$f$は連続関数である．
+加えて，全ての$x\in(0,\omega)$で$f(x)$は正の値だと仮定する．
+区間$[0,\omega]$を分布の台という．</p>
+<p>$X$が$F$に従って分布するとき，$X$の期待値は
+\begin{equation}
+E[X]=\int^\omega_0xf(x)dx
+\end{equation}
+である．任意の関数$\gamma:[0,\omega]\rightarrow \mathbb{R}$があるとき，$\gamma(X)$の期待値は
+\begin{equation}
+E[\gamma(X)]=\int^\omega_0\gamma(x)f(x)dx
+\end{equation}
+あるいは
+\begin{equation}
+E[\gamma(X)]=\int^\omega_0\gamma(x)dF(x)
+\end{equation}
+とかける．</p>
+<p>$X$の$X&lt;x$の元での条件付期待値は
+\begin{equation}
+E[X|X&lt;x]=\frac{1}{F(x)}\int^x_0tf(t)dt
+\end{equation}
+である．そのため，
+\begin{equation}
+F(x)E[X|X&lt;x]=\int^x_0tf(t)dt=xF(x)-\int_0^xF(t)dt
+\end{equation}</p>
+<h3 id="hazard-rate">hazard rate</h3>
+<p>$[0,\omega]$を台に持つ分布関数を$F$とする．
+$F$のhazard rate関数$\lambda:[0,\omega)\rightarrow \mathbb{R}_+$は
+\begin{equation}
+\lambda(x)\equiv\frac{f(x)}{1-F(x)}
+\end{equation}
+と定義される．</p>
+<p>これは$x$まで事象が発生せず，$x$になった時に初めて事象が起きる確率を表している．
+$x\rightarrow\omega$の時，$\lambda(x)\rightarrow\infty$となる．</p>
+<p>\begin{equation}
+-\lambda(x)=\frac{d}{dx}\ln(1-F(x))
+\end{equation}
+であるので，
+\begin{equation}
+F(x)=1-\exp\left(-\int_0^x\lambda(t)dt\right)
+\end{equation}
+とおくと，
+全ての$x&lt;\omega$に対して
+\begin{equation}
+\int_0^x\lambda(t)dt&lt;\infty
+\end{equation}
+であり，かつ
+\begin{equation}
+\lim_{x\rightarrow\omega}\int_0^x\lambda(t)dt=\infty
+\end{equation}
+であるような任意の関数$\lambda:[0,\omega)\rightarrow\mathbb{R}_+$は何らかの分布の hazard rateである．</p>
+<p>reverse hazard rate $\sigma: (0,\omega]\rightarrow\mathbb{R}_+$は
+\begin{equation}
+\sigma(x)\equiv\frac{f(x)}{F(x)}
+\end{equation}
+と定義される．</p>
+<p>\begin{equation}
+\sigma(x)=\frac{d}{dx}\ln F(x)
+\end{equation}
+であるので，
+\begin{equation}
+F(x)=\exp\left(-\int_0^x\sigma(t)dt\right)
+\end{equation}
+とおくと
+全ての$x&gt;0$に対して
+\begin{equation}
+\int_x^\omega\sigma(t)dt&lt;\infty
+\end{equation}
+であり，かつ
+\begin{equation}
+\lim_{x\rightarrow0}\int_x^\omega\sigma(t)dt=\infty
+\end{equation}
+であるような任意の関数$\sigma:(0,\omega]\rightarrow\mathbb{R}_+$は何らかの分布のreverse hazard rateである．</p>
+<h3 id="同時に分布する確率変数">同時に分布する確率変数</h3>
+<p>確率変数$X\in[0,\omega_X]$, $Y\in[0,\omega_Y]$が全ての$x'&lt; x''$，$y'&lt; y''$に対して，
+\begin{equation}
+Prob[x'\le X\le x'' and y'\le Y\le y'']=\int_{y'}^{y''}\int_{x'}^{x''} f(x,y)dxdy
+\end{equation}
+である時，同時確率密度関数$f:[0,\omega_X]\times[0,\omega_Y]\rightarrow\mathbb{R}_+$を持つという．
+確率変数$X$と$Y$は$f$に従って同時に分布するという．
+$f$は$(0,\omega_X)\times(o,\omega_Y)$で連続で正の値であるとする．</p>
+<p>$X$の周辺分布は
+\begin{equation}
+f_X(x)=\int_0^{\omega_Y}f(x,y)dy
+\end{equation}
+であり，$Y$の周辺分布も同様に定義される．</p>
+<p>確率変数$X$と$Y$が独立である時，かつその時のみ
+\begin{equation}
+f(x,y)=f_X(x)\times f_Y(y)
+\end{equation}
+である．</p>
+<p>どんな$x&gt;0$に対しても$X=x$が与えられた元での$Y$の条件付き確率密度函数は
+\begin{equation}
+f_Y(y|X=x)=\frac{f(x,y)}{f_X(x)}
+\end{equation}
+そして，どんな$x&gt;0$に対しても$X=x$が与えられた元での$Y$の条件付き期待値は
+\begin{equation}
+E[Y|X=x]=\int_0^{\omega_Y}yf_Y(y|X=x)dy
+\end{equation}
+である．</p>
+<p>これまでの定義を使って，期待収束法則(law of iterated expectation)
+\begin{equation}
+E_X[E_Y[Y|X]] = X_Y[Y]
+\end{equation}
+が成り立つ．</p>
+
         </div>
         <footer class="article-footer">
-    <a data-url="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/" data-id="9dea8f283c33bf6053d56698a837a03d" class="article-share-link">
+    <a data-url="https://getumen.github.io/2021/05/08/auction-theory-a/" data-id="132a662b55c22c1985f585c828c795b0" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
     
-    <a href="https://getumen.github.io/2019/01/05/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-3/#disqus_thread" class="article-comment-link">
+    <a href="https://getumen.github.io/2021/05/08/auction-theory-a/#disqus_thread" class="article-comment-link">
         Comments
     </a>
     
@@ -477,21 +516,14 @@ $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)
     
 <nav id="article-nav">
     
-    <a href="https://getumen.github.io/2019/01/04/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Older
       </strong>
-      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (2)</div>
+      <div class="article-nav-title">Auction Theory 2章 (1)</div>
     </a>
     
 
-    
-    <a href="https://getumen.github.io/2019/01/08/regret-analysis-of-stochastic-and-nonstochastic-multi-armed-bandit-problems-%EF%BC%92%E7%AB%A0-4/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Newer
-      </strong>
-      <div class="article-nav-title">Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (4)</div>
-    </a>
     
 </nav>
 
@@ -541,7 +573,7 @@ $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/05/08/auction-theory-a/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory A" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -567,7 +599,7 @@ $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory A" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -593,7 +625,7 @@ $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory A" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -619,7 +651,7 @@ $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Auction Theory A" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -645,7 +677,7 @@ $$\mathbb{E}T_2(n)\ge(1-\mathcal{o}(1))\frac{1-\epsilon}{1+\epsilon}\frac{\ln(n)
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2019/07/27/minikube%E3%82%92ubuntu18.04%E3%81%AB%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Regret Analysis of Stochastic and Nonstochastic Multi-armed Bandit Problems ２章 (3)" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Auction Theory A" class="thumbnail-image"></span>
                     
                     </a>
                 </div>

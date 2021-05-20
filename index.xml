@@ -6,7 +6,16 @@
     <description>Recent content on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 25 Apr 2021 18:22:49 +0900</lastBuildDate><atom:link href="https://getumen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 May 2021 16:17:02 +0900</lastBuildDate><atom:link href="https://getumen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Auction Theory A</title>
+      <link>https://getumen.github.io/2021/05/08/auction-theory-a/</link>
+      <pubDate>Sat, 08 May 2021 16:17:02 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2021/05/08/auction-theory-a/</guid>
+      <description>連続確率分布 $[0,\omega]$の値をとる確率変数$X$があるとする． 累積分布関数$F:[0,\omega]\rightarrow[0,</description>
+    </item>
+    
     <item>
       <title>Auction Theory 2章 (1)</title>
       <link>https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/</link>
