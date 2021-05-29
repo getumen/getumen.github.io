@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja-jp">
 <head>
-    <title>Auction Theory A &middot; 雑記</title>
+    <title>Auction Theory B &middot; 雑記</title>
     <meta name="generator" content="Hugo 0.83.1" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -10,7 +10,7 @@
       <meta name="description" content="日々学んだことをメモします">
     
     
-    <link rel="canonical" href="https://getumen.github.io/2021/05/08/auction-theory-a/"/>
+    <link rel="canonical" href="https://getumen.github.io/2021/05/23/auction-theory-b/"/>
     <link rel="icon" href="https://getumen.github.io/favicon.ico">
     <link rel="apple-touch-icon" href="https://getumen.github.io/apple-touch-icon.png"/>
     <link rel="stylesheet" href="https://getumen.github.io/css/style.css">
@@ -20,25 +20,25 @@
     
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Auction Theory A" />
-<meta property="og:description" content="連続確率分布 $[0,\omega]$の値をとる確率変数$X$があるとする． 累積分布関数$F:[0,\omega]\rightarrow[0," />
+    <meta property="og:title" content="Auction Theory B" />
+<meta property="og:description" content="確率的順序 ある確率分布$F$が他の確率分布$G$に対して優位である，または，より大きいことを表す多くの基準がある． ここではオークション理論で" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://getumen.github.io/2021/05/08/auction-theory-a/" /><meta property="og:image" content="https://getumen.github.io/images/banners/auction_hammer.png" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2021-05-08T16:17:02&#43;09:00" />
-<meta property="article:modified_time" content="2021-05-08T16:17:02&#43;09:00" />
+<meta property="og:url" content="https://getumen.github.io/2021/05/23/auction-theory-b/" /><meta property="og:image" content="https://getumen.github.io/images/banners/auction_hammer.png" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-05-23T10:20:10&#43;09:00" />
+<meta property="article:modified_time" content="2021-05-23T10:20:10&#43;09:00" />
 
 
     
-    <meta itemprop="name" content="Auction Theory A">
-<meta itemprop="description" content="連続確率分布 $[0,\omega]$の値をとる確率変数$X$があるとする． 累積分布関数$F:[0,\omega]\rightarrow[0,"><meta itemprop="datePublished" content="2021-05-08T16:17:02&#43;09:00" />
-<meta itemprop="dateModified" content="2021-05-08T16:17:02&#43;09:00" />
-<meta itemprop="wordCount" content="1328"><meta itemprop="image" content="https://getumen.github.io/images/banners/auction_hammer.png">
+    <meta itemprop="name" content="Auction Theory B">
+<meta itemprop="description" content="確率的順序 ある確率分布$F$が他の確率分布$G$に対して優位である，または，より大きいことを表す多くの基準がある． ここではオークション理論で"><meta itemprop="datePublished" content="2021-05-23T10:20:10&#43;09:00" />
+<meta itemprop="dateModified" content="2021-05-23T10:20:10&#43;09:00" />
+<meta itemprop="wordCount" content="1862"><meta itemprop="image" content="https://getumen.github.io/images/banners/auction_hammer.png">
 <meta itemprop="keywords" content="読書,読書メモ,auction theory," />
     <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://getumen.github.io/images/banners/auction_hammer.png"/>
 
-<meta name="twitter:title" content="Auction Theory A"/>
-<meta name="twitter:description" content="連続確率分布 $[0,\omega]$の値をとる確率変数$X$があるとする． 累積分布関数$F:[0,\omega]\rightarrow[0,"/>
+<meta name="twitter:title" content="Auction Theory B"/>
+<meta name="twitter:description" content="確率的順序 ある確率分布$F$が他の確率分布$G$に対して優位である，または，より大きいことを表す多くの基準がある． ここではオークション理論で"/>
 <meta name="twitter:site" content="@letitbe_or_not"/>
 
     
@@ -262,9 +262,9 @@
         
 
         <header class="article-header">
-    <a href="https://getumen.github.io/2021/05/08/auction-theory-a/">
+    <a href="https://getumen.github.io/2021/05/23/auction-theory-b/">
     <h1 class="article-title" itemprop="name">
-        Auction Theory A
+        Auction Theory B
     </h1>
     </a>
     <div class="article-meta">
@@ -272,12 +272,12 @@
         
         <div class="article-date">
             <i class="fa fa-calendar"></i>
-            <time datetime="2021-05-08 16:17:02 &#43;0900 JST" itemprop="datePublished">2021-05-08</time>
+            <time datetime="2021-05-23 10:20:10 &#43;0900 JST" itemprop="datePublished">2021-05-23</time>
             &middot;
-            1328
+            1862
             words
             &middot;
-            3
+            4
             minute read
         </div>
         
@@ -320,127 +320,114 @@
 </header>
 
         <div class="article-entry" itemprop="articleBody">
-            <h2 id="連続確率分布">連続確率分布</h2>
-<p>$[0,\omega]$の値をとる確率変数$X$があるとする．
-累積分布関数$F:[0,\omega]\rightarrow[0,1]$は
+            <h2 id="確率的順序">確率的順序</h2>
+<p>ある確率分布$F$が他の確率分布$G$に対して優位である，または，より大きいことを表す多くの基準がある．
+ここではオークション理論で重要な役割を果たす確率的順序（Stochastic orders）について議論する．</p>
+<p>簡単のために，全ての確率分布は同じ台$[0,\omega]$を持つと仮定する．
+確率はその台が非負の実数であることを認める．</p>
+<h3 id="一次の確率的優位性">一次の確率的優位性</h3>
+<p>確率分布関数$F$と$G$がある時，全ての$z\in[0,\omega]$に対して，
 \begin{equation}
-F(x)=Prob[X\le x]
+F(z)\le G(z)
 \end{equation}
-この本を通して$F(x)$は狭義短調増加で連続微分可能であるとする．</p>
-<p>$F$の微分は確率密度函数であり，小文字で$f\equiv F'$と書く．
-仮定より,$f$は連続関数である．
-加えて，全ての$x\in(0,\omega)$で$f(x)$は正の値だと仮定する．
-区間$[0,\omega]$を分布の台という．</p>
-<p>$X$が$F$に従って分布するとき，$X$の期待値は
+である時，$F$は$G$を一次の確率的優位性があるという．</p>
+<p>確率変数$X$と$Y$がそれぞれ$F$と$G$に従い，$F$が$G$を一次の確率的優位性があるとき，$X$は$Y$に対して確率的優位性があるという．</p>
+<p>狭義短調増加で微分可能な関数$\gamma:[0,\omega]\rightarrow\mathbb{R}$があるとする．
+$X$は$Y$に対して確率的優位性があり，確率分布関数$F$と$G$がある時，
+$\gamma'&gt;0$であり，$F\le G$であるから，（$E[X]\ge E[Y]$）
 \begin{equation}
-E[X]=\int^\omega_0xf(x)dx
-\end{equation}
-である．任意の関数$\gamma:[0,\omega]\rightarrow \mathbb{R}$があるとき，$\gamma(X)$の期待値は
-\begin{equation}
-E[\gamma(X)]=\int^\omega_0\gamma(x)f(x)dx
-\end{equation}
-あるいは
-\begin{equation}
-E[\gamma(X)]=\int^\omega_0\gamma(x)dF(x)
-\end{equation}
-とかける．</p>
-<p>$X$の$X&lt;x$の元での条件付期待値は
-\begin{equation}
-E[X|X&lt;x]=\frac{1}{F(x)}\int^x_0tf(t)dt
-\end{equation}
-である．そのため，
-\begin{equation}
-F(x)E[X|X&lt;x]=\int^x_0tf(t)dt=xF(x)-\int_0^xF(t)dt
+E[\gamma(X)]-E[\gamma(Y)]=\int_0^\omega\gamma(z)\left[f(z)-g(z)\right]dz \\<br>
+=-\int_0^\omega\gamma'(z)\left[F(z)-G(z)\right]dz\ge 0
 \end{equation}</p>
-<h3 id="hazard-rate">hazard rate</h3>
-<p>$[0,\omega]$を台に持つ分布関数を$F$とする．
-$F$のhazard rate関数$\lambda:[0,\omega)\rightarrow \mathbb{R}_+$は
+<h3 id="hazard-rateの優位性">Hazard Rateの優位性</h3>
+<p>全ての$z\in[0,\omega]$に対して，
 \begin{equation}
-\lambda(x)\equiv\frac{f(x)}{1-F(x)}
+\lambda_F(z)=\frac{f(z)}{1-F(z)}\le\frac{g(z)}{1-G(z)}=\lambda_G(z)
 \end{equation}
-と定義される．</p>
-<p>これは$x$まで事象が発生せず，$x$になった時に初めて事象が起きる確率を表している．
-$x\rightarrow\omega$の時，$\lambda(x)\rightarrow\infty$となる．</p>
-<p>\begin{equation}
--\lambda(x)=\frac{d}{dx}\ln(1-F(x))
-\end{equation}
-であるので，
+が成り立つとき，hazard rateについて$F$は$G$に対して優位である，またはhazard rate優位性があるという．</p>
+<p>$F$が$G$に対してhazard rateについて優位である時，
 \begin{equation}
-F(x)=1-\exp\left(-\int_0^x\lambda(t)dt\right)
+F(x)=1-\exp\left(-\int_0^x\lambda_F(t)dt\right)\le 1-\exp\left(-\int_0^x\lambda_G(t)dt\right)=G(x)
 \end{equation}
-とおくと，
-全ての$x&lt;\omega$に対して
+が成り立つ．hazard rateについて優位である時，一時の確率的優位性があることを示している．</p>
+<h3 id="reverse-hazard-rateの優位性">Reverse Hazard Rateの優位性</h3>
+<p>全ての$z\in[0,\omega]$に対して，
 \begin{equation}
-\int_0^x\lambda(t)dt&lt;\infty
+\sigma_F(z)=\frac{f(z)}{F(z)}\ge\frac{g(z)}{G(z)}=\sigma_G(z)
 \end{equation}
-であり，かつ
+が成り立つとき，revernse hazard rateについて$F$は$G$に対して優位である，またはreverse hazard rate優位性があるという．</p>
+<p>$F$が$G$に対してreverse hazard rateについて優位である時，
 \begin{equation}
-\lim_{x\rightarrow\omega}\int_0^x\lambda(t)dt=\infty
+F(x)=\exp\left(-\int_x^\omega\sigma_F(t)dt\right)\le \exp\left(-\int_x^\omega\sigma_G(t)dt\right)=G(x)
 \end{equation}
-であるような任意の関数$\lambda:[0,\omega)\rightarrow\mathbb{R}_+$は何らかの分布の hazard rateである．</p>
-<p>reverse hazard rate $\sigma: (0,\omega]\rightarrow\mathbb{R}_+$は
+が成り立つ．reverse hazard rateについて優位である時，一時の確率的優位性があることを示している．</p>
+<h3 id="尤度比優位性">尤度比優位性</h3>
+<p>全ての$z\in[0,\omega]$に対して，
 \begin{equation}
-\sigma(x)\equiv\frac{f(x)}{F(x)}
+\frac{f(x)}{g(x)}\le\frac{f(y)}{g(y)}
 \end{equation}
-と定義される．</p>
-<p>\begin{equation}
-\sigma(x)=\frac{d}{dx}\ln F(x)
-\end{equation}
-であるので，
+が成り立つとき，つまり，$f/g$が広義短調増加であるとき，尤度比について$F$は$G$に対して優位であるという．
+この時，確率密度函数は1度だけ交差する．</p>
+<p>全ての$x&lt;y$に対して，尤度比優位性があるとき，
 \begin{equation}
-F(x)=\exp\left(-\int_0^x\sigma(t)dt\right)
+\frac{f(y)}{f(x)}\ge\frac{g(y)}{g(x)} \\<br>
+\iff\int_x^\omega\frac{f(y)}{f(x)}dy\ge\int_x^\omega\frac{g(y)}{g(x)}dy \\<br>
+\iff\frac{1-F(x)}{f(x)}\ge\frac{1-G(x)}{g(x)} \\<br>
+\iff\lambda_F(x)\le\lambda_G(x)
 \end{equation}
-とおくと
-全ての$x&gt;0$に対して
+である．
+尤度比優位性があるときhazard rate優位性がある．
+同様に
 \begin{equation}
-\int_x^\omega\sigma(t)dt&lt;\infty
+\frac{f(x)}{f(y)}\le\frac{g(x)}{g(y)}\\<br>
+\iff\int_0^y\frac{f(x)}{f(y)}dx\le\int_0^y\frac{g(x)}{g(y)}\\<br>
+\iff\frac{F(y)}{f(y)}\le\frac{G(y)}{g(y)}\\<br>
+\iff\sigma_F(y)\ge\sigma_G(y)
 \end{equation}
-であり，かつ
+である．
+尤度比優位性があるときreverse hazard rate優位性がある．</p>
+<p>既に示したようにhazerd rate優位性があることとreverse hazard rate優位性があることは，一次の確率的優位性があることを示している．</p>
+<h3 id="mean-preserving-spreads">mean-preserving spreads</h3>
+<p>5番目の確率順序は平均が同じ分布を比較するときに便利である．
+$X$は確率分布$F$に従う確率変数であるとする．
+$Z$は全ての$x$に対して$E[Z|X=x]$であるような$X=x$での条件月確率分布$H(\cdot|X=x)$に従う確率変数であるとする．
+$Y=X+Z$ははじめに確率分布$F$から引いた$X$と次にその実現値$X=x$に対して条件付き分布$H(\cdot|X=x)$から引いた$Z$を足した確率変数であるとする．
+$G$を$Y$の確率分布であるとする．
+この時，$G$は$F$のmean-preserving spreadであるという．</p>
+<p>名前の通り，確率変数$X$と$Y$は同じ平均を持っている．$E[X]=E[Y]$．
+ノイズを加えているので，$Y$は$X$より広がっている．</p>
+<p>凹関数$U:[0,\omega]\rightarrow\mathbb{R}$があるとする．
+この時，
 \begin{equation}
-\lim_{x\rightarrow0}\int_x^\omega\sigma(t)dt=\infty
+E_Y[U(y)]=E_X[E_Z[U(X+Z)|X=X]]\\<br>
+\le E_X[U(E_Z[X+Z|X=x])]\\<br>
+=E_X[U(X)]
 \end{equation}
-であるような任意の関数$\sigma:(0,\omega]\rightarrow\mathbb{R}_+$は何らかの分布のreverse hazard rateである．</p>
-<h3 id="同時に分布する確率変数">同時に分布する確率変数</h3>
-<p>確率変数$X\in[0,\omega_X]$, $Y\in[0,\omega_Y]$が全ての$x'&lt; x''$，$y'&lt; y''$に対して，
+が期待値の線形性と凹関数であることから成り立つ．</p>
+<p>このことは同じ平均を持つ分布間の順序を定義するために使うことができる．
+二つの分布$F$と$G$が同じ平均を持つとする．
+全ての凹関数$U:[0,\omega]\rightarrow\mathbb{R}$にたして，
 \begin{equation}
-Prob[x'\le X\le x'' and y'\le Y\le y'']=\int_{y'}^{y''}\int_{x'}^{x''} f(x,y)dxdy
+\int_0^\omega U(x)f(x)dx\ge\int_0^\omega U(y)g(y)dy
 \end{equation}
-である時，同時確率密度関数$f:[0,\omega_X]\times[0,\omega_Y]\rightarrow\mathbb{R}_+$を持つという．
-確率変数$X$と$Y$は$f$に従って同時に分布するという．
-$f$は$(0,\omega_X)\times(o,\omega_Y)$で連続で正の値であるとする．</p>
-<p>$X$の周辺分布は
+が成り立つ時，$F$は$G$nに対して二次の確率的優位性があるという．</p>
+<p>$G$が$F$に対してmean-preserving spreadである時，$F$は$G$に対して二次の確率的優位性があるという．
+逆も然りである．
+このことから２つは同値である．</p>
+<p>二次の確率的優勢性は全ての$x$に対して
 \begin{equation}
-f_X(x)=\int_0^{\omega_Y}f(x,y)dy
+\int_0^x G(y)dy\ge\int_0^xF(x)dx
 \end{equation}
-であり，$Y$の周辺分布も同様に定義される．</p>
-<p>確率変数$X$と$Y$が独立である時，かつその時のみ
-\begin{equation}
-f(x,y)=f_X(x)\times f_Y(y)
-\end{equation}
-である．</p>
-<p>どんな$x&gt;0$に対しても$X=x$が与えられた元での$Y$の条件付き確率密度函数は
-\begin{equation}
-f_Y(y|X=x)=\frac{f(x,y)}{f_X(x)}
-\end{equation}
-そして，どんな$x&gt;0$に対しても$X=x$が与えられた元での$Y$の条件付き期待値は
-\begin{equation}
-E[Y|X=x]=\int_0^{\omega_Y}yf_Y(y|X=x)dy
-\end{equation}
-である．</p>
-<p>これまでの定義を使って，期待収束法則(law of iterated expectation)
-\begin{equation}
-E_X[E_Y[Y|X]] = X_Y[Y]
-\end{equation}
-が成り立つ．</p>
+であることと同値である．イコールは$x=\omega$の時に成り立つ．</p>
 
         </div>
         <footer class="article-footer">
-    <a data-url="https://getumen.github.io/2021/05/08/auction-theory-a/" data-id="132a662b55c22c1985f585c828c795b0" class="article-share-link">
+    <a data-url="https://getumen.github.io/2021/05/23/auction-theory-b/" data-id="03cc3c44ac27f33f9a1079284ad39d81" class="article-share-link">
         <i class="fa fa-share"></i>
         Share
     </a>
     
-    <a href="https://getumen.github.io/2021/05/08/auction-theory-a/#disqus_thread" class="article-comment-link">
+    <a href="https://getumen.github.io/2021/05/23/auction-theory-b/#disqus_thread" class="article-comment-link">
         Comments
     </a>
     
@@ -516,21 +503,14 @@ E_X[E_Y[Y|X]] = X_Y[Y]
     
 <nav id="article-nav">
     
-    <a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="https://getumen.github.io/2021/05/08/auction-theory-a/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">
           Older
       </strong>
-      <div class="article-nav-title">Auction Theory 2章 (1)</div>
+      <div class="article-nav-title">Auction Theory A</div>
     </a>
     
 
-    
-    <a href="https://getumen.github.io/2021/05/23/auction-theory-b/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">
-          Newer
-      </strong>
-      <div class="article-nav-title">Auction Theory B</div>
-    </a>
     
 </nav>
 
@@ -580,7 +560,7 @@ E_X[E_Y[Y|X]] = X_Y[Y]
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/05/23/auction-theory-b/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory A" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory B" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -606,7 +586,7 @@ E_X[E_Y[Y|X]] = X_Y[Y]
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/05/08/auction-theory-a/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory A" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory B" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -632,7 +612,7 @@ E_X[E_Y[Y|X]] = X_Y[Y]
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/04/25/auction-theory-2%E7%AB%A0-1/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory A" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory B" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -658,7 +638,7 @@ E_X[E_Y[Y|X]] = X_Y[Y]
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2021/04/24/auction-theory-1%E7%AB%A0/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory A" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/auction_hammer.png)" alt="Auction Theory B" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
@@ -684,7 +664,7 @@ E_X[E_Y[Y|X]] = X_Y[Y]
                 <div class="item-thumbnail">
                     <a href="https://getumen.github.io/2020/02/01/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%8E%E3%83%BC%E3%83%89%E3%81%AEkubernetes%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92ansible%E3%81%A8vagrant%E3%81%A7%E4%BD%9C%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B/" class="thumbnail">
                     
-                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Auction Theory A" class="thumbnail-image"></span>
+                        <span style="background-image:url(https://getumen.github.io/images/banners/logo.png)" alt="Auction Theory B" class="thumbnail-image"></span>
                     
                     </a>
                 </div>
