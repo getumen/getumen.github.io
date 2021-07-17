@@ -6,7 +6,18 @@
     <description>Recent content in machine learning on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 25 May 2019 21:06:23 +0900</lastBuildDate><atom:link href="https://getumen.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jul 2021 11:19:25 +0900</lastBuildDate><atom:link href="https://getumen.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Golang Tensorflow 2.5</title>
+      <link>https://getumen.github.io/2021/07/17/golang-tensorflow-2.5/</link>
+      <pubDate>Sat, 17 Jul 2021 11:19:25 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/2021/07/17/golang-tensorflow-2.5/</guid>
+      <description>&lt;p&gt;現在，TensorFlow 2.2以降のGolang用のTensorFlowライブラリはビルドできない状態になっています．
+ビルドできないと困るのでビルドできる方法を紹介します．
+今回はTensorFlow 2.5用の解決方法を紹介しますが，他のバージョンでもできると思います（たぶん）．&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>論文メモ：Unbiased Learning to Rank With Biased Feedback</title>
       <link>https://getumen.github.io/2019/05/25/%E8%AB%96%E6%96%87%E3%83%A1%E3%83%A2unbiased-learning-to-rank-with-biased-feedback/</link>

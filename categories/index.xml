@@ -6,7 +6,16 @@
     <description>Recent content in Categories on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 23 May 2021 10:20:10 +0900</lastBuildDate><atom:link href="https://getumen.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jul 2021 11:19:25 +0900</lastBuildDate><atom:link href="https://getumen.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>machine learning</title>
+      <link>https://getumen.github.io/categories/machine-learning/</link>
+      <pubDate>Sat, 17 Jul 2021 11:19:25 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>auction</title>
       <link>https://getumen.github.io/categories/auction/</link>
@@ -31,15 +40,6 @@
       <pubDate>Sat, 27 Jul 2019 15:53:05 +0900</pubDate>
       
       <guid>https://getumen.github.io/categories/%E5%82%99%E5%BF%98%E9%8C%B2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>machine learning</title>
-      <link>https://getumen.github.io/categories/machine-learning/</link>
-      <pubDate>Sat, 25 May 2019 21:06:23 +0900</pubDate>
-      
-      <guid>https://getumen.github.io/categories/machine-learning/</guid>
       <description></description>
     </item>
     

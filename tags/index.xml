@@ -6,7 +6,25 @@
     <description>Recent content in Tags on 雑記</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 23 May 2021 10:20:10 +0900</lastBuildDate><atom:link href="https://getumen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Jul 2021 11:19:25 +0900</lastBuildDate><atom:link href="https://getumen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go</title>
+      <link>https://getumen.github.io/tags/go/</link>
+      <pubDate>Sat, 17 Jul 2021 11:19:25 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tensorflow</title>
+      <link>https://getumen.github.io/tags/tensorflow/</link>
+      <pubDate>Sat, 17 Jul 2021 11:19:25 +0900</pubDate>
+      
+      <guid>https://getumen.github.io/tags/tensorflow/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>auction theory</title>
       <link>https://getumen.github.io/tags/auction-theory/</link>
